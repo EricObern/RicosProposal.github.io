@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Digital Strategy Proposal</title>
+    <title>CSS Digital Strategy Proposal v3.1</title>
     <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         /* Reset and Base Styles */
@@ -21,109 +21,146 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px; /* Base font size for rem units */
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', sans-serif; /* Switched to Roboto for better readability */
             line-height: 1.7;
-            background-color: #1a1a1a; /* Dark background */
-            color: #f0f0f0; /* Light text */
-            overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); /* Subtle gradient background */
+            color: #e0e0e0; /* Slightly softer light text */
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Branding Colors */
         :root {
             --css-red: #ED1C24;
-            --css-black: #000000;
+            --css-blue: #0055A4; /* Added Blue */
+            --css-black: #111111; /* Darker black */
             --css-white: #FFFFFF;
-            --css-grey: #333333;
+            --css-grey-dark: #282828;
+            --css-grey-medium: #444444;
+            --css-grey-light: #666666;
             --text-light: #f0f0f0;
             --text-medium: #cccccc;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --red-glow: rgba(237, 28, 36, 0.3);
+            --blue-glow: rgba(0, 85, 164, 0.3);
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px; /* Slightly wider */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
         /* Header */
         .header {
             background-color: var(--css-black);
-            padding: 20px 0;
+            padding: 30px 0; /* Increased padding */
             text-align: center;
-            border-bottom: 4px solid var(--css-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            border-bottom: 5px solid var(--css-red);
+             /* Removed sticky positioning */
         }
 
-        .header img {
-            max-height: 60px;
-            margin-bottom: 10px;
+        .header img.logo {
+            max-height: 70px; /* Slightly larger logo */
+            margin-bottom: 15px;
         }
 
         .header h1 {
+            font-family: 'Montserrat', sans-serif;
             color: var(--css-white);
             font-weight: 900;
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .header p {
             color: var(--text-medium);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* Section Styling */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--css-grey);
+            padding: 100px 0; /* Increased padding */
+            position: relative; /* Needed for potential pseudo-elements */
+            border-bottom: 1px solid var(--css-grey-medium);
+        }
+        section:nth-child(odd) {
+           background-color: rgba(0,0,0,0.1); /* Subtle alternating background */
         }
 
         section:last-of-type {
             border-bottom: none;
         }
 
+        /* Headings */
         h2 {
-            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem; /* Larger */
             color: var(--css-red);
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-weight: 900;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 8px var(--shadow-color);
         }
 
         h3 {
-            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
             color: var(--css-white);
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: 50px;
+            margin-bottom: 25px;
             font-weight: 700;
-            border-left: 4px solid var(--css-red);
-            padding-left: 15px;
+            border-left: 5px solid var(--css-blue); /* Using Blue accent */
+            padding-left: 20px;
+            position: relative;
         }
-          
+         h3::before { /* Subtle line effect */
+             content: '';
+             position: absolute;
+             left: 0;
+             bottom: -5px;
+             width: 50px;
+             height: 2px;
+             background-color: var(--css-blue);
+         }
+
+
         h4 {
-            font-size: 1.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
             color: var(--css-red);
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 35px;
+            margin-bottom: 18px;
             font-weight: 700;
         }
 
+        /* Text and Lists */
         p, li {
             color: var(--text-medium);
-            margin-bottom: 15px;
-            font-size: 1rem;
+            margin-bottom: 18px;
+            font-size: 1.05rem; /* Slightly larger base text */
         }
 
         ul, ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
+            margin-left: 25px;
+            margin-bottom: 20px;
         }
+         ul li::marker {
+             color: var(--css-red); /* Style list bullets */
+         }
+         ol li {
+            padding-left: 10px;
+         }
+
 
         strong {
             color: var(--css-white);
@@ -131,145 +168,301 @@
         }
 
         a {
-            color: var(--css-red);
+            color: var(--css-blue); /* Use blue for links */
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: 2px;
         }
+         a::after { /* Underline animation */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 1px;
+            right: 0;
+            background: var(--css-red);
+            transition: width .3s ease;
+         }
 
         a:hover {
-            color: var(--css-white);
+            color: var(--css-red);
+            text-shadow: 0 0 8px var(--red-glow);
         }
+         a:hover::after {
+            width: 100%;
+            left: 0;
+            background: var(--css-red);
+         }
+
 
         code {
-            background-color: var(--css-grey);
+            background-color: var(--css-grey-medium);
             color: var(--text-light);
-            padding: 2px 5px;
-            border-radius: 3px;
+            padding: 3px 6px;
+            border-radius: 4px;
             font-family: monospace;
+            font-size: 0.95em;
         }
 
-        /* Table Styling */
+        /* Table Styling - Mobile Responsive */
+        .table-container {
+            overflow-x: auto; /* Enable horizontal scroll on small screens */
+            margin: 30px 0;
+            border: 1px solid var(--css-grey-medium);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
         table {
             width: 100%;
+            min-width: 600px; /* Minimum width before scroll appears */
             border-collapse: collapse;
-            margin: 30px 0;
-            background-color: var(--css-grey);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            background-color: var(--css-grey-dark);
         }
 
         th, td {
-            border: 1px solid #444;
-            padding: 12px 15px;
+            border: 1px solid var(--css-grey-medium);
+            padding: 15px 18px; /* Increased padding */
             text-align: left;
+            vertical-align: top; /* Align content top */
         }
 
         th {
-            background-color: var(--css-red);
+            background: linear-gradient(to bottom, var(--css-red), #c1151c); /* Gradient header */
             color: var(--css-white);
             font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            position: sticky; /* Keep header visible when scrolling horizontally */
+            top: 0;
+            z-index: 1;
         }
 
-        tr:nth-child(even) {
-            background-color: #2a2a2a;
+        tbody tr {
+            transition: background-color 0.2s ease;
         }
-          
-        tr:hover {
-            background-color: #3f3f3f;
+        tbody tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.2);
+        }
+        tbody tr:hover {
+            background-color: var(--css-grey-medium);
         }
 
-        /* Flowchart Styling */
-        .flowchart {
-            background-color: var(--css-grey);
-            padding: 20px;
-            border-radius: 8px;
-            font-family: monospace;
-            line-height: 1.4;
-            margin: 30px 0;
-            overflow-x: auto; /* Handle potential overflow on small screens */
-            border-left: 5px solid var(--css-red);
+        /* --- Enhanced Flowchart Styling --- */
+        .flowchart-container {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            border: 1px solid var(--css-grey-medium);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
         }
-          
+
         .flowchart-step {
-            margin-bottom: 10px;
+            background-color: var(--css-grey-dark);
+            border: 1px solid var(--css-grey-medium);
+            border-left: 5px solid var(--css-blue); /* Blue indicator */
+            padding: 15px 20px;
+            margin-bottom: 25px; /* Space for arrows */
+            border-radius: 8px;
             position: relative;
-            padding-left: 20px; /* Space for arrows */
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-          
-        .flowchart-step::before {
-            content: '->';
+        .flowchart-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+        }
+
+        .flowchart-step h5 { /* Optional title for steps */
+             font-family: 'Montserrat', sans-serif;
+             color: var(--css-red);
+             margin-bottom: 8px;
+             font-size: 1.1rem;
+        }
+
+        /* Arrow Connectors */
+        .flowchart-step:not(:last-child)::after {
+            content: '';
             position: absolute;
-            left: 0;
-            color: var(--css-red);
-            font-weight: bold;
+            left: 50%;
+            bottom: -25px; /* Position between steps */
+            transform: translateX(-50%);
+            width: 2px;
+            height: 25px;
+            background-color: var(--css-grey-light);
         }
-          
+        .flowchart-step:not(:last-child)::before {
+             content: '\\25BC'; /* Down arrow */
+             position: absolute;
+             left: 50%;
+             bottom: -35px;
+             transform: translateX(-50%);
+             color: var(--css-red);
+             font-size: 1.2rem;
+             z-index: 1;
+        }
+
+        /* Decision Point Styling */
+        .flowchart-step.decision {
+            border-left-color: var(--css-red); /* Red indicator for decisions */
+            background-color: #3a2e2e; /* Slightly different background */
+        }
         .flowchart-step.decision::before {
-            content: '? '; /* Diamond/Question */
+            /* Override arrow */
+            content: '?';
+            color: var(--css-white);
+            background-color: var(--css-red);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            text-align: center;
+            line-height: 25px;
+            position: absolute;
+            left: 50%;
+            bottom: -38px; /* Adjust position */
+            transform: translateX(-50%);
             font-weight: bold;
+            box-shadow: 0 0 10px var(--red-glow);
         }
-          
-        .flowchart-step.manual::before {
-            content: '!!'; /* Manual step indicator */
+        .flowchart-step.decision:not(:last-child)::after {
+             height: 30px; /* Adjust connector length */
+             bottom: -30px;
+        }
+
+        /* Manual Step Styling */
+         .flowchart-step.manual {
+             border-left-color: var(--css-white); /* White indicator */
+             background-color: #2a3a3a;
+         }
+         .flowchart-step.manual::before {
+             content: '!';
+             color: var(--css-black);
+             background-color: var(--css-white);
+             /* (Same styling as decision question mark) */
+             border-radius: 50%;
+             width: 25px;
+             height: 25px;
+             display: inline-block;
+             text-align: center;
+             line-height: 25px;
+             position: absolute;
+             left: 50%;
+             bottom: -38px;
+             transform: translateX(-50%);
              font-weight: bold;
-        }
+             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+         }
+         .flowchart-step.manual:not(:last-child)::after {
+             height: 30px;
+             bottom: -30px;
+         }
 
 
         /* Button Styling */
         .copy-button-container {
             text-align: center;
-            padding: 50px 0;
-            background-color: var(--css-black);
+            padding: 60px 0;
+            background: var(--css-black); /* Match header */
         }
 
         .copy-button {
-            background-color: var(--css-red);
+            background: linear-gradient(to right, var(--css-red), #c1151c);
             color: var(--css-white);
             border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(237, 28, 36, 0.4);
+            letter-spacing: 1.5px;
+            box-shadow: 0 5px 20px var(--red-glow);
+            position: relative;
+            overflow: hidden;
+        }
+        .copy-button::before { /* Shine effect */
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            pointer-events: none;
+            transition: left 0.6s ease;
         }
 
         .copy-button:hover {
-            background-color: #bf171d; /* Darker red */
-            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--red-glow);
+            transform: translateY(-3px);
         }
+         .copy-button:hover::before {
+            left: 100%;
+         }
 
         .copy-button:active {
             transform: translateY(1px);
+             box-shadow: 0 3px 15px var(--red-glow);
+        }
+        .copy-button.copied {
+            background: linear-gradient(to right, #4CAF50, #388E3C); /* Green gradient */
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
         }
 
-        /* Responsive */
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+             h2 { font-size: 2.5rem; margin-bottom: 50px; }
+             h3 { font-size: 1.8rem; }
+             h4 { font-size: 1.4rem; }
+        }
+
         @media (max-width: 768px) {
-            h2 {
-                font-size: 2rem;
-            }
-            h3 {
-                font-size: 1.5rem;
-            }
-             h4 {
-                font-size: 1.2rem;
-            }
-            .header h1 {
-                font-size: 1.5rem;
-            }
-            table, th, td {
-                font-size: 0.9rem;
-                padding: 8px 10px;
-            }
+            body { line-height: 1.6; }
+            .container { padding: 0 15px; }
+            .header { padding: 20px 0; }
+            .header img.logo { max-height: 55px; }
+            .header h1 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+            h2 { font-size: 2rem; margin-bottom: 40px; }
+            h3 { font-size: 1.6rem; padding-left: 15px;}
+            h4 { font-size: 1.3rem; }
+            p, li { font-size: 1rem; }
+            th, td { padding: 12px 10px; font-size: 0.9rem;}
+
+            /* Adjust flowchart connector positions */
+             .flowchart-step:not(:last-child)::after,
+             .flowchart-step.decision:not(:last-child)::after,
+             .flowchart-step.manual:not(:last-child)::after {
+                 bottom: -20px;
+                 height: 20px;
+             }
+              .flowchart-step:not(:last-child)::before,
+              .flowchart-step.decision::before,
+              .flowchart-step.manual::before {
+                 bottom: -28px; /* Adjust symbol position */
+                 width: 20px;
+                 height: 20px;
+                 line-height: 20px;
+                 font-size: 1rem;
+             }
         }
 
-        /* AOS Customizations - subtle fade-up is good */
-        [data-aos="fade-up"] {
-          transition-property: transform, opacity;
+        @media (max-width: 480px) {
+             html { font-size: 15px; }
+             .header h1 { font-size: 1.5rem; }
+             h2 { font-size: 1.8rem; }
+             h3 { font-size: 1.4rem; }
+             .copy-button { padding: 15px 25px; font-size: 1rem; }
         }
 
     </style>
@@ -277,502 +470,121 @@
 <body>
 
     <header class="header">
-        <div class="container">
-            <img src="https://superbikeschool.com/wp-content/uploads/2023/06/cropped-CSS-Logo-For-Web-Header.png" alt="California Superbike School Logo">
-            <h1>Digital Engagement & Authority Strategy</h1>
-            <p>Prepared By: Eric "Rico" Oberndorfer along with an AI Strategic Assistant.</p>
+        <div class="container" data-aos="fade-down">
+             <!-- Base64 Embedded Logo -->
+             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1kAAABkCAYAAAC/N0NvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAErASURBVHhe7Z1PaBxlmf/P6+7qrju6u7pnd3f3dM90T1/dXfXM7O7u6e5m9vI+Ppv5H7Oz093vPZ/f+/0y4zwzk2xG5pEEgyYhkIQgCUkgCYFGgSQSCYkkkAQSgUCiSRQISCSaJCFhkAQSiYQSSSRIJBGJRIKEhAQSyf8nOzs7M7szs9/39ffq6q6uzs7M3NfV7/u+z/c87/M+n2a4ublJ2djYSEnJd7a0tNDAwIBAAABw5K9X3N3d1T93VlZWmZmZUV5ejv/J8+bNNXv33XfN7t27zebNm838+fPNnj17ZMuWLZj/v3v3rs2YMaPJnz//R+p7cHAw1dXVOOe5urrqe/fucb7p7e3t4eHhYGBgQHFxcWxsrLq6ujo6OigpKUVFRfnOO++Ynj17Zmdnp+7ubkpKytTU1OTk5GRnZ2dhYSGVlZXo6GjGxsbU19czMjJycnLa2tpSXV09Pj7OysrKzc3NYWBgQE1NTVZW1uDgYGZm5ujoKPPLdXR0/F8uAMCR6zSccCJJJ4wknaLjjI6Oxs+RjY2N0tJSHsckJiYaGxszMDAgISEhPDxcQUHB2bNnm56eTklJycnJyWZmZnw+n52dnZSUlJSUFGlpabS0tBgYGNDR0UF5eTk9PT05OTlmZmaYmJiQkZGhqqqKkpKSlJTkvf90d3eTk5MTERExMjJycnJSVFREbW1tTk4OEyX5/HwLCgoyMDAgLy9vbm6OlpYWeXl5jI2NsdnZGRcXF3fv3uXf/0tLSwMDA3x8fDQ2NhIREWFtbW1paUlJSQmNRgMDA+PGjRsPDw/l5eWUlZWRkZGRl5fHYDCYmppSUlKSmJhofn4+m83GxMSEoaGhtbW1hYWFHR0dmc1mKysr/Pw+fM74v5wAAJx5TSccJ5J0wkk6TVkZf460tLRISUnxuJ6cnDw8PJw3b569e/ea8+fPy8vL5eXlTZs2jZycHEpKylOnTpmcnExFRQUpKSllZWWUlZW5uLhoamqipKQkIyNDdXU1MzMzNjbW4uIi3d3dFBQUMBqNbm5uDAYDKysrxsbGvL29+fl8WFlZWVtby8zMzMzMrKysNDU1aWtr09raGhcXl5ycXFZWlpqaGmVlZZx7bmtr4+/vZ2trKyAgwNbW1tzcnKurKwMDA5y7NDU1xcbGhoaGBhcXFyMjI9LT0w0NDWFpaQkLCwsLC4uuri6Ojo6SkhISExM5HA57e3ujoaGhoaEhIyMjLy8vPz/f1NSUqakpn5+fU1NTcnJydnd3JyYmmpyczMLCQktLi4WFhamoqJiYGGFhYXp6eurq6riPNDY2/l8OAMCR6zSccCJJJ4wknaKjjJOTk7y8PL+3o6ODkJAQQUFBDAZDQUEBxcXFSUlJiYmJiYiISExMLCwsLCkp4eHh4efnp7W1lZmZGbm5uaSkpLGxMTU1NVRUVDAajRwOh8lkMhgMZmZmDAwMaGpq0tjYmJaWhslkkpOTy8rKMjQ0ZGRkhMfHx87OztnZWXV1NVpaWgQCAS4uLmZmZnw+n8XFRUNDQ15eXri/pbm5WVRURFtbGy0tLUJCQtTU1HCPsbGxgoKCVlZWjIyMiIiISEpKCg8Pz8rKyvb2dnd3d+rq6nh4eDw9PRMSEnh4eDg7OxMREWFvb09JSYmLiyMzM7O0tJSVlRUzMxMmkyk+Pj4gIMDV1RVLS4uHhwebzQaAyspKTExMnJycfHx81NTU0Nzc/P8CAIC/vU44ziTpBJOkUzRKSkr8X/b29ubk5BgYGBASEhIYGEhhYWFhYWFUVFRKSkpMTIylpSU3NzdCQkJyc3OpqKigrq6Ojo4OeXl5enp6RkZGaGhoiEQiDAYDIyMjS0tLlJSUBAQEyM3NJSUl5e3tTUZGxsnJCQkJGRkZ4ejoCAgIyM3NxcLCQllZWUtLC2tr6xMnTujq6hITEyMiIiIuLs7c3JylpSUtLS3m5uZYLBarq6u0tLRKS0vj4+MzMjKMjIywWq1paWkODg6kpKTY29vz8vLy8vKSkpLy9/dHRkZmZ2enpKQEBQXFxcXZ29t7enrS1NQEBQXFxsZSUVEBAPX19bm5uVpaWnNzc2fOnPH390dOTg4AMpnM1taWtLQ0MzMzVlZWnJyccF5qa2ujpKSUlJQEBwfn5OTw9fXNzMzMycmxsbFxcXGxubn5/wsAAPC31wnHiSSdMJKOUV6evnDhwuDgYFpaWoaGhpydnTExMSEhIYmKigIAKSkpeHt7Y7FYDAaDwWCQSqXMzc3x8PDAarV4PB6n0/nUqVNOTo7U1NQcDofD4XBzcwsNDU1OTg4LC4vk5OScnJyYmBhVVVU0Gk1KSkpGRoaFhYWVlVVUVBRz8/Pnz1NRUYGAgPDu3bs9PT3y8vJERUVxcHBgMBiSkhKtra0FBQXx8fHh4eFhYWExMTEMBgMbGxsbG5ubmxuPx2MwGMxmc3NzMwMDA7xerbq6WlBQEBMTExISwun0lJSUgoICXl5eWFtbQ0JCcnh4SEpK4uHh4ebmZmFhwcbGBisrKwMDAxYXF8fGxiYnJ+fm5qamppaa+j9v3rzm5uaioqLa29tzc3O5ublKSkrKysq6urqysrIWL15MS0sLAMlk8ujoKH9/fyqVymazKSsrExAQQEtLCyMj49atW86dO8fFxfnAAQCAP1+nHCeSdMJIOmVVVdXFixeHhoaWlpZMJhNjY2NUVFT09PSoqKiwWCyOjo5xcXE0Gk1HR0dcXBwWFhYeHh5tbW1WVlamoKCgoKCgqqrK0tISjUbLZDI4HA6bzWYymaSkpBgMBlpaWoSEhPDz88Nms2lubvb29hYWFlJSUuLj42OxWJSSkqKlpRUSEmJqaoqfnx8zMzNCQkJMTEywsLCQlJSUnJwMDw8PCwsLAOzu7pKWlpafn29gYEBHRwcXFxeHwwEANzc3RkZGFhcXc3JypKSksNlsbm5uDAYDEyUODw9LTk42NjZmZmaG0+kZGBi4ubnp6ekxMjIikUgYGBgQExPD4/EolUoLCwtvb28uLi4GBga6u7tjYWFRUlLy9PQEBwczNjZmZ2dHRUUFBwfr6+vT0tJiYWGhpaXFYrH4+/tftWoVyWTKysqKiIgICAhISEhgZmaGz+cDjIyMOHPmDAkJwfnz7OxszM+tXbvW5OSkgYEBXl5eALx37158Pv+rBADg4Gs1wknSCSTplFU4ODjExMSEhIQwGo3S0tL5+fm4uLiJiYmFhYX4+HiHw+Hp6cnPz8/Ozk5NTU1UVJSlpSXc3NzExcXFxcWNjY3JycnBwcFpaWn4fD6TyWRoaEhLS4ulpeXo6CgrK0tMTExMTIxMJgMAOTk5VFRUcHJypKSksFqtDg4OfHx8SExMBAQEZGdnx8XFxczMjJWVlYiIiKenJ0tLSyQSCYPBICEhITk5GT8/P1paWnx8fCQkJNDS0mKxWB4eHmxtbRkZGRESEuLl5UVubi6Px+Pl5UVERERLS4uTkxOdTk9ISGhra8NqtQDQ3NwsLy+Pi4szMTGhpqZmYGCAr68vJycnOTm5p6cnNjY2Jyenm5ubrq4uXl5eampqUlNT8/PzMzMzY7FYeHt7ExAQYGBgYGFhwePxLC0tFRQUFBQUZGRk0NXVpaWlxWQyFRUVERQUZG9vT05OnpmZmZaWlpiYGIFAgMViCQgI8Pf3Z2BgYGdnh8Vi0djYeHl50draSklJ6evri4uLi4qKcnZ2Zm9vT0tLi6enJzAw8PbtWwcHB86cOcPCwgIAOTk5JBIJZ2fnXbt26e7uxtLSsqur65133vniiy/Gx8dPSEjQ0dHx8vJqb2/fv39/dna2sbExp6enubk5z7+FhYXZ2Vmfn5//KwUAOHg/zhpJJ4wknaKjjLu7O3V1dWlpKScnJwqFAjMzMzk5OaWlpbm5uZGRkTExMWFhYSorK4OCgsLCwuzs7IyMjJiYmHh6eqKjo8PDw4OCguzs7JiYmFBQUGhubjYwMIDFYuHxeKxWq0QiAaChoQFvb29UVFQyMjIKCgro6+vD4/Hs7u4C4OXlhVqtBgUFRUZGenp6UlNTExIS0tPTw+FwoqOj8/LysrOzk5GRob6+fnJyMjw8PD4+3tTUlIqKCkVFRYKCgrKysoSEhDw9PbGxsSEhIWFsbExJSYmLixMSEkJKSoqbmxubzZacnExJSWlubjYwMEBLSwuPx+Pn52dhYWFiYgIA1dXV8PDwDAwM9PT04PP5+Pj4aGlpERERobGxMSwsLCcnp5SUlJaWFmNjY0JCQkBAAHd3dyAgIDY2Nnt7e3x8fBQKBS6Xm5iYCA0NJS8vz8DAgJycHEtLS8bHxxcXFwsLC+vp6ZGRkRkYGNDR0ZGWlqatrU1LSwsKCtLR0WFgYEBOTk5JSYmtrS05OTk+Pr6rqyslJaWhoSEpKSkjIyNhYWFubm58fLyJiQmJiYmFhYW5ubm2trawsDA7Ozs1NTU6OrqMjAxVVVVycnJ0dHT4+PjMzMwQCARoa2vj4+MBAAcHB1lZWWRkZBgMhqmpKQUFBXZ2diYmJgoKCoSEhERGRt64caOxsbGnpycdHR1GRkbz8/NqampkZGSEhITExcVxcXHx8vJycnI6OjoYDAae6enpGRgYmJiYGBgYeHp6mpuba21tjY2NbWlp8fLyMjY2xj/H+/s/CgCAO+g0nHCSSTphJOkURzAYJCcnh8lkioqKQkJCkpGRGRoaspns6NGjDAYDAOrq6ubm5tra2gICAlQqFalUysDAABsbGxcXFycnJxsbG7W1tbm5uTk5OTExMaGhoXl5efx+PyMjIxsbG7vd7u7ubnl5OV5eXm5ubkBAQGxsbP7+/mxtbQUGBjIajV5eXrCwsCwsLBAIBHR1dfn7+8Nut2lra6OlpQUGBoLFYhkZGRkZGXl4eDAYDFwu19bWNjc3x87Ojp+fn5+fLysry8LCgsPhAICDg0NtbS03NzcvLy90Oh2n00lPTycmJubq6srLy4PFYgEAyWTy9/eH1WoZHx+PhYVVVFSUlpYGAEKhkJeXFzs7O3Jycs7OzthsNnJycoaGhtjb26OiohwcHKisrMTLy4uVlRUeHh4WFhYSExMREREhISEJCQmZmZm2tjbKysoMBgMVFRU+Pj50Oh0XL15ERUVFRUWJiYkJCQmBgYE8Hg/f3z/Pnz+Pi4ubkZExNjbm4+NDS0tLQEDA6dOnzZo1y+fzKSkpKS8vx2KxmEwmDw8PS0tLlJaWUlFREQwG4/P5ycnJaWlpbG1tCQgIWFpaEhcXR0dHx8fH8/LyMhgMgoODs9lsrq6uvL29cTgcbm5ura2tDAZDQUFBREQEo9HQaDSamppMJhMOh5MkSbPZLCsrw8fHx9raGhcXFwsLCzQajclkUlJSwsTEhJOTU1xcXFlZGQB0dHT4+PigVCqlpaUFBgZav/7444/nzp1LT0+/ZcsWFxcXPT09DAaDxcVFn89naWmJTCbD4/G0tLRYWloikUhDQ0Nra+uZM2dGRkZGRkYWFRUxMzNjYWHB4XAIBAKWlpa2tjZra+vFixcDAwP/LwQAHPCe0glHUgknnCSd8qopLS0MDAwMDAxoaGiYmZkxMjLCarUqlcpmZmbGxsa0tLSUlJS2trbGxsbExcXx8vKiqqoKCwujVCpZLBZLS0tUVFT8/PysrKwkJCQUFBSorq5OT0/PysrKy8vLwsKCw+EYGxtTU1ODwWBSUlJcXFx8fHzc3NycTufNmzft7OycnJxOnDihoKAgICBAYGCgvb09Hx8fPz8/Nze3iooKTk5O8vLy+Pj48Hg8Pz8/JycnXl5ejIwMe3t7jIwMNBotKipqYWGBl5cXV1dXWloaDw8PExMTjIyMcDgcIyMjgUAgIyOjqalJZWXl4OCAl5cXq9WaTCafz+fly5f9/f0JCAjw8fHR0tLCy8uLjo5OSEjI09MTgUDw8vLi4+NDS0tLQEDA27dvR0ZG8vPzeTwep9MZGRmJjY01NTUlJSUlJycHBATQ0tIiPz8fn883NjbGxsbS0tLC4XAMBgMXFxdOTk4sFsvb2xsXFxcVFSUkJAQAzM3NeTwePz8/Nze3lpaWgIDAxsZGcHAwJyenqampHR0dCQkJHR0d3NzcmEwmMzMzNTU1DAZDe3s7Ly8vc3NzU1NTdXV1DAaDwWCwWCxzc3MNDQ1qa2vT0tKysrLc3NxMJhNjY2MaGhq2trbGxsYSEhLa2tqSkhJvb29aWhqv1zsyMoLFYnNzcxMSEoLBIE5OThYWFmZmZm5uLnZ2dkhKSkpKSoSEhGxsbLy8vDw9PSkpKdnZ2fHx8dHR0VlZWbm7uzscDoFAgF6vFxQUFAgEuru7c3JyEhIScnNzGRkZsVqt6urqiooKISEh8vLyiouLCwoKiouLAwMDAwMD/0sAAOAJzjrhSCSdMJKOUZGRkbm5uUajERUVxcLCQkhISGBgoIeHB2dnp6CgAA8PDxsbGyQSCUNDQ05OTiQSCUNDAwMDA9ra2uzs7HR1dbG3t4eEhCQtLQ0JCcnGxsbV1RUdHR10Op2bmxsTE5OCggI8PDwoFAqFQgEAampqaGpqsnJyBgcHKSkppFIpV1cXHx8fRkdHaWlp2draqqqq2NvbU1BQEBgYqKWlhcPhbGxsMplMeXk5kUhITEzMw8ODk5NTQ0MDDofLZDIHBwdMJoPP5zMwMKBQKJydnUNDQwMDA3g8HqFQCAkJSXJyMgD09fUJCQmxsrJSUFBAV1cnPT3d2NhYXFyck5PzzZs3NTU1VlZWxsbGCgsLycnJeTwePz8/Hx8fnJyc4HA4DAaDz+dLSkqQSqWYTCaFQgGHw1EoFHR1dXFxcVFaWoo/j4qKWllZiYmJGhoaGhwcDA8Pz8vLy83NBYB8Pr+xsTE3NzcmJgZnZ2d8Ph+v1ysvL6egoKCgoKCgoCA8PLylpaWhoQFvby8+n09JSYmIiAh/f39cXFxcXFx0dHTEx8dLS0sLCgrCwsLCwsLCw8PDw8NRKBQKhSI6OppMJrNYLG5ubkxMTMLCwnw+n5OTExMTE0VFRXl5eTU1NQkJCXx8fFgsFqFQyMDAABsbGxcXFxsbGwMDAzQajdVqsVgslZWVcXFxCQkJoaGh7ezsrKysnJycxMTEqKioyMjINDQ0GBkZtbW1ubm5TU1NeXl5WVlZWVlZWVlZWVVVlZWVFREQUFJSAmBubm5gYGBmZubk5JSWlhYXFxcTE5OcnJyBgQGNRtPe3i4oKGhra3NycgoKCv7fAADA9XScKJ10IknHKCkpyc3NzcvL43A4qKiocHBwSEpKYjQanZycgoOD4eHhpFIpPz8/Li4uCQkJISEhDAZDIBAYGBhYXl7+9OlTd3d3fD5fVlbWwsKCpaUlPz+/trZWX18fAwNDdna2o6OjtbU1Nzc3Ozs7LS0tNja2+fl5LS0tXl5eampqaGhoEBQUREZGJigoSE5ODggIyMrKioqK0tPTERER4ejoiI6ODg0NDQYGhkQiYW5uDgwMjIyMNDY25uPj09LSAgD6+vpycnKGhoZYWFiQlpbGx8eHyWRqamqyWCzy8vJycnIaGhoAICsrKzEx0dLSAlBXV4eNjQ0REdHc3JyJiQkzMzNVVVUODg4oFArPz08KhUJaWhpLSwt+fn7s7OzS0tJkZGT8/PwYDAZLS0uCgoKampoWFhZYWlqkp6eHh4fHxsaGhoaGh4fT0tJYWVkJCwsDAQGXyyUsLGxsbHR0dERJScmZM2e4ubnR09NDpVJPT0/Pzc2xWCySk5P5/H50dJSvr29paSklJSWbzebn5xcSEkJDQzMzM8PDw6Ojo/Pz8+3t7dHR0WZmZhwcHObm5kxMTDAYDJVKxWQy+Xx+bW3tzJkzDAZDVlZWQUHBvn372traDAaDoaEhLi5uXV1dfn5+TU1NWloaNze3sLCQkpKSkpKSnp6OiYnp6empqakhJiYWFhZmZmYmJibIZDIKhUJGRkZtbS0jIyMrK8va2pqFhQUpKSkvL6+IiIj4+HhcXJyOjg5OTk5GRobFYhkcHFxcXJSUlJycnDg6OpKTkzMzMwMDAyMjo5CQEE9PTwcHB7Ozs6SkpLS0tJubm5+fn5iYGLvd/v8CAADcQUeJpJNOJOnUU1dXp6Sk5O7uDgD4fH5BQUEhISG4XC5WVlZERETAwMAICAjQ0tLCaDS8vLyioqLY2tpyc3M5HA4XFxclJSXJyckNDQ1SUlK2trZkZGQMDAzg8XhUVFTU1NQCAgI8PT1JSkri4+NjYmKCg4O5uLioqakhICCgrKyMjo4OERERISEhoqKiDAYDBQVFXFycqqoqAQEBVlZW+Pj4OHDggMPhMBgMnJycsNlsYmJicnJyXFycvr4+AQEBXV1ddHV1CQkJsVhserq6oqKiTE1NMZvNFhYWNDQ0mJubM5lMLCwsTE1NFRQUhIWFtbW1DQwMkEgklpaW8PDwDAwM8Pl8fHx8CAgIiIiIYDAYXFxcDAwMDAwMoFAoBgcHFxcXWSwWIyMjpKWllZWV4eHhCQkJoaKiYmNjkZKS4unpaWJiIigoqKioqKioqLOzMwMDAwcHB6dOncrLy9PQ0GBgYNDW1iYiIoKPj4+FhUVLSws/Pz+bzebl5cXj8eTk5Pj5+WloaDg4OPD5/JSUlIqKigwGA4/HExERwWAwiURiamrKzc0NCgoaGxs7OzsPDg5SUlLIZLKIiAiPx6OioqKioqKhoaGnpwcAXC5XSUmJnZ1dXFxcREREBAUFOTk5ycnJBQUE4HK5pqampaUFAQHBYDDw+/2YmBjOzs64XK6oqGhJSQl/f39CQkIKCgqdnZ1eXl7U1dUBAMFgkJ6ejkQiERERAQDU1dWZmZl5eXm5uLjg8/nQ6HQcDkcqldLT0wkJCYWFhRkZGVxcXFxcXGRkZJSUlHh4eCQkJPj5+bGYLK2trf+XAgCAI9dJpZNOJJ3SKSsrS05OLi0tBYDP5zMwMDA0NGRoaEhNTY2NjU1KSkpUVBQVFeXj44PFYlFaWkpISAgODk5MTEw8PNzc3Byfz5eUlCQnJ4eFhQWEhoaGtra2NjY2tra2NjY25ufne3l5kZGRcf/+feHh4SwsLDQajZubG09PT3R0tLKyMmJiYhYWFpaWlhUVFWVlZSkpKQEALpeLTCaHhoZycnJSVlaWlpZWVFQEBATQ0tJSU1NjYWG5uroAQFVV1cbGBgD4fD5HR4eCgoKLiyMjI6OioiIqKurv729vb19TU4OFhYWfnx8eHt7U1JSNjQ0PDw9/f39MTEw0Gi1JSUnU1NQMDAygUqlEIlFtbW1vb6+zs7Ozs7OwsDA6OhoWFqajo+Pv78/X15efn5+TkxMzM7OlpeXU1NTc3Fx+fj4vLy9MTEwEBwczMjIikUhUKhWv1xMUFKShoYHH4ykpKSEhIbGxsRQKBSqVyh/DwcHB4ODgwsICrVaLjo4mJydHJBLxeDyBQFBVVcXj8VRUVHR0dEgmkwMDA/l8PlarlZCQwNfXl5eXF4/H8/LyUlNT8/Pzo9FoqKurCw4OVlZWFhAQ4OHh4efnJyUlpaGhITU1NTQ0lJeXl5GR4e7uTlJS0tbWlpCQEBsb29bWxs7OztXV1c3NTUBAQFhYGCcnp4iICIFAkJ+fr6mpiY+P5+HhYW5u5uHhobm5+YMPPvjRRx+ZmZkZGxu7Y8cOQUFBmZmZ6enpqaurCw4OZjQa8fl8TU1NJBIJCoXKyspaWlpMJhN/f384HK6urp6bm8NkMoODg7OystLT02NjYyMhISEgICAjIwMAuFxudXU1Li7O1tbW19cHAImJiWRkZIyMjIKDg/Py8srKynx8fJydnQMDAwEBAd7e3tra2nbu3NnW1paUlHTq1KnVq1cPGDDgyJEj3t7eDg4O/y8CADjiXacTjjNJOmEknaK8vb2FhYXU1NTQ0NCysjIDAwNzc3NFRUUTExP8/f1JSUkJCAgQEBDg5+eHwWBERkaSkpIAQEJCgo+PDyMj49mzZ/v6+pydnZGRkQQFBQEApVJJSUn5+PiwWCxCQkK8vLzo6Ojg8/n4fP7U1JSRkREWFlZQUBA+Pj4vLw+v1xsUFCQnJ0dJSQkJCUldXV1YWAgPD4+MjMzV1ZWTkwMARkdHCwsLWSwWT09Pbm5ucHBwZGVlcXV1xWKx8Pl8Q0NDbGxsycnJGhoaLBYLg8EgLi6OlpYWExMTCwsLNzc3Ojo6DAZDQUHBxMTEzc1NVlYWBwcHHh4eQkJCQkJCvL29CQgISElJEQgELBYLg8FgMBgoFAoSiURERMTMzIyPj4+SkpKWlgYLCwtDQ0NFRUVeXl5SUlJeXl7o6GgsFgsSiSQnJwMAyWSSl5cnISEBHx8fX15eXFzc/Pz86Ojo4HA4LS0tsrKyiEQiMzMzs7OzCQkJDAZDT0+Po6OjgoKCvLy8sLAwXV1ddnZ2TU1NampqbGxsTU1NSkpKSkpKTExMeHg4Hx+fkJAQDAZDVVUVl8tNTEzExcWFh4fT0tJiZGSUl5eTkhJqa2tJTExMTU0FBQUxGo2CggJTUxNfX188Hg+lUiUnJ7Ozs+Pi4rBYLLw+H79/6OlpQUHBvr6+Tk5OTExMDAwMYLFYaGhooFAo4uPjaWlpCQoKenp60tLScnJy8vLyYmNjo6KiDAwMSEtLMzIyqqur8/Ly/vrXv7Zt2zYpKampqSklJSW5ubna2tr29vZjx44xMzMDAMbGxtbW1u7u7p6ens7Ozs7OztXV1dXVFQBycnJzc3O7u7tXV1dHR0cLCwuMjY0ZGBhwdnY2NTW1trbm6ekJAAYGBmZmZm5ubl5eXoKCggICAjIzM1taWvbu3RseHv4LAADgsHSKcVKkE06STllZWVkKCgq0tLRMJlNdXR2XyyUiIiIyMvLXv/41ISFh3rx5CQkJWVpaYjAYSUlJaGlpoaOjY2VlpaysTKPREhERwWAwDAwMFBQUxMTEkJKSoqenh9Fo+Ht4enpycHCgra2NiIjIw8ODyWR6eHiQSqVsNpu/vz8WFpaAgACZmZmioqKcnJz4+PhQKBSdTufp6YlCodjY2KSmpgoLCyMiIsLLywufz1dXVaWnpwOAuro6DQ0NRUVFPB6PxWJpaGgwMjJKSEgwNTUFAQFZWFiQSqV4PB6dTufn50dVVRWbzebn54eFhVFYWIjFYjEajZ6enjAYDEpKylOnTqmqqmIzmbm5OQkJCYWFhfn5+QkJCaGhofj7+/Py8mKxWDw9PQEBAdXV1RkZGSQSCS6XCwC4XK6CggI5OTksFktCQkJcXFxMTAwXFxcsFgs3NzciIiIHBwdMJoPJZEokEnR0dKxWKxAI0NfXx8XFxcbGBgBycnJUVFTA4XDk5eUBAAYGBnJycoaGhnx8fMzNzcHBwYWFhZmZmaSkpOTk5Pz8/KysrJCQkMjIyJydnaSkpFOnTsnJyampqbGxsYaGhqKiIhERET4+PmxsrNbW1t7eXiwWi8PhsFgsWlpaPDw83NzchISEBAQE8Pl8Dg4OLCwsfHx8LC0tJScnExUV1dDQEB0dnZKSkpubGx8fHzMzM2FhYSQSCY/HY7VaJRIJf3//vLy8nJyc8PBwNze3lpaWsWPHDAZDcXFxSUlJkZGRUVFR8fHxaWlpOTk5KSkpWVpaKioqioqKMplMCgoKWllZmZmZ2djYWL9+vbq6uoKCgsrKyvb29vb2dqdOnaKlpYWERERERGhoaBITE3fu3MHhcGRkZMTExMhkMjk5ORkZGd7e3pSUlO3t7fPnz9fW1ubn5+fm5vb09Dg4OPDx8aGlpcXHx+fn5zcyMpKfn3/gwAGdnZ3/rwcAcMRpnHCcSNIJJOl06WlpYWFha2srg8FQV1cXEBCAz+draWkBAQEODg5UKpWenp6lpSU7OzsTExMjIyNMTU0RERFBQUE5OTkhIyMDALxeLyUlpaWlRUdH5+XlpaCgoKysTKvVioqKIiIiamtrk5CQEBQUZGRkxGKxhIWFsVgsFRUVJBIJWVlZZDIZLS2tsLCwiIgIcnJygoODyWQyHo9HUVERjUYTERExMjJqaWmxWCzsdrujo6OioqKioqKcnBxHR0dUVFRLSwteXl4WFhYcDicnJ+ft7Q0ALpcLDg4GAGZmZgoKCkJCQs7OzsPDwzMzM1RUVBQVFaGhoaGhoaGhISIioqGh0dDQEBsbGxkZycvLc3Jy4u3tHRgYSEpKCgBycnL4+PjQ09NTUlKqqqqKi4tRKBT29vbU1NSGhgasVivcw7IsExYWZm5ujouLy8jISEpKCgoKSklJKSoqyufzwWEwhUIBAYGMjAwcDseXJCAgwNPTExUVlZaWVlhYaGlpycvLk5SUZGpqmp+fj8ViyWQyzMxMhoaGmEwmXFxcZGVlERERkZOTw+FwDAwMMJnM0tKSlpaWmpqaiooKbm5ubGxslJWVFRUV4XK56OjoWFpaioqKSklJiYyMJCcnh4eHx8nJCQwMREREhISEBAYG8ng8Hh4eHh4ejo6OaDQap9MJCgoSERExNjbGwsICADk5Oba2tvr6+sDAwNra2mRkZDQajZaWFo/Ho6KiIiIigrOzc3x8PCsrKyUlJT4+np6eHgMDAzY2NkZGRrS0tMzMzDg6OnJwcBgYGGBjYyMtLW3jxo1FRUUpKSn5+fmZmplLS0vS0tJiY2N/9dVXfHx8VFVV3d3dHRwcWFhYqKuro6OjMzIycrs6Ozvj4+NDQ0PLy8vj4+NXV1dXV1dXV1c7Oztvb29aWhofHw+NRgOA0dHRlpaWoqIiCQkJISEhnJycbGxseHp6UlJSEhISUldXZ2ZmsrOzW1payMjIiIiIWFtba2tra2lpERUVhYWFYWFhoaGhoaGhISAgUFNTw9HRMX7+/tOnTzs6On5+fv+vBwBwxN/WJ51kkk4YSaejjJWVFTs7OyMjIysri8vlIiIioqKi8vLy+vv7Y2JiamlpeXl5OTg4iIiIMBgMqqqq2Gw2g8GQlZWlpaXFYDDwer1ERETA4XAsFgsej5eUlCRfP4fDwWAwaDQagUDw9fXFYrGYzWaVSkVKSgpzExISYmBggMfjcXR0ZGdnZ2Zm5uHhAQBMJhMVFWVtbU1CQgIXFxc/P7+cnBw7OzsjIyNGRkaOjo7k5OR4eXmxsbERERHBZrNhG0tLSyMjI2RkZISEhLS0tNDQ0GRkZCgoKCQkJOTk5GRkZCQlJUVERBgbG7O0tMTFxXFwcDAwMLC0tOTn52dsbMzX1xefzycnJ8fGxnJzc6OlpXV1dVVUVADg4OCAi4sLAGxsbExNTRkYGADg5OTk6ekBAGZmZmJiYrS0tISEhISEhISEhCQlJSUnJ+fm5mZnZ4eEhGRmZgIAOTk5RkdHKysrw8LCBAUFmZiYWFpaWlpaDAwMDAwM0NLSGhgYYDKZDAZDQ0NDIBDY2NhwdnYmkUhQKBRMJhMVFaWrqyswMDAyMhIcHAwAPz8/WltbBQUFERERGYfDYDAYJBKJiIgIPz+/sLAwn883MjLCxsbW1tZmMpmiouLx48dsNhsAWFlZyWQyLS0tsrKyycnJiYiICAgIWFhYMJvNmZmZJpNJTU2Nn5+fn5/Py8tLS0uLxWJNTU0qKip8fHycnJxcXFxKS0sJCQmhoaG2trYGBgbc3NycnJza2trU1NQG speculateurq6uq6urrq6ura2tra2thYUFxcbGYrGYmZlpaWm5ubmpqamFhQXZ2NnZ2dq6uro6OqqqqkpKSjo6OgoKClJTUjIyMoqKip6enp6enjIyMkJCQhYWFsrKyjIyMwMBAV1dXWlpafHx8/1cDAOAf0QknHCeSdMJJOkVZWFgoKSnx8/MzMzMzMTERj8cbGBiwt7d3dXWdOXPm4cOH+fn51dXVaWlpCQkJKSsr09LSERUVRUlJqaGhQV1dDQAZGRlWVlbs7OzY2dlZWFiEhITY29szMDBgZ2enrq6OSCTi8/nk5eVRUVExMTFhYWGJiYm5uLhYLBYLCwsrK6uioiJ8fHzQ6XQKhUJLSwsfHx9WVlZ6enqqqquSkhJiYmLk5OT4+PjAwMDk5GSVSkWlUpFIJBQKpaamRkZGBgAolUoqlUpNTU1NTc3NzSUkJKSkpGRkZNTU1NTV1WlpadHQ0AAAh8NhMBjMZrPVapWUlPT19bFYrO7u7qysLDMzM2tra0JCQk5OTnl5eVFRUbGxsbS0NNPT0xsbGzMzMwUFBXV1dXK5XCqVSkxMBAQE6OzsTExMxMTEaGlpCQkJMTExAQCUlpYCAoLBIPLy8mZmZkJCQiwsLLBarVgsxsDAgI2NjcPhUFdX5+zsxGAwKBSKTCYDABKJJCws7OnpCQDx8fEWFhYkEgkzMzNjY2N7e3tra2uCgoKcnJycnJwEBgbq6+sFBQUZGBhgMBhkMhkSiSQrK5uRkeHv74/JZBoaGvLz80NCQkQiUUlJSWRkJD8/PwwGA5PJZGZmxmazcblcoVCQnp5OSUnJzMxMamrqwYMH6urqcHBwWFpaent7+/n5+fn5+Xk5/P39sVgsGo3W0NCgoKCgp6cHAJycHKVSqa6ubmZmBgA6Ozs3NzcAoFarFRQUZGdny8rKenp6kpOTExIS0tPTW1tbW1tbGxgYkJWVZW5u5uXl1d7eXlNTExAQ4ODgcHZ2lpOT4+/vHx8fz9/fn6+vLzc3Fx8fHxwczMnJ6e7uzsrKCgkJqamp6eHhAQB8Pr+Pjw9PT08PDw/V1dUaGhr/rwQA4IjTcSJJJ5wknaK8vLyQkBCv1zsyMrKwsCAgICAnJycoKMjPzw8AMJlMNzc3ISEhoaGhoaGhERERERERERERYWJikpGRwcHBkZGR4eHh0dDQzMxMbGxsbG5uampqkpKSEhAR0Oh0XF5etra2lpSUnJycrK4uPjw+fz2dlZcXn8y0tLeHh4dnZ2YODg6ysLDc3N1wuFxcXFzMzMwqFgo2NDQDodDqVSmVkZGhtbT179uxHjx7NzMxkZ2ejUqnY7fYjR45ERETw+/0ej8fm5ubk5ORMJlNLS8ve3j48PExUVJSenm5oaMjg8JqaGqFQyMjIyM7Ozs7ORqPR6OhoMpmMj4+PiIhITEwMDw8PCwsLCwsLCgqSk5MTExMLCwvJyckoFIqAgACRSKSurk5RUZGVlRUAoFAooVCwWCxeXl5ubi4mJiZGRoa7uzufz+fxeBqNBnd3d15eXiKRiEQiWVlZCQQCAJydnZFIJGZmZnR0dHR0dGZmJhKJJCUlhYWFBYPBQKNRoVAoiUQiEolEIhEZGYmIiEhdXZ2VlRUXFxfBYPDUqVPMZnNiYmJiYiIjI4PGxoarqysjI2NtbW1JSUnS0tKWlpY4ODgUCkVHRwdvb29sbKypqamOjg5DQ0MKhUIikTAajVarFRQUhIeHExER4eXlhVqtVlRUZGdnh8fjGRoaEhERERERERERERgYiI2NJScnx8bGZm5uTk5Ozs7OTk1NDQ8PR0REhISEhIaGhoaGxsbGkpKSDAYDRUVFaGiooqKikpKSlJQUsVg8PDycTCZTU1MzMzNzc3MKhUJJSUl8fHxNTU16ejp/f/937tz57LPPWllZ6ezsfP3110+cOHF0dPSJEyeKi4t7enru2bPnqVOnVq9ezc7OxuPxcrlcrVZLS0u7u7u//vWvR48e5e/vLywsLCwsLCsrq6uru3HjRm1tbUNDQw8PjxUrVrBarQqFgtnZWRcXl5KSUkVFRVRUVEZGxvz8/Ojo6JycHO7u7j09PcPDw/8/AQCAJzr/f4xJJ5wwknaK8vb2pqWlxWKxeHp6mpubq6urq6ioKCwsnJqaCggI0NLSws7OztXVFRsb6+rqGhgYGBoaUldXZ2VlsbCw4PF4+vr6+Pn50dLS0tLSAgD4fP7Tp09UKlVSUhI7OztMTEwiIiJcXV0JCAiIiIg4OjpSU1NxcXEJCAiIj48PCgoCAIaGhpydnXV1dfHw8MDAwCAjI1NYWAh/f39MTEw8PT3h4eH5+fnR0tKioqIiIiKSkJBwdnaOj4/HZDISiQQAvF5vbGxsYWFBRkZGSUmJiYkJGxuLk5MTFxdXUVHx9u3bISEhDAaDj4+Pn58fb29vRkYGHo+Hp6cnLy8vLS2toqJCbm4uJycnMzOzsrISExOjq6srLy+vqKhITEyMiYkJDg4uKChIT09PTk4OCgqqq6sDgMlkYjQaVSoVAJaWlnJychQKBbPZDAAJCcmGhoa0tLSsrCwoKSkREREhLi5OTEyMjIwEgMjIyPj4+KSkpL+/Pz8/P05OTiQSCYFAUFJSIigoCAkJiYiI4O3tjY2NxcLCIjAwUEdHBxaLxWAwmEwmNze3qakpEREREREREREREREREREREZHk5OSUlJRkZGRER0ezWCysVmtcXJyIiIiIiAgfH5+rqysvLy8qKkpISAiv17u7u3t7ezMaje7u7uHh4cbGxhQKBR8fHxAQEB8fT0lJycnJKSwsjIuLa2lpsbGxkZGR4eHhoaOjMzIyQkJCQkJCSkpKaGioqKgoFApNTU1GRgbBYLC3t5eXl1dTUxMcHAwAqqurERERaWlpRkZGTExMnJycWFtb+/n5MTIyioiICAgIcHR0FAgEOjo6MjIyYmJigoKCpKSkmEwmNze3nJyciYkJFhcXISEhfHx8sFgsLi4uERERCwsLfX19nJycnJyczM3NYWFhISEh8fDw8PT0fP3117dv3/7tt98aGhpyc3PfvXsXHx8fHx8fLy8vd3d3aWlpu7u7N2/ezMbGJisry8TEhJaW1tPT09jYOD4+vrS0tKurKzEx0dDQEC8vr7m5OTk5OScnJzs7Oycnp4qKit7eXk1NTQMDA2ZmZgYGhnNzc0pKyrS0tISEhLS0tLCwsMDAwJCQkLy8vMTExISEhLi4OK1WKykpKSQkxMTEBACUlZXp6urS09PT0tK+vj6Ojo4hISH/rwAAcCcdJ5IknXSSdkrq6ur8/PyoVCqJRAIAzGYzHo9HJBLRaLRMJkssFgsGg0wmk8ViKSsrMzExkZSUJCUlhYWFkZeXR0VFSaVSCoXiz58LCgoyMDAgLy9va2ubl5dHVlYWi8UiEAiwWCyOjo44HK6uro6fnx8rK6uoqCggICAnJycmJkZERERMTEwwGMzc3BwZGRkQEMDi8czMzBw7doyZmVlcXFxvb+/+/fs5HA4PDw+Ojo5CoXBycoLFYgEAuVyuqKhIZWVFR0cHDodjMBhERUVxdXWFhIRwdnbGxcUFBAQEBAQUFRW1tLTodDofHx9UVFRAQEBcXByVSgUApFLJzc2Nj49PTExMTk6mpaUlJiYmKSlJT08PDw+PmJiYlJSUnJwcfHx8DAyM5ORkISEhMTExWVlZjI2NVVRU4HA4DAYDR0fHnJwcJyenmJgYCoWiqKiIiIjI0tJycnKSkpLCzc0NDw9vaWmBjY2Np6cnPj4+CQkJGRkZGRkZTExMcDhcTk4OABISEsLCwqxWKxAIkEgkAQEBeHt7i4iIEBERYWFhsVhsvL29NTU1GRkZ8fHxCQgIQFFRkZubGx8fz8PDg4uLCxERESwsLFxcXKysrAwNDbW0tFhZWQUFBXFxcQEBAbGxscbGxuLi4oqKCnZ2du7u7uzs7MzMzKysrOTk5ERERLy9vfHx8eHh4SEhIfHx8XFycmJgYXV1dmpqaNDU1GRkZ8fHxsVgsNptNZmYmPz8/Ojo6ERERDAZDXV0dgUCAx+M5ODhwcnJycnJycnJqaWlhMBgKCgppaWmOjo5WVlbW1ta+/PJLXl5edXV1dXV1dXV1cXFxERERWVlZaWlpCQkJiYmJHRwcSEpK+vj4aGhomJiYGBoaWlpaMjIyfHx8nJyc+Pj4mJgYHR0dKysrNze3lpaWnZ1dtbW19fX1DQ0Nvb29CQkJERERISEhJBIJo9FotFr8/f1ZWVmNjY2ZmZkRERFKSkr+/v7U1NT/qwEAwCvSCSdJJ5xwknZKSkqKi4tDQ0OzsrL09PSkpKSYmBhJSUl8fDwtLa2AgADa2toikUhcXJyWlhY3NzcXF5eysjJOTk5GRkaGhobKysqamhoODg5UVFQEBQXp6empqKhISkqKjIyMjIzMzMyYmBhNTU1UVFSYmBiZmZnc3NysrKw4ODhQKBQSiURKSkpOTk5kZGRkZGQ8PT0JCQkJCAiwsrJCQkIikUg6Ojrk5eUZGhoAACcnJ0ZGRkpKSkxMTIyNjVlaWsrKymhra5OSkoKEhJSUlISEhGRkZBgYGFhZWRESEqKhoQEAFRUVubm5ERERUVFRSktL+/j4SEpKKisr09LSkpOT4+PjExAQcHNz09PTAwCdnZ0MDAySkhJOTk6mpqZ0Op3H41EqlTQajclkkpKS4ujo4ObmZmdnBwC0tbUhIyN7enq4ubkBAFZWVrxeLykpyWQy5eXlUVFRxcXFERERcXFxSUlJxcXFycnJBQUFORwOAGAwGAwGAwCsrKxsbW3x8fGhVCqrqqosFgsXFxcdHR0XFxfT09NmZmaysrJERERCQkIsLCzY2NiSkpLMzMzY2NiysrKysrIuLi58fHzQ6XQ6nY7JZCIiInJycoKDg1lZWRkaGmIymWKxGJ/PZ7PZTExMjIyMjIyMjIyMLCwsFBQUJCUleXl5hYWFycnJYWFhSUlJKSkpOTk5ERERGYkJIyMjNTU1mpqaNDU1zc3Nra2tXV1dAIC7uzuVSg0NDT09PRoaGoSEhMjIyNraWlxcXGRkZGhoaGhoaERERBwdHfHx8ZGRkQQFBXl5efHx8fHx8YGBgREREUFBQWZmZmZmZmJiYlJSUnJyciQkJDIyMk5OTg4ODkxNTU1NTREREQYGhsTERFxcXFpaWnx8fFpaWl5eXkZGRv+vBgDAK9IJJ0knnCST9qrr6urU1NSEhIQaGhrQ6XQaDUVFRXFxMQkJCUlJSaWlpVZWVsLCwpydnYWFheHh4SwsLJyenlZWVt6+fYujo2NiYqKvrw9PT08jIyOEhISsrKwMDAxsbGwgICBEREQmJiZmZmYaGhpsbGycTufExETu7u7o6GhDQ0NcXFzU1NS0tDRHR0daWhqfz+ft7c3X15efn5+VlRUeHp65uTkzMzMjIyMmJiZycnIqKirCwsKsVisSCRUQEAAAQ0NDZDIZOzu7u7s7RUVFT09PJycndnZ2enp6SkpKCQkJsbGxCQkJKSkpycjIsLCwGBgYSExMpFAoDAYDFRUVJpOJx+PRarUYDAYOh0NRURErKysSiSQkJERHRzMwMCASicbGxlpaWkxNTQGgvLxcWFgYFxeXnJyckJCQlZWVnZ0dNze3m5sbHx8fb29vBQUFNTU1AQAFBQW8vb1JSEhwcnIiIiJiY2O5ubmJiYmJiYkODg5cLpc/h7Ozc1xcXFdXFx8fHwCQkJBEREScnJx4eXnR0dGhUCgKhUJCQgIWFhbY2Nh0dHTY2NhcXFzY2Nh0dXVZXFyEhoZycnKSk5MTExNzcnJycnI6OjqamppaWlpKSkpERERMTAxnZ2dcXFyCgoKMjIycnJycnJyCggIzMzNmZmbCwkJ0dDQvLy8SiSQsLIxEIpmamqKjo3Nzc6Ojo3Nzc1NTU6dOneLj43l5ebFYLC0tLRkZGY6Ojp6engMDAzU1NSUlJcXFxampqSEhIfLy8qKiorKysnR0dJSUlLS0tJiYmJCQkBEREREREWFhYTY2NiwsrLi4uJiYGFpaWlpaWsLCwpSUlNjY2MLCwuLi4qKiIiQkJDAwMImJiSwsrL+/Pycnp5SUlIiICHt7ezU1NQsLC/9XBQCAR6YTTjLJpBNJ2k7q6OjQ1NSUnp5uaGiISCQGBwfz8vJycnIiISEhIiLCzc3NwcHB2dmZlZUVFhYWFhaWnp6ekZHBysqKjo4OCQkJCAhwcnLy8PAAAExNTZmamjI1NUVERAQFBfn5+VFQUAgJCfHx8aGlpaWnpwMAcnJyJCQkmJiYmJgYFBRkZGREQECAra0tPT09OTk5JSUlLi7Ozs4OAAQEBOTm5mppaQEAWlpaampqDAwM0Ol0IpEIiURiYmICABKJJCgoKCgoKCkpKSkpKTk5OWZmZvr6+sDAwJycHIFAYGJiIisrKyUlJTs7Oycnh0KhSE5OBgAMBgNERERGRESamppoaGgUCsXFxYWZmRmbzQYA8vLyWFhYiIiIHBwcREREfHx8WFhYiIiIoFAoCoXi6enJy8uLRCKpqKgAQFVVFZfLmZiYWFhYGBoaKiwsZDAYSUlJYWFhCQQCAJydneHp6cnPzweAy+ViMBgSiUQgEIhEIhKJRCIRSUREZGZmZnZ2dmpqKi4uLiYmJjQ0NAEBATEyMuLj4yMiIiI5OVlbW5ujo6OfPn2am5ubmZkhEAhsbGysrKxsbGwUCgUZGRmFhYU4ODgwGAympqaysrLi4uIaGhrw+/18fHxMTExCQkKcnJzExcWxsLCwsLBISEhYWFiUlZUBAL29vbS0tOzs7FOnTrlx44a7uzs+Pj4iIiI2Nnbfvn35+fmRkZEZGRmJiYm5ubk9PT20tLRhYWFxcXE5OTl8fHzIy8ubmpoAICcnJykpqaKiorS0NCkpKSEhISEhISEhIUFBQXZ2dmpqqq+vLzc3t7i4+MKFC46Ojv+rAgDAo+kEk1QknQCSdkqDg4O8vDxMTEyEhIRUVFQEBATY29tTU1MBAIKCgvT09JCQkIKCgqKiIi0tLXZ2dkpKStzc3Ozs7ISEhDw8PJiYmERERDw9PZmamgoODmZnZwMAysrKTE1NUVFRxcXFNTU1CQkJ8fHxcXBwkJKSAgC0tLSYmJhEREREbGwsLS1NSEgIDg4OCgqi0Wj8/f1RKpVERUVFRUWMjIzIyMggICCAr68vPz8/KysrPDycubk5k8nk5+dHRUUVFhZmZ2eHh4cXFxc7OzuNjY2JiYmxsbEGBgYGBgZUKpWTkxMAOHv2rLa2NisrKwMDA2tra+Hh4QQEBADg4uKCQqEICQkxMDAAAJVKxWKxiIiIWFhYkJGR8ff3DwkJAYCkpaUxGAzi4uL4+Pjc3NycnJy4ublxcXH4+/v7+fnh8Xh8Ph9fXx8fH5+7u7uBgQGAgIAADw8PT09PbGxsREREBAUFERERERERERERERERERERERERERERISEhwcHBzMxMZWVlsbGxwWAwSqWSyWQSiQSRSFRUVEhISBgMhkQi8fPzAwCysrJsNhsAhEIhNze3iIgIFxcXPz+/oKAgFxcXISEhDg4OXFxcDAwMDAwMdHV1xcXFKCsrY7FYWlpajI2NGRgYGBgYmJiYSExMNDAwkJCQkJCQEBQUZGZmZmZmJigoKCgoKCcnJycnJzMzMzExsba21tfX19bWNjAwkJWV5erqkpCQEBISIjIyMiQkJDIykpWVtbW1tbW1tbW1NTU1aWlpcXFxJk6c+NVXX33zzTdDQ0OdnZ3t7OyMjIxKSkqEhIQ9PT0aGhqFhYX5+fn5+fn5+flYWFi0tLTU1NQcHBzU1NT/qwAA8Ip0gkkqkaSDJGUn7du3Dw4OJicnR6fTERERcXFxsbGxjIwMHR0ddnZ2rq6urKysDAwMLCwsLCwsTE1NmZmZmZiY8PT0pKCgICAgICAgoKCgYGBgYGxsjEQiKSkpCQkJ0Wh0amoqiURiYmIyMDAwMDAwNzc3MDAAADc3Nzc3t5SUlLq6OlxcXIyMjERERCQkJEREREREREREREREREREREREREREREREREREREQkJCSYmJhoaGiUlZVZWVkZGRn5+fnRaDSVSuXxeGxtbQ0MDAgEAiKRCAAYDAZ+vz8tLS0lJYXL5SIQCOzs7Dw8PJydnampqZWVlZmZmVxcXLS0tMzMzNLS0oqKCk5OTl5eXl5eXlFRESAgAAAGBgYGBgYaGhp6enpqaqpMJkxNTZFIJGJiYjQ0NJSUlLi4uJSUlLq6upqaGiMjI1xcXFhYWEJCQl5eXnR0ND8/PycnJykpKSwsLCwsLCkpSU5OTk5O5ubmJiQkBAUFWVlZubm5WVlZubm5kZERDQ0NAIC7uzsvL6+AgICAgAAXF5epqWlsbCwvLy8jI6Ovr6+mpqa4uDhvb29XV1dDQ8Pbt2/Pnj07Li4uISEhERERERERISEhISEhCQkJwcHBDAYDAJydnYODA3JyciQkJNLS0tLS0uLj4/9HBgCAX6ATTOIknnCSZkpmZma8vLwsFktZWVlcXBwXF4eNjU1AQEBbWxsbGxsaGmpra+vo6DAwMMBiscbGxnNzc4ODgzMzM7e3twQCAQCEhIQICAjQ0NAAAGVlZXJycvz8/DAaDT6fT0tLS0lJiYqKEhAQQEtLS0tLy8vLGxgYMDAwYDKZCQkJ8fHxCQkJ4fP5VldXycnJiYiIaGlpiYmJsba2ZmRkREZGEhMTs7Oz4+Pjc3Jy0tLSERAQkJaWFhAQEBQUJCAgwMrKioyMBAAUCoW7uzsnJycnJyc3NzcvL6+oqChvb28/P7+6uhoALBYLPz8/JiYmZmZmhoaGhoaGhoaGGhoa+Pv7U1NT4+Pjc3NzMzMzQ6VSqVQqgUAglUoxGAwKhYJJZDIajWKxmJGREQDodDrOzs4kEsnLywufzxMSEkJKSoqBgQEHBweNRmNjY2NkZCQnJ8fKygoA4eHhISEhhoaGCAgICAkJERAQSEtLGxgYcLlcjIyMJCUlCQkJcXV1JSQkODg4cHJyEhcXx8bGcnFxsbGxkZaWZmRkhIWFZWdnFxUVtbS0BAUF+fn5cXNzs7OzIyMjc3NzY2NjcXBwkEgkkpKSjIyMBAUF4fF4IpFINBptbW1NT0/v6enJy8tTU1MTERGhoaH+/v6oqCg/P7+kpCQSiSQgIACv1ysvL29paQEA+vr6goKCXl5eUlJSkpKSPDw8mEwmISEhvr6+6OjoDAwMGBgYmJiYiIiIYDAYbm5ubGxsDAwMJCQkERERYWFh4eHh4eHh/Pz8DAwM1NTULFmyxNfX19bWdvPmzaSkpMzMzHx8fGhoaERERGZmZlJSUkJCQjY2Nt7e3hUVFf+PBADAJ+kEk1QknWCSTtPExMTAwMDc3NzY2Ni0tDSFQgEA4uPjkZCQDAwMcDqdn58fn89XVFSEhIR4e3tjMBjsdnthYaGuri4+Pp6bmxsPDw8LCwuj0egzZ85kZmaysrKkpKQ4OTkJCQlRUVEUCsXc3Jyenq6pqamoqAgLCwsNDc3R0ZHBYDAYDKqqqnJycnJycrS0tDg4OPDw8DAwMGhoaISEhAgEAvx+/9mzZ6OjowMCAjIyMnJzc7Ozs+Pj4xMSEjIyMrKzsxMSEujp6WlpaWlra8PDwzMzMwEAvF4vLS1NZmamqakJDw9nZ2cXFBSkpKQYGBjg8Xj4fP6zZ8+SkhKzsrKIiIgkJSVZWVlpamqyWCyNRmMwGBYWFhYWFgsLC1wuFxERkZmZycXFxc7Ojo6ODgkJSUJCgoWFZWJikpycHA8PDwkJCXd3d1ZWVoKCgpydnXFxcQkJCYmJicHBwbm5OWtraxkZGSwsLBQKRSQSQaPRDAwMGhoaMDAwiEQiiURiYmJSVVVFREQkBAYG0tLSaGhooNFoJpNJTU2NiIgIEokEAObm5tTU1LS0NGlpabS0tERERGhoaDQajclkoqKiJCQkGBkZeXt7CwkJKSsrQ6PRlJWVoaKiDAwMFBUVpaWl0dHRcXNzi4qKEhERER0dnZmZGR8fn5aWlp6eXlNTU1ZWRkJCgsfjERcXJyQk1NbWhsViGRgYeHp6cnNzs7KyyMrKEhMTs7KyYmNjMzIycrmcs7MzHo8nIiICAKSUlNTU1KSkpBwdHZWVlbW1tdXV1TU1NdXV1XV1dQMDAyUlJUql0tbWFhYW5urqCggI8PLysrKysrKyYmNjCQkJWVlZjIyMjIwMfn5+np6eampq6urqMjIygoKCERER/o8GAIAfpRNMUpF0gkg7SXV1dVlZWTAYjIuLy9TUFADQarWysrL8/HyZTMafl5GRwcXFxWAwzMzMsNlserq6rq6utrY2Nze3pqYmf39/cHBwcHBwQkJCoqKiSExMvHfvXkBAAH9/f0FBQURERDAajVqt5nK5mpqaDAZDdHS0iYkJHR0daGlpsVgshoODiYmJaWlpISEhCAgIYDAYgUDQaDTk5OQkJCT4+PhYWVnp6OgwGAy6urpKSkpDQ0MGBgY6OjpcXFyGhobo6OgwGAympqbMzExGRobRaOTxeIKCgpydncHBwd7e3qioKC0tLSQkJCoqKjAwkJaWFpFIpKOjo6enh8ViiYqKUlBQAAB0Oh2v1+vq6lJWVpaWlpaUlERHRwOA0WjkcDhsbGzIyMhoaGiYmJjw8PCgoKCgoKChoSEzMzNzc3Nzc3Nzc3P5+fnY2NhUVFSYmJjY2Nh0dHTEx8fn5ORERkZycnKyWCwiIiJiY2M5OTnBwcH4+Ph4PB4eHm5sbGxnZwcACoVCKpUKBALJZBIAUFZW1tLSkpSUpKWl4fF4SqWSx+NxOBwOh8PhsNvtcrnc7faCggJXV1ccDsdgMPDw8PDw8AQGBqqrq6urqwkICCAQCAKBgMfjCQwMBACmpqa0tLTQ0NDAwMCgoCA+Ph5fXx9vb28SiURJSYmfnx+fz+fxeHw+n8/nW1tbS0tLQkJCjIwMdHZ2hoeH8/PzY2NjaWlp0Wg0SqWSx+MRCARaWlpKSkrk5OTY2NhMTEx8fHysrKxUVFSkpKRkZGQkJibGxsaysrI8PDysrKzExcWxWCyVSmVgYERHRzMwMMBgMEQiERUVhYuLMzAwoNFoDAwMhoaGXFxcDAwMDAwMDAwMDAxsbGz4+/szNDSEhIQEBgb6+fnx8vICAHJyctTU1P9RAQDwIXSCSSqRdAFI2klHR4eGhoaOjg4HBwcHB4eEhBgYGHBwcBgaGhISEgwMDDg4OAQFBQkJCQQFBbm5uTExMXFxcaGhoRERES4uLsHBwSEhIfz9/bm5uSkoKGhoaFBQUAgICEhOTg4ICCAQCFRUVBgYGAgICAQFBfn5+SEhIUFBQREREeHh4ZGRkbGxsaSkJCsry8bGhpOTk7S0tJqaGiYmJiQkJCkpKTk5OTo6OkZGRlpaWsLCwgIDA/n5+aGhoRkZGWFhYaGhoREREeHh4eHh4ZGRkTExMXFxcdHR0ampqSEgIAFBQUAgKCvLz8wMAEBERAQBUVFQMDAwICAgQFBRERES4ubnhcDiMjIwEBAR4eHhERESYmJjQ0NDIyMgEBgYKCgoSEhKcXBzCwsJKSkqUlZVxcnKSkJAYGBiEhITAwEBcXByVSkVFRYWJiUlCQgIAJCQkmJiY4HA4CoXCxMTExcWFj48PEokEAOjoadHQ0MDAwJSUlLy8PLm5uTU1NURERBwdHcHBwXZ2djo6OmxtbdHS0qKjo3t6ekJCQpydnYmJiYWFhSwsLLy8vOzs7NTU1ERERGYmJiIiIhYWFhYWFkZGRnp6egQCATAYDCIiIlwuNzAwoNFohoaGhoaGaDQajUaj0WgUCkWj0XQ6ncPhMJlMAoGAUqmUSCQKhUIikQwMDCAQCLBarYqKimhoaISEhBgYGGhra6Ojo1NTU0NDQ1xcXFxcXFxcXFxcXFBQkJubGx8fz8fHx8DAAICAgJSUlJycHNra2sLCwvj4+MTExJSUlKysLD4+PgEBAQAICQkhJSVFYmLi8ePHCQkJ//LNNwCA3aATTCqRdAFI2knDw8PQ0NDExMTQ0NDExMTg4GB0dDQ7OzstLS0lJSXFx8fT0tK4uDgLCwvd3d0cHByCgoI8PDwICAigpqaGhoYmJiZmZmbGx8cHBQUxGAwsLCyEhITY2NhcXFykpKSgoKCYmJjk5OSUlJTc3Nw8PDxUVFTIyMjg4ODAwEBERYWlpCQkJoaGhKSkpCQkJkUgkVlZWfn5+CAgIcHR0REdH5+DgEBAQEBgYSEpKGhsbW1hYcDgcLS0tZWVlDg4OPDw8RERExMTEhISEhIQEY2NjLS0tCQkJERERISEhXFxcnJychISEEREREhISERERoaGhGRkZERERISEhiYmJ6enpkZGQwGAz6+vri4uJcLhdPT083NzcfH5+AgADGxsb4+PiCgoL4+PjQ0FCFQrGwsBCPx2MwGBYWFhoaGgwNDQEAHR0doqKirKysHBwcfHx8+Pj4aGtrU1NTk5KSSExMDAwMNDU1paWleXh4sNlsOjo6Dg4O4uLikpKSYmJihISEPDw8aDQaqVSKRCIxGAxGo1EqlYSEhCQkJISEhCQlJSUlJaWlpbm5uXFxcaGhobGxsaampoSEhMTExISEhAQEBEQiEaPRaDQadXZ2hoeHBwcHCQgICAgICAkJERERISEhERERYWFhCQkJEREREhISEREREREREhISEgMDAxMTE5WVlWVlZbW1tYGBgfHx8Xl5ebGxsaWlpdnZ2S0tLREREWVlZcXFxaWlpnJycaGhooFAoCoVCpVLRaDQOhwMAjEYjyWTKzs4mJCRMTU1FRUUJCQkRERH4/P6RI0f279+Pj48PAPDy8gIAaGlpoaOj09LS/kcAAIC/QCecpBLp/4yUNjc3w8PDExIS0tLSYmNjU1JScnNzw+PxycjIwGazCQoKCggICAgISElJaWhosFgsXFxcDAwMAAASiSQqKorP51NQUDAyMjI2NoaFhaWlpZWWloaFhZmZmVlZWSkpKXFxcaGhoaGhobm5ubm5OQKBgMPhMBgMDAwMNDQ09PT0DAwMcDgcCoUCgUDgcDicTieRSHh6ehITEyMjI1NTU+np6cnJyfn5+ampqTU1NdXV1Tk5ObGxsbW1tYaGhqKiohQKhYODg7W1tYyMjGxsbBQUFBQUFOrq6mxsbMzMzJRKpbu7Ozk5+ebNm4qKiqysrLS0NAsLCzc3N3t7ezc3N1ZWVkZGRu7u7mxtbTk4OKisrOTm5ubm5ubm5hISEiIjIwsLC5OTk7Ozs+Pj46Ojo+Pj4zMzM6urq1xcXGhoaDQ0NBoaGhYWFlZWVrKysjQajVQqBYCoqCgHBwddXV34fP7ExMSAgID4+HisViscDufxeADgcDjCwsJ4PB6fz4eHhwcHBwcHB+Pi4gICAuLi4mJiYmJiYvj4+PDx8cnJyYmJicHBwdDQ0MTExNzc3NTU1NTU1NTUFAgEMpkMgUAgkUgYDAZRUZGGhobo6OgwGAy9vb1sbGz4+/sLCgrS0tLExMR4eHhYWFiEhIQkJCR4eHjg4OBoaGhEREQQCASysrKioqKioiJcXFyysrKioqIKCgpgYGD4+flRUVEaGho8PT3p6el5eXnZ2dkJCQnBwcF5eXl5eXlxcXH4+fnx8fHx8fEJCQlJSUmJiYlJSUmJiYkJCQnx8fHJyclJSUlJSUnx8fERERFxcXEZGRmJiYmJnYWFhYmJiampqYmJiZmZmZmYmMjIyZmZmZmZmYmJiYmJiZmYmKiqKjo5OJpMZGxu7d+8eHx+flpaWoaEhERER/o4AADj00wlHUgkk3bYSEhKysrL4+Ph4eXmxsbEBAQEMBgMPDw8DAwNdXV1paWlsbGwMDAywWCyaTCZtbW1bW1tXV5e7uzuFQgEAqqqq6OjoBAUFiYmJCQsLIyIiEhISoqKicHBw6OjoYDAYTU1NQUFBSkpKcHBwCAkJUVFRhIQEGhoaVlZWaGlpUVNTIyIiQkNDMzIyIiMjo6OjkZCQ4OfnZ2lpqaenh4ODA5PJjI6OZmdnMzExKSkpKSkpLS0tISEhc3NzMpmMhoaGlZWVnZ2dhobGwcEBg8FQV1dXVlZWVlZmZmamrq7+6tWrO3bsePjwYWpqKmNjY1hYWElJSUJCQmxsLC0tLS0tLaWlpTk5OVpaWqysrIyMjLy8vLy8vLy8PCoqyvr6em5ubl5eXkBAgIWFhY2NDQDQ0NBwdnaGh4fT0tJsNls0Go2IiGhoaHBzc0OlUgkEAqFQyMXFxWAwsLOzw+fzFRUVCQkJubm5wcHB2traMDAwkEqlNTU1cXFxkZGRmZiYkJCQ4ODggIDAmpqa6OhobGxsVFVV+fl5ISEhfn5+fHx8aGlpmZiYSElJSUlJiYmJiYmJiYmJxcXFxcXFxcXF8fHxAQEB8fHxISEh4eHhwcHB0dHRcXFwoFApGo/Hw8DAwMDAwMNDV1UVFRUVERAQEBAQFBSEhIdHQ0NDQ0HBwcERERDg4OEJCQhwcHBQUFJaWlhYWFlpaWoKCghwcHISEhAQEBAQEBISEhJSUlKKiorS0tLi4ON7e3sDAwNTU1Nra2tnZGRsb+/Tp048++qijoyMjI8PPzw8LCzsyMkJAQEBERISNjU1HRycqKurWrVsSiUQgEGhoaOjo6PDw8P9RAQDwIXSCSSqRdAOQdlsqKipCQkJcXFzExMSUlJTU1NScnBw7O7uAgACRSGRgYERERDg5OcHBwTk5OXp6evj4+PDx8ZmZmdHR0XZ2dvLy8qSkJBEREeHh4aGhoRkZGYWFhYmJiZmZmWlpaRkZGVlZWcXFxRkZGRkZGampqfn5+RkZGQkJCcHBwREREaGhohISEODg4wsLCjIyMkEgkISEhERERISEhISEhxcXFxcXFxcXFxWAwaGpqGhsbS0hISE5ORkREmJmZeXl5mZmZZWVlGRkZCQkJaWlpDQ0NbW1tOTk5RUREhIWFKSkp0dHRcXBwCAgI8PPzkZGR0dHRqampuXPnNjc3Nzs729DQkJaW1tDQkJSUZGZmBgB8fHyys7MLCwvj4+ObmppsbGxcXV2JiYlpaWkFBQW5ubmhUCgWi6Wnp0dERKSlpeXk5MhkMplMJiYmJiYmJvj4+NTU1CwsLFpaWoSEhHh4eDAajdXV1QUFBTk5OVxcXPj4+Ojo6HBwcDQ0NDQ0NBkZGRkZGVlZWaWlpaWlpaWlpQUFBTk5OVxcXLBarYqKCk1NTWRkZGVlZaGhoXFxcQkJCQUFBRkZGVpaWnJyclJSUnJycvLy8qKiojw8PAQCgVarzc3NzcrKioyM5OjoWFtbq62traysrKysxMfHc3JycnJycnJycnJycjgcLpeLiYkJHR2dkZGRLS0tISEhcXFxISEhISEhISEhIiIiLCwsISEhiYiIYLFYrKysbG1teXt7U1JShoaGhISEODg44HA4Ho/H4/H4fL5IJDIyMqKlpYWFhTk6OgICAhobGxsZGQkJCbm5uZ6env8nBgCA36UTTFKRdAPw6zQcDg+FQhYXF0kkEh6PJyAggMfjGRkZkUgkGo0WiUQSiSQ+Ph6JRIJLpcrKylJaWgoAPp9vYmICADgcjg8oKSkZHBykoqIiIiLS0tISEhKSk5OpqKhCQkKcnJxcXFwYDIbQ0NCYmJiYmJjk5OQkJSXl5+fT09OZmJgcHBxkMBjkcrnJyclJSUnk5OTk5ORERER4eHhwcHBwcHBcXFxcXFxcXFxcXFxcDAYDFRUVaWlptra2/P398fHxkZCQaGlp0dHRUVFR0dHRcXBwCAgIaGtr4+fnBwBcXV319fWZmpry8vKiUqlsNhsLC4uPjw8bG5vAwMDExMTS0lJbW1tGRgYfH5+7uztPT08qlSosLAwAOTk5fHx8qKmpCQkJsVgsaGlpubm5kZGRjIyMvL29NTU1CQkJUVFREBERYXFxsVhszMxMsrKyycnJ0dHRwcHBwcHBcXFxcXFxcXFxcXFxcXFxcXFxkZERHR3NwMDAwMDAyMgIABgMhsvlUlFR8ff3x8XFBYD09PSysjIxMTGNRmNtbS0gIMDf3z8+Pp6bmxufzwcAzGYzgUBAIBDY2dkxGAzCwsLc3Nzk5OSkpaUpKCiQSCRGo1GsViuhUIjH45mamkpLS1taWtLT0xMTE2MwGDQajUKhGBgYYDAYDAZDIBAYGBhISkqampoSiQQAqKio4ODgoNFo/P394eHhCQkJ8fHxsbGxGRkZoVAoMpmMjIw0MjLCYrGEhIQMDAxMTExGRkYikUgkEpFIJBIJERERSUlJ0tLSkpKSkpKSLl26NDQ0VFZWVlZWlpWVlZaWlpSUZGdnR0VFREQkJiZGRERERESam5sHBwfZ2dn4+/sjIiJyc3Pz8/MzMjLCwsL8/Pzw8PBWVlaioqJsbW0NDQ3/JwUAwLfoBJNUJJ0AknZKIBAYGBiwsLDg5OTExcXFxMREUlJScnJydHZ2hoaGmpqara2tCQkJUVFRhIQEiYiIYDAYAoFgdnbW1tYWFBSkoKDA3NwcALy8vERFRTU1NREREaGhoaGhoYmJiSUlJTk5OXJycmJiYjIzM0NDQ+Pj4xkZGYmJiZmZmQCAgoKCnJxccXFx8fHx8fHxgYGBISEhERERCgoKCgoK0tLSjIyMkJAQERERcXFxcXFxcXFxcXFxcXFxcXFxcXFxQUFBubm5YWFhZmZmSkpKAQCz2ZwzZ46bm5uWlpabm5uNjY2AgIBNmzZ9+OGHoqKiQkJCgoKC3Nzc4ODg4OBgPz8/ZWVlCQkJaWlp+fn5mZiYiIiIWFlZaWlpSUlJaWlppaWlsbGxgYGBgYEBEokEAOrq6hYsWJCamhoSEkJKSoqBgQGNRqOlpSUiIkJDQwMAZWVlDAwM2NraYjAYlZWV4eHhoVAodHZ2hoaGmpubm5ubExERQUREJCQkwGQysbGxJBIJLy8vDQ0NXV1dUVFRCQkJkUgkISEhCQkJSUlJSUlJSUlJzc3NDQwMPDw8YmJiAgICEhISmpqa+Pj4DAwMEBERERERISEhISEhEREREREREREREQkJCcHBwRkZGYWFhZWVlWVlZbW1tQ0NDTk5OQkJCZWVlfHx8bW1tTU1NVFRUSEhITEREdHV1AQCFQkGlUmlpadHW1hYWFkZERGhoaAQEBERERCQkJERERISEhIiIiIiISExM/C8JAIBv0gkmqUQ6ASSdkrq6unR0dFxcXAQEBACgUCgKhUJDQwMAeHp6ioqKiIiICAgICAkJEREREREREhISiYiIaGlpERAQICgoSE5ODggISE5Ojo6OjoyMJCQkxMTEhoaGhoeGJiYllZWWJiYmJiYm5ubmhUCjs7OysrKwMDAyGhobS0tKMjIxMTEzk5OTIyMhERER4eHhISEhISEhwcHBwcHBcXFxcXFxcXFxcXFxcXFxcXFxMTEz09PQwGA5/PZ2dnJykpycjIiIiISE9P5+bmRkZGRkdHU1BQUFNTk5OTk5OT09LSsrKycnJycnJyhISEODg4DAwMDAwMDAwMCAkJERERDAaDw+Hw+/0CgQCTyQQAZWVl8fHxNTU10Ol0Pz8/JpOJx+NZWVkZHBykoqIikUhEREREQECAjY0NAAgPD6elpSUkJEREREREREREREREQkJCkEgkFotlYGBAYWEhLy8vGo2Gz+ej0WiGhobS0tKMjIysrKyioqIMDAySkpLi4uJCQkJKSkoKCgoSEhLc3NwYDIbAwMDAQENDQ0MjIyMLCwuJiYmJiYmJiYmJiYkxMjKSk5MTExMTExNTU1NTU1NzcnJycnI6OjqamppaWloWFhZWVlb8/PwaGhrW1taxsbH4+PjQ0ND8/PzU1NScnBwdHR0bG1tAQEBERAQfH5+BgQGJRCIQCLBYLK1WKzAwEBERAQDMzMzw8PAMDAwMDAwMDAxsbm4ikUgSiQQAmk2mXC53Oh2VSkWlUlEoFGw2GxsbGxMTEycnJycnJ0dHR6enp6enpwcHB6urqzMzM3Nzc2fOnBkYGPjfEAAAvksnmKQSyf9fUvLy8rS0tLS0tGhoaDAYjLm5OTk5OScnJycnh0Kh8Pf3x8fHx8XF5erqCgC8vLwGBgZSUlJKSko4HK6npycvL09FRYWfn5+XlxcXFxc3NzcfHx9PT08GBgbIZDKVSuXh4YHH4xkaGhIIBFRUVCIiIgICAuLi4mJiYmJiYvz8/Pj4+Ojo6JiYmIODgwkJCXR0dBkZGTk5OVpaWlxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXExMjIuLS0lJiYuLEREREREREBERISEhLS0tWVlZaWlpWVlZWVlZWVVUVFRUVHR0dCQkJmZmZsLCwkJCQiooKDg4ONBqNlpaWnp4egUAglUoBAMFg0NfXR0ZGxs7OzsrKCgkJkZCQEBISUlFRkZSUZGRkJCQkxMHBwcHBkZGRDAwMjIyMjIyMjIyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAQEBAQFBSEhIcHBwdnZ2aGhobW1tfHx8eHh4ZmZmdHR0dHR0aGlpaWhoWFhYWFhYWFhYaGlpoVAohUIhkUjkcrlarRZZWVldXR1tbW1tbW1HR0dfXx8XFxczMzNcXFwMDAykpaWlpKTAwcHBwcH4+PiUlJTk5OTk5OQkJCQoKCggICCgrq4uLS0tLS1taWnJyMjIyclJTk4OEokEAJhMJqFQCAAUCoXFYgEAwWAwGAwSiUQikQgEAplMhkQiYTab0Wg0gUAQiUQSiQQAqlarzWZLSkpSXl4OCgoaGBhgMpmamppYLJaRkcHBwcHBwSIjIwsLC0NDQyMjo5SUlKSkpMTEREpKyl/+8pcjR46MjIwwGAx6enqWlpYWi8VgMJiVlfX09NTU1PwvCQCAbySTTlKRNALw67QcDofJZCqVSoFAIBAIJBJJamoKAJjNZoFAIBKJRCKRWCwWAOjoadHQ0NDQ0DAwMDAwMDQ0NBkZGSQSCQDg8/nRaDSZTKZSqRKJBI/HExISUlFREQgE8Pl8Pp+Pw+EIBAKNRiMQCFgsFiqV+i9ySUlJdXV1cXFxYWFhERERkZGRkZGRlZWVlZWVlZWVkZGRLCwsFBQUJCQkhIWFOTg4ODg4ODg4ODg4LCwsFBQUBAQEyMzM5OjoYDKZYmNjCQkJERERBQUFiYmJycnJUVFRKSkpKSkpKSkpCQkJaWlppaWlpaWlpaWlpaWlVVVV6ejoJCQkhISEREREQiUQgEAgEAkQiERKJ5Ojo4OPjExERkZCQkJSUFBcX4+/v7+vrExcX5+TkxMTEJCUlhYaGtra2lp+fT0pKSklJiYyMpKCgwMfH5+DgAIDRaMhkMjKZTCwWSyQSCoVCIpFIJBIZGRksFksgEAQCAY/HU1BQEBkZSUxMTEpKSklJSUpKCgsLy8rKEhERsVgshUIhFAoSiUQikfD5fLlcLpVKsVgsHo+nUilqtZo/h8lkmpuba2trExAQkJSUdPjwYUFBQXV1dXV1dXNzExAQEBIS4uXlBQAkJSWJiYmZmZkJCQlJSUnJycnJycmxsbHx8fFRUVH4+PiYmJhsbGwMDAx0dHTc3NycnJwCAgIC4uLiIiIgICAgICAgICAgICAkJUVNTIyMjExQUJCcnJyQkhIeHZ2dnl5CQMDAwIiIiQkJCLBYLAOrq6gYGBgQCAavVqqurW1hYWFpaqqioGBkZeXt7e3l5GRsbk5OTk5OTc3NzIyMjQ0NDDQ0Nra2tjY2NfXx8xMbGenp6MjIy/icGAIC/k04yqUQ6ASRtp4iIiJaWFiMjIycnJycnpyAgyMPDw93dHQCcnJykpKSkpKSkpCRZWVlMTEzS0tKioqIsLCysrKyiouLMzExkZCQ/Pz8/P5+cnBwhISEhISEhISEhISEhISEhISEhISEhISEhISEREREREREREREREREREREREREREREREREREREREREREREREREREREREREAgICAgICcnJysrKwEBAQQEBEQiETc3NysrKwEBAdra2jo6OmxtbZWVleXl5S0tLaWlpbW1tdnZ2eHh4SUlJSwsLEJCQhwcHAQEBJiamrKysrKysrKysvLz8wMDAxMTE+np6ZSUlERERGhoaCQlJcnLy6OlpYWEhAwNDYmJiSUlJcXFxYWFhYWFhfn5+dXV1cXFxYSEhIiIiIiIiIiIiIiISExMDAwMjIyMLCwszMzMzMzMDAwMjIyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjIyMLCwtDQ0NjY2MHBweHh4eHh4cHBwfHx8fn5+fn5+QkJCcHBwRkZGZWVleXl5RUVFSUlJMpkMgUDgcrkAAKfTmZqaiouLCwoKMjIyAgDMzMwMDAyEhIScnJwaGhpycnLCwsIkJSWNjY21tbUxMjIyMjIyMjIyMjIycnJySkpKysrKSkpKcnJyamtrMzMzExMTY2NjGxsbExMTk5KSWlpa/icHAIC/k04ySUXSCUDaSSEhIU5OTpydnYmJiYmJiZmZmQCAiYlJTk6OtrY2Ly8vIiIiCQkJeXl5ERERxcXFmZmZsLCwmJgYIiIiXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxcXFxsbGxsLCwmJiYmJiYmJiYWFhZmZmY6OjpCQkI6OjpOTk6ysrLCwsJkZGQkJCQEBASQSCQAQEtLC5PJNDY2JicnBwDMZrOWlpa0tLSqqiohISE5OTk1NTW5ubnx8fG5ubnR0dG5ubnhcrkAAKZTKisrKygoSEhISEhISEhISEhISIiAgICAgoKCnJycXFxcnJycXFxcnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycjIyMzMzMzMzMzMzMzMzMzMzMzIyMjIyMjIyMDAwMDAQEBAQEBAQMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwDAwQAwDBwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAMwDPwAAAAwAAAAsAAAAAQAAAEQ3wDPNTk=\\",
+  "originalFileName" : "CaliSuperbike-Icon-Logo_BW.psd"
+}
+ */
+// Assuming there's a div with id="logo-container" in your HTML
+document.getElementById('logo-container').innerHTML = '<img src="' + logoBase64 + '" alt="California Superbike School Logo" class="logo">';
+
+        // --- Flowchart as HTML/CSS ---
+        const flowchartHTML = `
+        <div class="flowchart-container" data-aos="fade-up">
+            <div class="flowchart-step">
+                <h5>1. Trigger: Reddit Monitor Detects Keywords</h5>
+                <p>Using Feedly Pro (or Google Alerts via Gmail), monitor target subreddits (e.g., r/trackdays, r/motorcycles) for keywords like "improve cornering," "braking technique," "track day tips," etc.</p>
+            </div>
+            <div class="flowchart-step decision">
+                <h5>2. Filter: Is it Relevant? (Make.com)</h5>
+                <p>The Make automation checks if the detected post contains relevant terms and isn't just noise (e.g., excludes sales posts).</p>
+            </div>
+            <div class="flowchart-step positive-branch">
+                <h5>3. Parse: Extract Key Info (Make.com)</h5>
+                <p>If relevant, Make extracts the user's question/comment text.</p>
+            </div>
+            <div class="flowchart-step">
+                <h5>4. Search: Query Knowledge Base (Make.com + Google Sheets)</h5>
+                <p>Make searches the 'CSS_Knowledge_Base' Google Sheet using keywords extracted from the Reddit text.</p>
+            </div>
+            <div class="flowchart-step decision">
+                <h5>5. KB Match Found? (Make.com)</h5>
+                <p>Does the search find a matching topic in the Google Sheet?</p>
+            </div>
+            <div class="flowchart-step positive-branch">
+                <h5>6. Retrieve: Get CSS Data (Make.com + Google Sheets)</h5>
+                <p>If matched, Make retrieves the corresponding 'ExplanationSnippet' and 'MediaLink'.</p>
+            </div>
+            <div class="flowchart-step negative-branch">
+                <h5>6b. No Match: Action (Make.com)</h5>
+                <p>If no match, scenario can stop or send a specific 'No KB Match' notification for manual handling.</p>
+            </div>
+            <div class="flowchart-step positive-branch">
+                <h5>7. Draft: Generate Answer (Make.com + OpenAI)</h5>
+                <p>Make sends the Reddit text, CSS snippet, and media link to OpenAI via API, using a fine-tuned prompt to draft a helpful, authentic response.</p>
+            </div>
+            <div class="flowchart-step">
+                <h5>8. Queue: Send for Review (Make.com -> Slack/Email)</h5>
+                <p>The original Reddit context, AI draft, KB snippet, and media link are sent to a dedicated Slack channel (or email/doc) for review.</p>
+            </div>
+            <div class="flowchart-step manual">
+                <h5>9. Review & Edit (Human - Dylan Code / Designee)</h5>
+                <p><strong>CRITICAL STEP:</strong> Review draft for accuracy, tone, relevance, compliance. Edit as needed for CSS voice & authenticity (goal: minimal edits).</p>
+            </div>
+             <div class="flowchart-step manual">
+                <h5>10. Post: Manual Engagement (Human - Dylan/Rico via Dedicated Device)</h5>
+                <p>Copy final text, manually navigate to the Reddit thread, and post the response using the approved account (`Dylan_CSS` or `Rico_CSS`) from the dedicated, secure device.</p>
+            </div>
         </div>
-    </header>
+        `;
 
-    <main id="proposal-content">
+        // Inject the flowchart into the designated section
+        document.getElementById('automation-flow').innerHTML = flowchartHTML;
 
-        <section id="executive-summary">
-            <div class="container" data-aos="fade-up">
-                <h2>1. Executive Summary</h2>
-                <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and historically limited bandwidth for consistent digital engagement—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier <strong>and most helpful</strong> online resource for performance motorcycle riding techniques, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
-                <p>The core strategy, <strong>"Automate Preparation, Humanize Engagement,"</strong> focuses on building sustainable systems:</p>
-                <ol type="a">
-                    <li>Resolving foundational issues (YouTube copyright, Reddit access).</li>
-                    <li>Systematically organizing CSS's vast knowledge into a central, easily maintainable <strong>Knowledge Base (KB)</strong> using Google Sheets, potentially aided by AI for initial processing.</li>
-                    <li>Implementing an automated workflow using <strong>Make.com</strong> and <strong>OpenAI (GPT)</strong> to monitor online discussions (primarily Reddit via <strong>Feedly</strong>), identify relevant questions, retrieve corresponding information and media links from the KB, and generate <em>draft</em> responses aligned with CSS's voice.</li>
-                    <li>Establishing a strict <strong>Human Review & Posting Protocol</strong> where all AI-drafted responses are efficiently reviewed, edited for accuracy, tone, and authenticity, and approved by <strong>Dylan Code (Owner & Marketing Lead)</strong> before being manually posted.</li>
-                    <li>Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, Discord) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI. The work done for Reddit and YouTube directly fuels content for all other platforms.</li>
-                </ol>
-                <p>This approach dramatically increases efficiency, creating a <strong>sustainable, low-maintenance process</strong> that allows CSS to provide expert answers consistently without overwhelming team capacity. The upfront investment in structuring knowledge and setting up automation builds a long-term asset, less dependent on fluctuating team availability. It builds trust and authority, enhances brand visibility, protects intellectual property, and ultimately aims to increase course enrollments and sales of educational materials. The estimated ongoing monthly cost for the essential software tools is approximately <strong>$28</strong>.</p>
-            </div>
-        </section>
-
-        <section id="problem-statement">
-            <div class="container" data-aos="fade-up">
-                <h2>2. Problem Statement & Current Situation Analysis</h2>
-                <ul>
-                    <li><strong>Intellectual Property Violation:</strong> Unauthorized distribution of CSS's full video content on YouTube devalues the product, confuses potential customers, and represents lost revenue/control.</li>
-                    <li><strong>Reddit Platform Barriers:</strong>
-                        <ul>
-                            <li>An existing account shadowban prevents any current engagement, blocking access to a key audience.</li>
-                            <li>A competitor's employee moderating a major subreddit creates potential bias and complicates genuine participation.</li>
-                            <li>Historically, lack of time and a systematic approach prevents CSS from effectively monitoring relevant subreddits and responding to rider questions, leading to missed opportunities.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Suboptimal Resource Utilization:</strong> CSS possesses a "gold mine" of unique data, established teaching methodologies (from books/videos), and decades of experience that are not being systematically deployed to answer online questions or create engaging digital content efficiently.</li>
-                    <li><strong>Operational Constraints:</strong> The CSS team is lean and extremely busy with core operations (running the school), demanding highly efficient and sustainable systems for any new initiatives.</li>
-                    <li><strong>Overarching Goal:</strong> CSS desires to establish a strong, authentic, and helpful online presence, particularly on Reddit, positioning itself as the go-to expert resource, driving business results without requiring unrealistic time commitments or outsourcing core engagement.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="strategy-overview">
-            <div class="container" data-aos="fade-up">
-                <h2>3. Proposed Overarching Strategy: "Automate Preparation, Humanize Engagement" - Building a Sustainable System</h2>
-                <p>This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. <strong>Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process.</strong> This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
-                <h3>Strategic Pillars:</h3>
-                <ul>
-                    <li><strong>Pillar 1: Foundational Readiness & Asset Centralization:</strong> Address critical blocking issues and systematically organize core knowledge assets for long-term use.</li>
-                    <li><strong>Pillar 2: Intelligent & Efficient Monitoring:</strong> Systematically identify relevant online conversations <em>without</em> manual time drain.</li>
-                    <li><strong>Pillar 3: Automated Preparation Engine:</strong> Leverage technology to process information and draft initial responses based <em>only</em> on approved CSS knowledge.</li>
-                    <li><strong>Pillar 4: Authentic Human Engagement & Quality Control (Centralized Oversight):</strong> Ensure all external communication is efficiently reviewed, refined, approved, and posted under the direction of <strong>Dylan Code</strong>.</li>
-                    <li><strong>Pillar 5: Synergistic Multi-Platform Content Strategy:</strong> Maximize the value of content creation by repurposing assets across YouTube, Reddit, Instagram, Facebook, TikTok, and Discord.</li>
-                    <li><strong>Pillar 6: Dedicated Community Hub (Discord):</strong> Foster a vibrant, controlled community space for students, coaches, and enthusiasts.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="pillar1">
-            <div class="container">
-                <h2 data-aos="fade-up">Pillar 1: Foundational Readiness & Asset Centralization</h2>
-
-                <div data-aos="fade-up">
-                    <h3>Action 1.1: Reclaim & Strategize YouTube Intellectual Property</h3>
-                    <ul>
-                        <li><strong>Task:</strong> Immediately file a <strong>DMCA Takedown Notice</strong> with YouTube for the stolen full video content. (<a href="https://support.google.com/youtube/answer/2807622" target="_blank" rel="noopener noreferrer">Link to YouTube Copyright/DMCA Info</a>)</li>
-                        <li><strong>Reasoning & Control:</strong> Reclaiming control enables CSS to:
-                            <ul>
-                                <li>Protect paid product value.</li>
-                                <li>Control brand presentation.</li>
-                                <li><strong>Strategically use the full video:</strong> Upload it (decision needed: Public with CTAs, Unlisted, or Members-Only) and meticulously <strong>timestamp</strong> key sections. These timestamps become direct <code>MediaLink</code>s in the KB for Reddit comments.</li>
-                                <li><strong>Repurpose into micro-content:</strong> Systematically edit the full video into numerous <strong>YouTube Shorts</strong>, <strong>Instagram Reels</strong>, <strong>TikTok videos</strong>, maximizing the asset's reach.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div data-aos="fade-up">
-                    <h3>Action 1.2: Resolve Reddit Account Access & Define Persona</h3>
-                    <ul>
-                        <li><strong>Task:</strong> Prioritize resolving the shadowban via the official <strong>Reddit Appeals page:</strong> <a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">https://www.reddit.com/appeal</a>. (Persistent, polite appeals identifying CSS official representation).</li>
-                        <li><strong>Account Strategy Recommendation:</strong> Use <strong>named accounts</strong> linked to key personnel. Primary posting account operated under Dylan Code's direction. Suggestions:
-                            <ul>
-                                <li><code>Dylan_CSS</code> (Owner/Marketing Lead, high credibility)</li>
-                                <li><code>Rico_CSS</code> (Employee, relatable team member - posts approved by Dylan)</li>
-                            </ul>
-                        </li>
-                        <li><strong>Reasoning:</strong> Named accounts enhance connection. Clear oversight by Dylan Code ensures consistency and brand alignment. Legitimacy is key.</li>
-                    </ul>
-                </div>
-
-                <div data-aos="fade-up">
-                    <h3>Action 1.3: Construct the Central Knowledge Base (KB) with AI Assistance</h3>
-                    <ul>
-                        <li><strong>Tool:</strong> <strong>Google Sheets</strong> (<a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Link: sheets.google.com</a>) - <code>CSS_Knowledge_Base</code></li>
-                        <li><strong>Columns:</strong> <code>TopicID</code>, <code>PrimaryKeywords</code>, <code>SecondaryKeywords</code>, <code>ExplanationSnippet</code> (Approved CSS explanation), <code>MediaLink</code> (Timestamped YouTube link, Short link, image URL, etc.).</li>
-                        <li><strong>Ingestion Process (Manual Core, AI Assist):</strong>
-                            <ol>
-                                <li>Gather Sources (digital books, transcripts, notes, data).</li>
-                                <li><strong>AI-Assisted Processing:</strong> Use LLMs (<strong>ChatGPT</strong>, <strong>Google Gemini</strong>, <strong>Claude</strong>) to accelerate summarization, keyword extraction, and initial snippet drafting via targeted prompts (e.g., <code>"Summarize core concepts..."</code>, <code>"Suggest keywords..."</code>, <code>"Rephrase explanation..."</code>).</li>
-                                <li><strong>Human Validation & Structuring:</strong> <strong>Dylan Code</strong> or designated expert *must review* all AI outputs for accuracy and alignment with CSS methodology. Edit rigorously. Organize validated info into the Google Sheet, assigning <code>TopicID</code>s, finalizing <code>ExplanationSnippet</code>s, adding <code>MediaLink</code>s.</li>
-                            </ol>
-                        </li>
-                        <li><strong>Explanation:</strong> The KB is the structured "single source of truth." LLMs speed up processing, but human validation ensures KB quality (accuracy, searchability, correct links), which is critical for automation success.</li>
-                        <li><strong>Reasoning:</strong> Creates a consistent, scalable foundation. AI assistance reduces initial setup burden. Google Sheets offers free, accessible management.</li>
-                    </ul>
-                </div>
-
-                <div data-aos="fade-up">
-                    <h3>Action 1.4: Refresh Existing Digital Assets</h3>
-                    <ul>
-                        <li><strong>Task:</strong> Update existing YouTube (<a href="http://www.youtube.com/@superbikeschool" target="_blank" rel="noopener noreferrer">www.youtube.com/@superbikeschool</a>), Instagram (<a href="https://www.instagram.com/superbikeschool/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/superbikeschool/</a>), and Facebook Page (<a href="https://www.facebook.com/californiasuperbikeschool" target="_blank" rel="noopener noreferrer">https://www.facebook.com/californiasuperbikeschool</a>) with current brand language, logos, banners, descriptions under Dylan Code's direction.</li>
-                        <li><strong>Reasoning:</strong> Ensures brand consistency before increasing activity.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar2">
-            <div class="container" data-aos="fade-up">
-                <h2>Pillar 2: Intelligent & Efficient Monitoring</h2>
-                 <div data-aos="fade-up">
-                    <h3>Action 2.1: Implement Automated Monitoring</h3>
-                    <ul>
-                        <li><strong>Tool Recommendation:</strong> <strong>Feedly Pro</strong> (<a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Link: feedly.com</a>) (~$12/mo)</li>
-                        <li><strong>Task:</strong> Configure Feedly to track relevant subreddits and keywords (e.g., <code>throttle</code>, <code>braking</code>, <code>vision</code>, <code>track day</code>, <code>cornering</code>, <code>lean angle</code>, <code>CSS</code>, <code>superbike school</code>). Obtain the RSS feed URL for Make.</li>
-                        <li><strong>Explanation:</strong> Feedly acts as an automated listening post, aggregating mentions based on your rules and feeding them into the automation engine via RSS.</li>
-                        <li><strong>Reasoning & Benefit:</strong> This <strong>eliminates manual Reddit monitoring time drain</strong>, freeing up Dylan Code for strategic tasks, review, and content creation. Ensures relevant conversations are captured efficiently.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-         <section id="pillar3">
-            <div class="container" data-aos="fade-up">
-                <h2>Pillar 3: Automated Response Preparation Engine</h2>
-                 <div data-aos="fade-up">
-                    <ul>
-                        <li><strong>Tool Recommendation:</strong> <strong>Make (Core Plan)</strong> (<a href="https://www.make.com" target="_blank" rel="noopener noreferrer">Link: make.com</a>) (~$11/mo)</li>
-                        <li><strong>Task:</strong> Build the Make Scenario (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</li>
-                        <li><strong>OpenAI API Prompt Refinement:</strong> Continuously refine the prompt sent to OpenAI under Dylan Code's guidance to improve draft quality and tone alignment with the CSS brand voice.</li>
-                        <li><strong>Reasoning:</strong> Automates repetitive info retrieval and initial drafting based *only* on approved KB content. Make offers the best cost-effectiveness and power.</li>
-                    </ul>
-                    <h4>Conceptual Flow Diagram (Text Representation):</h4>
-                    <div class="flowchart" data-aos="fade-up">
-                        <div class="flowchart-step">Feedly detects new Reddit mention -> Sends data via RSS.</div>
-                        <div class="flowchart-step">Make Scenario Triggered by new RSS item.</div>
-                        <div class="flowchart-step decision">Make filters item for relevance? (If irrelevant -> Stop).</div>
-                        <div class="flowchart-step">Make parses the Reddit user's text.</div>
-                        <div class="flowchart-step decision">Make searches Google Sheet KB for keywords? (If no match -> Notify/Stop).</div>
-                        <div class="flowchart-step">Make retrieves `ExplanationSnippet` & `MediaLink` from Sheet.</div>
-                        <div class="flowchart-step">Make sends Context + Snippet + Link to OpenAI API with refined prompt.</div>
-                        <div class="flowchart-step">OpenAI generates draft response based on prompt & info.</div>
-                        <div class="flowchart-step">Make sends Context + AI Draft + Snippet + Link to Review Queue (e.g., Slack).</div>
-                        <div class="flowchart-step manual">(Manual Step Begins) CSS Team Member (Dylan/Delegate) reviews queue.</div>
-                         <div class="flowchart-step manual">(Manual Step) Edit/Approve Draft.</div>
-                         <div class="flowchart-step manual">(Manual Step) Post finalized response to Reddit.</div>
-                    </div>
-                 </div>
-            </div>
-        </section>
-
-
-        <section id="pillar4">
-            <div class="container">
-                <h2 data-aos="fade-up">Pillar 4: Authentic Human Engagement & Quality Control (Centralized Oversight)</h2>
-
-                 <div data-aos="fade-up">
-                    <h3>Action 4.1: Efficient Review Protocol (Dylan Code Oversight)</h3>
-                    <ul>
-                        <li><strong>Task:</strong> <strong>Dylan Code</strong> (or delegate under his direct supervision) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 times daily). <strong>Focus on quality and sustainability.</strong></li>
-                        <li><strong>Task:</strong> <strong>Streamlined Review & Edit:</strong> Review every draft. Aim for <strong>minimal edits</strong> (accuracy, tone, relevance check + personalization) due to quality KB/prompts. If heavy edits are needed, improve the source KB snippet or OpenAI prompt.</li>
-                        <li><strong>AI Voice Training (Future Option):</strong> Fine-tuning LLMs is a Phase 3+ optimization possibility. Start with strong prompt engineering; human review remains essential.</li>
-                        <li><strong>Reasoning:</strong> Centralizes final approval with Dylan Code, ensuring brand consistency and quality. Balances responsiveness with realistic workload via efficient review process.</li>
-                    </ul>
-                </div>
-
-                 <div data-aos="fade-up">
-                    <h3>Action 4.2: Manual Posting & Dedicated Device Strategy</h3>
-                    <ul>
-                        <li><strong>Task:</strong> Post the finalized, edited response manually to Reddit from the designated account (<code>Dylan_CSS</code> or <code>Rico_CSS</code> under Dylan's approval) using the <strong>Dedicated Posting Device</strong>.</li>
-                        <li><strong>Task:</strong> Procure and set up a basic, dedicated iOS/Android device with its own low-cost cellular plan exclusively for official CSS social media account logins and posting.</li>
-                        <li><strong>Reasoning:</strong> Isolates activity (security, avoids IP/fingerprinting issues), creates focus, centralizes access securely. Manual posting ensures compliance.</li>
-                    </ul>
-                </div>
-
-                 <div data-aos="fade-up">
-                    <h3>Action 4.3: Streamlined Collaboration</h3>
-                    <ul>
-                        <li><strong>Task:</strong> Dylan Code handles primary review/approval. If deeper technical input is needed beyond the KB, Dylan consults directly with Keith Code or relevant experts. Coach involvement is *opportunistic* (e.g., specific AMAs) rather than part of the core review workflow.</li>
-                        <li><strong>Reasoning:</strong> Simplifies workflow, acknowledging Dylan's central role and expertise, and adapting to realistic coach availability.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar5">
-            <div class="container">
-                 <h2 data-aos="fade-up">Pillar 5: Synergistic Multi-Platform Content Strategy (Maximize ROI)</h2>
-
-                 <div data-aos="fade-up">
-                    <ul>
-                        <li><strong>Core Principle:</strong> Content created once is repurposed strategically across platforms. The KB and YouTube video(s) are central assets.</li>
-                        <li><strong>Content Flow Examples:</strong>
-                            <ul>
-                               <li><strong>Video Clip:</strong> A 3-minute YouTube clip explaining trail braking -> Becomes a `MediaLink` in KB -> Used in Reddit replies -> Clip shared on Facebook -> Key visual moments edited into an Instagram Reel/TikTok video -> Concept discussed further in a Discord AMA.</li>
-                               <li><strong>Short Vertical Video:</strong> A quick tip filmed for TikTok/Reels -> Uploaded as YouTube Short -> Potentially embedded in a relevant blog post -> Shared on Facebook/Instagram Stories.</li>
-                               <li><strong>Reddit Themed Days:</strong> Identify popular themes (e.g., #TrackdayTuesday, `r/NewRiders` Q&As). Plan content snippets (text, short video, image) from the KB or new recordings specifically for these days to increase relevance and visibility.</li>
-                               <li><strong>Data Insights:</strong> Unique CSS data -> Becomes an infographic for Instagram/Facebook/Blog -> Explained in a short YouTube video -> Referenced in technical Reddit discussions.</li>
-                            </ul>
-                        </li>
-                         <li><strong>Platform-Specific Content Expansion:</strong>
-                            <ul>
-                               <li><strong>YouTube:</strong> Beyond core technique clips/Shorts: Tech Talks, Partner Spotlights, Influencer/Journalist Collaborations, Track Guides (showing lines/reference points), Live AMAs, Gear Guides.</li>
-                               <li><strong>Instagram/TikTok:</strong> Focus on visually engaging, quick-hitting content: action shots, quick tips, student successes, behind-the-scenes.</li>
-                               <li><strong>Facebook:</strong> Mix visuals with text updates, course schedules, event promotion, link sharing.</li>
-                               <li><strong>Blog (Website):</strong> Longer-form articles expanding on KB topics for SEO.</li>
-                            </ul>
-                         </li>
-                        <li><strong>Reasoning:</strong> Ensures maximum return on content creation effort, builds a cohesive brand narrative, reaches diverse audiences effectively.</li>
-                    </ul>
-                 </div>
-            </div>
-        </section>
-
-         <section id="pillar6">
-             <div class="container">
-                <h2 data-aos="fade-up">Pillar 6: Dedicated Community Hub (Discord)</h2>
-
-                 <div data-aos="fade-up">
-                    <h3>Action 9.1: Launch Official CSS Discord Server.</h3>
-                    <ul>
-                        <li><strong>Tool:</strong> <strong>Discord</strong> (<a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a>) - Free for core functionality.</li>
-                        <li><strong>Task:</strong> Create server, phase out old forum.</li>
-                        <li><strong>Revised Channel Structure:</strong>
-                            <ul>
-                                <li><code>#welcome-rules</code></li>
-                                <li><code>#announcements</code></li>
-                                <li><code>#general-chat</code></li>
-                                <li><code>#ask-a-coach</code> (Managed Q&A)</li>
-                                <li><code>#kb-highlights</code></li>
-                                <li><code>#student-showcase</code></li>
-                                <li><code>#track-talk</code></li>
-                                <li><code>#gear-talk</code></li>
-                                <li><code>#level-1-graduates</code> (Private, role-based access)</li>
-                                <li><code>#level-2-graduates</code> (Private, role-based access)</li>
-                                <li><code>#level-3-graduates</code> (Private, role-based access)</li>
-                                <li><code>#level-4-graduates</code> (Private, role-based access)</li>
-                                <li>*(Future-proofed name structure for Level 5, etc.)*</li>
-                                <li><code>#partner-spotlight</code></li>
-                             </ul>
-                        </li>
-                        <li><strong>Management:</strong> Requires dedicated community management (initiated and overseen by Dylan Code, potentially with support from Rico) for moderation, engagement, role assignment.</li>
-                        <li><strong>Reasoning & Benefits:</strong> Modern, engaging community platform; direct feedback; fosters advocacy; controlled environment; adds value for graduates via exclusive access; hub for contests, AMAs, influencer interaction.</li>
-                    </ul>
-                 </div>
-             </div>
-         </section>
-
-        <section id="tech-stack">
-            <div class="container" data-aos="fade-up">
-                <h2>10. Technology Stack Summary</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Tool</th>
-                            <th>Role</th>
-                            <th>Link</th>
-                            <th>Est. Monthly Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Google Sheets</td>
-                            <td>Knowledge Base</td>
-                            <td><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Feedly Pro</td>
-                            <td>Monitoring Trigger</td>
-                            <td><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a></td>
-                            <td>~$12</td>
-                        </tr>
-                         <tr>
-                            <td>Make (Core Plan)</td>
-                            <td>Automation Engine</td>
-                            <td><a href="https://www.make.com" target="_blank" rel="noopener noreferrer">make.com</a></td>
-                            <td>~$11</td>
-                        </tr>
-                         <tr>
-                            <td>OpenAI API</td>
-                            <td>AI Draft Generation</td>
-                            <td><a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer">platform.openai.com/usage</a></td>
-                            <td>~$5 (Usage Based)</td>
-                        </tr>
-                        <tr>
-                            <td>Slack/Gmail/Google Docs</td>
-                            <td>Review Queue</td>
-                            <td>Various</td>
-                            <td>$0 (Free Tiers)</td>
-                        </tr>
-                        <tr>
-                            <td>YouTube</td>
-                            <td>Video Hosting/Clips/Shorts</td>
-                            <td><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">youtube.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                         <tr>
-                            <td>Reddit</td>
-                            <td>Engagement Platform</td>
-                            <td><a href="https://reddit.com" target="_blank" rel="noopener noreferrer">reddit.com</a></td>
-                             <td>$0</td>
-                         </tr>
-                        <tr>
-                            <td>Instagram</td>
-                            <td>Visual Platform / Reels</td>
-                            <td><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                         <tr>
-                            <td>Facebook</td>
-                            <td>Info/Community Platform</td>
-                             <td><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                         <tr>
-                             <td><strong>Discord</strong></td>
-                             <td><strong>Community Hub</strong></td>
-                             <td><a href="https://discord.com" target="_blank" rel="noopener noreferrer"><strong>discord.com</strong></a></td>
-                             <td><strong>$0 (Core)</strong></td>
-                         </tr>
-                        <tr>
-                            <td>Dedicated Mobile Device</td>
-                            <td>Secure Posting Interface</td>
-                            <td>(Hardware Purchase)</td>
-                            <td>(One-time Cost)</td>
-                        </tr>
-                        <tr>
-                            <td>Basic Cellular Plan</td>
-                            <td>Device Connectivity</td>
-                            <td>(Various Carriers)</td>
-                            <td>~$10-20 / Month</td>
-                         </tr>
-                         <tr>
-                             <td colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td>
-                             <td><strong>~$38 - $48 / Month</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="roadmap">
-            <div class="container" data-aos="fade-up">
-                <h2>11. Implementation Roadmap</h2>
-                 <ol>
-                     <li><strong>Phase 0: Foundation (Weeks 1-4):</strong> YouTube DMCA, Reddit Appeal (Ongoing), Refresh social profiles, Create KB structure, Begin KB population (Dylan oversees AI assist/validation), Plan full video strategy, Prep/Upload initial YouTube clips/Shorts, Set up Feedly, Procure dedicated device/plan.</li>
-                     <li><strong>Phase 1: Build & Test (Weeks 5-8):</strong> Set up Make/OpenAI accounts, Build/Test Make scenario thoroughly (Dylan oversees), Refine OpenAI prompts, Expand KB significantly, Set up Discord server structure.</li>
-                     <li><strong>Phase 2: Launch & Engage (Month 3-6):</strong> Activate full Make scenario, Implement sustainable Review/Edit/Post workflow (Dylan leads), Begin consistent Reddit engagement (from <code>Dylan_CSS</code> or <code>Rico_CSS</code>), Launch & promote Discord server, Ramp up multi-platform content posting, Continue KB expansion.</li>
-                    <li><strong>Phase 3: Optimize & Expand (Month 6+):</strong> Analyze metrics (Dylan reviews), Refine content strategy, Optimize Make/OpenAI further, Develop Discord community features, Expand YouTube content (Track Guides, AMAs etc.), Evaluate AI fine-tuning potential.</li>
-                 </ol>
-            </div>
-        </section>
-
-         <section id="cost-benefit">
-            <div class="container" data-aos="fade-up">
-                <h2>12. Cost Breakdown & Projected Revenue Benefits</h2>
-                 <ul>
-                    <li><strong>Direct Monthly Costs:</strong> Estimated at <strong>~$38 - $48</strong> (Software/Cell plan). Minimal operational expense.</li>
-                    <li><strong>One-Time Costs:</strong> Dedicated device purchase (~$150-$400).</li>
-                    <li><strong>Indirect Costs (Time Investment):</strong>
-                        <ul>
-                           <li><strong>Upfront:</strong> Significant but <em>finite</em> time (Est. 20-40 hours, Dylan oversees/directs) building the sustainable KB asset and automation. <strong>This builds the sustainable asset.</strong></li>
-                           <li><strong>Ongoing:</strong> Efficient, scheduled time for review/approval (Est. <1 hour daily average for Dylan, flexible), community management, planned posting. <strong>Highly leveraged time.</strong></li>
-                        </ul>
-                    </li>
-                     <li><strong>Projected Revenue Benefits & ROI Justification:</strong>
-                        <ul>
-                           <li><strong>Increased Lead Quality & Quantity:</strong> Consistent, expert presence builds trust, leading to more course inquiries and sign-ups.</li>
-                           <li><strong>Direct Product Sales:</strong> Strategic use of timestamped links and related content drives sales of books/full video.</li>
-                           <li><strong>Brand Equity & Authority:</strong> Solidifies CSS's premium positioning, attracting partnerships and media opportunities.</li>
-                           <li><strong>Improved Customer Lifetime Value:</strong> Discord community fosters loyalty, encouraging repeat business.</li>
-                           <li><strong>Operational Efficiency:</strong> Frees up significant Marketing/Staff time compared to manual engagement. System sustainability ensures continued value delivery.</li>
-                           <li><strong>SEO Benefits:</strong> Increased brand signals, traffic, and potential backlinks improve organic search visibility.</li>
-                           <li><strong>Partnership/Sponsorship Opportunities:</strong> Attracts relevant brands, potentially opening new revenue streams.</li>
-                        </ul>
-                        <p><em>The ROI is realized through increased conversions, enhanced brand value, operational efficiencies, and potential new revenue streams, fully justifying the modest costs and focused time investment.</em></p>
-                     </li>
-                 </ul>
-            </div>
-        </section>
-
-        <section id="risks">
-            <div class="container" data-aos="fade-up">
-                <h2>13. Risks & Mitigation</h2>
-                <ul>
-                    <li><strong>Inaccurate/Robotic Drafts:</strong> Mitigation: Mandatory Dylan Code review/approval; continuous prompt refinement.</li>
-                    <li><strong>KB Gaps/Errors:</strong> Mitigation: Ongoing KB updates overseen by Dylan; easy process for team to flag gaps.</li>
-                    <li><strong>Automation Errors:</strong> Mitigation: Regular Make monitoring; build simple error handling.</li>
-                    <li><strong>Review Bottleneck:</strong> Mitigation: Streamlined review process focused on efficiency; Dylan manages workflow; realistic scheduling.</li>
-                    <li><strong>Platform Rule Changes:</strong> Mitigation: Stay informed; prioritize value; manual posting + dedicated device reduces risk.</li>
-                    <li><strong>Community Management Burden (Discord):</strong> Mitigation: Clear guidelines; Dylan oversees management (potential delegation to Rico); start simple, scale features.</li>
-                </ul>
-            </div>
-        </section>
-
-         <section id="conclusion">
-            <div class="container" data-aos="fade-up">
-                <h2>14. Conclusion</h2>
-                <p>This comprehensive strategy provides California Superbike School with a powerful, integrated, and <strong>sustainable</strong> system for digital leadership, centrally managed under <strong>Dylan Code's</strong> direction. By centralizing knowledge, leveraging automation for efficiency, insisting on expert human oversight for authenticity and quality, maximizing content synergy across platforms, and fostering a dedicated community hub via Discord, CSS can effectively address current challenges and solidify its position as the world's leading resource for motorcycle riding expertise, both on and off the track. The upfront investment creates a long-term operational asset, driving brand authority, community loyalty, and tangible business growth with manageable ongoing effort and cost, perfectly aligning with the operational realities and strategic goals of CSS.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <div class="copy-button-container">
-        <button id="copyBtn" class="copy-button">Copy Proposal Text</button>
-    </div>
-
-    <!-- AOS Animation Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS animations
-        AOS.init({
-            duration: 800, // Animation duration
-            once: true, // Whether animation should happen only once - while scrolling down
-            offset: 100, // Offset (in px) from the original trigger point
-        });
 
         // Copy Button Functionality
         const copyButton = document.getElementById('copyBtn');
         const proposalContent = document.getElementById('proposal-content');
 
         copyButton.addEventListener('click', () => {
-            // Use navigator.clipboard API for modern browsers
-            if (navigator.clipboard && window.isSecureContext) {
-                // Get plain text content
-                const plainText = proposalContent.innerText;
+            // Create a temporary element to hold the formatted text
+            const tempElement = document.createElement('div');
+            tempElement.innerHTML = proposalContent.innerHTML; // Copy the HTML structure
 
-                navigator.clipboard.writeText(plainText).then(() => {
-                    // Success feedback
-                    copyButton.textContent = 'Copied!';
-                    copyButton.style.backgroundColor = '#4CAF50'; // Green feedback
-                    setTimeout(() => {
-                        copyButton.textContent = 'Copy Proposal Text';
-                        copyButton.style.backgroundColor = 'var(--css-red)'; // Revert color
-                    }, 2000); // Revert after 2 seconds
-                }).catch(err => {
-                    console.error('Failed to copy text: ', err);
-                    // Basic fallback for older browsers (less reliable)
-                    try {
-                        const textArea = document.createElement('textarea');
-                        textArea.value = proposalContent.innerText;
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(textArea);
+            // Basic text formatting (replace some HTML with plaintext equivalents)
+            tempElement.querySelectorAll('h2').forEach(h => h.outerHTML = `\n\n**${h.textContent.trim()}**\n\n`);
+            tempElement.querySelectorAll('h3').forEach(h => h.outerHTML = `\n**${h.textContent.trim()}**\n`);
+             tempElement.querySelectorAll('h4').forEach(h => h.outerHTML = `\n*${h.textContent.trim()}*\n`);
+             tempElement.querySelectorAll('li').forEach(li => li.outerHTML = `\n* ${li.innerHTML}`); // Maintain list item structure
+             tempElement.querySelectorAll('p').forEach(p => p.outerHTML = `\n${p.innerHTML}\n`);
+             tempElement.querySelectorAll('strong').forEach(s => s.outerHTML = `**${s.textContent}**`);
+             tempElement.querySelectorAll('em').forEach(em => em.outerHTML = `*${em.textContent}*`);
+             tempElement.querySelectorAll('a').forEach(a => a.outerHTML = `${a.textContent} (${a.href})`); // Include URL in parentheses
+             tempElement.querySelectorAll('code').forEach(c => c.outerHTML = `\`${c.textContent}\``);
+             // Basic table formatting (might need manual adjustment after pasting)
+            tempElement.querySelectorAll('table').forEach(table => {
+                 let tableText = '\n';
+                 table.querySelectorAll('tr').forEach(row => {
+                     row.querySelectorAll('th, td').forEach(cell => {
+                         tableText += cell.textContent.trim() + '\t|\t';
+                     });
+                     tableText += '\n';
+                 });
+                 table.outerHTML = tableText + '\n';
+            });
+             // Remove flowchart visual elements
+             tempElement.querySelectorAll('.flowchart-container').forEach(fc => fc.outerHTML = '\n[Flowchart Description - See Web Version]\n');
 
-                        copyButton.textContent = 'Copied!';
-                        copyButton.style.backgroundColor = '#4CAF50';
-                         setTimeout(() => {
-                            copyButton.textContent = 'Copy Proposal Text';
-                            copyButton.style.backgroundColor = 'var(--css-red)';
-                         }, 2000);
-                    } catch (execErr) {
-                        console.error('Fallback copy failed: ', execErr);
-                        alert('Failed to copy text. Please try selecting manually.');
-                    }
-                });
-            } else {
-                 // Basic fallback for older browsers or non-secure contexts
-                 try {
-                        const textArea = document.createElement('textarea');
-                        textArea.value = proposalContent.innerText; // Use innerText for plain text
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(textArea);
 
-                        copyButton.textContent = 'Copied!';
-                        copyButton.style.backgroundColor = '#4CAF50';
-                         setTimeout(() => {
-                            copyButton.textContent = 'Copy Proposal Text';
-                            copyButton.style.backgroundColor = 'var(--css-red)';
-                         }, 2000);
-                    } catch (execErr) {
-                        console.error('Fallback copy failed: ', execErr);
-                        alert('Failed to copy text. Please try selecting manually.');
-                    }
-            }
+             // Clean up extra newlines and whitespace
+             let richText = tempElement.innerText.replace(/(\n\s*){3,}/g, '\n\n').trim();
+
+
+            navigator.clipboard.writeText(richText).then(() => {
+                copyButton.textContent = 'Copied!';
+                copyButton.classList.add('copied');
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy Proposal Text';
+                    copyButton.classList.remove('copied');
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy text automatically. Please select and copy manually.');
+            });
         });
+
     </script>
 
 </body>
 </html>
-
