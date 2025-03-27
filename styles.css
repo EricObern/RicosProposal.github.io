@@ -1,0 +1,299 @@
+:root {
+    --color-primary: #000000;
+    --color-secondary: #0066CC;
+    --color-accent: #FF0000;
+    --color-background: #FFFFFF;
+    --color-text: #333333;
+    --color-subtle: #F5F5F5;
+    --spacing-unit: 8px;
+    --section-padding: 64px;
+    --component-spacing: 24px;
+    --text-spacing: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--component-spacing);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--component-spacing);
+}
+
+.nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--color-secondary);
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: calc(var(--section-padding) + 80px) var(--component-spacing) var(--section-padding);
+}
+
+.section {
+    margin-bottom: var(--section-padding);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--text-spacing);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: var(--component-spacing);
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--text-spacing);
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: var(--text-spacing);
+}
+
+h5 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: var(--text-spacing);
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    margin-bottom: var(--text-spacing);
+}
+
+.meta-info {
+    background-color: var(--color-subtle);
+    padding: var(--component-spacing);
+    border-radius: 4px;
+    margin-bottom: var(--component-spacing);
+}
+
+.meta-info p {
+    margin-bottom: var(--text-spacing);
+}
+
+.meta-info p:last-child {
+    margin-bottom: 0;
+}
+
+.content {
+    font-size: 1.1rem;
+}
+
+.content p {
+    margin-bottom: var(--text-spacing);
+}
+
+.content ul {
+    margin-bottom: var(--text-spacing);
+    padding-left: var(--component-spacing);
+}
+
+.content li {
+    margin-bottom: calc(var(--text-spacing) / 2);
+}
+
+.copy-button {
+    position: fixed;
+    bottom: var(--component-spacing);
+    right: var(--component-spacing);
+    background-color: var(--color-secondary);
+    color: var(--color-background);
+    border: none;
+    padding: var(--text-spacing) var(--component-spacing);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: var(--color-primary);
+}
+
+.action-details {
+    margin-left: var(--component-spacing);
+    margin-bottom: var(--text-spacing);
+}
+
+.sub-details {
+    margin-left: var(--component-spacing);
+    margin-bottom: var(--text-spacing);
+}
+
+.tech-stack-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--component-spacing);
+}
+
+.tech-stack-table th,
+.tech-stack-table td {
+    padding: var(--text-spacing);
+    border: 1px solid var(--color-subtle);
+    text-align: left;
+}
+
+.tech-stack-table th {
+    background-color: var(--color-subtle);
+    font-weight: 600;
+}
+
+.tech-stack-table tr:nth-child(even) {
+    background-color: var(--color-subtle);
+}
+
+.tech-stack-table a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+.tech-stack-table a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: var(--color-subtle);
+    padding: var(--component-spacing);
+    margin-top: var(--section-padding);
+    text-align: center;
+}
+
+.footer p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+.content ul ul {
+    margin-top: calc(var(--text-spacing) / 2);
+    margin-bottom: calc(var(--text-spacing) / 2);
+}
+
+.content ul ul li {
+    margin-bottom: calc(var(--text-spacing) / 4);
+}
+
+.flow-diagram {
+    background-color: var(--color-subtle);
+    padding: var(--component-spacing);
+    border-radius: 4px;
+    margin: var(--text-spacing) 0;
+}
+
+.flow-diagram ol {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.flow-diagram li {
+    margin-bottom: var(--text-spacing);
+    line-height: 1.6;
+}
+
+.flow-diagram li:last-child {
+    margin-bottom: 0;
+}
+
+.content ol {
+    list-style-position: inside;
+    margin-bottom: var(--text-spacing);
+    padding-left: 0;
+}
+
+.content ol li {
+    margin-bottom: calc(var(--text-spacing) / 2);
+}
+
+.content ol li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: var(--text-spacing);
+    }
+
+    .nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--text-spacing);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .content {
+        font-size: 1rem;
+    }
+
+    .tech-stack-table {
+        display: block;
+        overflow-x: auto;
+    }
+} 
