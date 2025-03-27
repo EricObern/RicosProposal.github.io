@@ -1,7 +1,777 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Digital Strategy Proposal</title>
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            background-color: #1a1a1a; /* Dark background */
+            color: #f0f0f0; /* Light text */
+            overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+        }
+
+        /* Branding Colors */
+        :root {
+            --css-red: #ED1C24;
+            --css-black: #000000;
+            --css-white: #FFFFFF;
+            --css-grey: #333333;
+            --text-light: #f0f0f0;
+            --text-medium: #cccccc;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--css-black);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 4px solid var(--css-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header img {
+            max-height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            color: var(--css-white);
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--css-grey);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--css-red);
+            margin-bottom: 40px;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--css-white);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-left: 4px solid var(--css-red);
+            padding-left: 15px;
+        }
+          
+        h4 {
+            font-size: 1.4rem;
+            color: var(--css-red);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p, li {
+            color: var(--text-medium);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--css-white);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--css-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--css-white);
+        }
+
+        code {
+            background-color: var(--css-grey);
+            color: var(--text-light);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: var(--css-grey);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--css-red);
+            color: var(--css-white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+          
+        tr:hover {
+            background-color: #3f3f3f;
+        }
+
+        /* Flowchart Styling */
+        .flowchart {
+            background-color: var(--css-grey);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            line-height: 1.4;
+            margin: 30px 0;
+            overflow-x: auto; /* Handle potential overflow on small screens */
+            border-left: 5px solid var(--css-red);
+        }
+          
+        .flowchart-step {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px; /* Space for arrows */
+        }
+          
+        .flowchart-step::before {
+            content: '->';
+            position: absolute;
+            left: 0;
+            color: var(--css-red);
+            font-weight: bold;
+        }
+          
+        .flowchart-step.decision::before {
+            content: '? '; /* Diamond/Question */
+            font-weight: bold;
+        }
+          
+        .flowchart-step.manual::before {
+            content: '!!'; /* Manual step indicator */
+             font-weight: bold;
+        }
+
+
+        /* Button Styling */
+        .copy-button-container {
+            text-align: center;
+            padding: 50px 0;
+            background-color: var(--css-black);
+        }
+
+        .copy-button {
+            background-color: var(--css-red);
+            color: var(--css-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(237, 28, 36, 0.4);
+        }
+
+        .copy-button:hover {
+            background-color: #bf171d; /* Darker red */
+            transform: translateY(-2px);
+        }
+
+        .copy-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+             h4 {
+                font-size: 1.2rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            table, th, td {
+                font-size: 0.9rem;
+                padding: 8px 10px;
+            }
+        }
+
+        /* AOS Customizations - subtle fade-up is good */
+        [data-aos="fade-up"] {
+          transition-property: transform, opacity;
+        }
+
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <header class="header">
+        <div class="container">
+            <img src="https://superbikeschool.com/wp-content/uploads/2023/06/cropped-CSS-Logo-For-Web-Header.png" alt="California Superbike School Logo">
+            <h1>Digital Engagement & Authority Strategy</h1>
+            <p>Prepared By: Eric "Rico" Oberndorfer along with an AI Strategic Assistant.</p>
+        </div>
+    </header>
+
+    <main id="proposal-content">
+
+        <section id="executive-summary">
+            <div class="container" data-aos="fade-up">
+                <h2>1. Executive Summary</h2>
+                <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and historically limited bandwidth for consistent digital engagement—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier <strong>and most helpful</strong> online resource for performance motorcycle riding techniques, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
+                <p>The core strategy, <strong>"Automate Preparation, Humanize Engagement,"</strong> focuses on building sustainable systems:</p>
+                <ol type="a">
+                    <li>Resolving foundational issues (YouTube copyright, Reddit access).</li>
+                    <li>Systematically organizing CSS's vast knowledge into a central, easily maintainable <strong>Knowledge Base (KB)</strong> using Google Sheets, potentially aided by AI for initial processing.</li>
+                    <li>Implementing an automated workflow using <strong>Make.com</strong> and <strong>OpenAI (GPT)</strong> to monitor online discussions (primarily Reddit via <strong>Feedly</strong>), identify relevant questions, retrieve corresponding information and media links from the KB, and generate <em>draft</em> responses aligned with CSS's voice.</li>
+                    <li>Establishing a strict <strong>Human Review & Posting Protocol</strong> where all AI-drafted responses are efficiently reviewed, edited for accuracy, tone, and authenticity, and approved by <strong>Dylan Code (Owner & Marketing Lead)</strong> before being manually posted.</li>
+                    <li>Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, Discord) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI. The work done for Reddit and YouTube directly fuels content for all other platforms.</li>
+                </ol>
+                <p>This approach dramatically increases efficiency, creating a <strong>sustainable, low-maintenance process</strong> that allows CSS to provide expert answers consistently without overwhelming team capacity. The upfront investment in structuring knowledge and setting up automation builds a long-term asset, less dependent on fluctuating team availability. It builds trust and authority, enhances brand visibility, protects intellectual property, and ultimately aims to increase course enrollments and sales of educational materials. The estimated ongoing monthly cost for the essential software tools is approximately <strong>$28</strong>.</p>
+            </div>
+        </section>
+
+        <section id="problem-statement">
+            <div class="container" data-aos="fade-up">
+                <h2>2. Problem Statement & Current Situation Analysis</h2>
+                <ul>
+                    <li><strong>Intellectual Property Violation:</strong> Unauthorized distribution of CSS's full video content on YouTube devalues the product, confuses potential customers, and represents lost revenue/control.</li>
+                    <li><strong>Reddit Platform Barriers:</strong>
+                        <ul>
+                            <li>An existing account shadowban prevents any current engagement, blocking access to a key audience.</li>
+                            <li>A competitor's employee moderating a major subreddit creates potential bias and complicates genuine participation.</li>
+                            <li>Historically, lack of time and a systematic approach prevents CSS from effectively monitoring relevant subreddits and responding to rider questions, leading to missed opportunities.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Suboptimal Resource Utilization:</strong> CSS possesses a "gold mine" of unique data, established teaching methodologies (from books/videos), and decades of experience that are not being systematically deployed to answer online questions or create engaging digital content efficiently.</li>
+                    <li><strong>Operational Constraints:</strong> The CSS team is lean and extremely busy with core operations (running the school), demanding highly efficient and sustainable systems for any new initiatives.</li>
+                    <li><strong>Overarching Goal:</strong> CSS desires to establish a strong, authentic, and helpful online presence, particularly on Reddit, positioning itself as the go-to expert resource, driving business results without requiring unrealistic time commitments or outsourcing core engagement.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="strategy-overview">
+            <div class="container" data-aos="fade-up">
+                <h2>3. Proposed Overarching Strategy: "Automate Preparation, Humanize Engagement" - Building a Sustainable System</h2>
+                <p>This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. <strong>Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process.</strong> This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
+                <h3>Strategic Pillars:</h3>
+                <ul>
+                    <li><strong>Pillar 1: Foundational Readiness & Asset Centralization:</strong> Address critical blocking issues and systematically organize core knowledge assets for long-term use.</li>
+                    <li><strong>Pillar 2: Intelligent & Efficient Monitoring:</strong> Systematically identify relevant online conversations <em>without</em> manual time drain.</li>
+                    <li><strong>Pillar 3: Automated Preparation Engine:</strong> Leverage technology to process information and draft initial responses based <em>only</em> on approved CSS knowledge.</li>
+                    <li><strong>Pillar 4: Authentic Human Engagement & Quality Control (Centralized Oversight):</strong> Ensure all external communication is efficiently reviewed, refined, approved, and posted under the direction of <strong>Dylan Code</strong>.</li>
+                    <li><strong>Pillar 5: Synergistic Multi-Platform Content Strategy:</strong> Maximize the value of content creation by repurposing assets across YouTube, Reddit, Instagram, Facebook, TikTok, and Discord.</li>
+                    <li><strong>Pillar 6: Dedicated Community Hub (Discord):</strong> Foster a vibrant, controlled community space for students, coaches, and enthusiasts.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="pillar1">
+            <div class="container">
+                <h2 data-aos="fade-up">Pillar 1: Foundational Readiness & Asset Centralization</h2>
+
+                <div data-aos="fade-up">
+                    <h3>Action 1.1: Reclaim & Strategize YouTube Intellectual Property</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Immediately file a <strong>DMCA Takedown Notice</strong> with YouTube for the stolen full video content. (<a href="https://support.google.com/youtube/answer/2807622" target="_blank" rel="noopener noreferrer">Link to YouTube Copyright/DMCA Info</a>)</li>
+                        <li><strong>Reasoning & Control:</strong> Reclaiming control enables CSS to:
+                            <ul>
+                                <li>Protect paid product value.</li>
+                                <li>Control brand presentation.</li>
+                                <li><strong>Strategically use the full video:</strong> Upload it (decision needed: Public with CTAs, Unlisted, or Members-Only) and meticulously <strong>timestamp</strong> key sections. These timestamps become direct <code>MediaLink</code>s in the KB for Reddit comments.</li>
+                                <li><strong>Repurpose into micro-content:</strong> Systematically edit the full video into numerous <strong>YouTube Shorts</strong>, <strong>Instagram Reels</strong>, <strong>TikTok videos</strong>, maximizing the asset's reach.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-up">
+                    <h3>Action 1.2: Resolve Reddit Account Access & Define Persona</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Prioritize resolving the shadowban via the official <strong>Reddit Appeals page:</strong> <a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">https://www.reddit.com/appeal</a>. (Persistent, polite appeals identifying CSS official representation).</li>
+                        <li><strong>Account Strategy Recommendation:</strong> Use <strong>named accounts</strong> linked to key personnel. Primary posting account operated under Dylan Code's direction. Suggestions:
+                            <ul>
+                                <li><code>Dylan_CSS</code> (Owner/Marketing Lead, high credibility)</li>
+                                <li><code>Rico_CSS</code> (Employee, relatable team member - posts approved by Dylan)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Reasoning:</strong> Named accounts enhance connection. Clear oversight by Dylan Code ensures consistency and brand alignment. Legitimacy is key.</li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-up">
+                    <h3>Action 1.3: Construct the Central Knowledge Base (KB) with AI Assistance</h3>
+                    <ul>
+                        <li><strong>Tool:</strong> <strong>Google Sheets</strong> (<a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Link: sheets.google.com</a>) - <code>CSS_Knowledge_Base</code></li>
+                        <li><strong>Columns:</strong> <code>TopicID</code>, <code>PrimaryKeywords</code>, <code>SecondaryKeywords</code>, <code>ExplanationSnippet</code> (Approved CSS explanation), <code>MediaLink</code> (Timestamped YouTube link, Short link, image URL, etc.).</li>
+                        <li><strong>Ingestion Process (Manual Core, AI Assist):</strong>
+                            <ol>
+                                <li>Gather Sources (digital books, transcripts, notes, data).</li>
+                                <li><strong>AI-Assisted Processing:</strong> Use LLMs (<strong>ChatGPT</strong>, <strong>Google Gemini</strong>, <strong>Claude</strong>) to accelerate summarization, keyword extraction, and initial snippet drafting via targeted prompts (e.g., <code>"Summarize core concepts..."</code>, <code>"Suggest keywords..."</code>, <code>"Rephrase explanation..."</code>).</li>
+                                <li><strong>Human Validation & Structuring:</strong> <strong>Dylan Code</strong> or designated expert *must review* all AI outputs for accuracy and alignment with CSS methodology. Edit rigorously. Organize validated info into the Google Sheet, assigning <code>TopicID</code>s, finalizing <code>ExplanationSnippet</code>s, adding <code>MediaLink</code>s.</li>
+                            </ol>
+                        </li>
+                        <li><strong>Explanation:</strong> The KB is the structured "single source of truth." LLMs speed up processing, but human validation ensures KB quality (accuracy, searchability, correct links), which is critical for automation success.</li>
+                        <li><strong>Reasoning:</strong> Creates a consistent, scalable foundation. AI assistance reduces initial setup burden. Google Sheets offers free, accessible management.</li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-up">
+                    <h3>Action 1.4: Refresh Existing Digital Assets</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Update existing YouTube (<a href="http://www.youtube.com/@superbikeschool" target="_blank" rel="noopener noreferrer">www.youtube.com/@superbikeschool</a>), Instagram (<a href="https://www.instagram.com/superbikeschool/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/superbikeschool/</a>), and Facebook Page (<a href="https://www.facebook.com/californiasuperbikeschool" target="_blank" rel="noopener noreferrer">https://www.facebook.com/californiasuperbikeschool</a>) with current brand language, logos, banners, descriptions under Dylan Code's direction.</li>
+                        <li><strong>Reasoning:</strong> Ensures brand consistency before increasing activity.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillar2">
+            <div class="container" data-aos="fade-up">
+                <h2>Pillar 2: Intelligent & Efficient Monitoring</h2>
+                 <div data-aos="fade-up">
+                    <h3>Action 2.1: Implement Automated Monitoring</h3>
+                    <ul>
+                        <li><strong>Tool Recommendation:</strong> <strong>Feedly Pro</strong> (<a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Link: feedly.com</a>) (~$12/mo)</li>
+                        <li><strong>Task:</strong> Configure Feedly to track relevant subreddits and keywords (e.g., <code>throttle</code>, <code>braking</code>, <code>vision</code>, <code>track day</code>, <code>cornering</code>, <code>lean angle</code>, <code>CSS</code>, <code>superbike school</code>). Obtain the RSS feed URL for Make.</li>
+                        <li><strong>Explanation:</strong> Feedly acts as an automated listening post, aggregating mentions based on your rules and feeding them into the automation engine via RSS.</li>
+                        <li><strong>Reasoning & Benefit:</strong> This <strong>eliminates manual Reddit monitoring time drain</strong>, freeing up Dylan Code for strategic tasks, review, and content creation. Ensures relevant conversations are captured efficiently.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+         <section id="pillar3">
+            <div class="container" data-aos="fade-up">
+                <h2>Pillar 3: Automated Response Preparation Engine</h2>
+                 <div data-aos="fade-up">
+                    <ul>
+                        <li><strong>Tool Recommendation:</strong> <strong>Make (Core Plan)</strong> (<a href="https://www.make.com" target="_blank" rel="noopener noreferrer">Link: make.com</a>) (~$11/mo)</li>
+                        <li><strong>Task:</strong> Build the Make Scenario (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</li>
+                        <li><strong>OpenAI API Prompt Refinement:</strong> Continuously refine the prompt sent to OpenAI under Dylan Code's guidance to improve draft quality and tone alignment with the CSS brand voice.</li>
+                        <li><strong>Reasoning:</strong> Automates repetitive info retrieval and initial drafting based *only* on approved KB content. Make offers the best cost-effectiveness and power.</li>
+                    </ul>
+                    <h4>Conceptual Flow Diagram (Text Representation):</h4>
+                    <div class="flowchart" data-aos="fade-up">
+                        <div class="flowchart-step">Feedly detects new Reddit mention -> Sends data via RSS.</div>
+                        <div class="flowchart-step">Make Scenario Triggered by new RSS item.</div>
+                        <div class="flowchart-step decision">Make filters item for relevance? (If irrelevant -> Stop).</div>
+                        <div class="flowchart-step">Make parses the Reddit user's text.</div>
+                        <div class="flowchart-step decision">Make searches Google Sheet KB for keywords? (If no match -> Notify/Stop).</div>
+                        <div class="flowchart-step">Make retrieves `ExplanationSnippet` & `MediaLink` from Sheet.</div>
+                        <div class="flowchart-step">Make sends Context + Snippet + Link to OpenAI API with refined prompt.</div>
+                        <div class="flowchart-step">OpenAI generates draft response based on prompt & info.</div>
+                        <div class="flowchart-step">Make sends Context + AI Draft + Snippet + Link to Review Queue (e.g., Slack).</div>
+                        <div class="flowchart-step manual">(Manual Step Begins) CSS Team Member (Dylan/Delegate) reviews queue.</div>
+                         <div class="flowchart-step manual">(Manual Step) Edit/Approve Draft.</div>
+                         <div class="flowchart-step manual">(Manual Step) Post finalized response to Reddit.</div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+
+        <section id="pillar4">
+            <div class="container">
+                <h2 data-aos="fade-up">Pillar 4: Authentic Human Engagement & Quality Control (Centralized Oversight)</h2>
+
+                 <div data-aos="fade-up">
+                    <h3>Action 4.1: Efficient Review Protocol (Dylan Code Oversight)</h3>
+                    <ul>
+                        <li><strong>Task:</strong> <strong>Dylan Code</strong> (or delegate under his direct supervision) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 times daily). <strong>Focus on quality and sustainability.</strong></li>
+                        <li><strong>Task:</strong> <strong>Streamlined Review & Edit:</strong> Review every draft. Aim for <strong>minimal edits</strong> (accuracy, tone, relevance check + personalization) due to quality KB/prompts. If heavy edits are needed, improve the source KB snippet or OpenAI prompt.</li>
+                        <li><strong>AI Voice Training (Future Option):</strong> Fine-tuning LLMs is a Phase 3+ optimization possibility. Start with strong prompt engineering; human review remains essential.</li>
+                        <li><strong>Reasoning:</strong> Centralizes final approval with Dylan Code, ensuring brand consistency and quality. Balances responsiveness with realistic workload via efficient review process.</li>
+                    </ul>
+                </div>
+
+                 <div data-aos="fade-up">
+                    <h3>Action 4.2: Manual Posting & Dedicated Device Strategy</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Post the finalized, edited response manually to Reddit from the designated account (<code>Dylan_CSS</code> or <code>Rico_CSS</code> under Dylan's approval) using the <strong>Dedicated Posting Device</strong>.</li>
+                        <li><strong>Task:</strong> Procure and set up a basic, dedicated iOS/Android device with its own low-cost cellular plan exclusively for official CSS social media account logins and posting.</li>
+                        <li><strong>Reasoning:</strong> Isolates activity (security, avoids IP/fingerprinting issues), creates focus, centralizes access securely. Manual posting ensures compliance.</li>
+                    </ul>
+                </div>
+
+                 <div data-aos="fade-up">
+                    <h3>Action 4.3: Streamlined Collaboration</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Dylan Code handles primary review/approval. If deeper technical input is needed beyond the KB, Dylan consults directly with Keith Code or relevant experts. Coach involvement is *opportunistic* (e.g., specific AMAs) rather than part of the core review workflow.</li>
+                        <li><strong>Reasoning:</strong> Simplifies workflow, acknowledging Dylan's central role and expertise, and adapting to realistic coach availability.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillar5">
+            <div class="container">
+                 <h2 data-aos="fade-up">Pillar 5: Synergistic Multi-Platform Content Strategy (Maximize ROI)</h2>
+
+                 <div data-aos="fade-up">
+                    <ul>
+                        <li><strong>Core Principle:</strong> Content created once is repurposed strategically across platforms. The KB and YouTube video(s) are central assets.</li>
+                        <li><strong>Content Flow Examples:</strong>
+                            <ul>
+                               <li><strong>Video Clip:</strong> A 3-minute YouTube clip explaining trail braking -> Becomes a `MediaLink` in KB -> Used in Reddit replies -> Clip shared on Facebook -> Key visual moments edited into an Instagram Reel/TikTok video -> Concept discussed further in a Discord AMA.</li>
+                               <li><strong>Short Vertical Video:</strong> A quick tip filmed for TikTok/Reels -> Uploaded as YouTube Short -> Potentially embedded in a relevant blog post -> Shared on Facebook/Instagram Stories.</li>
+                               <li><strong>Reddit Themed Days:</strong> Identify popular themes (e.g., #TrackdayTuesday, `r/NewRiders` Q&As). Plan content snippets (text, short video, image) from the KB or new recordings specifically for these days to increase relevance and visibility.</li>
+                               <li><strong>Data Insights:</strong> Unique CSS data -> Becomes an infographic for Instagram/Facebook/Blog -> Explained in a short YouTube video -> Referenced in technical Reddit discussions.</li>
+                            </ul>
+                        </li>
+                         <li><strong>Platform-Specific Content Expansion:</strong>
+                            <ul>
+                               <li><strong>YouTube:</strong> Beyond core technique clips/Shorts: Tech Talks, Partner Spotlights, Influencer/Journalist Collaborations, Track Guides (showing lines/reference points), Live AMAs, Gear Guides.</li>
+                               <li><strong>Instagram/TikTok:</strong> Focus on visually engaging, quick-hitting content: action shots, quick tips, student successes, behind-the-scenes.</li>
+                               <li><strong>Facebook:</strong> Mix visuals with text updates, course schedules, event promotion, link sharing.</li>
+                               <li><strong>Blog (Website):</strong> Longer-form articles expanding on KB topics for SEO.</li>
+                            </ul>
+                         </li>
+                        <li><strong>Reasoning:</strong> Ensures maximum return on content creation effort, builds a cohesive brand narrative, reaches diverse audiences effectively.</li>
+                    </ul>
+                 </div>
+            </div>
+        </section>
+
+         <section id="pillar6">
+             <div class="container">
+                <h2 data-aos="fade-up">Pillar 6: Dedicated Community Hub (Discord)</h2>
+
+                 <div data-aos="fade-up">
+                    <h3>Action 9.1: Launch Official CSS Discord Server.</h3>
+                    <ul>
+                        <li><strong>Tool:</strong> <strong>Discord</strong> (<a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a>) - Free for core functionality.</li>
+                        <li><strong>Task:</strong> Create server, phase out old forum.</li>
+                        <li><strong>Revised Channel Structure:</strong>
+                            <ul>
+                                <li><code>#welcome-rules</code></li>
+                                <li><code>#announcements</code></li>
+                                <li><code>#general-chat</code></li>
+                                <li><code>#ask-a-coach</code> (Managed Q&A)</li>
+                                <li><code>#kb-highlights</code></li>
+                                <li><code>#student-showcase</code></li>
+                                <li><code>#track-talk</code></li>
+                                <li><code>#gear-talk</code></li>
+                                <li><code>#level-1-graduates</code> (Private, role-based access)</li>
+                                <li><code>#level-2-graduates</code> (Private, role-based access)</li>
+                                <li><code>#level-3-graduates</code> (Private, role-based access)</li>
+                                <li><code>#level-4-graduates</code> (Private, role-based access)</li>
+                                <li>*(Future-proofed name structure for Level 5, etc.)*</li>
+                                <li><code>#partner-spotlight</code></li>
+                             </ul>
+                        </li>
+                        <li><strong>Management:</strong> Requires dedicated community management (initiated and overseen by Dylan Code, potentially with support from Rico) for moderation, engagement, role assignment.</li>
+                        <li><strong>Reasoning & Benefits:</strong> Modern, engaging community platform; direct feedback; fosters advocacy; controlled environment; adds value for graduates via exclusive access; hub for contests, AMAs, influencer interaction.</li>
+                    </ul>
+                 </div>
+             </div>
+         </section>
+
+        <section id="tech-stack">
+            <div class="container" data-aos="fade-up">
+                <h2>10. Technology Stack Summary</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Role</th>
+                            <th>Link</th>
+                            <th>Est. Monthly Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Google Sheets</td>
+                            <td>Knowledge Base</td>
+                            <td><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a></td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>Feedly Pro</td>
+                            <td>Monitoring Trigger</td>
+                            <td><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a></td>
+                            <td>~$12</td>
+                        </tr>
+                         <tr>
+                            <td>Make (Core Plan)</td>
+                            <td>Automation Engine</td>
+                            <td><a href="https://www.make.com" target="_blank" rel="noopener noreferrer">make.com</a></td>
+                            <td>~$11</td>
+                        </tr>
+                         <tr>
+                            <td>OpenAI API</td>
+                            <td>AI Draft Generation</td>
+                            <td><a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer">platform.openai.com/usage</a></td>
+                            <td>~$5 (Usage Based)</td>
+                        </tr>
+                        <tr>
+                            <td>Slack/Gmail/Google Docs</td>
+                            <td>Review Queue</td>
+                            <td>Various</td>
+                            <td>$0 (Free Tiers)</td>
+                        </tr>
+                        <tr>
+                            <td>YouTube</td>
+                            <td>Video Hosting/Clips/Shorts</td>
+                            <td><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">youtube.com</a></td>
+                            <td>$0</td>
+                        </tr>
+                         <tr>
+                            <td>Reddit</td>
+                            <td>Engagement Platform</td>
+                            <td><a href="https://reddit.com" target="_blank" rel="noopener noreferrer">reddit.com</a></td>
+                             <td>$0</td>
+                         </tr>
+                        <tr>
+                            <td>Instagram</td>
+                            <td>Visual Platform / Reels</td>
+                            <td><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a></td>
+                            <td>$0</td>
+                        </tr>
+                         <tr>
+                            <td>Facebook</td>
+                            <td>Info/Community Platform</td>
+                             <td><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook.com</a></td>
+                            <td>$0</td>
+                        </tr>
+                         <tr>
+                             <td><strong>Discord</strong></td>
+                             <td><strong>Community Hub</strong></td>
+                             <td><a href="https://discord.com" target="_blank" rel="noopener noreferrer"><strong>discord.com</strong></a></td>
+                             <td><strong>$0 (Core)</strong></td>
+                         </tr>
+                        <tr>
+                            <td>Dedicated Mobile Device</td>
+                            <td>Secure Posting Interface</td>
+                            <td>(Hardware Purchase)</td>
+                            <td>(One-time Cost)</td>
+                        </tr>
+                        <tr>
+                            <td>Basic Cellular Plan</td>
+                            <td>Device Connectivity</td>
+                            <td>(Various Carriers)</td>
+                            <td>~$10-20 / Month</td>
+                         </tr>
+                         <tr>
+                             <td colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td>
+                             <td><strong>~$38 - $48 / Month</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <div class="container" data-aos="fade-up">
+                <h2>11. Implementation Roadmap</h2>
+                 <ol>
+                     <li><strong>Phase 0: Foundation (Weeks 1-4):</strong> YouTube DMCA, Reddit Appeal (Ongoing), Refresh social profiles, Create KB structure, Begin KB population (Dylan oversees AI assist/validation), Plan full video strategy, Prep/Upload initial YouTube clips/Shorts, Set up Feedly, Procure dedicated device/plan.</li>
+                     <li><strong>Phase 1: Build & Test (Weeks 5-8):</strong> Set up Make/OpenAI accounts, Build/Test Make scenario thoroughly (Dylan oversees), Refine OpenAI prompts, Expand KB significantly, Set up Discord server structure.</li>
+                     <li><strong>Phase 2: Launch & Engage (Month 3-6):</strong> Activate full Make scenario, Implement sustainable Review/Edit/Post workflow (Dylan leads), Begin consistent Reddit engagement (from <code>Dylan_CSS</code> or <code>Rico_CSS</code>), Launch & promote Discord server, Ramp up multi-platform content posting, Continue KB expansion.</li>
+                    <li><strong>Phase 3: Optimize & Expand (Month 6+):</strong> Analyze metrics (Dylan reviews), Refine content strategy, Optimize Make/OpenAI further, Develop Discord community features, Expand YouTube content (Track Guides, AMAs etc.), Evaluate AI fine-tuning potential.</li>
+                 </ol>
+            </div>
+        </section>
+
+         <section id="cost-benefit">
+            <div class="container" data-aos="fade-up">
+                <h2>12. Cost Breakdown & Projected Revenue Benefits</h2>
+                 <ul>
+                    <li><strong>Direct Monthly Costs:</strong> Estimated at <strong>~$38 - $48</strong> (Software/Cell plan). Minimal operational expense.</li>
+                    <li><strong>One-Time Costs:</strong> Dedicated device purchase (~$150-$400).</li>
+                    <li><strong>Indirect Costs (Time Investment):</strong>
+                        <ul>
+                           <li><strong>Upfront:</strong> Significant but <em>finite</em> time (Est. 20-40 hours, Dylan oversees/directs) building the sustainable KB asset and automation. <strong>This builds the sustainable asset.</strong></li>
+                           <li><strong>Ongoing:</strong> Efficient, scheduled time for review/approval (Est. <1 hour daily average for Dylan, flexible), community management, planned posting. <strong>Highly leveraged time.</strong></li>
+                        </ul>
+                    </li>
+                     <li><strong>Projected Revenue Benefits & ROI Justification:</strong>
+                        <ul>
+                           <li><strong>Increased Lead Quality & Quantity:</strong> Consistent, expert presence builds trust, leading to more course inquiries and sign-ups.</li>
+                           <li><strong>Direct Product Sales:</strong> Strategic use of timestamped links and related content drives sales of books/full video.</li>
+                           <li><strong>Brand Equity & Authority:</strong> Solidifies CSS's premium positioning, attracting partnerships and media opportunities.</li>
+                           <li><strong>Improved Customer Lifetime Value:</strong> Discord community fosters loyalty, encouraging repeat business.</li>
+                           <li><strong>Operational Efficiency:</strong> Frees up significant Marketing/Staff time compared to manual engagement. System sustainability ensures continued value delivery.</li>
+                           <li><strong>SEO Benefits:</strong> Increased brand signals, traffic, and potential backlinks improve organic search visibility.</li>
+                           <li><strong>Partnership/Sponsorship Opportunities:</strong> Attracts relevant brands, potentially opening new revenue streams.</li>
+                        </ul>
+                        <p><em>The ROI is realized through increased conversions, enhanced brand value, operational efficiencies, and potential new revenue streams, fully justifying the modest costs and focused time investment.</em></p>
+                     </li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="risks">
+            <div class="container" data-aos="fade-up">
+                <h2>13. Risks & Mitigation</h2>
+                <ul>
+                    <li><strong>Inaccurate/Robotic Drafts:</strong> Mitigation: Mandatory Dylan Code review/approval; continuous prompt refinement.</li>
+                    <li><strong>KB Gaps/Errors:</strong> Mitigation: Ongoing KB updates overseen by Dylan; easy process for team to flag gaps.</li>
+                    <li><strong>Automation Errors:</strong> Mitigation: Regular Make monitoring; build simple error handling.</li>
+                    <li><strong>Review Bottleneck:</strong> Mitigation: Streamlined review process focused on efficiency; Dylan manages workflow; realistic scheduling.</li>
+                    <li><strong>Platform Rule Changes:</strong> Mitigation: Stay informed; prioritize value; manual posting + dedicated device reduces risk.</li>
+                    <li><strong>Community Management Burden (Discord):</strong> Mitigation: Clear guidelines; Dylan oversees management (potential delegation to Rico); start simple, scale features.</li>
+                </ul>
+            </div>
+        </section>
+
+         <section id="conclusion">
+            <div class="container" data-aos="fade-up">
+                <h2>14. Conclusion</h2>
+                <p>This comprehensive strategy provides California Superbike School with a powerful, integrated, and <strong>sustainable</strong> system for digital leadership, centrally managed under <strong>Dylan Code's</strong> direction. By centralizing knowledge, leveraging automation for efficiency, insisting on expert human oversight for authenticity and quality, maximizing content synergy across platforms, and fostering a dedicated community hub via Discord, CSS can effectively address current challenges and solidify its position as the world's leading resource for motorcycle riding expertise, both on and off the track. The upfront investment creates a long-term operational asset, driving brand authority, community loyalty, and tangible business growth with manageable ongoing effort and cost, perfectly aligning with the operational realities and strategic goals of CSS.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="copy-button-container">
+        <button id="copyBtn" class="copy-button">Copy Proposal Text</button>
+    </div>
+
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800, // Animation duration
+            once: true, // Whether animation should happen only once - while scrolling down
+            offset: 100, // Offset (in px) from the original trigger point
+        });
+
+        // Copy Button Functionality
+        const copyButton = document.getElementById('copyBtn');
+        const proposalContent = document.getElementById('proposal-content');
+
+        copyButton.addEventListener('click', () => {
+            // Use navigator.clipboard API for modern browsers
+            if (navigator.clipboard && window.isSecureContext) {
+                // Get plain text content
+                const plainText = proposalContent.innerText;
+
+                navigator.clipboard.writeText(plainText).then(() => {
+                    // Success feedback
+                    copyButton.textContent = 'Copied!';
+                    copyButton.style.backgroundColor = '#4CAF50'; // Green feedback
+                    setTimeout(() => {
+                        copyButton.textContent = 'Copy Proposal Text';
+                        copyButton.style.backgroundColor = 'var(--css-red)'; // Revert color
+                    }, 2000); // Revert after 2 seconds
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                    // Basic fallback for older browsers (less reliable)
+                    try {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = proposalContent.innerText;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+
+                        copyButton.textContent = 'Copied!';
+                        copyButton.style.backgroundColor = '#4CAF50';
+                         setTimeout(() => {
+                            copyButton.textContent = 'Copy Proposal Text';
+                            copyButton.style.backgroundColor = 'var(--css-red)';
+                         }, 2000);
+                    } catch (execErr) {
+                        console.error('Fallback copy failed: ', execErr);
+                        alert('Failed to copy text. Please try selecting manually.');
+                    }
+                });
+            } else {
+                 // Basic fallback for older browsers or non-secure contexts
+                 try {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = proposalContent.innerText; // Use innerText for plain text
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+
+                        copyButton.textContent = 'Copied!';
+                        copyButton.style.backgroundColor = '#4CAF50';
+                         setTimeout(() => {
+                            copyButton.textContent = 'Copy Proposal Text';
+                            copyButton.style.backgroundColor = 'var(--css-red)';
+                         }, 2000);
+                    } catch (execErr) {
+                        console.error('Fallback copy failed: ', execErr);
+                        alert('Failed to copy text. Please try selecting manually.');
+                    }
+            }
+        });
+    </script>
+
 </body>
 </html>
