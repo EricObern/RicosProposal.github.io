@@ -7,22 +7,27 @@
     --bmw-white: #FFFFFF; /* Base white */
 
     /* Dark Mode Palette */
-    --bg-primary: #121212; /* Very dark grey */
-    --bg-secondary: #1E1E1E; /* Slightly lighter dark grey */
-    --bg-card: rgba(30, 30, 30, 0.7); /* Dark, semi-transparent card bg */
-    --bg-header: rgba(30, 30, 30, 0.8); /* Header background */
-    --text-primary: #E0E0E0; /* Light grey for body text */
-    --text-secondary: #A0A0A0; /* Dimmer text */
-    --text-headings: var(--bmw-white); /* White for main headings */
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-card: rgba(30, 30, 30, 0.7);
+    --bg-header: rgba(30, 30, 30, 0.85); /* Slightly less transparent header */
+    --text-primary: #E0E0E0;
+    --text-secondary: #A0A0A0;
+    --text-headings-main: var(--bmw-white); /* H1, maybe selected H3 */
+    --text-headings-section: var(--bmw-blue); /* H2 */
+    --text-headings-sub: #EAEAEA; /* Slightly brighter than primary text for H3 */
+    --text-headings-minor: var(--text-primary); /* H4 */
     --accent-primary: var(--bmw-blue);
-    --accent-secondary: var(--bmw-red);
-    --border-color: rgba(255, 255, 255, 0.1); /* Subtle border for glass */
+    --accent-secondary: var(--bmw-red); /* Reserved for specific highlights like risks */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-hover: rgba(255, 255, 255, 0.2);
+    --highlight-glow: 0 0 15px rgba(0, 102, 177, 0.3); /* Subtle blue glow */
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, #004C8C 100%);
     --gradient-accent: linear-gradient(135deg, var(--accent-secondary) 0%, #B30510 100%);
 
-    /* Shadows (Subtler for dark mode) */
+    /* Shadows */
     --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.15);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.25);
@@ -30,20 +35,14 @@
 
     /* Animation Timing & Sizes */
     --transition-speed: 0.3s;
+    --transition-medium: 0.4s;
     --transition-slow: 0.6s;
     --header-height: 70px;
     --max-content-width: 1100px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth; /* Enable smooth scrolling */
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -53,535 +52,335 @@ body {
     overflow-x: hidden;
 }
 
-/* Header Styles */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+/* --- Header & Navigation --- */
+.header { /* Styles remain similar */
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     height: var(--header-height);
-    transition: transform var(--transition-speed) ease-in-out;
+    transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed);
 }
+.header.scroll-down { transform: translateY(-100%); }
+.header.scroll-up { transform: translateY(0); }
 
-/* Header Scroll Effects */
-.header.scroll-down {
-    transform: translateY(-100%);
+.header-content { /* Styles remain similar */
+    max-width: var(--max-content-width); margin: 0 auto; padding: 0 2rem;
+    height: 100%; display: flex; justify-content: space-between; align-items: center;
 }
-.header.scroll-up {
-    transform: translateY(0);
-}
+.logo { height: 40px; width: auto; }
 
-
-.header-content {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    height: 40px; /* Adjust as needed */
-    width: auto;
-}
-
-/* Navigation Styles */
-.nav {
-    position: relative; /* For progress bar positioning */
-}
-
-.nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem; /* Adjust spacing */
-}
-
+.nav { position: relative; }
+.nav ul { display: flex; list-style: none; gap: 1.5rem; }
 .nav ul li a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: color var(--transition-speed);
-    position: relative;
-    padding: 0.5rem 0;
+    text-decoration: none; color: var(--text-secondary); font-weight: 500;
+    font-size: 0.9rem; transition: color var(--transition-speed);
+    position: relative; padding: 0.5rem 0;
 }
-
 .nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--accent-primary);
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0;
+    height: 2px; background-color: var(--accent-primary);
     transition: width var(--transition-speed);
 }
+.nav ul li a:hover, .nav ul li a.active { color: var(--text-primary); }
+.nav ul li a:hover::after, .nav ul li a.active::after { width: 100%; }
 
-.nav ul li a:hover,
-.nav ul li a.active {
-    color: var(--text-primary);
+.progress-bar { /* Styles remain similar */
+    position: absolute; bottom: -1px; left: 0; height: 3px;
+    background: var(--gradient-accent); width: 0%;
+    transition: width 0.1s linear;
 }
 
-.nav ul li a:hover::after,
-.nav ul li a.active::after {
-    width: 100%;
-}
-
-.progress-bar {
-    position: absolute;
-    bottom: -1px; /* Align with bottom border */
-    left: 0;
-    height: 3px;
-    background: var(--gradient-accent); /* Use gradient */
-    width: 0%; /* Initial width */
-    transition: width 0.1s linear; /* Smooth width transition */
-}
-
-/* Main Content Styles */
-.main-content {
-    padding-top: var(--header-height); /* Offset content below fixed header */
-}
+/* --- Main Content & Sections --- */
+.main-content { padding-top: var(--header-height); }
 
 .section {
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 4rem 2rem 6rem 2rem; /* Increased bottom padding */
-    opacity: 0; /* Initially hidden for animation */
-    transform: translateY(30px); /* Initial position for animation */
-    transition: opacity var(--transition-slow) ease-out, transform var(--transition-slow) ease-out;
-    will-change: opacity, transform; /* Animation hint */
+    max-width: var(--max-content-width); margin: 0 auto;
+    padding: 4rem 2rem 6rem 2rem;
 }
 
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* --- Basic Animation Setup --- */
+.animate-on-scroll {
+    /* Base state for items to be animated within this section */
+    & .animate-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity var(--transition-medium) ease-out, transform var(--transition-medium) ease-out;
+        transition-delay: var(--animation-delay, 0s); /* Use variable for delay */
+    }
+}
+.section.visible { /* Parent section becomes visible */
+    & .animate-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--text-headings);
-    margin-bottom: 1rem;
-    line-height: 1.3;
-}
 
-h1 { font-size: 3rem; margin-bottom: 1rem; }
-h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--accent-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
-h3 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--accent-secondary); }
-h4 { font-size: 1.2rem; color: var(--accent-primary); }
+/* --- Typography & Basic Elements --- */
+h1, h2, h3, h4, h5, h6 { margin-bottom: 1rem; line-height: 1.3; }
+h1 { font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--text-headings-main); }
+/* Updated Heading Colors */
+h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--text-headings-section); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+h3 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.2rem; color: var(--text-headings-sub); }
+h4 { font-size: 1.15rem; color: var(--text-headings-minor); font-weight: 500; margin-bottom: 0.6rem; }
 
 p { margin-bottom: 1rem; }
 ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
 li { margin-bottom: 0.5rem; }
-a { color: var(--accent-primary); text-decoration: none; }
-a:hover { text-decoration: underline; }
-strong { font-weight: 700; color: var(--text-headings); }
+ul ul, ol ol { margin-top: 0.5rem; } /* Nested list spacing */
+a { color: var(--accent-primary); text-decoration: none; transition: color var(--transition-speed); }
+a:hover { color: var(--bmw-white); text-decoration: underline; }
+strong { font-weight: 700; color: var(--text-headings-sub); }
+pre { background-color: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9em; border: 1px solid var(--border-color); }
 
-/* Card Component Style */
+/* --- Card Component Style --- */
 .card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
+    background: var(--bg-card); padding: 2rem; border-radius: 12px;
+    margin-bottom: 2rem; border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
 }
-
 .card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--highlight-glow);
+    border-color: var(--border-color-hover);
 }
 
-/* Glass Effect Components */
+/* --- Glass Effect --- */
 .glass-nav, .glass-card {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
 }
-.glass-nav { background: var(--bg-header); } /* Specific background for nav */
-.glass-card { background: var(--bg-card); } /* Specific background for cards */
+.glass-nav { background: var(--bg-header); }
+.glass-card { background: var(--bg-card); }
 
-
-/* Specific Section Styles */
-
-/* Meta Info Card */
-.meta-info {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
+/* --- Specific Section Styles --- */
+.meta-info { font-size: 0.9rem; color: var(--text-secondary); }
 .meta-info p { margin-bottom: 0.5rem; }
 
-/* Pillar Details */
-.pillar-detail { margin-top: 2rem; }
+.pillar-detail { margin-top: 2.5rem; }
 .pillar-detail h3 { margin-top: 0; }
+.pillar-detail ul { margin-bottom: 0; } /* Remove bottom margin if last element */
 
-/* Flow Diagram */
-.flow-diagram ol {
-    list-style-type: decimal;
-    padding-left: 2rem;
-}
-.flow-diagram li {
-    padding-left: 0.5rem;
-    position: relative;
-    margin-bottom: 0.75rem;
-}
-.flow-diagram li::before {
-    /* Could add custom counter/styling later */
-}
-
-/* Technology Stack Table */
-.table-container { padding: 1rem; } /* Add padding around table */
-.tech-stack-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-.tech-stack-table th, .tech-stack-table td {
-    padding: 0.8rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-.tech-stack-table th {
-    color: var(--text-headings);
-    font-weight: 500;
-}
-.tech-stack-table tbody tr:last-child td {
-    border-bottom: none;
-}
-.tech-stack-table td:last-child, .tech-stack-table th:last-child {
-    text-align: right;
-}
-.tech-stack-table strong {
-    color: var(--accent-secondary);
-}
-
-/* Costs & Benefits */
-.cost-benefit-container ul {
-    list-style: disc;
-}
-
-/* Conclusion Box */
-.conclusion-box {
-    background: linear-gradient(135deg, rgba(0, 102, 177, 0.2), rgba(30, 30, 30, 0.7)); /* Subtle gradient accent */
-    border-left: 4px solid var(--accent-primary);
-}
-
-/* Honeycomb Grid Styles */
-.honeycomb-grid {
+/* --- Pillar Card Grid (Replaces Honeycomb) --- */
+.pillar-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust minmax for size */
-    gap: 1rem; /* Adjust gap */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.5rem;
     margin-top: 3rem;
-    padding: 0 1rem; /* Padding to prevent edge clipping */
-    max-width: 900px; /* Limit width for better arrangement */
-    margin-left: auto;
-    margin-right: auto;
+}
+.pillar-card {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 2.5rem 1.5rem; /* Adjust padding */
+}
+.pillar-card h4 { margin-bottom: 0.5rem; color: var(--accent-primary); }
+.pillar-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+/* --- Visual Flowchart --- */
+.flowchart-container {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2rem 1rem; margin-top: 1.5rem;
+}
+.flowchart-step, .flowchart-decision-box {
+    background: var(--bg-secondary); border: 1px solid var(--border-color);
+    padding: 0.8rem 1.2rem; border-radius: 8px; text-align: center;
+    margin: 0.5rem 0; font-size: 0.9rem; width: auto; max-width: 300px; display: inline-block;
+    box-shadow: var(--shadow-sm);
+}
+.flowchart-step.start, .flowchart-step.stop, .flowchart-step.output, .flowchart-step.manual-output {
+    background: var(--gradient-primary); color: var(--bmw-white); border: none;
+}
+.flowchart-step.stop { background: var(--gradient-accent); }
+.flowchart-step.manual-input, .flowchart-step.manual-output { border-style: dashed; background: var(--bg-secondary); color: var(--text-primary); }
+
+.flowchart-connector {
+    width: 2px; height: 30px; background-color: var(--text-secondary);
+    position: relative; margin: 0 auto; /* Center the line */
+}
+.flowchart-connector span::after { /* Arrowhead */
+    content: ''; position: absolute; left: 50%; bottom: -1px;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px; height: 8px; border-bottom: 2px solid var(--text-secondary); border-right: 2px solid var(--text-secondary);
 }
 
-.honeycomb-item {
+.flowchart-decision { /* Container for decision and its paths */
+    display: flex; justify-content: center; align-items: flex-start;
+    width: 100%; margin: 0.5rem 0; position: relative; padding: 0 2rem; /* Space for side paths */
+}
+.flowchart-step.decision-box { background: var(--accent-secondary); color: white; border-radius: 25px; /* Diamond-like */ margin: 0; }
+.flowchart-connector.decision { height: 15px; } /* Shorter connector before decision */
+.flowchart-connector.decision span::after { display: none; } /* No arrowhead right before decision */
+
+.flowchart-path { /* Side path container */
+    display: flex; flex-direction: column; align-items: center;
+    position: absolute; top: 0; /* Align with decision box top */
+}
+.flowchart-path.no { left: 0; transform: translateX(-90%); } /* Adjust positioning */
+.flowchart-path .arrow { /* Horizontal line for path */
+    width: 40px; height: 2px; background: var(--text-secondary); position: relative; margin-bottom: 5px;
+}
+.flowchart-path.no .arrow::before { /* Arrowhead for No path */
+    content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%) rotate(-45deg);
+    width: 8px; height: 8px; border-top: 2px solid var(--text-secondary); border-left: 2px solid var(--text-secondary);
+}
+.flowchart-path span { font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px; }
+
+.flowchart-connector.yes-path { /* Connector for the Yes path */
+    margin-top: 0; /* Directly after decision box */
     position: relative;
-    width: 100%;
-    padding-bottom: 115.47%; /* Aspect ratio for hexagon (sqrt(3)/2 * 2 * width = height) */
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background: var(--gradient-primary); /* Use gradient */
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    cursor: default; /* Change if interactive later */
-    will-change: transform;
 }
+.flowchart-connector.yes-path span { position: absolute; left: 10px; top: 5px; font-size: 0.8em; color: var(--text-secondary); } /* Yes label */
 
-.honeycomb-item:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    z-index: 10; /* Bring hovered item to front */
-}
+.flowchart-connector.manual { border-style: dashed; }
 
-.honeycomb-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10% 15%; /* Adjust padding relative to size */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--bmw-white);
-}
+/* --- Technology Stack Table --- */
+.table-container { padding: 1rem; }
+.tech-stack-table { /* Styles mostly remain similar */ width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.tech-stack-table th, .tech-stack-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+.tech-stack-table th { color: var(--text-headings-sub); font-weight: 500; }
+.tech-stack-table tbody tr:last-child td { border-bottom: none; }
+.tech-stack-table td:last-child, .tech-stack-table th:last-child { text-align: right; }
+.tech-stack-table strong { color: var(--accent-secondary); }
 
-.honeycomb-content h4 {
-    color: var(--bmw-white);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+/* --- Timeline --- */
+.timeline { /* Styles mostly remain similar */
+    position: relative; max-width: 800px; margin: 3rem auto 0 auto; padding-left: 2rem;
 }
-
-.honeycomb-content p {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin-bottom: 0;
+.timeline::before { /* Vertical line */
+    content: ''; position: absolute; left: 0; top: 10px; bottom: 10px;
+    width: 3px; background-color: var(--accent-primary); border-radius: 2px;
 }
-
-/* Timeline Styles */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 3rem auto 0 auto;
-    padding-left: 2rem; /* Space for the line */
+.timeline-item { /* Styles mostly remain similar */
+    position: relative; margin-bottom: 2.5rem; padding-left: 2.5rem;
 }
-
-.timeline::before { /* The vertical line */
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px; /* Start below first item's potential marker */
-    bottom: 10px; /* End above last item's potential marker */
-    width: 3px;
-    background-color: var(--accent-primary);
-    border-radius: 2px;
+.timeline-item::before { /* Dot */
+    content: ''; position: absolute; left: -6.5px; top: 5px; width: 16px;
+    height: 16px; background-color: var(--accent-secondary);
+    border: 3px solid var(--bg-primary); border-radius: 50%; z-index: 1;
 }
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 2.5rem; /* Space between items */
-    padding-left: 2.5rem; /* Space from main line */
-    will-change: transform, opacity;
-}
-
-.timeline-item::before { /* Dot on the line */
-    content: '';
-    position: absolute;
-    left: -6.5px; /* Position dot centered on the line */
-    top: 5px; /* Align with heading roughly */
-    width: 16px;
-    height: 16px;
-    background-color: var(--accent-secondary);
-    border: 3px solid var(--bg-primary); /* Creates cutout effect */
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.timeline-content {
-    /* Use card styling */
-    background: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-.timeline-content:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-}
-
-.timeline-item h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--accent-secondary);
-    font-size: 1.4rem;
-}
+.timeline-content { /* Now applying base card styles */ }
+.timeline-item h3 { margin-top: 0; margin-bottom: 1rem; color: var(--text-headings-sub); font-size: 1.4rem; }
 .timeline-item ul { margin-left: 1rem; }
 
 
-/* Risk Grid Styles */
+/* --- Risk Grid --- */
 .risk-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1.5rem; margin-top: 2rem;
+}
+.risk-card { padding: 1.5rem; }
+.risk-card h4 { margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--accent-secondary); /* Red titles */ }
+
+/* --- Footer --- */
+.footer { /* Styles mostly remain similar */
+    background-color: var(--bg-secondary); color: var(--text-secondary); padding: 2rem;
+    text-align: center; margin-top: 4rem; border-top: 1px solid var(--border-color); font-size: 0.9rem;
 }
 
-.risk-card {
-    /* Using .card styling */
-    padding: 1.5rem; /* Slightly smaller padding */
-    will-change: transform;
+/* --- Action Buttons --- */
+.action-buttons { /* Styles mostly remain similar */
+    position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex;
+    flex-direction: column; gap: 1rem; z-index: 1010;
 }
-
-.risk-card h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: var(--accent-secondary);
-}
-
-
-/* Footer Styles */
-.footer {
-    background-color: var(--bg-secondary);
-    color: var(--text-secondary);
-    padding: 2rem;
-    text-align: center;
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
-}
-
-/* Action Buttons */
-.action-buttons {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    z-index: 1010;
-}
-
 .action-button {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-lg);
+    width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
-    color: var(--text-primary);
-    /* Glass styling */
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
+    color: var(--text-primary); background: var(--bg-card); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color);
 }
-
 .action-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: var(--shadow-xl);
-    background-color: rgba(50, 50, 50, 0.8); /* Darken on hover */
+    transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-xl);
+    background-color: rgba(50, 50, 50, 0.9);
 }
+.action-button:active { transform: translateY(0) scale(1); }
+.action-button svg { width: 24px; height: 24px; transition: transform 0.2s; }
+.action-button span { /* Screen reader only */ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+/* Feedback states for copy button */
+.action-button.success { background-color: #28a745; }
+.action-button.error { background-color: #dc3545; }
 
-.action-button:active {
-    transform: translateY(0) scale(1);
-}
 
-.action-button svg {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.2s;
-}
-.action-button span { /* Hide text label visually */
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
+/* --- Responsive Design --- */
+@media (max-width: 992px) { /* Tablet */
     .header-content { padding: 0 1rem; }
     .nav ul { gap: 1rem; }
     .nav ul li a { font-size: 0.85rem; }
-    .section { padding: 3rem 1rem 4rem 1rem; }
+    .section { padding: 3rem 1.5rem 4rem 1.5rem; }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.9rem; }
     h3 { font-size: 1.4rem; }
-    .honeycomb-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; padding: 0; }
-    .honeycomb-content h4 { font-size: 1rem; }
-    .honeycomb-content p { font-size: 0.8rem; }
+    .pillar-card-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns on tablet */
+    .flowchart-container { padding: 1.5rem 0.5rem; }
+    .flowchart-step { max-width: 250px; }
 }
 
-@media (max-width: 768px) {
-    :root { --header-height: 60px; }
-    .header { height: var(--header-height); }
-    .header-content { flex-direction: column; height: auto; padding: 0.5rem 1rem; }
-    .logo { height: 30px; margin-bottom: 0.5rem; }
+@media (max-width: 768px) { /* Mobile */
+    :root { --header-height: auto; } /* Allow header height to adjust */
+    .header { height: auto; position: absolute; /* Change from fixed for easier layout */ }
+    .header-content { flex-direction: column; padding: 0.75rem 1rem; }
+    .logo { height: 35px; margin-bottom: 0.75rem; }
     .nav { width: 100%; }
-    .nav ul { justify-content: center; flex-wrap: wrap; gap: 0.5rem 1rem; }
+    .nav ul { justify-content: center; flex-wrap: wrap; gap: 0.5rem 1rem; padding-bottom: 0.5rem; }
     .nav ul li a { padding: 0.3rem 0; font-size: 0.8rem; }
-    .main-content { padding-top: 100px; } /* Adjust based on wrapped nav height */
+    .progress-bar { bottom: 0; }
+     /* Adjust top padding dynamically with JS if header height changes significantly, or use a fixed estimate */
+    .main-content { padding-top: 140px; /* Estimate based on logo+nav wrap */ }
+
+    .section { padding: 2.5rem 1rem 3.5rem 1rem; }
     h1 { font-size: 2rem; }
     h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.3rem; }
+
+    .pillar-card-grid { grid-template-columns: 1fr; gap: 1rem;} /* Stack pillar cards */
+    .pillar-card { padding: 2rem 1rem; }
+
     .timeline { padding-left: 0.5rem; }
     .timeline-item { padding-left: 1.5rem; }
     .timeline-item::before { left: -4.5px; width: 12px; height: 12px; border-width: 2px; }
-    .risk-grid { grid-template-columns: 1fr; }
+
+    .risk-grid { grid-template-columns: 1fr; gap: 1rem; } /* Stack risk cards */
+    .card { padding: 1.5rem; } /* Reduce padding in cards */
+
+    .flowchart-container { align-items: flex-start; } /* Align left for simpler mobile */
+    .flowchart-step, .flowchart-decision-box { max-width: 90%; font-size: 0.85rem; padding: 0.6rem 1rem; }
+    .flowchart-decision { flex-direction: column; align-items: flex-start; padding: 0; }
+    .flowchart-path { position: static; transform: none; margin-left: 1rem; margin-top: 0.5rem; align-items: flex-start;}
+    .flowchart-path .arrow { width: 15px; height: 15px; background: none; border-left: 2px solid var(--text-secondary); border-bottom: 2px solid var(--text-secondary); transform: rotate(-45deg); margin-bottom: 0; margin-right: 5px; display: inline-block; vertical-align: middle;}
+    .flowchart-path.no .arrow::before { display: none; } /* Hide complex arrow parts */
+    .flowchart-path span { display: inline-block; }
+    .flowchart-connector.yes-path span { position: static; margin-left: 5px; }
+
     .action-buttons { bottom: 1rem; right: 1rem; }
     .action-button { width: 48px; height: 48px; }
     .action-button svg { width: 20px; height: 20px; }
+    .tech-stack-table td, .tech-stack-table th { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
 }
 
-/* Print Styles */
+/* --- Print Styles --- */
+/* Print styles remain largely the same as previous version, ensure class names match if needed */
 @media print {
-    /* Reset styles for print */
-    body {
-        background: var(--bmw-white) !important;
-        color: var(--bmw-black) !important;
-        font-size: 11pt;
-        line-height: 1.5;
-    }
-
-    * {
-        background: transparent !important;
-        color: var(--bmw-black) !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-        filter: none !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        border-color: #ccc !important;
-    }
-
-    /* Hide non-printable elements */
-    .header,
-    .nav .progress-bar,
-    .action-buttons {
-        display: none !important;
-    }
-
+    /* Reset styles */
+    body { background: var(--bmw-white) !important; color: var(--bmw-black) !important; font-size: 11pt; line-height: 1.5; }
+    * { background: transparent !important; color: var(--bmw-black) !important; box-shadow: none !important; text-shadow: none !important; filter: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border-color: #ccc !important; transition: none !important; }
+    /* Hide */
+    .header, .nav .progress-bar, .action-buttons { display: none !important; }
     /* Layout */
     .main-content { margin: 0; padding: 1cm; padding-top: 0; }
-    .section {
-        padding: 1cm 0;
-        max-width: 100%;
-        opacity: 1 !important;
-        transform: none !important;
-        page-break-inside: avoid;
-    }
-    .card, .glass-card, .table-container, .timeline-item {
-        border: 1px solid #ccc;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 0;
-        background: #f9f9f9 !important; /* Slight background for cards */
-    }
-
+    .section { padding: 1cm 0; max-width: 100%; opacity: 1 !important; transform: none !important; page-break-inside: avoid; }
+    .card, .glass-card, .table-container, .timeline-item { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 0; background: #f9f9f9 !important; }
     /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-        color: var(--bmw-black) !important;
-        page-break-after: avoid;
-        margin-top: 1.5rem;
-    }
-    h1 { font-size: 20pt; }
-    h2 { font-size: 16pt; border-bottom: 1px solid #ccc; }
-    h3 { font-size: 14pt; }
-    h4 { font-size: 12pt; }
+    h1, h2, h3, h4, h5, h6 { color: var(--bmw-black) !important; page-break-after: avoid; margin-top: 1.5rem; }
+    h1 { font-size: 20pt; } h2 { font-size: 16pt; border-bottom: 1px solid #ccc; } h3 { font-size: 14pt; } h4 { font-size: 12pt; }
     a { text-decoration: underline; color: var(--bmw-blue) !important; }
-    a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 9pt; } /* Show URLs */
-    a[href^="#"] { text-decoration: none; color: inherit !important; } /* Hide internal links */
-
-    /* Specific Structures */
-    .honeycomb-grid { display: block; } /* Fallback layout */
-    .honeycomb-item { clip-path: none; padding-bottom: 0; margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem; }
-    .honeycomb-content { position: static; text-align: left; padding: 0; }
-    .timeline { padding-left: 0; }
-    .timeline::before, .timeline-item::before { display: none; } /* Hide visual timeline elements */
-    .timeline-item { padding-left: 0; }
-    .risk-grid { display: block; } /* Stack risks */
-    .risk-card { margin-bottom: 1rem; }
+    a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 9pt; }
+    a[href^="#"] { text-decoration: none; color: inherit !important; }
+    /* Structures */
+    .pillar-card-grid, .risk-grid { display: block; } /* Fallback layout */
+    .pillar-card, .risk-card { margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem; text-align: left; }
+    .timeline { padding-left: 0; } .timeline::before, .timeline-item::before { display: none; } .timeline-item { padding-left: 0; }
+    .flowchart-container { display: block; border: 1px solid #ccc; padding: 1rem; } .flowchart-container pre { white-space: pre-wrap; font-size: 9pt; } /* Fallback to text for flowchart */
     .tech-stack-table th, .tech-stack-table td { border: 1px solid #ccc; font-size: 10pt; }
-
     /* Page breaks */
-    .section h2 { page-break-before: auto; } /* Try to start sections on new page */
-
+    .section h2 { page-break-before: auto; }
     @page { margin: 1.5cm; }
 }
