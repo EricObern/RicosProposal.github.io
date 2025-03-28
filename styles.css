@@ -39,13 +39,12 @@
     --flowchart-icon-color: var(--text-secondary);
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, #004C8C 100%);
-    --gradient-accent: linear-gradient(135deg, var(--accent-secondary) 0%, #B30510 100%);
+    --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, #004C8C 100%); /* Blue gradient */
+    --gradient-accent: linear-gradient(135deg, var(--accent-secondary) 0%, #B30510 100%); /* Red gradient */
     /* Subtle layered background gradient */
     --gradient-background:
         linear-gradient(160deg, rgba(10, 10, 12, 0.1) 0%, rgba(20, 20, 24, 0.3) 100%),
         linear-gradient(45deg, rgba(20, 20, 24, 0.2) 0%, rgba(10, 10, 12, 0.1) 100%);
-        /* Was radial-gradient(circle at top left, rgba(255,255,255,0.03), rgba(255,255,255,0)); */
 
     /* Shadows - Slightly Softer */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -72,6 +71,7 @@
     --panel-padding: calc(var(--element-spacing) * 1.8); /* Base padding for panels */
     --panel-padding-mobile: calc(var(--element-spacing) * 1.4);
     --mobile-breakpoint: 768px;
+    --desktop-nav-breakpoint: 1050px; /* Breakpoint for adjusting desktop nav */
     --element-spacing: 1.5rem; /* Base unit for margins/padding */
     --border-radius-md: 12px; /* Medium border radius */
     --border-radius-lg: 16px; /* Large border radius */
@@ -112,22 +112,34 @@ body.mobile-menu-open { overflow: hidden; }
     max-width: var(--max-content-width); margin: 0 auto; padding: var(--content-padding);
     height: 100%; display: flex; justify-content: space-between; align-items: center;
 }
-.logo { height: 45px; width: auto; flex-shrink: 0; transition: transform var(--transition-speed) var(--ease-out-cubic); filter: brightness(0) invert(1); /* Make logo white for dark mode */}
-.logo:hover { transform: scale(1.05); filter: brightness(0) invert(1) drop-shadow(var(--highlight-glow));}
+.logo {
+    height: 45px;
+    width: auto;
+    flex-shrink: 0;
+    transition: transform var(--transition-speed) var(--ease-out-cubic), filter var(--transition-speed);
+    /* filter: brightness(0) invert(1); /* REMOVED - Logo should have contrast */
+}
+.logo:hover {
+    transform: scale(1.05);
+    /* filter: brightness(0) invert(1) drop-shadow(var(--highlight-glow)); /* REMOVED */
+}
+
 
 /* Desktop Navigation */
 .nav.desktop-nav { position: relative; }
 .nav.desktop-nav ul { display: flex; list-style: none; gap: calc(var(--element-spacing) * 1.6); }
-.nav.desktop-nav ul li a { white-space: nowrap; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 1rem; transition: color var(--transition-speed); position: relative; padding: 0.5rem 0.2rem; }
+.nav.desktop-nav ul li a { white-space: nowrap; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 1rem; transition: color var(--transition-speed), font-size var(--transition-speed); position: relative; padding: 0.5rem 0.2rem; }
 .nav.desktop-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; margin: auto; width: 0; height: 2px; background-color: var(--accent-primary); /* Use primary blue for underline */ transition: width var(--transition-speed) var(--ease-out-cubic), background-color var(--transition-speed); }
 .nav.desktop-nav ul li a:hover { color: var(--text-primary); }
 .nav.desktop-nav ul li a:hover::after { width: 100%; }
 .nav.desktop-nav ul li a.active { color: var(--text-primary); }
-.nav.desktop-nav ul li a.active::after { width: 100%; background-color: var(--accent-secondary); /* Red for active */ }
+/* Active link underline back to blue */
+.nav.desktop-nav ul li a.active::after { width: 100%; background-color: var(--accent-primary); }
 
+/* Progress bar back to blue */
 .progress-bar {
     position: absolute; bottom: -1px; left: 0; height: 3px;
-    background: var(--gradient-accent); /* Use red gradient for progress */
+    background: var(--gradient-primary); /* Use BLUE gradient for progress */
     width: 0%;
     transition: width 0.1s linear; /* Keep fast */
     border-radius: 0 2px 2px 0;
@@ -146,8 +158,24 @@ body.mobile-menu-open { overflow: hidden; }
 .hamburger-button.active span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
 
 /* Mobile Menu Overlay */
-.mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; /* Use dynamic viewport height */ background-color: rgba(10, 10, 12, 0.95); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.35s var(--ease-out-cubic), visibility 0s linear 0.35s; padding-top: calc(var(--header-height-mobile) + 3rem); overflow-y: auto; }
-.mobile-menu.open { opacity: 1; visibility: visible; transition: opacity 0.35s var(--ease-out-cubic), visibility 0s linear 0s; }
+.mobile-menu {
+    display: block; /* Keep it in the DOM, control visibility with opacity/visibility */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100dvh; /* Use dynamic viewport height */
+    background-color: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.35s var(--ease-out-cubic), visibility 0s linear 0.35s;
+    padding-top: calc(var(--header-height-mobile) + 3rem);
+    overflow-y: auto;
+}
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible; /* Make visible when open */
+    transition: opacity 0.35s var(--ease-out-cubic), visibility 0s linear 0s;
+}
 .mobile-menu nav { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: calc(100% - var(--header-height-mobile) - 6rem); }
 .mobile-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
 .mobile-menu li { margin-bottom: 2.5rem; /* Increased spacing */ }
@@ -158,8 +186,8 @@ body.mobile-menu-open { overflow: hidden; }
 .mobile-menu a:hover::after { transform: scaleX(1); }
 
 /* Utility classes */
-.mobile-only { display: none; }
-.desktop-only { display: block; }
+.mobile-only { display: none; } /* Will be shown via media query */
+.desktop-only { display: block; } /* Will be hidden via media query */
 
 /* --- Main Content & Sections --- */
 .main-content { padding-top: var(--header-height); }
@@ -245,6 +273,20 @@ ul.channel-list > li::before {
     background: none; width: auto; height: auto; border-radius: 0; transform: none;
 }
 
+/* Roadmap list style (now using UL) */
+ul.roadmap-details { list-style: none; padding-left: calc(var(--element-spacing) * 1.5); } /* Changed padding */
+ul.roadmap-details li { margin-bottom: calc(var(--element-spacing)*0.7); font-size: 1rem; position: relative; color: var(--text-primary); padding-left: calc(var(--element-spacing) * 0.5); }
+ul.roadmap-details li::before {
+    content: '—'; /* Use em-dash or similar */
+    color: var(--accent-primary);
+    font-weight: 600;
+    position: absolute;
+    left: -0.2em;
+    top: -0.05em; /* Adjust alignment */
+    font-size: 1.1em;
+    background: none; width: auto; height: auto; border-radius: 0; transform: none;
+}
+
 a { color: var(--accent-primary); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: rgba(0, 102, 177, 0.4); transition: color var(--transition-speed), text-decoration-color var(--transition-speed); }
 a:hover { color: var(--bmw-red); text-decoration-color: rgba(227, 6, 19, 0.6); } /* Red hover */
 .nav a, .action-button a, h1 a, h2 a, h3 a, h4 a, h5 a { text-decoration: none; }
@@ -264,12 +306,23 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
     transition: transform var(--transition-medium) var(--ease-out-cubic),
                 box-shadow var(--transition-medium) var(--ease-out-cubic),
                 border-color var(--transition-medium);
+    /* Fix for mobile visibility bug - ensure base visibility */
+    opacity: 1;
+    visibility: visible;
 }
 .panel.interactive-element:hover { /* Hover applied to panel itself */
     transform: translateY(-6px) scale(1.01);
     box-shadow: var(--shadow-lg), var(--highlight-glow);
     border-color: var(--border-color-hover);
 }
+
+/* Ensure animated items inside panels are visible once section is visible */
+/* This might need further refinement depending on exact cause of mobile bug */
+.section.visible .panel .animate-item {
+    opacity: 1; /* Ensure opacity is set when section is visible */
+    transform: translateY(0) scale(1);
+}
+
 
 /* Meta Info Panel specific style */
 .panel-meta {
@@ -350,9 +403,6 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
 .timeline-item.visible .timeline-dot { transform: scale(1.1); box-shadow: var(--highlight-glow-red);} /* Simple animation on view */
 .timeline-content { padding: 0 0 0 calc(var(--element-spacing)*0.5); position: relative; }
 .timeline-item h3 { margin-top: 0; margin-bottom: calc(var(--element-spacing)*0.8); color: var(--text-headings-sub); font-size: 1.6rem; font-weight: 600; }
-.roadmap-details { list-style: decimal; padding-left: var(--element-spacing); }
-.roadmap-details li { margin-bottom: calc(var(--element-spacing)*0.7); font-size: 1rem; position: relative; color: var(--text-primary); }
-.roadmap-details li::marker { color: var(--accent-primary); font-weight: 600; font-size: 1.1em; }
 
 /* --- Risk & Mitigation List --- */
 .risk-list { list-style: none; padding-left: 0; margin-top: 0; }
@@ -401,24 +451,49 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
     transform: translateX(4px);
     border-radius: 6px; /* Ensure radius is visible */
 }
-/* Apply specific hover to risk list definition groups */
-.risk-list > div.interactive-element {
-    padding: var(--element-spacing);
+/* Apply specific hover to risk list definition groups (now dt/dd) */
+.risk-list > dt.interactive-element,
+.risk-list > dd.interactive-element {
+    padding: calc(var(--element-spacing) * 0.5) var(--element-spacing); /* Add padding for hover */
     margin: 0 calc(var(--element-spacing) * -1); /* Extend hover background to panel edges */
     border-radius: var(--border-radius-md);
 }
-.risk-list > div.interactive-element:hover {
+.risk-list > dt.interactive-element:hover,
+.risk-list > dd.interactive-element:hover {
     background-color: var(--bg-tertiary);
     transform: scale(1.01);
     box-shadow: var(--shadow-sm);
 }
+/* Ensure dt/dd hover together visually if possible (tricky without wrapper) */
+.risk-list > dt.interactive-element:hover + dd.interactive-element {
+     background-color: var(--bg-tertiary);
+     transform: scale(1.01);
+     box-shadow: var(--shadow-sm);
+     border-top: 1px solid var(--border-color-light); /* Add separator on hover */
+     margin-top: -1px; /* Prevent double borders */
+}
+
 
 /* --- Responsive Design --- */
-@media (max-width: 992px) { /* Tablet */
+
+/* Medium Desktops / Large Tablets */
+@media (max-width: 1050px) and (min-width: 769px) {
+    :root {
+        --element-spacing: 1.4rem;
+    }
+     .nav.desktop-nav ul {
+        gap: calc(var(--element-spacing) * 1.2); /* Reduce gap */
+    }
+    .nav.desktop-nav ul li a {
+        font-size: 0.9rem; /* Reduce font size */
+    }
+}
+
+
+@media (max-width: 992px) { /* Smaller Tablets */
     :root { --content-padding: 0 2rem; --section-padding-y: 5rem; --element-spacing: 1.4rem; --panel-padding: calc(var(--element-spacing) * 1.6);}
     h1 { font-size: clamp(2.1rem, 6vw, 3rem); } h2, h3.section-identifier { font-size: clamp(1.7rem, 5vw, 2.3rem); } h3 { font-size: clamp(1.4rem, 4vw, 1.7rem); }
-    .nav.desktop-nav ul { gap: calc(var(--element-spacing) * 1.3); }
-    .nav.desktop-nav ul li a { font-size: 0.95rem; }
+    /* Desktop nav adjustments already handled by 1050px breakpoint */
     .pillar-list { columns: 1; }
     .panel { padding: var(--panel-padding); }
     .flowchart { min-width: 450px; } /* Placeholder adjustment */
@@ -427,13 +502,15 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
 @media (max-width: 768px) { /* Mobile */
     :root { --content-padding: var(--content-padding-mobile); --section-padding-y: var(--section-padding-y-mobile); --element-spacing: 1.2rem; font-size: 16px; --panel-padding: var(--panel-padding-mobile); --header-height: var(--header-height-mobile); }
     .desktop-nav { display: none; }
-    .mobile-only { display: block; }
+    .desktop-only { display: none; } /* Hide desktop only */
+    .mobile-only { display: block; } /* Show mobile only */
     .header { height: var(--header-height); }
     .main-content { padding-top: var(--header-height); }
     .header-content { padding: var(--content-padding); } /* Ensure mobile padding used */
     .logo { height: 38px; }
 
     h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); } h2, h3.section-identifier { font-size: clamp(1.6rem, 6vw, 2rem); } h3 { font-size: clamp(1.3rem, 5vw, 1.6rem); }
+    .pillar-list { columns: 1; } /* Already handled above, but good to ensure */
     .pillar-list li { font-size: 1rem; padding-left: calc(var(--element-spacing)*1.5); }
     .pillar-list li::before { left: 0.3rem; }
 
@@ -442,12 +519,20 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
     .timeline-dot { left: -8px; width: 16px; height: 16px; border-width: 3px; top: 6px; }
     .timeline-content { padding-left: calc(var(--element-spacing)*0.4); }
     .timeline-item h3 { font-size: 1.4rem; }
-    .roadmap-details { padding-left: var(--element-spacing); }
-    .roadmap-details li { font-size: 0.95rem; }
+    ul.roadmap-details { padding-left: var(--element-spacing); }
+    ul.roadmap-details li { font-size: 0.95rem; }
 
     .panel { padding: var(--panel-padding); border-radius: var(--border-radius-md); } /* Slightly smaller radius on mobile */
     .risk-list dt { font-size: 1.05rem; }
     .risk-list dd { font-size: 0.95rem; }
+
+    /* Mobile Bug Fix: Ensure panel content is visible */
+    #pillar-details .panel .animate-item {
+        opacity: 1 !important; /* Force opacity if animation interaction fails */
+        transform: none !important; /* Reset any transforms hiding it */
+        /* Add other potential overrides if needed, e.g. visibility: visible !important; */
+    }
+
 
     /* Responsive Table Styles */
     .tech-stack-table thead { display: none; }
@@ -492,7 +577,7 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
      ul.channel-list li::before { content: "# "; display: inline; color: #555 !important; position: static; font-weight: normal; }
      .pillar-list { columns: 1; list-style: disc; padding-left: 2rem; }
      .timeline { padding-left: 0; } .timeline::before, .timeline-dot { display: none; } .timeline-item { padding-left: 0; margin-bottom: 0.5rem; }
-     .roadmap-details { list-style: decimal; }
+     ul.roadmap-details { list-style: disc; } /* Bullets for roadmap print */
      /* Placeholder Flowchart Print */
      .placeholder-flowchart { border: 1px dashed #aaa; padding: 0.5cm; background: #f0f0f0 !important; text-align: center; color: #555 !important; }
      .placeholder-flowchart p { margin: 0; font-style: italic; }
@@ -515,7 +600,8 @@ pre { background-color: var(--bg-tertiary); padding: var(--element-spacing); bor
 
 /* Added will-change properties back for potential performance gains - monitor impact */
 .animate-item { will-change: opacity, transform; }
-.action-button, .logo, .panel.interactive-element { will-change: transform, box-shadow; }
+.action-button, .panel.interactive-element, .pillar-list li.interactive-element { will-change: transform, box-shadow; }
 .header { will-change: transform, background-color; }
 .progress-bar { will-change: width; }
 .timeline-dot { will-change: transform, box-shadow; }
+.logo { will-change: transform, filter; } /* Keep filter in will-change even if not actively used now */
