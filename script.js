@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Configuration and Utilities
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         debounceDelay: 150,
         observerThreshold: 0.1, // 10% visible
         observerMargin: '0px 0px -50px 0px', // Trigger slightly before fully in view
-        staggerDelay: 80, // Slightly faster stagger
+        staggerDelay: 70, // Slightly faster stagger (Adjust as needed)
         tooltipTimeout: 2000
     };
     const utility = {
@@ -17,10 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Helper: Calculate Header Offset ---
     const getHeaderOffset = () => {
         const header = document.querySelector('.header');
-        // Use fixed height for mobile calculation, offsetHeight otherwise
-        const isMobile = window.innerWidth <= parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-breakpoint').replace('px', ''));
-        return header ? (isMobile ? 60 : header.offsetHeight) : (isMobile ? 60 : 70); // Fallback values
+        const rootStyle = getComputedStyle(document.documentElement);
+        const isMobile = window.innerWidth <= parseInt(rootStyle.getPropertyValue('--mobile-breakpoint').replace('px', ''));
+        const mobileHeaderHeight = parseInt(rootStyle.getPropertyValue('--header-height-mobile').replace('px', '')) || 60;
+        const desktopHeaderHeight = parseInt(rootStyle.getPropertyValue('--header-height').replace('px', '')) || 70;
+
+        return header ? (isMobile ? mobileHeaderHeight : header.offsetHeight) : (isMobile ? mobileHeaderHeight : desktopHeaderHeight); // Fallback values
     };
+
 
     // --- Hamburger Menu ---
     const setupHamburgerMenu = () => {
@@ -42,63 +47,83 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close menu on link click and scroll
         mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                const targetElement = targetId && targetId !== '#' ? document.querySelector(targetId) : null;
+
+                // Close menu first
                 hamburgerButton.setAttribute('aria-expanded', 'false');
                 hamburgerButton.classList.remove('active');
                 mobileMenu.classList.remove('open');
                 body.classList.remove('mobile-menu-open');
                 mobileMenu.setAttribute('aria-hidden', 'true');
 
-                const targetId = link.getAttribute('href');
-                try {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
+                // Scroll after menu close animation has time to start
+                 if (targetElement) {
+                    e.preventDefault();
+                    setTimeout(() => {
                         const headerOffset = getHeaderOffset();
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = window.pageYOffset + elementPosition - headerOffset - 20; // Buffer
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Use pageYOffset for absolute position
+                        const offsetPosition = elementPosition - headerOffset - 20; // Buffer
 
-                        setTimeout(() => {
-                            window.scrollTo({
-                                top: Math.max(0, offsetPosition),
-                                behavior: 'smooth'
-                            });
-                        }, 50); // Allow menu close animation
-                    } else { console.warn(`Mobile menu scroll target not found: ${targetId}`); }
-                } catch (error) { console.error(`Error finding mobile menu scroll target: ${targetId}`, error); }
+                        window.scrollTo({
+                            top: Math.max(0, offsetPosition),
+                            behavior: 'smooth'
+                        });
+                    }, 100); // Increased delay slightly for smoother visual transition
+                 } else if (targetId === '#top' || !targetId || targetId === '#') {
+                     e.preventDefault();
+                      setTimeout(() => {
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }, 100);
+                 } else {
+                     console.warn(`Mobile menu scroll target not found: ${targetId}`);
+                 }
             });
         });
     };
 
     // --- Smooth Scrolling (Desktop Nav & Logo Link) ---
     const setupSmoothScrolling = () => {
-        // Select desktop nav links and the logo link
-        document.querySelectorAll('.desktop-nav a.nav-link[href^="#"], a[href="#top"]').forEach(anchor => {
+        // Select desktop nav links and the logo link specifically
+        document.querySelectorAll('.desktop-nav a.nav-link[href^="#"], .header-content a[href="#top"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                 e.preventDefault();
                  const targetId = this.getAttribute('href');
-                 try {
-                    // Handle #top link separately
-                    if (targetId === '#top') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        // Optionally clear hash, but maybe not needed as it's #top
-                        // history.pushState("", document.title, window.location.pathname + window.location.search);
-                        return;
-                    }
 
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerOffset = getHeaderOffset();
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = window.pageYOffset + elementPosition - headerOffset - 20; // Buffer
-                        window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
-                        // Update hash in URL without jump for better navigation feel
-                        // if (history.pushState) {
-                        //     history.pushState(null, null, targetId);
-                        // } else {
-                        //     location.hash = targetId; // Fallback
-                        // }
-                    } else { console.warn(`Smooth scroll target not found: ${targetId}`); }
-                } catch (error) { console.error(`Error finding smooth scroll target: ${targetId}`, error); }
+                 // Handle #top link separately
+                 if (targetId === '#top') {
+                     e.preventDefault();
+                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                     // Clear hash without jump - optional but clean
+                     if (history.pushState) {
+                         history.pushState("", document.title, window.location.pathname + window.location.search);
+                     }
+                     return;
+                 }
+
+                 // Handle other internal links
+                 if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+                    try {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            const headerOffset = getHeaderOffset();
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Absolute position
+                            const offsetPosition = elementPosition - headerOffset - 20; // Buffer
+
+                            window.scrollTo({
+                                top: Math.max(0, offsetPosition),
+                                behavior: 'smooth'
+                            });
+                            // Update hash in URL without jump after scrolling (optional)
+                            // setTimeout(() => {
+                            //     if (history.pushState) {
+                            //         history.pushState(null, null, targetId);
+                            //     }
+                            // }, 800); // Delay to allow scroll to finish
+
+                        } else { console.warn(`Smooth scroll target not found: ${targetId}`); }
+                    } catch (error) { console.error(`Error finding smooth scroll target: ${targetId}`, error); }
+                 }
             });
         });
     };
@@ -107,90 +132,92 @@ document.addEventListener('DOMContentLoaded', () => {
      const setupHeaderScrollEffect = () => {
          const header = document.querySelector('.header'); if (!header) return;
          let lastScroll = 0;
-         let headerHeight = header.offsetHeight; // Initial height
          const mobileBreakpoint = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-breakpoint').replace('px', ''));
 
          const handleScroll = () => {
              const currentScroll = window.pageYOffset;
-             // Check screen width dynamically inside handler
              const isDesktop = window.innerWidth > mobileBreakpoint;
+             const headerHeight = header.offsetHeight; // Get current height dynamically
 
+             // Only apply hide/show on desktop when menu is closed
              if (!document.body.classList.contains('mobile-menu-open') && isDesktop) {
-                 const scrollThreshold = headerHeight * 0.5; // Trigger earlier
-                 if (currentScroll <= scrollThreshold) {
+                 const scrollThreshold = 50; // Start hiding slightly after scrolling down
+
+                 if (currentScroll <= scrollThreshold) { // Show header when near top
                      header.classList.remove('scroll-up', 'scroll-down');
                      return;
                  }
-                 if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+                 // Determine scroll direction
+                 if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) { // Scrolling Down
                      header.classList.remove('scroll-up');
                      header.classList.add('scroll-down');
-                 } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+                 } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) { // Scrolling Up
                      header.classList.remove('scroll-down');
                      header.classList.add('scroll-up');
                  }
-             } else { // Ensure visible on mobile or when menu open
+             } else { // Ensure header is visible on mobile or when mobile menu is open
                  header.classList.remove('scroll-up', 'scroll-down');
              }
              lastScroll = Math.max(0, currentScroll);
          };
 
+         // Debounce resize handler to avoid performance issues
+         const debouncedHandleScroll = utility.debounce(handleScroll, 50); // Debounce slightly on resize too
          const handleResize = () => {
-             headerHeight = header.offsetHeight; // Update height on resize
-             // Re-evaluate header state immediately on resize
-             handleScroll();
+            // Re-evaluate header state immediately on resize based on new width
+            handleScroll();
          };
 
          window.addEventListener('scroll', utility.throttle(handleScroll, performanceConfig.throttleDelay));
          window.addEventListener('resize', utility.debounce(handleResize, performanceConfig.debounceDelay));
-         handleResize(); // Initial call
+         handleScroll(); // Initial call to set state
     };
 
     // --- Progress Bar & Active Nav Link (Desktop Nav) ---
     const setupScrollProgress = () => {
         const progressBar = document.querySelector('.progress-bar');
-        const sections = document.querySelectorAll('.section');
+        const sections = document.querySelectorAll('main > section[id]'); // More specific selector
         const navLinks = document.querySelectorAll('.desktop-nav ul li a.nav-link');
         if (!progressBar || sections.length === 0 || navLinks.length === 0) return;
 
         const updateProgressAndNav = () => {
-            const headerOffset = getHeaderOffset();
-            requestAnimationFrame(() => {
+            requestAnimationFrame(() => { // Ensure updates happen in sync with rendering
+                const headerOffset = getHeaderOffset();
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight;
-                const totalScrollable = documentHeight - windowHeight;
+                const totalScrollable = documentHeight - windowHeight - headerOffset; // Adjust total scrollable height
                 const scrolled = window.scrollY;
                 const progress = totalScrollable > 0 ? (scrolled / totalScrollable) * 100 : 0;
-                progressBar.style.width = `${Math.min(progress, 100)}%`;
+                progressBar.style.width = `${Math.min(Math.max(0, progress), 100)}%`; // Clamp progress between 0 and 100
 
                 let currentSectionId = '';
-                const scrollMidPoint = scrolled + windowHeight * 0.4; // Adjusted detection point
+                // Adjust detection point: section top edge needs to pass a point slightly below the sticky header
+                const detectionPoint = scrolled + headerOffset + 50; // 50px buffer below header
 
                 sections.forEach(section => {
-                    // Add header offset and a small buffer for earlier activation
-                    const sectionTop = section.offsetTop - headerOffset - 50;
+                    const sectionTop = section.offsetTop;
                     const sectionBottom = sectionTop + section.offsetHeight;
-                    if (scrollMidPoint >= sectionTop && scrollMidPoint < sectionBottom) {
+
+                    if (detectionPoint >= sectionTop && detectionPoint < sectionBottom) {
                         currentSectionId = section.getAttribute('id');
                     }
                 });
 
-                // Fallback if no section is detected in the middle (e.g., at the very top/bottom)
+                // Fallback if very close to top or bottom
                 if (!currentSectionId) {
-                    let minDistance = Infinity;
-                    sections.forEach(section => {
-                        const distance = Math.abs((section.offsetTop - headerOffset) - scrolled);
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            currentSectionId = section.getAttribute('id');
-                        }
-                    });
+                     if (scrolled < sections[0].offsetTop - headerOffset - 50) {
+                         // Before the first section, highlight the first link if scrolled near top
+                          currentSectionId = scrolled < 100 ? sections[0].getAttribute('id') : '';
+                     } else if (scrolled + windowHeight >= documentHeight - 100) {
+                         // Near the bottom, highlight the last link
+                         currentSectionId = sections[sections.length - 1].getAttribute('id');
+                     }
                 }
 
+
                 navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active');
-                    }
+                    const isActive = link.getAttribute('href') === `#${currentSectionId}`;
+                    link.classList.toggle('active', isActive);
                 });
             });
         };
@@ -207,11 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const section = entry.target;
-                    section.classList.add('visible');
+                    section.classList.add('visible'); // Trigger section visibility for potential container animations
                     const itemsToAnimate = section.querySelectorAll('.animate-item');
                     itemsToAnimate.forEach((item, index) => {
-                        // Apply stagger delay directly
+                        // Apply stagger delay using CSS custom property
                         item.style.setProperty('--animation-delay', `${index * performanceConfig.staggerDelay}ms`);
+                        // Add 'visible' class to items for animation (already done via CSS rule .section.visible .animate-item)
                     });
                     observer.unobserve(section); // Stop observing once visible
                 }
@@ -225,26 +253,27 @@ document.addEventListener('DOMContentLoaded', () => {
      };
 
      // --- Show Tooltip ---
-     let tooltipTimeoutId = null; // Store timeout ID
+     let tooltipTimeoutId = null; // Store timeout ID globally within this scope
      const showTooltip = (button, message) => {
         const tooltip = button.querySelector('.tooltip-message');
         if (!tooltip) return;
 
-        // Clear any existing timeout
+        // Clear any existing timeout to prevent multiple tooltips or premature hiding
         if (tooltipTimeoutId) {
             clearTimeout(tooltipTimeoutId);
         }
 
         tooltip.textContent = message;
-        tooltip.classList.add('visible');
+        tooltip.classList.add('visible'); // Make it visible
 
-        // Set new timeout to hide
+        // Set new timeout to hide the tooltip
         tooltipTimeoutId = setTimeout(() => {
             tooltip.classList.remove('visible');
-            // Optionally clear text after animation finishes if needed
-            // setTimeout(() => tooltip.textContent = '', 300); // Match CSS transition
+            // Optional: Clear text after hiding animation (if needed, match CSS transition duration)
+            // setTimeout(() => { if (tooltip) tooltip.textContent = ''; }, 300);
         }, performanceConfig.tooltipTimeout);
     };
+
 
     // --- Action Buttons (Copy/Print) ---
     const setupActionButtons = () => {
@@ -261,95 +290,138 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Generate Text Representation
+                // --- Refined Text Generation for Copy ---
                 let textToCopy = '';
                 const sections = mainContent.querySelectorAll('.section');
-                sections.forEach((section) => {
-                    const titleElement = section.querySelector('h1, h2, h3.section-identifier');
+
+                sections.forEach((section, sectionIndex) => {
+                    const titleElement = section.querySelector('h1, h2'); // Main section titles
+                    const sectionIdentifier = section.querySelector('h3.section-identifier'); // Exec Summary specific
+
                     if (titleElement) {
                         textToCopy += `${titleElement.textContent.trim()}\n`;
-                        textToCopy += '-'.repeat(titleElement.textContent.trim().length) + '\n\n'; // Underline
+                        textToCopy += '='.repeat(titleElement.textContent.trim().length) + '\n\n'; // Use '=' for main titles
+                    }
+                    if (sectionIdentifier) {
+                        textToCopy += `${sectionIdentifier.textContent.trim()}\n`;
+                         textToCopy += '-'.repeat(sectionIdentifier.textContent.trim().length) + '\n\n'; // Use '-' for sub-section titles
                     }
 
-                    const metaInfo = section.querySelector('.meta-info');
-                    if (metaInfo) {
-                         metaInfo.querySelectorAll('p').forEach(p => {
-                            textToCopy += p.textContent.replace(/:\s+/g, ': ').trim() + '\n';
+                    const metaInfoPanel = section.querySelector('.panel-meta');
+                    if (metaInfoPanel) {
+                         metaInfoPanel.querySelectorAll('p').forEach(p => {
+                            // Clean up the strong tags and spacing
+                            let text = p.innerHTML.replace(/<strong>(.*?)<\/strong>/g, '$1').replace(/:\s+/g, ': ');
+                            textToCopy += text.trim() + '\n';
                          });
                          textToCopy += '\n';
                     }
 
+                     // Generic content extraction (paragraphs, lists, definitions)
                     const contentElements = section.querySelectorAll(
-                        '.content > p, .content ul > li, .content ol > li, .content dl > div, .flowchart-step span, .timeline-content h3, .timeline-content li'
+                        // Select elements within panels or direct content divs, excluding flowchart placeholder
+                        '.content > p, .panel > ul > li, .panel > ol > li, .panel > dl > div, .panel .styled-list > li, .panel .pillar-list > li, .panel .roadmap-details > li'
                     );
 
-                    contentElements.forEach(el => {
-                        // Skip elements within flowchart unless it's the main span text
-                        if (el.closest('.flowchart-container') && el.tagName !== 'SPAN') return;
-                        if (el.tagName === 'SPAN' && !el.closest('.flowchart-step')) return;
+                     contentElements.forEach(el => {
+                         if (el.closest('.placeholder-flowchart')) return; // Skip flowchart placeholder content
 
-                        let text = el.textContent?.trim();
-                        if (!text) return; // Skip empty elements
+                         let text = el.textContent?.trim();
+                         if (!text) return;
 
-                        let prefix = '';
-                        let suffix = '\n\n'; // Default suffix
+                         let prefix = '';
+                         let suffix = '\n\n'; // Default paragraph spacing
 
-                        // Determine hierarchy/type for prefixing/indentation
-                        if (el.closest('.pillar-list > li')) { prefix = '  • '; suffix = '\n'; }
-                        else if (el.closest('.styled-list > li')) { prefix = '  - '; suffix = '\n'; }
-                        else if (el.closest('.nested-list > li')) { prefix = '    ▪ '; suffix = '\n'; }
-                        else if (el.tagName === 'DT') { prefix = '  '; text += ': '; suffix = ''; } // Keep dt and dd together
-                        else if (el.tagName === 'DD') { prefix = '    '; suffix = '\n\n'; } // Indent dd and add space after
-                        else if (el.closest('.timeline-content')) {
-                            if (el.tagName === 'H3') { prefix = '\n## '; suffix = '\n'; }
-                            else if (el.tagName === 'LI') { prefix = '    - '; suffix = '\n'; }
-                        }
-                         else if (el.tagName === 'SPAN' && el.closest('.flowchart-step')) {
-                            const stepEl = el.closest('.flowchart-step');
-                            if (stepEl.classList.contains('step-start')) prefix = '[START] ';
-                            else if (stepEl.classList.contains('step-decision')) prefix = '[DECISION] ';
-                            else if (stepEl.classList.contains('step-manual')) prefix = '[MANUAL] ';
-                            else if (stepEl.classList.contains('step-stop')) prefix = '[STOP] ';
-                            else prefix = '[AUTO] ';
-                            suffix = '\n'; // Single newline for flowchart steps
-                        }
-                        else if (el.tagName === 'P' && el.closest('.conclusion-box')) { suffix = '\n\n'; } // Paragraphs in conclusion
-                        else if (el.tagName === 'P') { suffix = '\n\n'; } // Standard paragraph
+                         // List item indentation and markers
+                         if (el.tagName === 'LI') {
+                             const listDepth = el.closest('ul, ol')?.closest('ul, ol') ? 2 : 1; // Simple depth check
+                             const parentList = el.parentElement;
 
-                        // Special handling for specific lists like channels
-                        if (el.closest('.channel-list > li')) { prefix = '    #'; suffix = '\n'; text = text.replace(/^#/, ''); } // Remove existing #
+                             if (parentList?.classList.contains('styled-list')) {
+                                 prefix = '  '.repeat(listDepth) + '* '; // Use '*' for styled lists
+                                 suffix = '\n';
+                             } else if (parentList?.classList.contains('pillar-list')) {
+                                 prefix = '  - '; // Use '-' for pillar list
+                                 suffix = '\n';
+                             } else if (parentList?.classList.contains('roadmap-details')) {
+                                 // Get the actual number for ordered lists
+                                 const itemIndex = Array.from(parentList.children).indexOf(el) + 1;
+                                 prefix = '  '.repeat(listDepth) + `${itemIndex}. `;
+                                 suffix = '\n';
+                             } else if (parentList?.classList.contains('nested-list') || listDepth > 1) {
+                                 prefix = '  '.repeat(listDepth) + '  - '; // Indented bullet for nested lists
+                                 suffix = '\n';
+                             }
+                             else { // Default list item
+                                 prefix = '  - ';
+                                 suffix = '\n';
+                             }
 
-                        textToCopy += prefix + text + suffix;
-                    });
+                             // Handle 'Action:' prefixing if present
+                             const strongAction = el.querySelector('strong');
+                             if(strongAction && strongAction.textContent.includes('Action:')){
+                                 // Text already contains it, maybe just ensure proper spacing?
+                                 text = text.replace('Action:', 'Action:').trim(); // Normalize spacing
+                             }
+                         }
+                         // Definition list formatting
+                         else if (el.tagName === 'DIV' && el.closest('.risk-list')) {
+                            const dt = el.querySelector('dt');
+                            const dd = el.querySelector('dd');
+                            if (dt && dd) {
+                                text = `${dt.textContent.trim()}\n    ${dd.textContent.replace('Mitigation:', 'Mitigation:').trim()}`; // Indent mitigation
+                                prefix = '';
+                                suffix = '\n\n';
+                            } else {
+                                text = ''; // Don't add if dt/dd missing
+                            }
+                         }
+                         // Standard paragraph
+                         else if (el.tagName === 'P') {
+                             prefix = '';
+                             suffix = '\n\n';
+                         }
+                          // Special case for italicized ROI note
+                          if(el.tagName === 'I' || (el.tagName === 'LI' && el.children.length === 1 && el.children[0].tagName === 'I')){
+                              text = `_${text}_`; // Markdown style italic
+                              suffix = '\n\n';
+                          }
 
-                     // Table Data
+                         if (text) { textToCopy += prefix + text + suffix; }
+                     });
+
+                      // Table Data
                      const table = section.querySelector('.tech-stack-table');
                      if (table) {
-                         textToCopy += "--- Tech Stack ---\n";
+                         textToCopy += "--- Technology Stack ---\n";
                          table.querySelectorAll('tbody tr').forEach(row => {
                              const cells = row.querySelectorAll('td');
                              if (row.classList.contains('total-row')) {
                                  if (cells.length >= 2) textToCopy += `${cells[0].textContent.trim()} ${cells[1].textContent.trim()}\n`;
                              } else if (cells.length >= 4) {
-                                 textToCopy += `  • ${cells[0].textContent.trim()} (${cells[1].textContent.trim()}): ${cells[3].textContent.trim()}\n`;
+                                 const tool = cells[0].textContent.trim();
+                                 const role = cells[1].textContent.trim();
+                                 const cost = cells[3].textContent.trim();
+                                 textToCopy += `  • ${tool} (${role}): ${cost}\n`;
                              }
                          });
                          textToCopy += "\n";
                      }
 
-                    // Add section separator if content was added
-                    if (!textToCopy.endsWith('\n\n') && !textToCopy.endsWith('\n') && sections.length > 1) {
-                         textToCopy += '\n';
+                    // Add section separator unless it's the last section
+                    if (sectionIndex < sections.length - 1) {
+                       textToCopy += '\n----------------------------------------\n\n';
                     }
-                     if (sections.length > 1) {
-                         textToCopy += '----------------------------------------\n\n';
-                     }
                 });
 
+
                 try {
-                    await navigator.clipboard.writeText(textToCopy.replace(/\n{3,}/g, '\n\n').trim());
+                    // Final cleanup of excessive newlines
+                    const cleanedText = textToCopy.replace(/\n{3,}/g, '\n\n').trim();
+                    await navigator.clipboard.writeText(cleanedText);
                     showTooltip(copyButton, 'Copied!');
                     copyButton.classList.add('success');
+                    // Use tooltip timeout duration for removing class
                     setTimeout(() => copyButton.classList.remove('success'), performanceConfig.tooltipTimeout + 100);
                 } catch (err) {
                     console.error('Failed to copy text: ', err);
@@ -367,13 +439,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
      };
 
-    // --- Performance Hints (will-change) ---
+    // --- Performance Hints (will-change) - Re-evaluated ---
     const setupWillChange = () => {
-         // Apply strategically
+         // Apply strategically to elements undergoing frequent transform/opacity changes
          document.querySelectorAll('.animate-item').forEach(el => { el.style.willChange = 'opacity, transform'; });
-         document.querySelectorAll('.action-button, .logo, .interactive-element').forEach(el => { el.style.willChange = 'transform'; }); // Only transform
+         document.querySelectorAll('.action-button, .panel.interactive-element, .pillar-list li.interactive-element').forEach(el => { el.style.willChange = 'transform, box-shadow'; });
          const header = document.querySelector('.header'); if (header) { header.style.willChange = 'transform, background-color'; }
          const progressBar = document.querySelector('.progress-bar'); if(progressBar) { progressBar.style.willChange = 'width'; }
+         document.querySelectorAll('.timeline-dot').forEach(el => { el.style.willChange = 'transform, box-shadow'; });
+         const logo = document.querySelector('.logo'); if(logo) { logo.style.willChange = 'transform, filter'; }
      };
 
     // --- Initialize Everything ---
@@ -383,6 +457,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollProgress();
     setupSectionAnimations();
     setupActionButtons();
-    setupWillChange();
+    setupWillChange(); // Apply performance hints
 
 }); // End DOMContentLoaded
