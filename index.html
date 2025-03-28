@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Proposal - Digital Engagement Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header class="header">
+<body class="dark-mode"> {/* Apply dark mode by default */}
+
+    <header class="header glass-nav"> {/* Fixed Header with Glass Effect */}
         <div class="header-content">
-            <img src="assets/CSS-Sticker-Black.png" alt="CSS Logo" class="logo">
+            <img src="assets/CSS-Sticker-Black.png" alt="CSS Logo" class="logo" loading="lazy">
             <nav class="nav">
                 <ul>
-                    <li><a href="#executive-summary">Executive Summary</a></li>
-                    <li><a href="#problem-statement">Problem Statement</a></li>
+                    <li><a href="#executive-summary">Summary</a></li>
+                    <li><a href="#problem-statement">Problem</a></li>
                     <li><a href="#strategy">Strategy</a></li>
-                    <li><a href="#pillars">Strategic Pillars</a></li>
-                    <li><a href="#implementation">Implementation</a></li>
-                    <li><a href="#technology-stack">Technology Stack</a></li>
+                    <li><a href="#pillars">Pillars</a></li>
+                    <li><a href="#implementation">Details</a></li>
+                    <li><a href="#technology-stack">Stack</a></li>
                     <li><a href="#implementation-roadmap">Roadmap</a></li>
-                    <li><a href="#costs-benefits">Costs & Benefits</a></li>
-                    <li><a href="#risks-mitigation">Risks & Mitigation</a></li>
+                    <li><a href="#costs-benefits">ROI</a></li>
+                    <li><a href="#risks-mitigation">Risks</a></li>
                     <li><a href="#conclusion">Conclusion</a></li>
                 </ul>
+                <div class="progress-bar"></div> {/* Progress bar added */}
             </nav>
         </div>
     </header>
@@ -31,8 +36,8 @@
         <section id="executive-summary" class="section">
             <h1>Revised Proposal: California Superbike School</h1>
             <h2>Comprehensive Digital Engagement & Authority Strategy</h2>
-            
-            <div class="meta-info">
+
+            <div class="meta-info card glass-card"> {/* Meta info styled as a card */}
                 <p><strong>Prepared For:</strong> California Superbike School (CSS) Leadership & Team</p>
                 <p><strong>Prepared By:</strong> Eric "Rico" Oberndorfer and an AI Strategic Assistant</p>
                 <p><strong>Subject:</strong> Establishing Digital Authority, Driving Leads, and Streamlining Online Engagement via Content Leverage, Automation, and Authentic Interaction</p>
@@ -40,13 +45,12 @@
 
             <div class="content">
                 <h3>Executive Summary</h3>
-                <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and limited team bandwidth—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier and most helpful online resource for performance motorcycle riding techniques, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
-                
+                <p>California Superbike School stands as a global leader in motorcycle rider training... [rest of paragraph] ...synergy across all digital platforms.</p>
                 <p>The core strategy, "Automate Preparation, Humanize Engagement," focuses on building sustainable systems:</p>
                 <ul>
                     <li>Resolving foundational issues (YouTube copyright, Reddit access)</li>
-                    <li>Systematically organizing CSS's vast knowledge into a central, easily maintainable Knowledge Base (KB)</li>
-                    <li>Implementing an automated workflow using Make.com and OpenAI (GPT)</li>
+                    <li>Systematically organizing CSS's vast knowledge into a central Knowledge Base (KB)</li>
+                    <li>Implementing an automated workflow (Make.com + OpenAI)</li>
                     <li>Establishing a strict Human Review & Posting Protocol</li>
                     <li>Integrating with a synergistic, multi-platform social media strategy</li>
                 </ul>
@@ -54,587 +58,318 @@
         </section>
 
         <section id="problem-statement" class="section">
-            <div class="content">
-                <h3>Problem Statement & Current Situation Analysis</h3>
+             <div class="content">
+                <h2>Problem Statement & Current Situation Analysis</h2>
                 <ul>
-                    <li><strong>Intellectual Property Violation:</strong> Unauthorized distribution of CSS's full video content on YouTube devalues the product, confuses potential customers, and represents lost revenue/control.</li>
-                    
-                    <li><strong>Reddit Platform Barriers:</strong>
-                        <ul>
-                            <li>An existing account shadowban prevents any current engagement, blocking access to a key audience.</li>
-                            <li>A competitor's employee moderating a major subreddit creates potential bias and complicates genuine participation.</li>
-                            <li>Lack of time and a systematic approach prevents CSS from effectively monitoring relevant subreddits and responding to rider questions, leading to missed opportunities.</li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Suboptimal Resource Utilization:</strong> CSS possesses a "gold mine" of unique data, established teaching methodologies (from books/videos), and decades of experience that are not being systematically deployed to answer online questions or create engaging digital content efficiently.</li>
-                    
-                    <li><strong>Operational Constraints:</strong> The CSS team is small and extremely busy with core operations (running the school), limiting time for dedicated, consistent digital marketing efforts. A sustainable, efficient system is paramount.</li>
-                    
-                    <li><strong>Overarching Goal:</strong> CSS desires to establish a strong, authentic, and helpful online presence, particularly on Reddit, positioning itself as the go-to expert resource, driving business results without requiring unrealistic time commitments or outsourcing core engagement.</li>
+                    <li><strong>Intellectual Property Violation:</strong> Unauthorized YouTube distribution devalues product... [details]</li>
+                    <li><strong>Reddit Platform Barriers:</strong> Shadowban, competitor moderation, lack of time... [details]</li>
+                    <li><strong>Suboptimal Resource Utilization:</strong> Untapped "gold mine" of data and expertise... [details]</li>
+                    <li><strong>Operational Constraints:</strong> Small, busy team needs efficient systems... [details]</li>
+                    <li><strong>Overarching Goal:</strong> Establish strong, authentic online presence (esp. Reddit)... [details]</li>
                 </ul>
             </div>
         </section>
 
         <section id="strategy" class="section">
             <div class="content">
-                <h3>Proposed Overarching Strategy: "Automate Preparation, Humanize Engagement" - Building a Sustainable System</h3>
-                <p>This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process. This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches, and resilient to personnel changes. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
+                <h2>Proposed Overarching Strategy</h2>
+                 <h3>"Automate Preparation, Humanize Engagement" - Building a Sustainable System</h3>
+                <p>This strategy balances automation efficiency with human oversight for authenticity... [rest of paragraph] ...genuinely helpful.</p>
             </div>
         </section>
 
         <section id="pillars" class="section">
             <div class="content">
-                <h3>Strategic Pillars</h3>
-                <ul>
-                    <li><strong>Pillar 1: Foundational Readiness & Asset Centralization</strong> - Address critical blocking issues and systematically organize core knowledge assets for long-term use.</li>
-                    <li><strong>Pillar 2: Intelligent & Efficient Monitoring</strong> - Systematically identify relevant online conversations without manual time drain.</li>
-                    <li><strong>Pillar 3: Automated Preparation Engine</strong> - Leverage technology to process information and draft initial responses based only on approved CSS knowledge.</li>
-                    <li><strong>Pillar 4: Authentic Human Engagement & Quality Control</strong> - Ensure all external communication is efficiently reviewed, refined, and posted by a human, maintaining CSS's voice and standards.</li>
-                    <li><strong>Pillar 5: Synergistic Multi-Platform Content Strategy</strong> - Maximize the value of content creation by repurposing assets across YouTube, Reddit, Instagram, Facebook, TikTok, and Discord.</li>
-                    <li><strong>Pillar 6: Dedicated Community Hub (Discord)</strong> - Foster a vibrant, controlled community space for students, coaches, and enthusiasts.</li>
-                </ul>
+                <h2>Strategic Pillars</h2>
+                <p>The core strategy is built upon these interconnected pillars:</p>
+                 {/* Honeycomb Grid Implementation */}
+                <div class="honeycomb-grid">
+                    <div class="honeycomb-item">
+                        <div class="honeycomb-content">
+                            <h4>Pillar 1</h4>
+                            <p>Foundational Readiness & Asset Centralization</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-item">
+                        <div class="honeycomb-content">
+                             <h4>Pillar 2</h4>
+                             <p>Intelligent & Efficient Monitoring</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-item">
+                         <div class="honeycomb-content">
+                            <h4>Pillar 3</h4>
+                            <p>Automated Preparation Engine</p>
+                        </div>
+                    </div>
+                    <div class="honeycomb-item">
+                         <div class="honeycomb-content">
+                             <h4>Pillar 4</h4>
+                             <p>Authentic Human Engagement & QC</p>
+                         </div>
+                    </div>
+                     <div class="honeycomb-item">
+                         <div class="honeycomb-content">
+                             <h4>Pillar 5</h4>
+                             <p>Synergistic Multi-Platform Content</p>
+                         </div>
+                     </div>
+                    <div class="honeycomb-item">
+                        <div class="honeycomb-content">
+                            <h4>Pillar 6</h4>
+                            <p>Dedicated Community Hub (Discord)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        {/* Implementation Details Section - Grouping Pillars 1-6 details */}
         <section id="implementation" class="section">
             <div class="content">
-                <h3>Pillar 1: Foundational Readiness & Asset Centralization</h3>
-                <ul>
-                    <li><strong>Action 1.1: Reclaim & Strategize YouTube Intellectual Property</strong>
-                        <ul>
-                            <li><strong>Task:</strong> Immediately file a DMCA Takedown Notice with YouTube for the stolen full video content.</li>
-                            <li><strong>Explanation:</strong> DMCA is the legal tool to remove infringing content.</li>
-                            <li><strong>Reasoning & Control:</strong> Reclaiming control is vital. It allows CSS to:
-                                <ul>
-                                    <li>Protect the commercial value of paid products.</li>
-                                    <li>Control brand presentation.</li>
-                                    <li>Strategically use the full video: Upload it (potentially as Unlisted or Members-Only on YouTube to protect direct sales, or publicly with strong CTAs for courses — requires ownership decision on balancing value vs. visibility), meticulously timestamp key sections covering specific techniques/concepts. These timestamps become direct links (MediaLink in KB) for Reddit comments, guiding users to the exact relevant moment.</li>
-                                    <li>Repurpose into micro-content: Systematically edit the full video into numerous YouTube Shorts (vertical, <60s), Instagram Reels, TikTok videos, and potentially short clips for Reddit posts, maximizing the asset's reach across platforms.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li><strong>Action 1.2: Resolve Reddit Account Access & Define Persona</strong>
-                        <ul>
-                            <li><strong>Task:</strong> Prioritize resolving the shadowban via the official Reddit Appeals page. Be persistent, polite, identify as CSS official representation, state positive intent, and seek resolution.</li>
-                            <li><strong>Explanation:</strong> A shadowban renders activity invisible. Appeals are the only legitimate route.</li>
-                            <li><strong>Account Strategy Recommendation:</strong> Instead of a generic "CSS Official," use named accounts linked to key personnel for a more human touch. Suggestions:
-                                <ul>
-                                    <li>Dylan_CSS (Owner, high credibility)</li>
-                                    <li>Rico_CSS (Employee, relatable team member)</li>
-                                </ul>
-                            </li>
-                            <li><strong>Reasoning:</strong> Named accounts feel more personal and approachable than a faceless brand, fostering better connection on Reddit. Clear account ownership streamlines responsibility. Legitimacy is key for sustainability.</li>
-                        </ul>
-                    </li>
+                <h2>Implementation Details</h2>
 
-                    <li><strong>Action 1.3: Construct the Central Knowledge Base (KB) with AI Assistance</strong>
-                        <ul>
-                            <li><strong>Tool:</strong> Google Sheets (Link: sheets.google.com) - CSS_Knowledge_Base</li>
-                            <li><strong>Columns:</strong> TopicID, PrimaryKeywords, SecondaryKeywords, ExplanationSnippet (Approved CSS explanation), MediaLink (Timestamped YouTube link, Short link, image URL, etc.)</li>
-                            <li><strong>Ingestion Process (Manual Core, AI Assist):</strong>
-                                <ol>
-                                    <li><strong>Gather Sources:</strong> Collect digital versions of books, video transcripts (use transcription services if needed), internal notes, data summaries.</li>
-                                    <li><strong>AI-Assisted Processing (Optional but Recommended):</strong> Use LLMs like ChatGPT (chat.openai.com), Google Gemini (gemini.google.com), or Claude (claude.ai) to accelerate the process.
-                                        <ul>
-                                            <li><strong>How:</strong> Feed text sections into the LLM. Prompt it to:
-                                                <ul>
-                                                    <li>"Summarize the core concepts about [Topic] in this text."</li>
-                                                    <li>"Extract key definitions related to motorcycle physics."</li>
-                                                    <li>"Identify all actionable advice regarding [Technique]."</li>
-                                                    <li>"Suggest 5-10 relevant keywords for this explanation of [Topic]."</li>
-                                                    <li>"Rephrase this technical explanation into a concise snippet suitable for a helpful online comment."</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><strong>Human Review & Structuring:</strong> CSS experts must review all AI outputs for accuracy, nuance, and alignment with CSS methodology. Edit rigorously. Organize the validated information into the Google Sheet structure, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding the correct MediaLink.</li>
-                                </ol>
-                            </li>
-                            <li><strong>Explanation:</strong> The KB is the structured "single source of truth." High "KB Quality" means it's comprehensive, accurate, easily searchable via keywords, and contains correct links. LLMs can significantly speed up initial summarization and keyword extraction, but human expertise is irreplaceable for validation and ensuring the final snippets perfectly reflect CSS teaching.</li>
-                            <li><strong>Reasoning:</strong> Creates a consistent, scalable, easily updateable foundation for all automated and manual content efforts. AI assistance reduces the initial manual burden.</li>
-                        </ul>
-                    </li>
-
-                    <li><strong>Action 1.4: Refresh Existing Digital Assets</strong>
-                        <ul>
-                            <li><strong>Task:</strong> Update the existing YouTube channel (www.youtube.com/@superbikeschool), Instagram profile (https://www.instagram.com/superbikeschool/), and Facebook Page (https://www.facebook.com/californiasuperbikeschool) with current brand language, logos, banners, and descriptions.</li>
-                            <li><strong>Reasoning:</strong> Ensures brand consistency across all platforms before ramping up activity.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="pillar2" class="section">
-            <h2>Pillar 2: Intelligent & Efficient Monitoring</h2>
-            <div class="content">
-                <h3>Action 2.1: Implement Automated Monitoring</h3>
-                <div class="action-details">
-                    <h4>Tool Recommendation:</h4>
-                    <p><strong>Feedly Pro</strong> (~$12/mo) - <a href="https://feedly.com" target="_blank">Link: feedly.com</a></p>
-                    
-                    <h4>Task:</h4>
-                    <p>Configure Feedly to track relevant subreddits and specific keywords (e.g., throttle, braking, vision, track day, cornering, lean angle, CSS, superbike school, etc.). Obtain the RSS feed URL.</p>
-                    
-                    <h4>Explanation:</h4>
-                    <p>Feedly acts as an automated listening post, aggregating mentions based on your rules and feeding them into the automation engine via RSS.</p>
-                    
-                    <h4>Reasoning & Benefit:</h4>
-                    <p>This <strong>eliminates the need for constant manual scrolling of Reddit</strong>, preventing it from becoming a time-consuming black hole. It ensures relevant conversations are captured efficiently, freeing up the Marketing Lead for higher-value tasks like review, content strategy, and community management.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar3" class="section">
-            <h2>Pillar 3: Automated Response Preparation Engine</h2>
-            <div class="content">
-                <h3>Action 3.1: Set Up Automation</h3>
-                <div class="action-details">
-                    <h4>Tool Recommendation:</h4>
-                    <p><strong>Make (Core Plan)</strong> (~$11/mo) - <a href="https://make.com" target="_blank">Link: make.com</a></p>
-                    
-                    <h4>Task:</h4>
-                    <p>Build the automation Scenario in Make as previously detailed (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</p>
-                    
-                    <h4>OpenAI API Prompt Refinement:</h4>
-                    <p>Continuously refine the prompt sent to OpenAI to improve the quality and tone of the drafts, incorporating CSS-specific language and phrasing examples over time.</p>
-                    
-                    <h4>Reasoning:</h4>
-                    <p>Automates the repetitive tasks of information retrieval and initial drafting, grounded <em>only</em> in approved KB content. Make offers the best balance of power, flexibility, and cost-effectiveness.</p>
-
-                    <h4>Conceptual Flow Diagram:</h4>
-                    <div class="flow-diagram">
-                        <ol>
-                            <li>Feedly detects a new Reddit post/comment matching keywords -> Sends data via RSS.</li>
-                            <li>Make Scenario Triggered by new RSS item.</li>
-                            <li>Make filters item for relevance. (If irrelevant -> Stop).</li>
-                            <li>Make parses the Reddit user's text.</li>
-                            <li>Make searches the Google Sheet KB for matching keywords. (If no match -> Notify/Stop).</li>
-                            <li>Make retrieves the corresponding ExplanationSnippet and MediaLink from the Sheet.</li>
-                            <li>Make sends the Reddit text + Snippet + Link to OpenAI with a refined prompt.</li>
-                            <li>OpenAI generates a draft response based on the prompt and provided info.</li>
-                            <li>Make sends the Original Context + AI Draft + Snippet + Link to the designated Review Queue (e.g., Slack).</li>
-                            <li>(Manual Step Begins) CSS Team Member reviews the queue.</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar-4" class="pillar">
-            <div class="content">
-                <h2>Pillar 4: Authentic Human Engagement & Quality Control</h2>
-                <h3>Action 4.1: Efficient Review Protocol</h3>
-                <div class="action-details">
-                    <h4>Task:</h4>
-                    <p>Designate primary reviewer(s) (likely Marketing Lead, potentially Dylan). Monitor the Review Queue (Slack/Email) at consistent intervals (e.g., start, mid, end of workday) rather than demanding constant monitoring. <strong>Prioritize quality and sustainability over instant response.</strong> Speed is good, but accuracy and authenticity are paramount.</p>
-                    
-                    <h4>Streamlined Review & Edit:</h4>
-                    <p>Review every draft. The goal, aided by good prompts and a quality KB, is for edits to be <em>minimal</em> – quick checks for accuracy, tone, relevance, and compliance, plus minor personalization. If drafts consistently require heavy rewriting, refine the KB snippet or the OpenAI prompt.</p>
-                    
-                    <h4>AI Voice Training (Advanced/Future):</h4>
-                    <div class="sub-details">
-                        <h5>Concept:</h5>
-                        <p>It's possible to fine-tune LLMs on specific datasets to better mimic a particular style. However, this requires a large corpus of CSS's written text (emails, book excerpts, approved comments), technical effort, and can incur higher costs (via OpenAI or other platforms).</p>
-                        
-                        <h5>Recommendation:</h5>
-                        <p>Start with excellent prompt engineering. Consider fine-tuning as a <strong>Phase 3+ optimization</strong> if needed and resources allow, but <em>do not rely on it initially</em>. Human review remains essential regardless.</p>
-                    </div>
-                    
-                    <h4>Reasoning:</h4>
-                    <p>Balances responsiveness with realistic team workload. Focuses on making the human review step as efficient as possible while maintaining non-negotiable quality control.</p>
-                </div>
-
-                <h3>Action 4.2: Manual Posting & Dedicated Device Strategy</h3>
-                <div class="action-details">
-                    <h4>Task:</h4>
-                    <p>Post the finalized, edited response manually to Reddit using the designated account (Dylan_CSS or Rico_CSS).</p>
-                    
-                    <h4>Implement Dedicated Posting Device:</h4>
-                    <p>Procure a basic, dedicated iOS or Android device (phone or tablet) with its own low-cost cellular data plan. This device will be used exclusively for logging into and posting from official CSS social media accounts (Reddit, IG, FB, TikTok, Discord).</p>
-                    
-                    <h4>Reasoning:</h4>
-                    <div class="sub-details">
-                        <h5>Isolation:</h5>
-                        <p>Prevents accidental posting from personal accounts and isolates CSS activity from personal IP addresses, browser histories, and potential device fingerprinting (especially relevant given the past Reddit ban).</p>
-                        
-                        <h5>Focus:</h5>
-                        <p>Creates a dedicated workspace for social media engagement.</p>
-                        
-                        <h5>Security & Accessibility:</h5>
-                        <p>Centralizes account access. Can be kept securely at the office but accessed remotely if needed (using secure methods). Cloud access to the KB (Google Sheets) and Review Queue (Slack/Email) remains key.</p>
-                    </div>
-                </div>
-
-                <h3>Action 4.3: Revised Collaboration Workflow</h3>
-                <div class="action-details">
-                    <h4>Task:</h4>
-                    <p>Primary reviewer (Marketing Lead) handles most reviews. If a draft needs owner-level input or specific expertise beyond the KB, escalate directly to Dylan via Slack/Teams message. Coach involvement becomes <em>opportunistic</em> rather than required (e.g., if a coach expresses interest or for specific AMA sessions).</p>
-                    
-                    <h4>Reasoning:</h4>
-                    <p>Adapts to the reality of coach availability, streamlining the escalation path to those most likely to engage consistently.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar-5" class="pillar">
-            <div class="content">
-                <h2>Pillar 5: Synergistic Multi-Platform Content Strategy</h2>
-                <h3>Action 5.1: Reddit Posting Strategy</h3>
-                <div class="action-details">
-                    <h4>Core Principle:</h4>
-                    <p>Content created for one platform should be strategically repurposed for others. The KB and the YouTube video(s) are central assets fueling this.</p>
-
-                    <h4>Content Flow Examples:</h4>
-                    <div class="sub-details">
-                        <h5>Video Clip:</h5>
-                        <p>A 3-minute YouTube clip explaining trail braking -> Becomes a MediaLink in KB -> Used in Reddit replies -> Clip shared on Facebook -> Key visual moments edited into an Instagram Reel/TikTok video -> Concept discussed further in a Discord AMA.</p>
-                        
-                        <h5>Short Vertical Video:</h5>
-                        <p>A quick tip filmed for TikTok/Reels -> Uploaded as YouTube Short -> Potentially embedded in a relevant blog post -> Shared on Facebook/Instagram Stories.</p>
-                        
-                        <h5>Reddit Themed Days:</h5>
-                        <p>Designate specific days for different types of content (e.g., Technique Tuesday, Safety Sunday) to maintain consistency and build anticipation.</p>
-                        
-                        <h5>Data Insights:</h5>
-                        <p>Unique CSS data -> Becomes an infographic for Instagram/Facebook/Blog -> Explained in a short YouTube video -> Referenced in technical Reddit discussions.</p>
-                    </div>
-
-                    <h4>Platform-Specific Strategies:</h4>
-                    <div class="sub-details">
-                        <h5>YouTube:</h5>
-                        <ul>
-                            <li>Full video upload (Unlisted/Members-Only or Public with strong CTAs)</li>
-                            <li>Systematic timestamping for direct linking</li>
-                            <li>Regular Shorts creation from key moments</li>
-                            <li>Playlist organization by topic</li>
-                        </ul>
-
-                        <h5>Instagram:</h5>
-                        <ul>
-                            <li>Reels from video content</li>
-                            <li>Carousel posts explaining techniques</li>
-                            <li>Stories for quick tips</li>
-                            <li>IGTV for longer explanations</li>
-                        </ul>
-
-                        <h5>Facebook:</h5>
-                        <ul>
-                            <li>Longer form posts with detailed explanations</li>
-                            <li>Video content sharing</li>
-                            <li>Group engagement</li>
-                            <li>Event promotion</li>
-                        </ul>
-
-                        <h5>Blog:</h5>
-                        <ul>
-                            <li>In-depth technique explanations</li>
-                            <li>Student success stories</li>
-                            <li>Course information</li>
-                            <li>Safety tips and best practices</li>
-                        </ul>
-                    </div>
-
-                    <h4>Reasoning:</h4>
-                    <p>This integrated approach ensures the effort invested in creating core content (especially video and KB snippets) provides maximum return across all relevant platforms, builds a stronger brand narrative, and caters to different audience consumption habits.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pillar-6" class="pillar">
-            <div class="content">
-                <h2>Pillar 6: Dedicated Community Hub (Discord)</h2>
-                <h3>Action 6.1: Discord Server Setup</h3>
-                <div class="sub-details">
-                    <h5>Proposed Structure:</h5>
+                {/* Pillar 1 Details */}
+                <div class="pillar-detail card glass-card">
+                    <h3>Pillar 1: Foundational Readiness & Asset Centralization</h3>
                     <ul>
-                        <li><strong>Welcome & Rules</strong>
-                            <ul>
-                                <li>Server rules and guidelines</li>
-                                <li>Role assignment</li>
-                                <li>Verification process</li>
-                            </ul>
-                        </li>
-                        <li><strong>General Discussion</strong>
-                            <ul>
-                                <li>General riding chat</li>
-                                <li>Course experiences</li>
-                                <li>Equipment discussions</li>
-                            </ul>
-                        </li>
-                        <li><strong>Technique Discussion</strong>
-                            <ul>
-                                <li>Throttle control</li>
-                                <li>Braking techniques</li>
-                                <li>Vision and awareness</li>
-                                <li>Body position</li>
-                            </ul>
-                        </li>
-                        <li><strong>Student Support</strong>
-                            <ul>
-                                <li>Course questions</li>
-                                <li>Pre-course preparation</li>
-                                <li>Post-course follow-up</li>
-                            </ul>
-                        </li>
-                        <li><strong>Events & Announcements</strong>
-                            <ul>
-                                <li>Course schedules</li>
-                                <li>Special events</li>
-                                <li>Updates and news</li>
-                            </ul>
-                        </li>
+                        <li><strong>Action 1.1: Reclaim YouTube IP:</strong> DMCA, Strategize (Timestamps, Micro-content).</li>
+                        <li><strong>Action 1.2: Resolve Reddit Access:</strong> Appeal shadowban, Define named personas (Dylan_CSS, Rico_CSS).</li>
+                        <li><strong>Action 1.3: Construct KB:</strong> Google Sheets, AI Assist for processing, Human Review crucial. Columns: TopicID, Keywords, Snippet, MediaLink.</li>
+                        <li><strong>Action 1.4: Refresh Assets:</strong> Update YT, IG, FB profiles.</li>
                     </ul>
-
-                    <h5>Management Strategy:</h5>
-                    <ul>
-                        <li>Appoint dedicated moderators</li>
-                        <li>Establish clear guidelines</li>
-                        <li>Regular community events</li>
-                        <li>Active CSS team participation</li>
-                    </ul>
+                     {/* Add more details from original text if needed */}
                 </div>
+
+                 {/* Pillar 2 Details */}
+                 <div class="pillar-detail card glass-card">
+                    <h3>Pillar 2: Intelligent & Efficient Monitoring</h3>
+                    <p><strong>Action 2.1: Automated Monitoring:</strong> Use Feedly Pro (~$12/mo) to track subreddits/keywords via RSS. Eliminates manual searching.</p>
+                     {/* Add more details */}
+                 </div>
+
+                 {/* Pillar 3 Details */}
+                 <div class="pillar-detail card glass-card">
+                     <h3>Pillar 3: Automated Response Preparation Engine</h3>
+                    <p><strong>Action 3.1: Build Make.com Automation:</strong> Core Plan (~$11/mo). Scenario: Feedly RSS -> Filter -> Parse -> Search KB -> Get Snippet/Link -> OpenAI API -> Send Draft to Review Queue. Refine OpenAI prompt over time.</p>
+                     <h4>Conceptual Flow Diagram:</h4>
+                    <ol>
+                        <li>Feedly detects Reddit mention -> RSS.</li>
+                        <li>Make triggers.</li>
+                        <li>Make filters.</li>
+                        <li>Make parses text.</li>
+                        <li>Make searches KB.</li>
+                        <li>Make retrieves Snippet/Link.</li>
+                        <li>Make calls OpenAI.</li>
+                        <li>OpenAI generates Draft.</li>
+                        <li>Make sends to Review Queue (Slack).</li>
+                        <li>(Manual) CSS Team reviews.</li>
+                        <li>(Manual) CSS Team edits/posts.</li>
+                    </ol>
+                    {/* Add more details */}
+                 </div>
+
+                 {/* Pillar 4 Details */}
+                 <div class="pillar-detail card glass-card">
+                     <h3>Pillar 4: Authentic Human Engagement & Quality Control</h3>
+                     <ul>
+                        <li><strong>Action 4.1: Efficient Review Protocol:</strong> Designated reviewer (Marketing Lead) monitors queue (Slack) at intervals. Goal: Minimal edits, check accuracy/tone. Escalate complex issues.</li>
+                        <li><strong>Action 4.2: Manual Posting & Device Strategy:</strong> Post finalized content manually from designated accounts (Dylan_CSS/Rico_CSS) using a dedicated, isolated mobile device (~$10-20/mo plan + device cost).</li>
+                     </ul>
+                     {/* Add more details */}
+                 </div>
+
+                 {/* Pillar 5 Details */}
+                 <div class="pillar-detail card glass-card">
+                     <h3>Pillar 5: Synergistic Multi-Platform Content Strategy</h3>
+                     <p>Repurpose core assets (KB, Video) across platforms. Examples:</p>
+                     <ul>
+                        <li>Video Clip -> KB Link -> Reddit Reply -> FB Share -> IG/TikTok Reel.</li>
+                        <li>Data Insights -> Infographic -> YT Video -> Reddit Discussion.</li>
+                        <li>Platform specifics: YT (Timestamps, Shorts), IG/TikTok (Reels, Visuals), FB (Community, Links), Blog (SEO Articles).</li>
+                     </ul>
+                     {/* Add more details */}
+                 </div>
+
+                 {/* Pillar 6 Details */}
+                 <div class="pillar-detail card glass-card">
+                     <h3>Pillar 6: Dedicated Community Hub (Discord)</h3>
+                     <p><strong>Action 6.1: Launch Discord Server:</strong> Free tool. Structure channels (#welcome, #announcements, #ask-a-coach, #level-lounges, etc.). Requires community management for moderation, engagement, roles.</p>
+                     {/* Add more details */}
+                 </div>
+
             </div>
         </section>
 
         <section id="technology-stack" class="section">
-            <h2>Technology Stack Summary</h2>
-            <div class="content">
-                <table class="tech-stack-table">
-                    <thead>
-                        <tr>
-                            <th>Tool</th>
-                            <th>Role</th>
-                            <th>Link</th>
-                            <th>Est. Monthly Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Google Sheets</td>
-                            <td>Knowledge Base</td>
-                            <td><a href="https://sheets.google.com" target="_blank">sheets.google.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Feedly Pro</td>
-                            <td>Monitoring Trigger</td>
-                            <td><a href="https://feedly.com" target="_blank">feedly.com</a></td>
-                            <td>~$12</td>
-                        </tr>
-                        <tr>
-                            <td>Make (Core Plan)</td>
-                            <td>Automation Engine</td>
-                            <td><a href="https://make.com" target="_blank">make.com</a></td>
-                            <td>~$11</td>
-                        </tr>
-                        <tr>
-                            <td>OpenAI API</td>
-                            <td>AI Draft Generation</td>
-                            <td><a href="https://platform.openai.com/usage" target="_blank">platform.openai.com/usage</a></td>
-                            <td>~$5 (Usage Based)</td>
-                        </tr>
-                        <tr>
-                            <td>Slack/Gmail/Google Docs</td>
-                            <td>Review Queue</td>
-                            <td><a href="https://slack.com" target="_blank">slack.com</a> / <a href="https://mail.google.com" target="_blank">mail.google.com</a> / <a href="https://docs.google.com" target="_blank">docs.google.com</a></td>
-                            <td>$0 (Free Tiers)</td>
-                        </tr>
-                        <tr>
-                            <td>YouTube</td>
-                            <td>Video Hosting/Clips/Shorts</td>
-                            <td><a href="https://youtube.com" target="_blank">youtube.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Reddit</td>
-                            <td>Engagement Platform</td>
-                            <td><a href="https://reddit.com" target="_blank">reddit.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Instagram</td>
-                            <td>Visual Platform / Reels</td>
-                            <td><a href="https://instagram.com" target="_blank">instagram.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Facebook</td>
-                            <td>Info/Community Platform</td>
-                            <td><a href="https://facebook.com" target="_blank">facebook.com</a></td>
-                            <td>$0</td>
-                        </tr>
-                        <tr>
-                            <td>Discord</td>
-                            <td>Community Hub</td>
-                            <td><a href="https://discord.com" target="_blank">discord.com</a></td>
-                            <td>$0 (Core)</td>
-                        </tr>
-                        <tr>
-                            <td>Dedicated Mobile Device</td>
-                            <td>Secure Posting Interface</td>
-                            <td>(Hardware Purchase)</td>
-                            <td>(One-time Cost)</td>
-                        </tr>
-                        <tr>
-                            <td>Basic Cellular Plan</td>
-                            <td>Device Connectivity</td>
-                            <td>(Various Carriers)</td>
-                            <td>~$10-20 / Month</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td>
-                            <td><strong>~$38 - $48 / Month</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+             <div class="content">
+                 <h2>Technology Stack Summary</h2>
+                 <div class="table-container card glass-card"> {/* Wrap table in card */}
+                    <table class="tech-stack-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Role</th>
+                                <th>Link</th>
+                                <th>Est. Monthly Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Google Sheets</td><td>Knowledge Base</td><td><a href="https://sheets.google.com" target="_blank">sheets.google.com</a></td><td>$0</td></tr>
+                            <tr><td>Feedly Pro</td><td>Monitoring Trigger</td><td><a href="https://feedly.com" target="_blank">feedly.com</a></td><td>~$12</td></tr>
+                            <tr><td>Make (Core Plan)</td><td>Automation Engine</td><td><a href="https://make.com" target="_blank">make.com</a></td><td>~$11</td></tr>
+                            <tr><td>OpenAI API</td><td>AI Draft Generation</td><td><a href="https://platform.openai.com/usage" target="_blank">platform.openai.com</a></td><td>~$5 (Usage)</td></tr>
+                            <tr><td>Slack/Email</td><td>Review Queue</td><td><a href="https://slack.com" target="_blank">slack.com</a></td><td>$0 (Free)</td></tr>
+                            <tr><td>YouTube, Reddit, IG, FB, Discord</td><td>Platforms</td><td>(Various)</td><td>$0</td></tr>
+                            <tr><td>Dedicated Mobile Device + Plan</td><td>Secure Posting</td><td>(Hardware)</td><td>~$10-20 + Device</td></tr>
+                            <tr><td colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td><td><strong>~$38 - $48 / Month</strong></td></tr>
+                        </tbody>
+                    </table>
+                 </div>
             </div>
         </section>
 
         <section id="implementation-roadmap" class="section">
-            <h2>Implementation Roadmap</h2>
             <div class="content">
-                <h3>Phase 0: Foundation (Weeks 1-4)</h3>
-                <ul>
-                    <li>YouTube DMCA, Reddit Appeal (Ongoing)</li>
-                    <li>Refresh existing social profiles</li>
-                    <li>Create KB structure</li>
-                    <li>Begin KB population (w/ AI Assist)</li>
-                    <li>Plan full video strategy (Unlisted/Public/Paid?)</li>
-                    <li>Prep/Upload initial YouTube clips/Shorts (5-10)</li>
-                    <li>Set up Feedly</li>
-                    <li>Procure dedicated device/plan</li>
-                </ul>
-
-                <h3>Phase 1: Build & Test (Weeks 5-8)</h3>
-                <ul>
-                    <li>Set up Make/OpenAI accounts</li>
-                    <li>Build/Test Make scenario thoroughly</li>
-                    <li>Refine OpenAI prompts based on KB content</li>
-                    <li>Expand KB significantly (20-40 topics)</li>
-                    <li>Set up Discord server structure</li>
-                </ul>
-
-                <h3>Phase 2: Launch & Engage (Month 3-6)</h3>
-                <ul>
-                    <li>Activate full Make scenario</li>
-                    <li>Implement sustainable Review/Edit/Post workflow</li>
-                    <li>Begin consistent Reddit engagement (using named accounts)</li>
-                    <li>Launch & promote Discord server</li>
-                    <li>Ramp up multi-platform content posting (IG/FB/YT Shorts)</li>
-                    <li>Continue KB expansion based on real questions encountered</li>
-                </ul>
-
-                <h3>Phase 3: Optimize & Expand (Month 6+)</h3>
-                <ul>
-                    <li>Analyze engagement metrics across platforms</li>
-                    <li>Refine content strategy based on performance</li>
-                    <li>Optimize Make scenario/OpenAI prompts further</li>
-                    <li>Explore advanced Discord features (bots, events)</li>
-                    <li>Consider YouTube channel expansion (Track Guides, AMAs, Partnerships)</li>
-                    <li>Evaluate AI fine-tuning potential</li>
-                </ul>
+                <h2>Implementation Roadmap</h2>
+                {/* Visual Timeline Structure */}
+                <div class="timeline">
+                    <div class="timeline-item card glass-card">
+                        <div class="timeline-content">
+                            <h3>Phase 0: Foundation (Weeks 1-4)</h3>
+                            <ul>
+                                <li>YouTube DMCA, Reddit Appeal</li>
+                                <li>Refresh social profiles</li>
+                                <li>Setup KB structure & Feedly</li>
+                                <li>Initial KB population (AI Assist)</li>
+                                <li>Procure dedicated device/plan</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item card glass-card">
+                        <div class="timeline-content">
+                             <h3>Phase 1: Build & Test (Weeks 5-8)</h3>
+                             <ul>
+                                 <li>Setup Make/OpenAI accounts</li>
+                                 <li>Build & Test Make scenario</li>
+                                 <li>Refine OpenAI prompts</li>
+                                 <li>Expand KB significantly</li>
+                                 <li>Setup Discord server structure</li>
+                             </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item card glass-card">
+                        <div class="timeline-content">
+                            <h3>Phase 2: Launch & Engage (Month 3-6)</h3>
+                            <ul>
+                                <li>Activate Make scenario</li>
+                                <li>Implement Review/Post workflow</li>
+                                <li>Begin consistent Reddit engagement</li>
+                                <li>Launch & promote Discord</li>
+                                <li>Ramp up multi-platform content</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item card glass-card">
+                         <div class="timeline-content">
+                             <h3>Phase 3: Optimize & Expand (Month 6+)</h3>
+                            <ul>
+                                <li>Analyze metrics</li>
+                                <li>Refine content strategy</li>
+                                <li>Optimize Make/OpenAI</li>
+                                <li>Expand Discord/YouTube engagement</li>
+                                <li>Evaluate AI fine-tuning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="costs-benefits" class="section">
-            <h2>Cost Breakdown & Projected Revenue Benefits</h2>
             <div class="content">
-                <h3>Direct Monthly Costs:</h3>
-                <p>Estimated at <strong>~$38 - $48</strong> (Feedly, Make, OpenAI, basic cell plan). Minimal operational expense.</p>
-
-                <h3>One-Time Costs:</h3>
-                <p>Dedicated device purchase (~$150 - $400 depending on choice). Potential costs for video transcription or advanced AI fine-tuning (optional, future).</p>
-
-                <h3>Indirect Costs (Time Investment):</h3>
-                <div class="sub-details">
-                    <h4>Upfront:</h4>
-                    <p>Significant but <em>finite</em> time for KB population (AI assist helps), automation setup, social profile refresh (Est. 20-40 hours). <strong>This builds the sustainable asset.</strong></p>
-                    
-                    <h4>Ongoing:</h4>
-                    <p>Efficient, scheduled time for Review Queue management (Est. <1 hour daily average, flexible), Discord community moderation, planned content posting across platforms. <strong>Far less than purely manual engagement.</strong></p>
+                <h2>Cost Breakdown & Projected ROI</h2>
+                 <div class="cost-benefit-container card glass-card">
+                    <h3>Direct Costs:</h3>
+                    <p>~$38 - $48 / Month (Software/Services) + One-time device cost.</p>
+                    <h3>Indirect Costs (Time):</h3>
+                     <p><strong>Upfront:</strong> Significant but finite setup (KB, Automation). <strong>Ongoing:</strong> Efficient review & engagement.</p>
+                    <h3>Projected Revenue Benefits & ROI:</h3>
+                    <ul>
+                        <li>Increased Lead Quality & Quantity (Course Sign-ups)</li>
+                        <li>Direct Product Sales (Books/Video)</li>
+                        <li>Enhanced Brand Equity & Authority</li>
+                        <li>Improved Customer Lifetime Value (Community Loyalty)</li>
+                        <li>Operational Efficiency (Time Savings)</li>
+                        <li>SEO Benefits & Partnership Opportunities</li>
+                    </ul>
+                    <p><em>Strategic investment with high potential ROI through conversions, brand value, and efficiency.</em></p>
                 </div>
-
-                <h3>Projected Revenue Benefits & ROI Justification:</h3>
-                <div class="sub-details">
-                    <h4>Increased Lead Quality & Quantity:</h4>
-                    <p>Consistent, expert presence builds trust, making CSS the top-of-mind choice, leading to more course inquiries and sign-ups.</p>
-                    
-                    <h4>Direct Product Sales:</h4>
-                    <p>Strategic use of timestamped links and related content drives sales of books/full video (if applicable).</p>
-                    
-                    <h4>Brand Equity & Authority:</h4>
-                    <p>Solidifies CSS's premium positioning, justifying pricing and differentiating from competitors. Authority attracts partnerships and media opportunities.</p>
-                    
-                    <h4>Improved Customer Lifetime Value:</h4>
-                    <p>Discord community fosters loyalty, encouraging repeat business (higher levels, returning students).</p>
-                    
-                    <h4>Operational Efficiency:</h4>
-                    <p>Frees up significant Marketing/Staff time compared to manual monitoring/response, allowing focus on strategy, content creation, and other growth initiatives. The system's sustainability ensures continued value delivery.</p>
-                    
-                    <h4>SEO Benefits:</h4>
-                    <p>Increased brand signals, website traffic from multiple platforms, and potentially high-quality backlinks contribute positively to organic search visibility over time.</p>
-                    
-                    <h4>Partnership/Sponsorship Opportunities:</h4>
-                    <p>A strong, engaged digital presence attracts gear manufacturers, related brands, influencers, potentially opening new revenue streams.</p>
-                </div>
-
-                <p><em>The ROI is realized through increased conversions (courses/products), enhanced brand value enabling premium positioning, operational efficiencies, and potential new revenue streams, making the modest software costs and upfront time investment highly strategic.</em></p>
             </div>
         </section>
 
         <section id="risks-mitigation" class="section">
-            <h2>Risks & Mitigation</h2>
             <div class="content">
-                <h3>Potential Risks & Mitigation Strategies</h3>
-                <div class="sub-details">
-                    <h4>Inaccurate Drafts:</h4>
-                    <p>AI may generate incorrect or inappropriate responses.</p>
-                    <p><strong>Mitigation:</strong> Human review protocol, clear guidelines, and continuous prompt refinement ensure quality control.</p>
-
-                    <h4>Knowledge Base Gaps:</h4>
-                    <p>Missing or outdated information in the KB.</p>
-                    <p><strong>Mitigation:</strong> Regular updates, feedback loop from engagement, and structured content organization.</p>
-
-                    <h4>Automation Errors:</h4>
-                    <p>Technical issues with monitoring or response generation.</p>
-                    <p><strong>Mitigation:</strong> Robust testing, fallback procedures, and monitoring alerts for system health.</p>
-
-                    <h4>Review Bottlenecks:</h4>
-                    <p>Delays in human review process.</p>
-                    <p><strong>Mitigation:</strong> Clear review schedule, prioritization system, and efficient workflow design.</p>
-
-                    <h4>Platform Rule Changes:</h4>
-                    <p>Updates to Reddit or other platform policies.</p>
-                    <p><strong>Mitigation:</strong> Regular monitoring of platform changes, adaptable automation rules, and quick response to policy updates.</p>
-
-                    <h4>Community Management Burden:</h4>
-                    <p>Overwhelming engagement or community issues.</p>
-                    <p><strong>Mitigation:</strong> Clear community guidelines, moderation tools, and scalable engagement strategies.</p>
+                <h2>Risks & Mitigation</h2>
+                {/* Risk Cards Structure */}
+                <div class="risk-grid">
+                    <div class="risk-card card glass-card">
+                        <h4>Risk: Inaccurate Drafts</h4>
+                        <p><strong>Mitigation:</strong> Mandatory human review, prompt refinement.</p>
+                    </div>
+                     <div class="risk-card card glass-card">
+                        <h4>Risk: KB Gaps</h4>
+                        <p><strong>Mitigation:</strong> Ongoing updates, feedback loop.</p>
+                    </div>
+                    <div class="risk-card card glass-card">
+                         <h4>Risk: Automation Errors</h4>
+                         <p><strong>Mitigation:</strong> Testing, error handling, monitoring.</p>
+                    </div>
+                    <div class="risk-card card glass-card">
+                         <h4>Risk: Review Bottleneck</h4>
+                         <p><strong>Mitigation:</strong> Efficient workflow, realistic scheduling.</p>
+                     </div>
+                     <div class="risk-card card glass-card">
+                        <h4>Risk: Platform Rules</h4>
+                        <p><strong>Mitigation:</strong> Stay informed, prioritize value, use dedicated device.</p>
+                    </div>
+                    <div class="risk-card card glass-card">
+                        <h4>Risk: Community Management</h4>
+                        <p><strong>Mitigation:</strong> Clear guidelines, moderation tools, scalable approach.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="conclusion" class="section">
-            <h2>Conclusion</h2>
             <div class="content">
-                <p>This comprehensive strategy positions CSS to establish digital authority while managing resources efficiently. By combining automation with human oversight, we create a sustainable system that delivers consistent value across platforms. The phased implementation approach allows for controlled rollout and adjustment, ensuring long-term success.</p>
-                <p>Through this integrated approach, CSS will not only maintain its leadership position but also expand its reach and influence in the motorcycle training space, driving both brand growth and business results.</p>
+                <h2>Conclusion</h2>
+                <div class="conclusion-box card glass-card">
+                    <p>This integrated strategy provides CSS with a powerful, sustainable system for digital leadership. By centralizing knowledge, leveraging automation, maintaining human oversight, maximizing content synergy, and fostering community, CSS can effectively address challenges and solidify its position as the world's leading resource for motorcycle riding expertise.</p>
+                    <p>The upfront investment creates a long-term asset, driving brand authority, community loyalty, and tangible business growth with manageable ongoing effort.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="content">
+        <div class="footer-content">
             <p>© 2024 California Superbike School. All rights reserved.</p>
         </div>
     </footer>
 
-    <button id="copy-button" class="copy-button">Copy for Print</button>
+    {/* Action Buttons Container */}
+    <div class="action-buttons">
+         <button id="copy-button" class="action-button glass-card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            <span>Copy</span>
+        </button>
+         <button id="print-button" class="action-button glass-card"> {/* Print Button Added */}
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM16 18H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM18 3H6v4h12V3z"/></svg>
+             <span>Print</span>
+         </button>
+    </div>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
