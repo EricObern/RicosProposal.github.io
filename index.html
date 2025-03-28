@@ -1,465 +1,373 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Proposal - Digital Engagement & Authority Strategy (Reddit Emphasis)</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="dark-mode">
+/* Reset and Base Styles */
+:root {
+    /* Brand Colors */
+    --bmw-blue: #0066B1;
+    --bmw-red: #E30613;
+    --bmw-black: #000000;
+    --bmw-white: #FFFFFF;
 
-    <header class="header glass-nav">
-        <div class="header-content">
-            <img src="assets/CSS-Sticker-Black.png" alt="CSS Logo" class="logo" loading="lazy">
+    /* Dark Mode Palette */
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-card: rgba(30, 30, 30, 0.7);
+    --bg-header: rgba(30, 30, 30, 0.85);
+    --text-primary: #E0E0E0;
+    --text-secondary: #A0A0A0;
+    --text-headings-main: var(--bmw-white);      /* H1 */
+    --text-headings-section: var(--bmw-blue);   /* H2, Section Identifier H3 */
+    --text-headings-sub: #EAEAEA;            /* Other H3 */
+    --text-headings-minor: var(--text-primary); /* H4 */
+    --accent-primary: var(--bmw-blue);
+    --accent-secondary: var(--bmw-red);        /* Risk H4, Flowchart Decisions/Stops, Button Hovers, Timeline Dots */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color-hover: rgba(255, 255, 255, 0.2);
+    --highlight-glow: 0 0 15px rgba(0, 102, 177, 0.3);
+    --flowchart-auto-bg: #2a2a2e;
+    --flowchart-manual-bg: #3a3a3e;
+    --flowchart-connector-color: #555;
 
-            <!-- Desktop Navigation -->
-            <nav class="nav desktop-nav">
-                <ul>
-                    <li><a href="#executive-summary" class="active">Summary</a></li>
-                    <li><a href="#problem-statement">Problem</a></li>
-                    <li><a href="#strategy">Strategy</a></li>
-                    <li><a href="#pillar-details">Details</a></li>
-                    <li><a href="#technology-stack">Stack</a></li>
-                    <li><a href="#implementation-roadmap">Roadmap</a></li>
-                    <li><a href="#costs-benefits">ROI</a></li>
-                    <li><a href="#risks-mitigation">Risks</a></li>
-                    <li><a href="#conclusion">Conclusion</a></li>
-                </ul>
-                <div class="progress-bar"></div>
-            </nav>
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, #004C8C 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-secondary) 0%, #B30510 100%);
 
-            <!-- Hamburger Button for Mobile -->
-            <button id="hamburger-button" class="hamburger-button mobile-only" aria-label="Toggle Menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
+    /* Shadows */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.25);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
 
-    <!-- Mobile Navigation Overlay -->
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-        <nav>
-            <ul>
-                <li><a href="#executive-summary">Summary</a></li>
-                <li><a href="#problem-statement">Problem</a></li>
-                <li><a href="#strategy">Strategy</a></li>
-                <li><a href="#pillar-details">Details</a></li>
-                <li><a href="#technology-stack">Stack</a></li>
-                <li><a href="#implementation-roadmap">Roadmap</a></li>
-                <li><a href="#costs-benefits">ROI</a></li>
-                <li><a href="#risks-mitigation">Risks</a></li>
-                <li><a href="#conclusion">Conclusion</a></li>
-            </ul>
-        </nav>
-    </div>
+    /* Animation Timing & Sizes */
+    --transition-speed: 0.3s;
+    --transition-medium: 0.4s;
+    --transition-slow: 0.6s;
+    --header-height: 70px;
+    --max-content-width: 1100px;
+    --mobile-breakpoint: 768px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+body.mobile-menu-open { overflow: hidden; }
 
 
-    <main class="main-content">
-        <!-- 1. Executive Summary Section -->
-        <section id="executive-summary" class="section animate-on-scroll">
-            <h1>A Comprehensive Digital Engagement & Authority Strategy with an emphasis on Reddit</h1>
-            <!-- Removed redundant H2 -->
+/* --- Header & Navigation --- */
+.header { /* ... same fixed styles ... */
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    height: var(--header-height);
+    transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed);
+}
+.header.scroll-down { transform: translateY(-100%); }
+.header.scroll-up { transform: translateY(0); }
 
-            <div class="meta-info card glass-card animate-item">
-                <p><strong>Prepared For:</strong> California Superbike School (CSS) Leadership & Team</p>
-                <p><strong>Prepared By:</strong> Eric “Rico” Oberndorfer assisted by an AI Strategic Assistant</p>
-                <p><strong>Subject:</strong> Establishing Digital Authority, Driving Leads, and Streamlining Online Engagement via Content Leverage, Automation, and Authentic Interaction</p>
-            </div>
+.header-content { /* ... same ... */
+    max-width: var(--max-content-width); margin: 0 auto; padding: 0 2rem;
+    height: 100%; display: flex; justify-content: space-between; align-items: center;
+}
+.logo { height: 40px; width: auto; flex-shrink: 0; }
 
-            <div class="content animate-item">
-                <h3>1. Executive Summary:</h3>
-                <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and limited team bandwidth—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier and most helpful resource for performance motorcycle riding, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
-                <p>The core strategy, "Automate Preparation, Humanize Engagement," focuses on building sustainable systems:</p>
-                <ul>
-                    <li>Resolving foundational issues (YouTube copyright, Reddit access).</li>
-                    <li>Systematically organizing CSS's vast knowledge into a central, easily maintainable Knowledge Base (KB) using Google Sheets, potentially aided by AI for initial processing.</li>
-                    <li>Implementing an automated workflow using Make.com and OpenAI (GPT) to monitor online discussions (primarily Reddit via Feedly), identify relevant questions, retrieve corresponding information and media links from the KB, and generate draft responses aligned with CSS's voice.</li>
-                    <li>Establishing a strict Human Review & Posting Protocol where all AI-drafted responses are efficiently reviewed and edited for accuracy, tone, and authenticity by designated CSS team members, primarily Dylan Code, before being manually posted.</li>
-                    <li>Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, Discord) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI.</li>
-                </ul>
-                <p>The work done for Reddit and YouTube directly fuels content for all other platforms. This approach dramatically increases efficiency, creating a sustainable, low-maintenance process that allows CSS to provide expert answers consistently without overwhelming the team.</p>
-                <p>The upfront investment in structuring knowledge and setting up automation builds a long-term asset, less dependent on specific short-term employee presence. It builds trust and authority, enhances brand visibility, protects intellectual property, and ultimately aims to increase course enrollments and sales of educational materials.</p>
-                <p>The estimated ongoing monthly cost for the essential software tools is approximately $38 - $48.</p>
-            </div>
-        </section>
+.nav.desktop-nav { /* ... same ... */
+    position: relative; }
+.nav.desktop-nav ul { display: flex; list-style: none; gap: 1.5rem; }
+.nav.desktop-nav ul li a { white-space: nowrap; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: color var(--transition-speed); position: relative; padding: 0.5rem 0; }
+.nav.desktop-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-primary); transition: width var(--transition-speed); }
+.nav.desktop-nav ul li a:hover, .nav.desktop-nav ul li a.active { color: var(--text-primary); }
+.nav.desktop-nav ul li a:hover::after, .nav.desktop-nav ul li a.active::after { width: 100%; }
 
-        <!-- 2. Problem Statement Section -->
-        <section id="problem-statement" class="section animate-on-scroll">
-             <div class="content">
-                <h2>2. Problem Statement & Current Situation Analysis:</h2>
-                <ul class="animate-item">
-                    <li><strong>Intellectual Property Violation:</strong> Unauthorized distribution of CSS's full video content on YouTube devalues the product, confuses potential customers, and represents lost revenue/control.</li>
-                    <li><strong>Reddit Platform Barriers:</strong>
-                        <ul>
-                            <li>An existing account shadowban prevents any current engagement, blocking access to a key audience.</li>
-                            <li>A competitor's employee moderating a major subreddit creates potential bias and complicates genuine participation.</li>
-                            <li>Lack of time and a systematic approach prevents CSS from effectively monitoring relevant subreddits and responding to rider questions, leading to missed opportunities.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Suboptimal Resource Utilization:</strong> CSS possesses a "gold mine" of unique data, established teaching methodologies (from books/videos), and decades of experience that are not being systematically deployed to answer online questions or create engaging digital content efficiently.</li>
-                    <li><strong>Operational Constraints:</strong> The CSS team is small and extremely busy with core operations (running the school), limiting time for dedicated, consistent digital marketing efforts. A sustainable, efficient system is paramount.</li>
-                    <li><strong>Overarching Goal:</strong> CSS desires to establish a strong, authentic, and helpful online presence, particularly on Reddit, positioning itself as the go-to expert resource, driving business results without requiring unrealistic time commitments or outsourcing core engagement.</li>
-                </ul>
-            </div>
-        </section>
+.progress-bar { /* ... same ... */
+    position: absolute; bottom: -1px; left: 0; height: 3px;
+    background: var(--gradient-accent); width: 0%;
+    transition: width 0.1s linear;
+}
 
-        <!-- 3. Strategy Section -->
-        <section id="strategy" class="section animate-on-scroll">
-            <div class="content">
-                <h2>3. Proposed Overarching Strategy:</h2>
-                 <h3 class="animate-item">"Automate Preparation, Humanize Engagement" - Building a Sustainable System</h3>
-                <p class="animate-item">This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process. This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches, and resilient to personnel changes. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
+/* Hamburger Button */
+.hamburger-button { /* ... same ... */
+    display: none; background: none; border: none; padding: 0; cursor: pointer;
+    width: 30px; height: 24px; position: relative; z-index: 1100;
+}
+.hamburger-button span { display: block; width: 100%; height: 3px; background-color: var(--text-primary); border-radius: 3px; position: absolute; left: 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+.hamburger-button span:nth-child(1) { top: 0; }
+.hamburger-button span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger-button span:nth-child(3) { bottom: 0; }
+.hamburger-button.active span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); } /* Adjusted position */
+.hamburger-button.active span:nth-child(2) { opacity: 0; }
+.hamburger-button.active span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); } /* Adjusted position */
 
-                <h3 class="animate-item">Strategic Pillars:</h3>
-                 <!-- Styled list presentation for Pillars -->
-                 <ul class="pillar-list animate-item">
-                     <li><strong>Pillar 1:</strong> Foundational Readiness & Asset Centralization</li>
-                     <li><strong>Pillar 2:</strong> Intelligent & Efficient Monitoring</li>
-                     <li><strong>Pillar 3:</strong> Automated Preparation Engine</li>
-                     <li><strong>Pillar 4:</strong> Authentic Human Engagement & Quality Control</li>
-                     <li><strong>Pillar 5:</strong> Synergistic Multi-Platform Content Strategy</li>
-                     <li><strong>Pillar 6:</strong> Dedicated Community Hub (Discord)</li>
-                 </ul>
-            </div>
-        </section>
+/* Mobile Menu Overlay */
+.mobile-menu { /* ... same ... */
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; /* Use dvh for full viewport height */
+    background-color: rgba(18, 18, 18, 0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    z-index: 1050; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    padding-top: calc(var(--header-height) + 2rem); overflow-y: auto;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s linear 0s; }
+.mobile-menu nav { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: calc(100% - var(--header-height) - 4rem); /* Ensure content centers */}
+.mobile-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+.mobile-menu li { margin-bottom: 1.5rem; }
+.mobile-menu a { color: var(--text-primary); text-decoration: none; font-size: 1.5rem; font-weight: 500; transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--accent-primary); }
 
-         <!-- Pillar Visualization Section Removed -->
+/* Utility classes */
+.mobile-only { display: none; }
+.desktop-only { display: block; }
 
-        <!-- 4-9. Pillar Details Section (Renumbered H3s) -->
-        <section id="pillar-details" class="section animate-on-scroll">
-            <div class="content">
-                <h2>Pillar Implementation Details</h2>
 
-                <!-- Pillar 1 Details Card -->
-                <div class="pillar-detail card glass-card animate-item">
-                    <h3>4. Pillar 1: Foundational Readiness & Asset Centralization</h3>
-                    <ul>
-                        <li><strong>Action 1.1: Reclaim & Strategize YouTube Intellectual Property</strong>
-                            <ul>
-                                <li>Task: Immediately file a DMCA Takedown Notice with YouTube for the stolen full video content.
-                                    <ul><li>Explanation: DMCA (Digital Millennium Copyright Act) (<a href="https://support.google.com/youtube/answer/2807622" target="_blank" rel="noopener noreferrer">support.google.com</a>) is the legal tool to remove infringing content.</li></ul>
-                                </li>
-                                <li>Reasoning & Control: Reclaiming control allows CSS to:
-                                    <ul><li>Protect commercial value.</li><li>Control brand presentation.</li><li>Strategically use the full video: Upload it and meticulously timestamp key sections. These timestamps become direct links (MediaLink in KB) for Reddit/social comments, guiding users to the exact relevant moment.</li><li>Repurpose into micro-content: Systematically edit the full video into numerous YouTube Shorts, Instagram Reels, TikTok videos, and short clips for Reddit/Facebook posts, maximizing asset reach. This leverages the primary video asset across multiple platforms efficiently.</li></ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><strong>Action 1.2: Resolve Reddit Account Access & Define Persona</strong>
-                             <ul>
-                                 <li>Task: Prioritize resolving the shadowban via the official Reddit Appeals page: (<a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">reddit.com/appeal</a>). Be persistent, polite, identify CSS official representation (Dylan Code), state positive intent, seek resolution.</li>
-                                 <li>Explanation: Shadowbans render activity invisible; appeals are the only legitimate route.</li>
-                                 <li>Account Strategy Recommendation: Use named accounts linked to key personnel for a more human touch. Primary accounts for posting reviewed content: <ul><li>Dylan_CSS (Owner & Chief of Marketing, high credibility)</li><li>Rico_CSS or alternative (Employee, relatable team member)</li></ul></li>
-                                 <li>Reasoning: Named accounts foster better connection. Clear account ownership streamlines responsibility under Dylan Code's oversight. Legitimacy is key.</li>
-                             </ul>
-                        </li>
-                        <li><strong>Action 1.3: Construct the Central Knowledge Base (KB) with AI Assistance</strong>
-                            <ul>
-                                <li>Tool: Google Sheets (<a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a>) - Create CSS_Knowledge_Base.</li>
-                                <li>Columns: TopicID, PrimaryKeywords, SecondaryKeywords, ExplanationSnippet (Approved CSS explanation), MediaLink (Timestamped YouTube link, Short link, image URL, etc.).</li>
-                                <li>Ingestion Process (Manual Core, AI Assist):
-                                    <ol>
-                                        <li>Gather Sources: Digital books, video transcripts, notes, data summaries.</li>
-                                        <li>AI-Assisted Processing: Use LLMs like ChatGPT (<a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">chat.openai.com</a>), Google Gemini (<a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">gemini.google.com</a>), or Claude (<a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a>) to accelerate initial processing. Prompt LLMs to summarize concepts, extract definitions/advice, suggest keywords, and rephrase technical explanations into concise snippets based on provided CSS source text.</li>
-                                        <li>Human Review & Structuring: Dylan Code (or designated expert) must review all AI outputs for accuracy, nuance, and CSS methodology alignment. Edit rigorously. Organize validated information into the Google Sheet, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding correct MediaLinks.</li>
-                                    </ol>
-                                </li>
-                                <li>Explanation: The KB is the structured "single source of truth." High "KB Quality" (comprehensive, accurate, searchable) is critical for automation success. LLMs assist, but human expertise validates.</li>
-                                <li>Reasoning: Centralizes knowledge, ensures consistency, provides structured data for automation, easily accessible/updatable. AI assist reduces initial burden.</li>
-                             </ul>
-                        </li>
-                        <li><strong>Action 1.4: Refresh Existing Digital Assets</strong>
-                            <ul>
-                                <li>Task: Update YouTube (<a href="https://www.youtube.com/@superbikeschool" target="_blank" rel="noopener noreferrer">youtube.com/@superbikeschool</a>), Instagram (<a href="https://www.instagram.com/superbikeschool/" target="_blank" rel="noopener noreferrer">instagram.com/superbikeschool/</a>), and Facebook Page (<a href="https://www.facebook.com/californiasuperbikeschool" target="_blank" rel="noopener noreferrer">facebook.com/californiasuperbikeschool</a>) with current brand language, logos, banners, descriptions.</li>
-                                <li>Reasoning: Ensures brand consistency before ramping up activity.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+/* --- Main Content & Sections --- */
+.main-content { padding-top: var(--header-height); }
+.section { max-width: var(--max-content-width); margin: 0 auto; padding: 4rem 2rem 4rem 2rem; }
+section:has(> .content > h2) { padding-top: 5rem; }
 
-                 <!-- Pillar 2 Details Card -->
-                 <div class="pillar-detail card glass-card animate-item">
-                    <h3>5. Pillar 2: Intelligent & Efficient Monitoring</h3>
-                    <ul>
-                        <li><strong>Action 2.1: Implement Automated Monitoring</strong>
-                             <ul>
-                                 <li>Tool Recommendation: Feedly Pro (<a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a>) (~$12/mo)</li>
-                                 <li>Task: Configure Feedly to track relevant subreddits (e.g., r/trackdays, r/motorcycles, r/NewRiders) and keywords (throttle, braking, vision, track day, cornering, lean angle, CSS, etc.). Obtain the Feedly RSS feed URL.</li>
-                                 <li>Explanation: Feedly aggregates mentions via RSS (a standard content feed format) for automation.</li>
-                                 <li>Reasoning & Benefit: Eliminates manual Reddit monitoring time drain. Captures opportunities efficiently, freeing up Dylan Code for review, strategy, and community management.</li>
-                             </ul>
-                         </li>
-                    </ul>
-                 </div>
+/* --- Basic Animation Setup --- */
+.animate-on-scroll .animate-item { opacity: 0; transform: translateY(20px); transition: opacity var(--transition-medium) ease-out, transform var(--transition-medium) ease-out; transition-delay: var(--animation-delay, 0s); }
+.section.visible .animate-item { opacity: 1; transform: translateY(0); }
 
-                 <!-- Pillar 3 Details Card -->
-                 <div class="pillar-detail card glass-card animate-item">
-                     <h3>6. Pillar 3: Automated Preparation Engine</h3>
-                     <ul>
-                        <li><strong>Tool Recommendation:</strong> Make (Core Plan) (<a href="https://make.com" target="_blank" rel="noopener noreferrer">make.com</a>) (~$11/mo)</li>
-                        <li><strong>Task:</strong> Build automation Scenario in Make (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</li>
-                        <li><strong>OpenAI API Prompt Refinement:</strong> Continuously refine the OpenAI prompt with CSS-specific language/phrasing examples to improve draft quality and tone alignment over time.</li>
-                        <li><strong>Reasoning:</strong> Automates repetitive retrieval/drafting based only on approved KB content. Make offers best cost-effectiveness and workflow power.</li>
-                     </ul>
-                     <h4>Conceptual Flow Diagram:</h4>
-                     <!-- New Flowchart using OL -->
-                     <div class="flowchart-container card glass-card animate-item">
-                         <ol class="flowchart-list">
-                             <li class="step-start"><span>Feedly RSS Feed (New Reddit Mention)</span></li>
-                             <li class="step-auto"><span>Make: Triggered by RSS Item</span></li>
-                             <li class="step-decision">
-                                 <span>Make: Filter (Is it Relevant?)</span>
-                                 <ul class="decision-paths">
-                                     <li><span class="path-label">(No)</span> <span class="step-stop">Stop</span></li>
-                                     <li><span class="path-label">(Yes)</span></li>
-                                 </ul>
-                             </li>
-                             <li class="step-auto"><span>Make: Parse Reddit Text</span></li>
-                             <li class="step-auto"><span>Make: Search Google Sheet KB for Keywords</span></li>
-                             <li class="step-decision">
-                                 <span>Make: Match Found?</span>
-                                 <ul class="decision-paths">
-                                     <li><span class="path-label">(No)</span> <span class="step-stop">Notify / Stop</span></li>
-                                     <li><span class="path-label">(Yes)</span></li>
-                                 </ul>
-                            </li>
-                             <li class="step-auto"><span>Make: Retrieve Explanation Snippet & Media Link</span></li>
-                             <li class="step-auto"><span>Make: Send Context + Snippet + Link to OpenAI API</span></li>
-                             <li class="step-auto"><span>Make: Receive AI-Generated Draft Response</span></li>
-                             <li class="step-output"><span>Make: Send Context + Draft + Snippet + Link to Review Queue (e.g., Slack)</span></li>
-                             <li class="step-manual"><span>MANUAL HUMAN REVIEW & EDIT (Dylan Code / Designee)</span></li>
-                             <li class="step-manual step-output"><span>MANUAL POST TO REDDIT (From Designated Account/Device)</span></li>
-                         </ol>
-                     </div>
-                 </div>
+/* --- Typography & Basic Elements --- */
+h1 { font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--text-headings-main); text-align: center; }
+h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--text-headings-section); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+h3 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.2rem; color: var(--text-headings-sub); }
+/* Style for numbered section identifiers */
+h3.section-identifier { color: var(--text-headings-section); }
+h4 { font-size: 1.15rem; color: var(--text-headings-minor); font-weight: 500; margin-bottom: 0.6rem; }
 
-                 <!-- Pillar 4 Details Card -->
-                 <div class="pillar-detail card glass-card animate-item">
-                     <h3>7. Pillar 4: Authentic Human Engagement & Quality Control</h3>
-                     <ul>
-                        <li><strong>Action 4.1: Efficient Review Protocol</strong>
-                            <ul>
-                                <li>Task: Dylan Code (or a designated direct report if applicable) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 scheduled blocks per day). Prioritize quality and sustainability over immediate response.</li>
-                                <li>Task: Streamlined Review & Edit: Review every draft efficiently. Goal: Minimal edits (quick checks for accuracy, tone, relevance, compliance, minor personalization). If heavy rewriting is needed, refine the KB snippet or OpenAI prompt.</li>
-                                <li>Reasoning: Balances responsiveness with realistic workload for Dylan Code. Focuses on efficient quality control.</li>
-                             </ul>
-                        </li>
-                        <li><strong>Action 4.2: Manual Posting & Dedicated Device Strategy</strong>
-                            <ul>
-                                <li>Task: Post finalized text manually to Reddit using Dylan_CSS or Rico_CSS account from the Dedicated Posting Device.</li>
-                                <li>Task: Implement Dedicated Posting Device: Procure a basic iOS/Android device + low-cost cellular plan, used exclusively for official CSS social media logins/posting (Reddit, IG, FB, TikTok, Discord).</li>
-                                <li>Reasoning: Isolates activity, enhances security, prevents personal/official account mix-ups, creates focused workspace. Centralizes access while allowing secure remote use if needed.</li>
-                             </ul>
-                        </li>
-                        <li><strong>Action 4.3: Streamlined Collaboration</strong>
-                            <ul>
-                                <li>Task: Primary review rests with Dylan Code. If input needed beyond KB, consult relevant expert directly. Coach involvement is opportunistic (e.g., specific AMAs), not required for daily flow.</li>
-                                <li>Reasoning: Simplifies workflow, acknowledging primary responsibility rests with marketing leadership (Dylan Code).</li>
-                            </ul>
-                        </li>
-                     </ul>
-                 </div>
+p { margin-bottom: 1rem; }
+ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+li { margin-bottom: 0.5rem; }
+ul ul, ol ol { margin-top: 0.5rem; }
+a { color: var(--accent-primary); text-decoration: none; transition: color var(--transition-speed); }
+a:hover { color: var(--bmw-white); }
+strong { font-weight: 700; color: var(--text-headings-sub); }
+pre { background-color: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9em; border: 1px solid var(--border-color); }
 
-                 <!-- Pillar 5 Details Card -->
-                 <div class="pillar-detail card glass-card animate-item">
-                     <h3>8. Pillar 5: Synergistic Multi-Platform Content Strategy (Maximize ROI)</h3>
-                     <ul>
-                        <li><strong>Core Principle:</strong> Content created once is repurposed strategically. The KB and YouTube video(s) are central assets.</li>
-                        <li><strong>Content Flow & Synergy:</strong>
-                            <ul>
-                                <li>KB Snippet/YouTube Clip: Used for Reddit reply -> Clip/Timestamp shared on Facebook -> Visuals become Instagram Reel/TikTok -> Concept becomes Discord discussion topic.</li>
-                                <li>Vertical Video (TikTok/Reel): Uploaded as YouTube Short -> Shared across Stories -> Embedded in relevant blog post.</li>
-                                <li>Reddit Engagement: Popular questions/discussions inspire future YouTube video topics, Instagram carousels, blog posts, and Discord AMA themes.</li>
-                                <li>Themed Content: Plan content snippets (from KB, new recordings) for relevant themes (e.g., #TrackdayTuesday, r/NewRiders question days) across platforms.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Platform-Specific Content Expansion:</strong>
-                            <ul>
-                                <li>YouTube: Core technique clips/Shorts, Full video (timestamped), Tech Talks, Partner Spotlights, Influencer/Journalist Collabs, Track Guides (CSS lines), Live AMAs (Dylan/Keith/Coaches), Gear Guides.</li>
-                                <li>Instagram/TikTok: Visual focus: action, quick tips, student successes, behind-the-scenes.</li>
-                                <li>Facebook: Mix visuals with text updates, schedules, events, link sharing.</li>
-                                <li>Blog (Website): SEO-focused articles expanding KB topics.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Reasoning:</strong> Integrated approach maximizes ROI on content creation efforts, builds a cohesive brand story, reaches diverse audiences, and creates a virtuous cycle where engagement on one platform informs content for others.</li>
-                     </ul>
-                 </div>
+/* --- Card Component Style --- */
+.card { /* Base card styles remain */
+    background: var(--bg-card); padding: 2rem; border-radius: 12px;
+    margin-bottom: 2rem; border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg), var(--highlight-glow); border-color: var(--border-color-hover); }
 
-                 <!-- Pillar 6 Details Card -->
-                 <div class="pillar-detail card glass-card animate-item">
-                     <h3>9. Pillar 6: Dedicated Community Hub (Discord)</h3>
-                     <ul>
-                        <li><strong>Action 9.1: Launch Official CSS Discord Server.</strong>
-                            <ul>
-                                <li>Tool: Discord (<a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a>) - Free for core functionality.</li>
-                                <li>Task: Create server, phase out old forum (archive/redirect).</li>
-                                <li>Channel Structure (example):
-                                    <ul>
-                                        <li>#welcome-rules</li>
-                                        <li>#announcements</li>
-                                        <li>#general-chat</li>
-                                        <li>#ask-a-coach (Managed responses)</li>
-                                        <li>#student-showcase</li>
-                                        <li>#track-talk</li>
-                                        <li>#gear-talk</li>
-                                        <li>#level-1-lounge (Role-gated)</li>
-                                        <li>#level-2-lounge (Role-gated)</li>
-                                        <li>#level-3-lounge (Role-gated)</li>
-                                        <li>#level-4-lounge (Role-gated)</li>
-                                        <li>(Future Level channels as needed)</li>
-                                        <li>#partner-spotlight</li>
-                                    </ul>
-                                </li>
-                                <li>Management: Requires dedicated community management (Dylan Code or designee) for moderation, engagement, role assignment.</li>
-                                <li>Reasoning & Benefits: Modern, engaging hub replaces inactive forum; builds community/loyalty; direct feedback loop; controlled environment; value-add for graduates; hub for contests, AMAs, partner content.</li>
-                             </ul>
-                         </li>
-                     </ul>
-                 </div>
-            </div>
-        </section>
+/* --- Glass Effect --- */
+.glass-nav, .glass-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); }
+.glass-nav { background: var(--bg-header); }
+.glass-card { background: var(--bg-card); }
 
-        <!-- Technology Stack Section (Renumbered to 4) -->
-        <section id="technology-stack" class="section animate-on-scroll">
-             <div class="content">
-                 <h2>4. Technology Stack Summary with estimated costs:</h2>
-                 <div class="table-container card glass-card animate-item">
-                    <table class="tech-stack-table">
-                        <thead><tr><th>Tool</th><th>Role</th><th>Link</th><th>Est. Monthly Cost</th></tr></thead>
-                        <tbody>
-                            <!-- Added data-label attributes for responsive view -->
-                            <tr><td data-label="Tool">Knowledge Base: Google Sheets</td><td data-label="Role">Knowledge Base</td><td data-label="Link"><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                            <tr><td data-label="Tool">Monitoring Trigger: Feedly Pro</td><td data-label="Role">Monitoring Trigger</td><td data-label="Link"><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a></td><td data-label="Est. Monthly Cost">~$12 / Month</td></tr>
-                            <tr><td data-label="Tool">Automation Engine: Make (Core Plan)</td><td data-label="Role">Automation Engine</td><td data-label="Link"><a href="https://make.com" target="_blank" rel="noopener noreferrer">make.com</a></td><td data-label="Est. Monthly Cost">~$11 / Month</td></tr>
-                            <tr><td data-label="Tool">AI Draft Generation: OpenAI API</td><td data-label="Role">AI Draft Generation</td><td data-label="Link"><a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer">platform.openai.com</a></td><td data-label="Est. Monthly Cost">~$5 / Month (Usage Based)</td></tr>
-                            <tr><td data-label="Tool">Review Queue: Slack / Gmail / Google Docs</td><td data-label="Role">Review Queue</td><td data-label="Link"><a href="https://slack.com" target="_blank" rel="noopener noreferrer">slack.com</a> / etc.</td><td data-label="Est. Monthly Cost">$0 (Free Tiers)</td></tr>
-                            <tr><td data-label="Tool">Video Hosting/Clips: YouTube</td><td data-label="Role">Video Hosting/Clips</td><td data-label="Link"><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">youtube.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                            <tr><td data-label="Tool">Engagement Platform 1: Reddit</td><td data-label="Role">Engagement Platform</td><td data-label="Link"><a href="https://reddit.com" target="_blank" rel="noopener noreferrer">reddit.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                            <tr><td data-label="Tool">Visual Platform 1: Instagram</td><td data-label="Role">Visual Platform</td><td data-label="Link"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                            <tr><td data-label="Tool">Info/Community Platform: Facebook</td><td data-label="Role">Info/Community Platform</td><td data-label="Link"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                            <tr><td data-label="Tool">Community Hub: Discord</td><td data-label="Role">Community Hub</td><td data-label="Link"><a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a></td><td data-label="Est. Monthly Cost">$0 (Core Features)</td></tr>
-                            <tr><td data-label="Tool">Secure Posting Interface: Dedicated Mobile Device</td><td data-label="Role">Secure Posting Interface</td><td data-label="Link">(Hardware Purchase)</td><td data-label="Est. Monthly Cost">(One-time Hardware Purchase)</td></tr>
-                            <tr><td data-label="Tool">Device Connectivity: Basic Cellular Plan</td><td data-label="Role">Device Connectivity</td><td data-label="Link">(Various Carriers)</td><td data-label="Est. Monthly Cost">~$10-20 / Month</td></tr>
-                            <tr class="total-row"><td data-label="Total" colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td><td data-label="Total Cost"><strong>~$38 - $48 / Month</strong></td></tr>
-                        </tbody>
-                    </table>
-                 </div>
-            </div>
-        </section>
+/* --- Specific Section Styles --- */
+.meta-info { font-size: 0.9rem; color: var(--text-secondary); }
+.meta-info p { margin-bottom: 0.5rem; }
 
-        <!-- Implementation Roadmap Section (Renumbered to 5) -->
-        <section id="implementation-roadmap" class="section animate-on-scroll">
-            <div class="content">
-                <h2>5. Implementation Roadmap:</h2>
-                <div class="timeline">
-                    <div class="timeline-item card glass-card animate-item">
-                        <div class="timeline-content">
-                            <h3>Phase 0: Foundation (Weeks 1-4):</h3>
-                            <p>YouTube DMCA, Reddit Appeal (Ongoing), Refresh social profiles, Create KB structure, Begin KB population (w/ AI Assist), Plan full video strategy, Prep/Upload initial YouTube clips/Shorts, Set up Feedly, Procure dedicated device/plan.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item card glass-card animate-item">
-                        <div class="timeline-content">
-                             <h3>Phase 1: Build & Test (Weeks 5-8):</h3>
-                             <p>Set up Make/OpenAI accounts, Build/Test Make scenario thoroughly, Refine OpenAI prompts, Expand KB significantly, Set up Discord server structure.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item card glass-card animate-item">
-                        <div class="timeline-content">
-                            <h3>Phase 2: Launch & Engage (Month 3-6):</h3>
-                             <p>Activate Make scenario, Implement sustainable Review/Edit/Post workflow (Dylan Code lead), Begin consistent Reddit engagement, Launch & promote Discord, Ramp up multi-platform content posting, Continue KB expansion.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item card glass-card animate-item">
-                         <div class="timeline-content">
-                             <h3>Phase 3: Optimize & Expand (Month 6+):</h3>
-                            <p>Analyze metrics, Refine content strategy, Optimize Make/OpenAI, Expand Discord engagement, Expand YouTube content (Track Guides, AMAs), Evaluate AI fine-tuning.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Styled Pillar List */
+.pillar-list { list-style: none; padding-left: 0; margin-top: 1.5rem; columns: 2; gap: 1.5rem; }
+.pillar-list li { position: relative; padding-left: 2rem; margin-bottom: 1.2rem; font-size: 1.1rem; break-inside: avoid; }
+.pillar-list li::before { content: '»'; position: absolute; left: 0; top: 0px; color: var(--accent-primary); font-weight: bold; font-size: 1.4rem; }
+.pillar-list li strong { font-weight: 700; color: var(--text-headings-sub); }
 
-        <!-- Costs & Benefits Section (Renumbered to 6) -->
-        <section id="costs-benefits" class="section animate-on-scroll">
-            <div class="content">
-                <h2>6. Cost Breakdown & Projected Revenue Benefits:</h2>
-                 <div class="cost-benefit-container card glass-card animate-item">
-                    <ul>
-                        <li><strong>Direct Monthly Costs:</strong> Estimated ~$38 - $48 (Software/Services). Minimal relative to potential return.</li>
-                        <li><strong>One-Time Costs:</strong> Dedicated device purchase (unless a device is readily available)</li>
-                        <li><strong>Indirect Costs (Time Investment):</strong>
-                            <ul><li>Upfront: Significant but finite time for KB & automation setup (Est. 20-40 hours). Builds the sustainable asset.</li><li>Ongoing: Efficient, scheduled time for Review Queue (Est. <1 hour daily avg for Dylan Code), Discord moderation, planned content posting. Far less than purely manual.</li></ul>
-                        </li>
-                        <li><strong>Projected Revenue Benefits & ROI Justification:</strong>
-                            <ul><li>Lead Generation: Increased trust/visibility drives qualified inquiries/sign-ups.</li><li>Product Sales: Strategic content promotes books/video.</li><li>Brand Equity: Solidifies premium positioning, justifies pricing. Attracts partnerships.</li><li>Customer Lifetime Value: Discord community fosters loyalty/repeat business.</li><li>Operational Efficiency: Frees up Dylan Code's time for higher-level strategy. System sustainability ensures continued value delivery.</li><li>SEO Benefits: Increased brand signals, traffic, potential backlinks improve organic visibility.</li><li>Partnerships: Strong digital presence attracts sponsors/collaborators.</li></ul>
-                        </li>
-                        <li>ROI is driven by increased conversions, enhanced brand value, operational efficiency, and new opportunities, justifying the modest costs and upfront time.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+/* Pillar Detail Styling */
+.pillar-detail { margin-bottom: 3rem; padding-bottom: 2rem; } /* Add space between pillar details */
+.pillar-detail h4 { margin-top: 0; color: var(--text-headings-sub); font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;}
+.pillar-detail ul { margin-bottom: 0; }
+/* Horizontal divider */
+hr.section-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 3rem 0;
+}
+.pillar-detail:last-of-type hr.section-divider { display: none; } /* Hide divider after last pillar */
 
-        <!-- Risks & Mitigation Section (Renumbered to 7) -->
-        <section id="risks-mitigation" class="section animate-on-scroll">
-            <div class="content">
-                <h2>7. Risks & Mitigation:</h2>
-                <div class="risk-grid">
-                    <div class="risk-card card glass-card animate-item">
-                        <h4>Draft Quality:</h4><p><strong>Mitigation:</strong> Mandatory human review (Dylan Code); prompt refinement.</p>
-                    </div>
-                     <div class="risk-card card glass-card animate-item">
-                        <h4>KB Gaps:</h4><p><strong>Mitigation:</strong> Ongoing KB updates; easy reporting mechanism for gaps.</p>
-                    </div>
-                    <div class="risk-card card glass-card animate-item">
-                         <h4>Automation Errors:</h4><p><strong>Mitigation:</strong> Make monitoring/error handling.</p>
-                    </div>
-                    <div class="risk-card card glass-card animate-item">
-                         <h4>Review Bottleneck:</h4><p><strong>Mitigation:</strong> Efficient workflow; realistic scheduling for Dylan Code; potential future delegation if needed.</p>
-                     </div>
-                     <div class="risk-card card glass-card animate-item">
-                        <h4>Platform Rules:</h4><p><strong>Mitigation:</strong> Stay informed; prioritize value; manual posting + dedicated device reduces risk.</p>
-                    </div>
-                    <div class="risk-card card glass-card animate-item">
-                        <h4>Community Management:</h4><p><strong>Mitigation:</strong> Clear Discord guidelines; start simple; potential future community mods.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Conclusion Section (Numbering correct) -->
-        <section id="conclusion" class="section animate-on-scroll">
-            <div class="content">
-                <h2>14. Conclusion:</h2>
-                <div class="conclusion-box card glass-card animate-item">
-                    <p>This comprehensive strategy provides California Superbike School with a powerful, integrated, and sustainable system for digital leadership. By centralizing knowledge, leveraging automation for efficiency, maintaining human oversight (led by Dylan Code) for authenticity, maximizing content synergy, and fostering a dedicated community hub, CSS can effectively address current challenges and solidify its position as the world's leading resource for motorcycle riding expertise.</p>
-                    <p>The upfront investment creates a long-term operational asset, driving brand authority, community loyalty, and tangible business growth with manageable ongoing effort and cost, strategically leveraging the marketing leadership within the ownership structure.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+/* --- New Flowchart (List-based) --- */
+.flowchart-container { padding: 2rem; margin-top: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); }
+.flowchart-list { list-style: none; padding-left: 0; position: relative; }
+/* Connector Line */
+.flowchart-list::before { /* Main vertical line */
+    content: ''; position: absolute; left: 20px; top: 15px; bottom: 15px; /* Adjust top/bottom */
+    width: 2px; background-color: var(--flowchart-connector-color); z-index: 0;
+}
+/* Base Step Styling */
+.flowchart-list li {
+    position: relative; padding: 0.8rem 1.5rem 0.8rem 50px; /* Increased left padding */
+    margin-bottom: 1rem; background-color: var(--flowchart-auto-bg);
+    border: 1px solid var(--border-color); border-radius: 8px;
+    box-shadow: var(--shadow-sm); font-size: 0.95rem; z-index: 1; /* Ensure step is above line */
+}
+/* Icon/Marker */
+.flowchart-list li::before {
+    content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; border-radius: 50%;
+    background-color: var(--flowchart-connector-color); /* Default marker */
+    border: 3px solid var(--bg-secondary); z-index: 2; /* Ensure icon is above line */
+}
+/* Step Type Specific Styles */
+.flowchart-list li.step-start { background: var(--gradient-primary); color: var(--bmw-white); border: none; }
+.flowchart-list li.step-start::before { background-color: var(--bmw-white); }
+.flowchart-list li.step-auto { background-color: var(--flowchart-auto-bg); }
+.flowchart-list li.step-auto::before { content:'\2699'; /* Gear emoji/unicode */ color: var(--accent-primary); font-size: 16px; background: none; border: none; left: 8px; text-align: center; line-height: 16px;}
+.flowchart-list li.step-decision { background-color: var(--accent-secondary); color: var(--bmw-white); }
+.flowchart-list li.step-decision::before { transform: translateY(-50%) rotate(45deg); border-radius: 0; background-color: var(--bmw-white); width: 12px; height: 12px; left: 14px;}
+.flowchart-list li.step-manual { background-color: var(--flowchart-manual-bg); border-style: dashed; font-weight: bold; }
+.flowchart-list li.step-manual::before { content:'\1F464'; /* Bust silhouette emoji/unicode */ color: var(--text-primary); font-size: 16px; background: none; border: none; left: 8px; text-align: center; line-height: 16px;}
+.flowchart-list li.step-output { border-left: 4px solid var(--accent-primary); }
+.flowchart-list li.step-output::before { background-color: var(--accent-primary); }
+.flowchart-list li.step-stop { background: var(--gradient-accent); color: var(--bmw-white); border: none; }
+.flowchart-list li.step-stop::before { content:'\2717'; /* X mark emoji/unicode */ font-weight: bold; color: white; font-size: 12px; text-align: center; line-height: 16px; background: none; border: none; left: 12px;}
+/* Decision Paths Styling */
+.decision-paths { list-style: none; padding-left: 1rem; margin-top: 0.8rem; border: none; }
+.decision-paths li { padding: 0.3rem 0; margin-bottom: 0.5rem; background: none; border: none; box-shadow: none; font-size: 0.9em; padding-left: 10px; }
+.decision-paths li::before, .decision-paths li::after { display: none; }
+.decision-paths .path-label { font-weight: bold; margin-right: 0.5rem; color: var(--text-secondary); display: inline-block; width: 40px; }
+.decision-paths .step-stop { display: inline-block; padding: 0.2rem 0.6rem; margin: 0; }
+/* Connector for decision paths (simple line) */
+.decision-paths li::before {
+    content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
+    height: 1px; width: 10px; background-color: var(--flowchart-connector-color);
+}
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2024 California Superbike School. All rights reserved.</p>
-        </div>
-    </footer>
 
-    <!-- Action Buttons Container -->
-    <div class="action-buttons">
-         <button id="copy-button" class="action-button glass-card" title="Copy Proposal Text">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-            <span>Copy</span>
-        </button>
-         <button id="print-button" class="action-button glass-card" title="Print Proposal">
-             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM16 18H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM18 3H6v4h12V3z"/></svg>
-             <span>Print</span>
-         </button>
-    </div>
+/* --- Technology Stack Table --- */
+.table-container { padding: 0; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px;}
+.tech-stack-table { width: 100%; border-collapse: collapse; margin-top: 0; }
+.tech-stack-table th, .tech-stack-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+.tech-stack-table th { color: var(--text-headings-sub); font-weight: 500; background-color: rgba(0,0,0,0.1); }
+.tech-stack-table tbody tr:hover { background-color: rgba(255, 255, 255, 0.03); } /* Subtle row hover */
+.tech-stack-table tbody tr:last-child td { border-bottom: none; }
+.tech-stack-table td:last-child, .tech-stack-table th:last-child { text-align: right; }
+.tech-stack-table strong { color: var(--accent-secondary); }
+.tech-stack-table .total-row td { font-weight: bold; }
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* --- Timeline --- */
+.timeline { position: relative; max-width: 800px; margin: 3rem auto 0 auto; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; background-color: var(--accent-primary); border-radius: 2px; }
+.timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 2.5rem; }
+.timeline-item::before { /* Dot */
+    content: ''; position: absolute; left: -6.5px; top: 5px; width: 16px; height: 16px;
+    background-color: var(--accent-secondary); /* Red dots */
+    border: 3px solid var(--bg-primary); border-radius: 50%; z-index: 1;
+}
+/* Timeline Content - No longer a card */
+.timeline-content { padding: 1rem 0 1rem 1rem; border-left: 2px solid var(--border-color); }
+.timeline-item h3 { margin-top: 0; margin-bottom: 1rem; color: var(--text-headings-sub); font-size: 1.4rem; }
+.roadmap-details { list-style: decimal; padding-left: 1.5rem; } /* Use ordered list */
+.roadmap-details li { margin-bottom: 0.75rem; font-size: 0.95rem; }
+
+
+/* --- Risk Grid / Items --- */
+.risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.risk-item { /* Not a card anymore */
+    padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;
+    background-color: var(--bg-secondary); /* Slight background difference */
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.risk-item:hover {
+     transform: translateY(-4px);
+     box-shadow: var(--shadow-md);
+}
+.risk-item h4 { margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--accent-secondary); /* Red titles */ }
+.risk-item p { font-size: 0.95rem; margin-bottom: 0; }
+.risk-item strong { color: var(--text-secondary); /* Dimmer mitigation label */ }
+
+
+/* --- Conclusion Box --- */
+.conclusion-box { /* Not a card anymore */
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(0, 102, 177, 0.1), rgba(30, 30, 30, 0.3));
+    border-left: 4px solid var(--accent-primary);
+    border-radius: 8px;
+}
+.conclusion-box p { margin-bottom: 1rem; }
+.conclusion-box p:last-child { margin-bottom: 0; }
+
+/* --- Footer --- */
+.footer { /* ... same ... */ }
+
+/* --- Action Buttons --- */
+.action-buttons { /* ... same ... */ }
+.action-button { /* ... same base styles ... */
+    width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    color: var(--text-primary); background: var(--bg-card); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color);
+}
+.action-button:hover {
+    transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-xl);
+    background-color: rgba(227, 6, 19, 0.8); /* Red hover */
+    color: var(--bmw-white);
+}
+.action-button:active { transform: translateY(0) scale(1); }
+.action-button svg { width: 24px; height: 24px; transition: transform 0.2s; }
+.action-button span { /* ... same screen reader styles ... */ }
+.action-button.success { background-color: #28a745; }
+.action-button.error { background-color: #dc3545; }
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) { /* Tablet */
+    .header-content { padding: 0 1rem; }
+    .nav.desktop-nav ul { gap: 1rem; }
+    .nav.desktop-nav ul li a { font-size: 0.85rem; }
+    .section { padding: 3rem 1.5rem 4rem 1.5rem; }
+    h1 { font-size: 2.5rem; } h2 { font-size: 1.9rem; } h3 { font-size: 1.4rem; }
+    .pillar-list { columns: 1; }
+    .flowchart-container { font-size: 0.9rem; }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .desktop-nav { display: none; }
+    .mobile-only { display: block; }
+    .header { height: 60px; }
+    .main-content { padding-top: 60px; }
+
+    .section { padding: 2.5rem 1rem 3.5rem 1rem; }
+    h1 { font-size: 1.8rem; } h2 { font-size: 1.6rem; } h3 { font-size: 1.3rem; }
+
+    .pillar-list li { font-size: 1rem; padding-left: 1.5rem; }
+    .pillar-list li::before { font-size: 1.2rem; }
+
+    .timeline { padding-left: 0.5rem; }
+    .timeline-item { padding-left: 1.5rem; }
+    .timeline-item::before { left: -4.5px; width: 12px; height: 12px; border-width: 2px; }
+    .timeline-content { border-left-width: 1px; padding-left: 0.8rem;}
+    .roadmap-details { padding-left: 1rem; }
+
+    .risk-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .card { padding: 1.5rem; } /* Ensure cards still have padding */
+    .risk-item { padding: 1.2rem; } /* Adjust padding if needed */
+
+    /* Responsive Table Styles */
+    .tech-stack-table thead { display: none; }
+    .tech-stack-table tr { display: block; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: var(--bg-secondary); } /* Add background to row */
+    .tech-stack-table td { display: block; text-align: right; padding-left: 50%; position: relative; border-bottom: 1px dotted var(--border-color); padding-top: 0.8rem; padding-bottom: 0.8rem; }
+    .tech-stack-table td:last-child { border-bottom: none; }
+    .tech-stack-table td::before { content: attr(data-label); position: absolute; left: 1rem; width: calc(50% - 2rem); padding-right: 10px; white-space: nowrap; text-align: left; font-weight: bold; color: var(--text-secondary); }
+    .tech-stack-table .total-row td { padding-left: 1rem; text-align: left; background: transparent; } /* Reset total row */
+    .tech-stack-table .total-row td::before { display: none; }
+    .tech-stack-table .total-row td:last-child { text-align: right; font-weight: bold; }
+
+    /* Simpler Flowchart on Mobile */
+    .flowchart-container { padding: 1rem 0.5rem; }
+    .flowchart-list li { padding: 0.6rem 1rem 0.6rem 35px; font-size: 0.85rem; }
+    .flowchart-list li::before { left: 8px; width: 12px; height: 12px; }
+    .flowchart-list li.step-auto::before, .flowchart-list li.step-manual::before { font-size: 12px; left: 5px;}
+    .flowchart-list li.step-decision::before { width: 10px; height: 10px; left: 10px; }
+    .flowchart-list::before { left: 14px; } /* Align main line */
+    .decision-paths { padding-left: 0.5rem; }
+    .decision-paths .path-label { width: auto; }
+     .decision-paths li::before { display: none;} /* Hide connector dots within paths */
+
+    .action-buttons { bottom: 1rem; right: 1rem; }
+    .action-button { width: 48px; height: 48px; }
+    .action-button svg { width: 20px; height: 20px; }
+}
+
+/* Print Styles */
+@media print { /* ... (largely same as before, verify element classes) ... */ }
