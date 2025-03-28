@@ -6,48 +6,66 @@
     --bmw-black: #000000;
     --bmw-white: #FFFFFF;
 
-    /* Dark Mode Palette */
-    --bg-primary: #121212;
-    --bg-secondary: #1e1e1e; /* Used for grouping containers */
-    --bg-card-unused: rgba(30, 30, 30, 0.7); /* Keep for glass buttons */
-    --bg-header: rgba(30, 30, 30, 0.85);
-    --text-primary: #E0E0E0;
-    --text-secondary: #A0A0A0;
-    --text-headings-main: var(--bmw-white);      /* H1 */
-    --text-headings-section: var(--bmw-blue);   /* H2, Section Identifier H3 */
-    --text-headings-sub: #EAEAEA;            /* Other H3, Pillar H4 */
-    --text-headings-minor: var(--bmw-red);    /* Action H4 (Pillars), Risk term, potentially others */
+    /* Dark Mode Palette - Refined */
+    --bg-primary: #0f0f12; /* Slightly deeper black */
+    --bg-secondary: #1a1a1f; /* Slightly richer secondary */
+    --bg-tertiary: #25252a; /* For hover states, cards */
+    --bg-card-unused: rgba(30, 30, 30, 0.7);
+    --bg-header: rgba(18, 18, 20, 0.85); /* Match primary bg more closely */
+    --text-primary: #E8E8EA; /* Slightly brighter primary text */
+    --text-secondary: #A8A8B0; /* Slightly adjusted secondary */
+    --text-headings-main: var(--bmw-white);
+    --text-headings-section: var(--bmw-blue);
+    --text-headings-sub: #F0F0F5; /* Brighter subheadings */
+    --text-headings-minor: var(--bmw-red);
     --accent-primary: var(--bmw-blue);
-    --accent-secondary: var(--bmw-red);        /* Active Nav, Flowchart Decisions/Stops, Timeline Dots, Button Hovers, Table Total */
+    --accent-secondary: var(--bmw-red);
     --border-color: rgba(255, 255, 255, 0.1);
-    --border-color-hover: rgba(255, 255, 255, 0.2);
-    --highlight-glow: 0 0 15px rgba(0, 102, 177, 0.3);
-    --flowchart-bg: #252528; /* Slightly different from secondary */
-    --flowchart-step-bg: #2e2e32;
-    --flowchart-manual-bg: #3a3a3e;
-    --flowchart-connector-color: #505055;
-    --flowchart-decision-bg: rgba(227, 6, 19, 0.3); /* Red accent */
+    --border-color-light: rgba(255, 255, 255, 0.05); /* Lighter for subtle borders */
+    --border-color-hover: rgba(255, 255, 255, 0.25);
+    --highlight-glow: 0 0 20px rgba(0, 102, 177, 0.3);
+    --highlight-glow-red: 0 0 15px rgba(227, 6, 19, 0.25);
+
+    /* Flowchart Specific */
+    --flowchart-bg: var(--bg-secondary);
+    --flowchart-step-bg: var(--bg-tertiary);
+    --flowchart-manual-bg: #3f3f46;
+    --flowchart-connector-color: #484850;
+    --flowchart-decision-bg: rgba(227, 6, 19, 0.15); /* More subtle red bg */
+    --flowchart-decision-border: var(--bmw-red);
     --flowchart-stop-bg: var(--bmw-red);
     --flowchart-output-border: var(--accent-primary);
-
+    --flowchart-icon-color: var(--text-secondary);
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, #004C8C 100%);
     --gradient-accent: linear-gradient(135deg, var(--accent-secondary) 0%, #B30510 100%);
+    /* Subtle noise background gradient */
+    --gradient-noise: linear-gradient(rgba(18, 18, 20, 0), rgba(18, 18, 20, 0)),
+                      linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)),
+                      radial-gradient(circle at top left, rgba(255,255,255,0.03), rgba(255,255,255,0));
+
 
     /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.15);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.25);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.35);
+    --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.35);
 
-    /* Animation Timing & Sizes */
-    --transition-speed: 0.3s;
+    /* Animation & Transitions */
+    --transition-speed: 0.25s;
     --transition-medium: 0.4s;
     --transition-slow: 0.6s;
+    --ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* Smooth easing */
+    --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+    /* Sizes & Layout */
     --header-height: 70px;
     --max-content-width: 1100px;
+    --content-padding: 0 2.5rem; /* Consistent content padding */
+    --section-padding-y: 6rem; /* Increased vertical padding */
     --mobile-breakpoint: 768px;
+    --element-spacing: 1.5rem; /* Consistent spacing unit */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,10 +73,15 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.7;
+    font-weight: 400; /* Default weight */
+    font-size: 16.5px; /* Slightly larger base */
+    line-height: 1.75; /* Increased line height */
     background-color: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
+    /* Apply subtle noise gradient */
+    background-image: var(--gradient-noise);
+    background-size: 100px 100px, auto, auto; /* Control noise pattern size */
 }
 body.mobile-menu-open { overflow: hidden; }
 
@@ -67,39 +90,38 @@ body.mobile-menu-open { overflow: hidden; }
 .header {
     position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     height: var(--header-height);
-    transition: transform var(--transition-speed) ease-in-out, background-color var(--transition-speed);
+    transition: transform var(--transition-speed) var(--ease-out-cubic), background-color var(--transition-speed) var(--ease-out-cubic);
 }
-/* Hide/show only applies above mobile breakpoint */
 @media (min-width: calc(var(--mobile-breakpoint) + 1px)) {
     .header.scroll-down { transform: translateY(-100%); }
     .header.scroll-up { transform: translateY(0); }
 }
 
 .header-content {
-    max-width: var(--max-content-width); margin: 0 auto; padding: 0 2rem;
+    max-width: var(--max-content-width); margin: 0 auto; padding: var(--content-padding);
     height: 100%; display: flex; justify-content: space-between; align-items: center;
 }
-.logo { height: 40px; width: auto; flex-shrink: 0; }
+.logo { height: 40px; width: auto; flex-shrink: 0; transition: transform var(--transition-speed) var(--ease-out-cubic); }
+.logo:hover { transform: scale(1.05); }
 
 /* Desktop Navigation */
 .nav.desktop-nav { position: relative; }
-.nav.desktop-nav ul { display: flex; list-style: none; gap: 1.5rem; }
-.nav.desktop-nav ul li a { white-space: nowrap; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: color var(--transition-speed); position: relative; padding: 0.5rem 0; }
-/* Use RED for active/hover indicator */
-.nav.desktop-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-secondary); transition: width var(--transition-speed); }
+.nav.desktop-nav ul { display: flex; list-style: none; gap: calc(var(--element-spacing) * 1.5); } /* Increased gap */
+.nav.desktop-nav ul li a { white-space: nowrap; text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; transition: color var(--transition-speed); position: relative; padding: 0.5rem 0.2rem; /* Added horizontal padding */ }
+.nav.desktop-nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; margin: auto; width: 0; height: 2px; background-color: var(--accent-secondary); transition: width var(--transition-speed) var(--ease-out-cubic); }
 .nav.desktop-nav ul li a:hover, .nav.desktop-nav ul li a.active { color: var(--text-primary); }
 .nav.desktop-nav ul li a:hover::after, .nav.desktop-nav ul li a.active::after { width: 100%; }
 
 .progress-bar {
     position: absolute; bottom: -1px; left: 0; height: 3px;
-    background: var(--gradient-primary); /* Changed back to blue gradient */
+    background: var(--gradient-primary);
     width: 0%;
     transition: width 0.1s linear;
 }
 
 /* Hamburger Button */
 .hamburger-button { display: none; background: none; border: none; padding: 0; cursor: pointer; width: 30px; height: 24px; position: relative; z-index: 1100; }
-.hamburger-button span { display: block; width: 100%; height: 3px; background-color: var(--text-primary); border-radius: 3px; position: absolute; left: 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+.hamburger-button span { display: block; width: 100%; height: 3px; background-color: var(--text-primary); border-radius: 3px; position: absolute; left: 0; transition: transform 0.3s var(--ease-out-cubic), opacity 0.3s var(--ease-out-cubic); }
 .hamburger-button span:nth-child(1) { top: 0; }
 .hamburger-button span:nth-child(2) { top: 50%; transform: translateY(-50%); }
 .hamburger-button span:nth-child(3) { bottom: 0; }
@@ -108,12 +130,12 @@ body.mobile-menu-open { overflow: hidden; }
 .hamburger-button.active span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
 
 /* Mobile Menu Overlay */
-.mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: rgba(18, 18, 18, 0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s linear 0.3s; padding-top: calc(var(--header-height) + 2rem); overflow-y: auto; }
-.mobile-menu.open { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s linear 0s; }
-.mobile-menu nav { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: calc(100% - var(--header-height) - 4rem); }
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background-color: rgba(15, 15, 18, 0.98); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.3s var(--ease-out-cubic), visibility 0s linear 0.3s; padding-top: calc(var(--header-height) + 3rem); overflow-y: auto; } /* Increased padding */
+.mobile-menu.open { opacity: 1; visibility: visible; transition: opacity 0.3s var(--ease-out-cubic), visibility 0s linear 0s; }
+.mobile-menu nav { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: calc(100% - var(--header-height) - 6rem); }
 .mobile-menu ul { list-style: none; padding: 0; margin: 0; text-align: center; }
-.mobile-menu li { margin-bottom: 1.5rem; }
-.mobile-menu a { color: var(--text-primary); text-decoration: none; font-size: 1.5rem; font-weight: 500; transition: color 0.2s; }
+.mobile-menu li { margin-bottom: 2rem; } /* Increased spacing */
+.mobile-menu a { color: var(--text-primary); text-decoration: none; font-size: 1.8rem; font-weight: 500; transition: color 0.2s; }
 .mobile-menu a:hover { color: var(--accent-primary); }
 
 /* Utility classes */
@@ -122,427 +144,33 @@ body.mobile-menu-open { overflow: hidden; }
 
 /* --- Main Content & Sections --- */
 .main-content { padding-top: var(--header-height); }
-.section { max-width: var(--max-content-width); margin: 0 auto; padding: 4rem 2rem 4rem 2rem; }
-section + section { padding-top: 0; } /* Reduce top padding for adjacent sections */
-section:has(> .content > h2) { padding-top: 5rem; } /* Keep larger gap before H2 */
-section:has(> .content > h3.section-identifier) { padding-top: 5rem; } /* Add top padding for Exec Summary */
+#top { height: 1px; /* Anchor point for logo link */}
+.section { max-width: var(--max-content-width); margin: 0 auto; padding: var(--section-padding-y) var(--content-padding); position: relative; } /* Added position relative */
 
-/* --- Basic Animation Setup --- */
-.animate-on-scroll .animate-item { opacity: 0; transform: translateY(20px); transition: opacity var(--transition-medium) ease-out, transform var(--transition-medium) ease-out; transition-delay: var(--animation-delay, 0s); }
-.section.visible .animate-item { opacity: 1; transform: translateY(0); }
-
-/* --- Typography & Basic Elements --- */
-h1 { font-size: 2.8rem; margin-bottom: 2.5rem; color: var(--text-headings-main); text-align: center; } /* Increased bottom margin */
-h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--text-headings-section); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
-h3 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1.2rem; color: var(--text-headings-sub); }
-/* Style for Executive Summary heading - matches H2 */
-h3.section-identifier {
-    font-size: 2.2rem; /* Match H2 size */
-    margin-bottom: 2.5rem; /* Match H2 margin */
-    color: var(--text-headings-section); /* Match H2 color */
-    border-bottom: 2px solid var(--border-color); /* Match H2 border */
-    padding-bottom: 0.5rem; /* Match H2 padding */
-    margin-top: 0; /* Reset default H3 margin */
-}
-/* Pillar Group Title H4 */
-.pillar-detail > h4 {
-    font-size: 1.25rem; /* Slightly larger */
-    color: var(--text-headings-sub); /* Sub heading color */
-    font-weight: 700;
-    margin-bottom: 1.5rem; /* More space below */
-    margin-top: 0;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--border-color);
-}
-/* Action H4 (Red) within Pillars and other minor H4 */
-.pillar-detail ul h4, /* Targets H4 within pillar lists if needed */
-h4 /* General H4 unless overridden above */
-{
-    font-size: 1.1rem; /* Smaller size */
-    color: var(--text-headings-minor); /* Red */
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    margin-top: 1.5rem;
-    border-bottom: none; /* Remove border */
-    padding-bottom: 0; /* Remove padding */
-}
-
-
-p { margin-bottom: 1rem; }
-ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
-li { margin-bottom: 0.5rem; }
-ul ul, ol ol { margin-top: 0.5rem; }
-/* Adjusted default link appearance */
-a { color: var(--accent-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color var(--transition-speed), text-decoration-color var(--transition-speed); }
-a:hover { color: var(--bmw-white); text-decoration-color: var(--bmw-white); }
-/* Remove underline for specific links if needed */
-.nav a, .action-button { text-decoration: none; }
-
-strong { font-weight: 700; color: var(--text-headings-sub); }
-i, em { font-style: italic; color: var(--text-secondary); } /* Slightly distinguish italics */
-pre { background-color: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9em; border: 1px solid var(--border-color); }
-
-/* --- Card Component Style (Used only for Meta Info) --- */
-.card { background: var(--bg-card-unused); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed); }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg), var(--highlight-glow); border-color: var(--border-color-hover); }
-
-/* --- Glass Effect (Header, Buttons) --- */
-.glass-nav, .action-button.glass-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-color); }
-.glass-nav { background: var(--bg-header); }
-.action-button.glass-card { background: var(--bg-card-unused); }
-
-/* --- Specific Section Styles --- */
-.meta-info { font-size: 0.9rem; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;} /* Centered meta info */
-.meta-info p { margin-bottom: 0.5rem; }
-
-/* Pillar List Style (in Strategy section) */
-.pillar-list { list-style: none; padding-left: 0; margin-top: 1.5rem; columns: 2; gap: 1.5rem; }
-.pillar-list li { position: relative; padding-left: 2rem; margin-bottom: 1.2rem; font-size: 1.1rem; break-inside: avoid; }
-.pillar-list li::before { content: '▸'; /* Use a different bullet */ position: absolute; left: 0; top: 0px; color: var(--accent-primary); font-weight: bold; font-size: 1.4rem; }
-.pillar-list li strong { font-weight: 700; color: var(--text-headings-sub); }
-
-/* Pillar Detail Grouping */
-.pillar-details-group {
-    background-color: var(--bg-secondary); /* Use secondary background for grouping */
-    padding: 2rem 2.5rem; /* More padding */
-    border-radius: 12px;
-    margin-top: 2rem;
-    border: 1px solid var(--border-color);
-}
-.pillar-detail { margin-bottom: 2rem; padding-bottom: 2rem; }
-/* Pillar Title H4 styling moved to main H4 rules */
-hr.section-divider { border: none; height: 1px; background-color: var(--border-color); margin: 3rem 0; } /* More margin */
-.pillar-detail:last-of-type { margin-bottom: 0; padding-bottom: 0; } /* Remove spacing after last pillar */
-.pillar-detail:last-of-type hr.section-divider { display: none; }
-
-/* --- NEW Flowchart Styles --- */
-.flowchart-container {
-    padding: 2rem;
-    margin-top: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--flowchart-bg);
-    overflow-x: auto; /* Allow horizontal scroll if needed */
-}
-
-.flowchart {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center steps horizontally */
-    gap: 0; /* Connectors handle spacing */
-    min-width: 450px; /* Prevent extreme squishing */
-}
-
-.flowchart-step {
-    background-color: var(--flowchart-step-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 0.8rem 1.5rem;
-    text-align: center;
-    width: 90%; /* Max width relative to container */
-    max-width: 500px; /* Absolute max width */
-    box-shadow: var(--shadow-sm);
-    position: relative; /* For pseudo-elements if needed */
-    font-size: 0.95rem;
-    z-index: 1;
-}
-
-.flowchart-connector {
-    width: 2px;
-    height: 30px; /* Space between steps */
-    background-color: var(--flowchart-connector-color);
-    position: relative;
-    z-index: 0;
-}
-
-/* Specific Step Styles */
-.flowchart-step.step-start { background: var(--gradient-primary); color: var(--bmw-white); border: none; }
-.flowchart-step.step-output { border-left: 4px solid var(--flowchart-output-border); }
-.flowchart-step.step-manual { background-color: var(--flowchart-manual-bg); border-style: dashed; font-weight: bold; }
-.flowchart-step.step-manual::before { content:'👤'; /* User icon */ display: inline-block; margin-right: 0.5rem; opacity: 0.7; font-size: 1.1em; }
-.flowchart-step.step-auto::before { content: '⚙️'; /* Gear icon */ display: inline-block; margin-right: 0.5rem; opacity: 0.7; font-size: 1.1em; }
-
-/* Decision Step Specifics */
-.flowchart-step.step-decision {
-    background-color: var(--flowchart-decision-bg);
-    border-color: var(--accent-secondary);
-    width: 95%; /* Slightly wider */
-    max-width: 550px;
-}
-.flowchart-step.step-decision::before {
-    content: '◆'; /* Diamond symbol */
-    display: inline-block;
-    margin-right: 0.5rem;
-    color: var(--accent-secondary);
-    font-weight: bold;
-    font-size: 1.2em; /* Make diamond slightly larger */
-    line-height: 1; /* Adjust line height for better vertical alignment */
-    position: relative; /* Needed for potential vertical adjustments */
-    top: 0.05em; /* Fine-tune vertical alignment */
-}
-
-.decision-paths {
-    display: flex;
-    justify-content: space-evenly; /* Space out Yes/No paths */
-    margin-top: 15px; /* Space below decision text */
-    width: 100%;
-    position: relative;
-    padding-bottom: 20px; /* Space for path lines */
-}
-
-.decision-path {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.decision-path .path-label {
-    font-weight: bold;
-    font-size: 0.9em;
-    color: var(--text-secondary);
-    margin-bottom: 5px;
-    background: var(--flowchart-bg); /* Match background to overlay line */
-    padding: 0 0.3em;
-    z-index: 1;
-    position: relative; /* Ensure label is above line */
-}
-
-.decision-path .path-line { /* Horizontal line from decision center */
-    height: 2px;
-    background-color: var(--flowchart-connector-color);
-    width: 50%; /* Adjust as needed */
-    position: absolute;
-    top: -27px; /* Position above path label, relative to decision-path */
-    z-index: 0;
-}
-.decision-path.path-no .path-line { left: 50%; }
-.decision-path.path-yes .path-line { right: 50%; }
-
-
-.decision-path .mini-step { /* For Stop/Notify steps */
-    margin-top: 10px; /* Space below label */
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9em;
-    width: auto; /* Don't force width */
-    min-width: 100px;
-}
-.flowchart-step.step-stop,
-.flowchart-step.step-stop.mini-step {
-    background-color: var(--flowchart-stop-bg);
-    color: var(--bmw-white);
+/* Section Divider */
+.section-divider.visual-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: calc(var(--section-padding-y) / 2) 0; /* Position between sections */
     border: none;
 }
-.flowchart-step.step-stop::before {
-    content: '⏹️'; /* Stop icon */
-    display: inline-block;
-    margin-right: 0.5rem;
+/* Remove divider after last section visually */
+main > .section:last-of-type + .section-divider { display: none; }
+
+
+/* --- Basic Animation Setup --- */
+.animate-on-scroll .animate-item {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98); /* Subtle scale added */
+    transition: opacity var(--transition-medium) var(--ease-out-cubic), transform var(--transition-medium) var(--ease-out-cubic);
+    transition-delay: var(--animation-delay, 0s);
 }
+.section.visible .animate-item { opacity: 1; transform: translateY(0) scale(1); }
 
-
-/* Connect decision base to next step */
-.decision-paths::after {
-    content: '';
-    width: 2px;
-    height: 20px; /* Connects bottom of paths area */
-    background-color: var(--flowchart-connector-color);
-    position: absolute;
-    bottom: 0px; /* Start from bottom of path container */
-    left: 50%;
-    transform: translateX(-50%);
-}
-/* Adjust connector below decision step */
-.flowchart-step.step-decision + .flowchart-connector {
-    margin-top: -1px; /* Overlap slightly */
-}
-
-/* --- Grouping Containers with Secondary Background --- */
-.secondary-bg-container {
-    background-color: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-top: 2rem;
-    border: 1px solid var(--border-color);
-}
-
-/* --- Technology Stack Table --- */
-.table-container { padding: 0; overflow: hidden; /* Let table have padding */ }
-.tech-stack-table { width: 100%; border-collapse: collapse; margin-top: 0; }
-.tech-stack-table th, .tech-stack-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border-color); }
-.tech-stack-table th { color: var(--text-headings-sub); font-weight: 500; background-color: rgba(0,0,0,0.1); }
-.tech-stack-table tbody tr:hover { background-color: rgba(255, 255, 255, 0.03); }
-.tech-stack-table tbody tr:last-child td { border-bottom: none; }
-.tech-stack-table td:last-child, .tech-stack-table th:last-child { text-align: right; }
-.tech-stack-table td a { text-decoration-style: dotted; } /* Differentiate table links */
-.tech-stack-table .total-row td { font-weight: bold; }
-.tech-stack-table .total-row strong { color: var(--accent-secondary); } /* Highlight total cost */
-
-/* --- Timeline --- */
-.timeline { position: relative; max-width: 800px; margin: 3rem auto 0 auto; padding-left: 2rem; }
-.timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; background-color: var(--accent-primary); border-radius: 2px; }
-.timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 2.5rem; }
-.timeline-item::before { /* Dot */ content: ''; position: absolute; left: -6.5px; top: 5px; width: 16px; height: 16px; background-color: var(--accent-secondary); border: 3px solid var(--bg-secondary); border-radius: 50%; z-index: 1; }
-.timeline-content { padding: 0 0 0 1rem; /* Minimal padding */ }
-.timeline-item h3 { margin-top: 0; margin-bottom: 1rem; color: var(--text-headings-sub); font-size: 1.4rem; }
-.roadmap-details { list-style: decimal; padding-left: 1.5rem; }
-.roadmap-details li { margin-bottom: 0.75rem; font-size: 0.95rem; }
-
-
-/* --- Risk & Mitigation List --- NEW STYLE --- */
-.risk-list { list-style: none; padding-left: 0; margin-top: 0; }
-.risk-list div { /* Container for dt/dd pair */
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border-color);
-}
-.risk-list div:last-child { border-bottom: none; padding-bottom: 0; }
-.risk-list div:first-child { padding-top: 0; }
-.risk-list dt { /* Risk Term */
-    font-weight: 700;
-    color: var(--text-headings-minor); /* Red */
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-.risk-list dd { /* Mitigation Description */
-    margin-left: 0; /* Remove default dl indent */
-    font-size: 0.95rem;
-}
-.risk-list dd strong { /* Highlight 'Mitigation:' text */
-    color: var(--text-secondary);
-}
-
-
-/* --- Conclusion Box --- */
-.conclusion-box { margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(0, 102, 177, 0.1), rgba(30, 30, 30, 0.3)); border-left: 4px solid var(--accent-primary); border-radius: 8px; }
-.conclusion-box p { margin-bottom: 1rem; } .conclusion-box p:last-child { margin-bottom: 0; }
-
-/* --- Footer --- */
-.footer { background-color: var(--bg-secondary); color: var(--text-secondary); padding: 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid var(--border-color); font-size: 0.9rem; }
-.footer-content p { margin-bottom: 0.5rem; }
-.footer-content p:last-child { margin-bottom: 0; }
-
-/* --- Action Buttons --- */
-.action-buttons { position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex; flex-direction: column; gap: 1rem; z-index: 1010; }
-.action-button { width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; /* Needed for tooltip */ box-shadow: var(--shadow-lg); transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed); color: var(--text-primary); background: var(--bg-card-unused); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); }
-.action-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-xl); background-color: rgba(227, 6, 19, 0.8); /* Red hover */ color: var(--bmw-white); }
-.action-button:active { transform: translateY(0) scale(1); }
-.action-button svg { width: 24px; height: 24px; transition: transform 0.2s; }
-/* Hide text visually but keep for accessibility */
-.action-button .button-text { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-/* Tooltip styling */
-.action-button .tooltip-message { visibility: hidden; opacity: 0; width: max-content; background-color: var(--bmw-black); color: var(--bmw-white); text-align: center; border-radius: 6px; padding: 5px 10px; position: absolute; z-index: 1; bottom: 125%; /* Position above the button */ left: 50%; transform: translateX(-50%); transition: opacity 0.3s; font-size: 0.8rem; }
-.action-button .tooltip-message.visible { visibility: visible; opacity: 1; }
-.action-button.success { background-color: #28a745; }
-.action-button.error { background-color: #dc3545; }
-
-
-/* --- Responsive Design --- */
-@media (max-width: 992px) { /* Tablet */
-    .header-content { padding: 0 1rem; }
-    .nav.desktop-nav ul { gap: 1rem; }
-    .nav.desktop-nav ul li a { font-size: 0.85rem; }
-    .section { padding: 3rem 1.5rem 4rem 1.5rem; }
-    h1 { font-size: 2.5rem; } h2, h3.section-identifier { font-size: 1.9rem; } h3 { font-size: 1.4rem; }
-    .pillar-list { columns: 1; }
-    .secondary-bg-container { padding: 1.5rem; }
-    .pillar-details-group { padding: 1.5rem 2rem; }
-}
-
-@media (max-width: 768px) { /* Mobile */
-    .desktop-nav { display: none; }
-    .mobile-only { display: block; }
-    .header { height: 60px; }
-    .main-content { padding-top: 60px; }
-
-    .section { padding: 2.5rem 1rem 3.5rem 1rem; }
-    h1 { font-size: 1.8rem; } h2, h3.section-identifier { font-size: 1.6rem; } h3 { font-size: 1.3rem; }
-
-    .pillar-list li { font-size: 1rem; padding-left: 1.5rem; }
-    .pillar-list li::before { font-size: 1.2rem; }
-    .pillar-details-group { padding: 1rem 1.5rem; }
-
-    .timeline { padding-left: 0.5rem; }
-    .timeline-item { padding-left: 1.5rem; }
-    .timeline-item::before { left: -4.5px; width: 12px; height: 12px; border-width: 2px; }
-    .timeline-content { padding-left: 0.8rem;}
-    .roadmap-details { padding-left: 1rem; }
-
-    .secondary-bg-container { padding: 1rem; } /* Reduce padding on mobile */
-    .risk-list dt { font-size: 1rem; }
-    .risk-list dd { font-size: 0.9rem; }
-
-    /* Responsive Table Styles */
-    .tech-stack-table thead { display: none; }
-    .tech-stack-table tr { display: block; margin-bottom: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: var(--bg-primary); }
-    .tech-stack-table td { display: block; text-align: right; padding-left: 50%; position: relative; border-bottom: 1px dotted var(--border-color); padding-top: 0.8rem; padding-bottom: 0.8rem; background: transparent; }
-    .tech-stack-table td:last-child { border-bottom: none; }
-    .tech-stack-table td::before { content: attr(data-label); position: absolute; left: 1rem; width: calc(50% - 2rem); padding-right: 10px; white-space: nowrap; text-align: left; font-weight: bold; color: var(--text-secondary); }
-    .tech-stack-table .total-row { background: var(--bg-secondary); } /* Give total row a background */
-    .tech-stack-table .total-row td { padding-left: 1rem; text-align: left; background: transparent; }
-    .tech-stack-table .total-row td::before { display: none; }
-    .tech-stack-table .total-row td:last-child { text-align: right; font-weight: bold; }
-
-    /* Simpler Flowchart on Mobile */
-    .flowchart-container { padding: 1rem 0.5rem; }
-    .flowchart { min-width: 300px; }
-    .flowchart-step { width: 95%; padding: 0.6rem 1rem; font-size: 0.85rem; }
-    .flowchart-connector { height: 20px; }
-    .flowchart-step.step-decision { width: 100%; }
-    .decision-paths { margin-top: 10px; padding-bottom: 15px; }
-    .decision-path .path-label { font-size: 0.8em; }
-    .decision-path .path-line { top: -22px; }
-    .decision-path .mini-step { padding: 0.3rem 0.6rem; font-size: 0.8em; min-width: 80px; }
-    .decision-paths::after { height: 15px; }
-
-    .action-buttons { bottom: 1rem; right: 1rem; }
-    .action-button { width: 48px; height: 48px; }
-    .action-button svg { width: 20px; height: 20px; }
-}
-
-/* Print Styles */
-@media print {
-     body { background: var(--bmw-white) !important; color: var(--bmw-black) !important; font-size: 10pt; line-height: 1.4; } /* Smaller base font */
-     * { background: transparent !important; color: var(--bmw-black) !important; box-shadow: none !important; text-shadow: none !important; filter: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border-color: #ccc !important; transition: none !important; }
-     .header, .nav .progress-bar, .action-buttons, .hamburger-button, .mobile-menu { display: none !important; }
-     .main-content { margin: 0; padding: 1cm; padding-top: 0; }
-     .section { padding: 0.8cm 0; max-width: 100%; opacity: 1 !important; transform: none !important; page-break-inside: avoid; }
-     .secondary-bg-container, .pillar-details-group, .conclusion-box, .risk-list div, .flowchart-container, .timeline-content { border: 1px solid #ccc; padding: 0.5cm; margin-bottom: 0.5cm; border-radius: 0; background: #f9f9f9 !important; page-break-inside: avoid; }
-     h1, h2, h3, h4, h5, h6 { color: var(--bmw-black) !important; page-break-after: avoid; margin-top: 1rem; margin-bottom: 0.5rem; }
-     h1 { font-size: 18pt; text-align: left; } h2, h3.section-identifier { font-size: 14pt; border-bottom: 1px solid #666; padding-bottom: 0.2rem; } h3 { font-size: 12pt; } h4 { font-size: 11pt; }
-     a { text-decoration: none; /* Avoid messy underlines */ color: var(--bmw-blue) !important; }
-     /* Show URLs only for external links */
-     a[href^="http"]:not([href*='superbikeschool']):not([href*='google.com']):not([href*='openai.com']):not([href*='reddit.com']):not([href*='feedly.com']):not([href*='make.com']):not([href*='discord.com']):not([href*='youtube.com']):not([href*='instagram.com']):not([href*='facebook.com']):not([href*='claude.ai']):after { content: " [" attr(href) "]"; font-size: 8pt; color: #555; }
-     a[href^="#"] { text-decoration: none; color: inherit !important; }
-     ul, ol, dl { margin-bottom: 0.5rem; padding-left: 1.5rem; }
-     li, dd { margin-bottom: 0.3rem; }
-     .pillar-list { columns: 1; list-style: disc; padding-left: 2rem; }
-     .pillar-list li::before { display: none; }
-     .timeline { padding-left: 0; } .timeline::before, .timeline-item::before { display: none; } .timeline-item { padding-left: 0; margin-bottom: 1rem; }
-     /* Simplified Flowchart for Print */
-     .flowchart-container { border: 1px solid #ccc; padding: 0.5cm; background: #f9f9f9 !important; }
-     .flowchart { display: block; } /* Stack steps vertically */
-     .flowchart-step { border: 1px solid #ccc; background: #fff !important; padding: 0.2cm; margin-bottom: 0.2cm; box-shadow: none; text-align: left; width: 100%; max-width: 100%; }
-     .flowchart-step::before { display: none; } /* Hide icons */
-     .flowchart-connector, .decision-paths, .decision-path .path-line, .decision-paths::after { display: none; } /* Hide connectors/paths */
-     .flowchart-step.step-decision span::before { content: 'If '; }
-     .flowchart-step.step-decision span::after { content: ': Yes -> [Continue]; No -> [See Below]'; }
-     .decision-path .path-label { display: inline; font-weight: normal; }
-     .decision-path.path-no .mini-step span::before { content: ' (If No: '; }
-     .decision-path.path-no .mini-step span::after { content: ')'; }
-     .decision-path .mini-step { display: inline; margin: 0; padding: 0; border: none; box-shadow: none; background: none !important; }
-
-     .risk-list div { border-bottom: 1px dotted #ccc; padding: 0.3cm 0; }
-     .risk-list dt { font-weight: bold; } .risk-list dd { margin-left: 1rem; }
-
-     /* Responsive Table for Print */
-     .table-container { overflow: visible; }
-     .tech-stack-table, .tech-stack-table tbody, .tech-stack-table tr, .tech-stack-table td { display: block; width: 100%; }
-     .tech-stack-table thead { display: none; }
-     .tech-stack-table tr { page-break-inside: avoid; margin-bottom: 0.5cm; border: 1px solid #ccc; padding: 0.3cm; }
-     .tech-stack-table td { display: block; text-align: left !important; padding: 0.1cm 0 !important; border: none; background: transparent !important;}
-     .tech-stack-table td::before { content: attr(data-label) ": "; display: inline-block; font-weight: bold; margin-right: 0.5rem; text-align: left !important; width: auto !important; position: static !important; color: #333 !important; }
-     .tech-stack-table .total-row td::before { display: inline-block; }
-     .tech-stack-table .total-row td:last-child { text-align: left !important; }
-
-     .section h2, .section h3.section-identifier { page-break-before: auto; } /* Allow page breaks before major sections */
-     @page { margin: 1.5cm; }
-}
+/* --- Typography & Basic Elements --- Refined */
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); /* Responsive font size */ margin-bottom: calc(var(--element-spacing) * 2); color: var(--text-headings-main); text-align: center; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: calc(var(--element-spacing) * 1.8); color: var(--text-headings-section); border-bottom: 2px solid var(--border-color); padding-bottom: calc(var(--element-spacing) * 0.5); font-weight: 700; }
+h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-top: calc(var(--element-spacing) * 1.5); margin-bottom: var(--element-spacing); color: var(--text-headings-sub); font-weight: 700; }
+h3.section-identifier { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: calc(var(--element-spacing) * 1.8); color: var(--text-headings-section); border-bottom: 2px solid var(--border-color); padding-bottom: calc(var(--element-spacing) * 0.5); margin-top: 0; font-weight: 700; }
+/* Pillar Group Title H4 */
+.pillar-detail > h4 { font-size: 1.3rem; color: var(--text-headings-sub); font-weight: 700; margin-b
