@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Refining font weights -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Added 600 weight -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add Favicon Link Here if available -->
     <!-- <link rel="icon" href="assets/favicon.ico" sizes="any"> -->
     <!-- <link rel="icon" href="assets/icon.svg" type="image/svg+xml"> -->
@@ -20,7 +20,6 @@
         <div class="header-content">
             <!-- Added link to top for logo click -->
             <a href="#top" aria-label="Scroll to top">
-                <!-- Filter removed via CSS - ensure logo has contrast -->
                 <img src="assets/CSS-Sticker-Black.png" alt="CSS Logo" class="logo" loading="lazy">
             </a>
             <!-- Desktop Navigation -->
@@ -47,6 +46,10 @@
 
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <!-- Added explicit close button -->
+        <button id="mobile-menu-close-button" class="mobile-menu-close" aria-label="Close Menu">
+             &times; <!-- Simple 'X' icon -->
+        </button>
         <nav>
              <ul>
                  <li><a href="#executive-summary" class="nav-link">Summary</a></li>
@@ -68,7 +71,6 @@
         <!-- Executive Summary Section -->
         <section id="executive-summary" class="section animate-on-scroll">
             <h1 class="animate-item">A Comprehensive Digital Engagement & Authority Strategy With An Emphasis On Reddit</h1>
-            <!-- Replaced card/glass-card with panel/panel-meta -->
             <div class="panel panel-meta animate-item interactive-element">
                 <p><strong>Prepared For:</strong> California Superbike School (CSS) Leadership & Team</p>
                 <p><strong>Prepared By:</strong> Eric “Rico” Oberndorfer in conjunction with an AI Strategic Assistant</p>
@@ -78,13 +80,13 @@
                 <h3 class="section-identifier animate-item">Executive Summary:</h3>
                 <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and limited team bandwidth—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier <strong>and most helpful</strong> resource for performance motorcycle riding, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
                 <p>The core strategy, <strong>"Automate Preparation, Humanize Engagement,"</strong> focuses on building sustainable systems:</p>
-                <!-- Updated list style -->
                 <ul class="styled-list">
+                    <!-- Links removed from list items below -->
                     <li class="interactive-element">Resolving foundational issues (YouTube copyright, Reddit access).</li>
-                    <li class="interactive-element">Systematically organizing CSS's vast knowledge into a central, easily maintainable <strong>Knowledge Base (KB)</strong> using <a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Google Sheets</a>, potentially aided by AI for initial processing.</li>
-                    <li class="interactive-element">Implementing an automated workflow using <a href="https://make.com" target="_blank" rel="noopener noreferrer">Make.com</a> and <a href="https://platform.openai.com/" target="_blank" rel="noopener noreferrer">OpenAI (GPT)</a> to monitor online discussions (primarily Reddit via <a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly</a>), identify relevant questions, retrieve corresponding information and media links from the KB, and generate <i>draft</i> responses aligned with CSS's voice.</li>
-                    <li class="interactive-element">Establishing a strict <strong>Human Review & Posting Protocol</strong> where all AI-drafted responses are efficiently reviewed and edited for accuracy, tone, and authenticity by designated CSS team members, primarily <strong>Dylan Code</strong>, before being manually posted.</li>
-                    <li class="interactive-element">Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, <a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a>) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI.</li>
+                    <li class="interactive-element">Systematically organizing CSS's vast knowledge into a central, easily maintainable <strong>Knowledge Base (KB)</strong> using Google Sheets, potentially aided by AI for initial processing.</li>
+                    <li class="interactive-element">Implementing an automated workflow using Make.com and OpenAI (GPT) to monitor online discussions (primarily Reddit via Feedly), identify relevant questions, retrieve corresponding information and media links from the KB, and generate <i>draft</i> responses aligned with CSS's voice.</li>
+                    <li class="interactive-element">Establishing a strict <strong>Human Review & Posting Protocol</strong> where all AI-drafted responses are efficiently reviewed and edited for accuracy, tone, and authenticity by designated CSS team members, primarily <span class="text-highlight-neutral">Dylan Code</span>, before being manually posted.</li>
+                    <li class="interactive-element">Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, Discord) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI.</li>
                 </ul>
                 <p><strong>The work done for Reddit and YouTube directly fuels content for all other platforms.</strong> This approach dramatically increases efficiency, creating a <strong>sustainable, low-maintenance process</strong> that allows CSS to provide expert answers consistently without overwhelming the team.</p>
                 <p>The upfront investment in structuring knowledge and setting up automation builds a long-term asset, less dependent on specific short-term employee presence. It builds trust and authority, enhances brand visibility, protects intellectual property, and ultimately aims to increase course enrollments and sales of educational materials.</p>
@@ -98,7 +100,6 @@
         <section id="problem-statement" class="section animate-on-scroll">
              <div class="content">
                 <h2 class="animate-item">Problem Statement & Current Situation Analysis:</h2>
-                <!-- Updated list style -->
                 <ul class="styled-list animate-item">
                     <li class="interactive-element"><strong>Intellectual Property Violation:</strong> Unauthorized distribution of CSS's full video content on YouTube devalues the product, confuses potential customers, and represents lost revenue/control.</li>
                     <li class="interactive-element"><strong>Reddit Platform Barriers:</strong>
@@ -125,7 +126,7 @@
                  <h3 class="animate-item">"Automate Preparation, Humanize Engagement" - Building a Sustainable System</h3>
                 <p class="animate-item">This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. <strong>Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process.</strong> This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches, and resilient to personnel changes. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
                 <h3 class="animate-item">Strategic Pillars:</h3>
-                 <!-- Added interactive class to pillar list container -->
+                 <!-- Changed bullet color via CSS -->
                  <ul class="pillar-list animate-item interactive-list-container">
                      <li class="interactive-element">Foundational Readiness & Asset Centralization</li>
                      <li class="interactive-element">Intelligent & Efficient Monitoring</li>
@@ -141,16 +142,15 @@
         <div class="section-divider visual-divider"></div>
 
         <!-- Pillar Details Section (Combined & Grouped) -->
-        <section id="pillar-details" class="section animate-on-scroll">
+        <section id="pillar-details" class="section"> <!-- Removed animate-on-scroll from section, apply to panels -->
             <div class="content">
                 <h2 class="animate-item">Strategic Pillar Details</h2>
-                 <!-- Replaced .pillar-details-group with .panel -->
-                 <div class="panel animate-item interactive-element">
-                    <!-- Pillar 1 Details -->
-                    <div class="pillar-detail animate-item">
-                        <!-- "Pillar: " prefix removed -->
+
+                <!-- Pillar 1 Panel -->
+                <!-- Added .pillar-panel class, moved animate-item here -->
+                <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                         <h4>Foundational Readiness & Asset Centralization</h4>
-                        <!-- Updated list style -->
                         <ul class="styled-list">
                             <li class="interactive-element"><strong>Action: Reclaim & Strategize YouTube Intellectual Property</strong>
                                 <ul class="nested-list">
@@ -171,7 +171,7 @@
                             </li>
                             <li class="interactive-element"><strong>Action: Resolve Reddit Account Access & Define Persona</strong>
                                  <ul class="nested-list">
-                                    <li>Task: Prioritize resolving the shadowban via the official <strong>Reddit Appeals page</strong> (<a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">reddit.com/appeal</a>). Be persistent, polite, identify CSS official representation (Dylan Code), state positive intent, seek resolution.</li>
+                                    <li>Task: Prioritize resolving the shadowban via the official <strong>Reddit Appeals page</strong> (<a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">reddit.com/appeal</a>). Be persistent, polite, identify CSS official representation (<span class="text-highlight-neutral">Dylan Code</span>), state positive intent, seek resolution.</li>
                                     <li>Explanation: Shadowbans render activity invisible; appeals are the only legitimate route.</li>
                                     <li>Account Strategy Recommendation: Use <strong>named accounts</strong> linked to key personnel for a more human touch. Primary accounts for posting reviewed content:
                                         <ul class="nested-list">
@@ -179,7 +179,7 @@
                                             <li>Rico_CSS (Employee, relatable team member)</li>
                                         </ul>
                                     </li>
-                                    <li>Reasoning: Named accounts foster better connection. Clear account ownership streamlines responsibility under Dylan Code's oversight. Legitimacy is key.</li>
+                                    <li>Reasoning: Named accounts foster better connection. Clear account ownership streamlines responsibility under <span class="text-highlight-neutral">Dylan Code</span>'s oversight. Legitimacy is key.</li>
                                 </ul>
                             </li>
                             <li class="interactive-element"><strong>Action: Construct the Central Knowledge Base (KB) with AI Assistance</strong>
@@ -187,10 +187,10 @@
                                     <li>Tool: <strong><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Google Sheets</a></strong> - Create CSS_Knowledge_Base.</li>
                                     <li>Columns: TopicID, PrimaryKeywords, SecondaryKeywords, ExplanationSnippet (Approved CSS explanation), MediaLink (Timestamped YouTube link, Short link, image URL, etc.).</li>
                                     <li>Ingestion Process (Manual Core, AI Assist):
-                                        <ul class="nested-list"> <!-- Further nesting -->
+                                        <ul class="nested-list">
                                             <li>Gather Sources: Digital books, video transcripts, notes, data summaries.</li>
                                             <li>AI-Assisted Processing: Use LLMs like <strong><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a></strong>, <strong><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Google Gemini</a></strong>, or <strong><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a></strong> to <i>accelerate</i> initial processing. Prompt LLMs to summarize concepts, extract definitions/advice, suggest keywords, and rephrase technical explanations into concise snippets based on provided CSS source text.</li>
-                                            <li>Human Review & Structuring: <strong>Dylan Code</strong> (or designated expert) <i>must review all</i> AI outputs for accuracy, nuance, and CSS methodology alignment. Edit rigorously. Organize validated information into the Google Sheet, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding correct MediaLinks.</li>
+                                            <li>Human Review & Structuring: <span class="text-highlight-neutral">Dylan Code</span> (or designated expert) <i>must review all</i> AI outputs for accuracy, nuance, and CSS methodology alignment. Edit rigorously. Organize validated information into the Google Sheet, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding correct MediaLinks.</li>
                                         </ul>
                                     </li>
                                     <li>Explanation: The KB is the structured "single source of truth." High "KB Quality" (comprehensive, accurate, searchable) is critical for automation success. LLMs assist, but human expertise validates.</li>
@@ -204,32 +204,31 @@
                                 </ul>
                             </li>
                         </ul>
-                         <hr class="visual-hr"> <!-- Replaced divider -->
+                         <!-- Removed hr divider, spacing handled by panel margin -->
                     </div>
+                 </div> <!-- End Pillar 1 Panel -->
 
-                     <!-- Pillar 2 Details -->
-                     <div class="pillar-detail animate-item">
-                         <!-- "Pillar: " prefix removed -->
+                 <!-- Pillar 2 Panel -->
+                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                         <h4>Intelligent & Efficient Monitoring</h4>
-                        <!-- Updated list style -->
                         <ul class="styled-list">
                             <li class="interactive-element"><strong>Action: Implement Automated Monitoring</strong>
                                 <ul class="nested-list">
                                     <li>Tool Recommendation: <strong><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly Pro</a></strong> (~$12/mo)</li>
                                     <li>Task: Configure Feedly to track relevant subreddits (e.g., r/trackdays, r/motorcycles, r/NewRiders) and keywords (throttle, braking, vision, track day, cornering, lean angle, CSS, etc.). Obtain the Feedly RSS feed URL.</li>
                                     <li>Explanation: Feedly aggregates mentions via RSS (a standard content feed format) for automation.</li>
-                                    <li>Reasoning & Benefit: <strong>Eliminates manual Reddit monitoring time drain.</strong> Captures opportunities efficiently, freeing up <strong>Dylan Code</strong> for review, strategy, and community management.</li>
+                                    <li>Reasoning & Benefit: <strong>Eliminates manual Reddit monitoring time drain.</strong> Captures opportunities efficiently, freeing up <span class="text-highlight-neutral">Dylan Code</span> for review, strategy, and community management.</li>
                                 </ul>
                             </li>
                         </ul>
-                         <hr class="visual-hr"> <!-- Replaced divider -->
-                     </div>
+                    </div>
+                 </div> <!-- End Pillar 2 Panel -->
 
-                     <!-- Pillar 3 Details -->
-                     <div class="pillar-detail animate-item">
-                         <!-- "Pillar: " prefix removed -->
+                  <!-- Pillar 3 Panel -->
+                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                          <h4>Automated Response Preparation Engine</h4>
-                         <!-- Updated list style -->
                          <ul class="styled-list">
                             <li class="interactive-element"><strong>Tool Recommendation:</strong> <strong><a href="https://make.com" target="_blank" rel="noopener noreferrer">Make (Core Plan)</a></strong> (~$11/mo)</li>
                             <li class="interactive-element"><strong>Task:</strong> Build automation Scenario in Make (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</li>
@@ -237,113 +236,48 @@
                             <li class="interactive-element"><strong>Reasoning:</strong> Automates repetitive retrieval/drafting based <i>only</i> on approved KB content. Make offers best cost-effectiveness and workflow power.</li>
                          </ul>
                          <h5 class="animate-item">Conceptual Workflow:</h5>
-                         <!-- Flowchart will be replaced in a later phase -->
                          <div class="flowchart-container animate-item interactive-element placeholder-flowchart">
                             <p><i>[Current flowchart visualization placeholder - To be replaced with improved design in Phase 4]</i></p>
                             <div class="flowchart">
-                                <!-- Content kept for text integrity but visually deemphasized or hidden by CSS in final -->
-                                <div class="flowchart-step step-start">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-                                    <span>Feedly RSS Feed (New Reddit Mention)</span>
-                                </div>
+                                <!-- Content kept for text integrity but visually hidden by CSS -->
+                                <div class="flowchart-step step-start"><span>Feedly RSS Feed (New Reddit Mention)</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Triggered by RSS Item</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Triggered by RSS Item</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-decision">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M12 2L2 12l10 10 10-10L12 2zm0 18l-8-8 8-8 8 8-8 8z"/></svg>
-                                    <span>Make: Filter (Is it Relevant?)</span>
-                                    <div class="decision-paths">
-                                        <div class="decision-path path-no">
-                                            <div class="path-line"></div>
-                                            <div class="path-label">(No)</div>
-                                            <div class="flowchart-step step-stop mini-step">
-                                                <svg viewBox="0 0 24 24" class="flowchart-icon mini-icon"><path d="M6 6h12v12H6z"/></svg>
-                                                <span>Stop</span>
-                                            </div>
-                                        </div>
-                                        <div class="decision-path path-yes">
-                                            <div class="path-label">(Yes)</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="flowchart-step step-decision"><span>Make: Filter (Is it Relevant?)</span><div class="decision-paths"><div class="decision-path path-no"><div class="path-line"></div><div class="path-label">(No)</div><div class="flowchart-step step-stop mini-step"><span>Stop</span></div></div><div class="decision-path path-yes"><div class="path-label">(Yes)</div></div></div></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Parse Reddit Text</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Parse Reddit Text</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Search Google Sheet KB for Keywords</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Search Google Sheet KB for Keywords</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-decision">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M12 2L2 12l10 10 10-10L12 2zm0 18l-8-8 8-8 8 8-8 8z"/></svg>
-                                    <span>Make: Match Found?</span>
-                                      <div class="decision-paths">
-                                         <div class="decision-path path-no">
-                                             <div class="path-line"></div>
-                                             <div class="path-label">(No)</div>
-                                             <div class="flowchart-step step-stop mini-step">
-                                                <svg viewBox="0 0 24 24" class="flowchart-icon mini-icon"><path d="M6 6h12v12H6z"/></svg>
-                                                <span>Notify / Stop</span>
-                                            </div>
-                                         </div>
-                                          <div class="decision-path path-yes">
-                                             <div class="path-label">(Yes)</div>
-                                         </div>
-                                     </div>
-                                </div>
+                                <div class="flowchart-step step-decision"><span>Make: Match Found?</span><div class="decision-paths"><div class="decision-path path-no"><div class="path-line"></div><div class="path-label">(No)</div><div class="flowchart-step step-stop mini-step"><span>Notify / Stop</span></div></div><div class="decision-path path-yes"><div class="path-label">(Yes)</div></div></div></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Retrieve Explanation Snippet & Media Link</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Retrieve Explanation Snippet & Media Link</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                     <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Send Context + Snippet + Link to OpenAI API</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Send Context + Snippet + Link to OpenAI API</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-auto">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                                    <span>Make: Receive AI-Generated Draft Response</span>
-                                </div>
+                                <div class="flowchart-step step-auto"><span>Make: Receive AI-Generated Draft Response</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-output">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                                    <span>Make: Send Context + Draft + Snippet + Link to Review Queue (e.g., Slack)</span>
-                                </div>
+                                <div class="flowchart-step step-output"><span>Make: Send Context + Draft + Snippet + Link to Review Queue (e.g., Slack)</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-manual">
-                                     <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                    <span>MANUAL HUMAN REVIEW & EDIT (Dylan Code / Designee)</span>
-                                </div>
+                                <div class="flowchart-step step-manual"><span>MANUAL HUMAN REVIEW & EDIT (<span class="text-highlight-neutral">Dylan Code</span> / Designee)</span></div>
                                 <div class="flowchart-connector"></div>
-                                <div class="flowchart-step step-manual step-output">
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                    <svg viewBox="0 0 24 24" class="flowchart-icon" style="margin-left: 5px; opacity: 0.6;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                                    <span>MANUAL POST TO REDDIT (From Designated Account/Device)</span>
-                                </div>
+                                <div class="flowchart-step step-manual step-output"><span>MANUAL POST TO REDDIT (From Designated Account/Device)</span></div>
                              </div>
                          </div>
-                         <hr class="visual-hr"> <!-- Replaced divider -->
-                     </div>
+                    </div>
+                 </div> <!-- End Pillar 3 Panel -->
 
-                     <!-- Pillar 4 Details -->
-                     <div class="pillar-detail animate-item">
-                         <!-- "Pillar: " prefix removed -->
+                  <!-- Pillar 4 Panel -->
+                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                          <h4>Authentic Human Engagement & Quality Control</h4>
-                         <!-- Updated list style -->
                          <ul class="styled-list">
                             <li class="interactive-element"><strong>Action: Efficient Review Protocol</strong>
                                 <ul class="nested-list">
-                                    <li>Task: <strong>Dylan Code</strong> (or a designated direct report if applicable) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 scheduled blocks per day). <strong>Prioritize quality and sustainability over immediate response.</strong></li>
+                                    <li>Task: <span class="text-highlight-neutral">Dylan Code</span> (or a designated direct report if applicable) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 scheduled blocks per day). <strong>Prioritize quality and sustainability over immediate response.</strong></li>
                                     <li>Task: <strong>Streamlined Review & Edit:</strong> Review <i>every</i> draft efficiently. Goal: Minimal edits (quick checks for accuracy, tone, relevance, compliance, minor personalization). If heavy rewriting is needed, refine the KB snippet or OpenAI prompt.</li>
-                                    <li>Reasoning: Balances responsiveness with realistic workload for Dylan Code. Focuses on efficient quality control.</li>
+                                    <li>Reasoning: Balances responsiveness with realistic workload for <span class="text-highlight-neutral">Dylan Code</span>. Focuses on efficient quality control.</li>
                                 </ul>
                             </li>
                             <li class="interactive-element"><strong>Action: Manual Posting & Dedicated Device Strategy</strong>
@@ -355,19 +289,18 @@
                             </li>
                             <li class="interactive-element"><strong>Action: Streamlined Collaboration</strong>
                                 <ul class="nested-list">
-                                    <li>Task: Primary review rests with <strong>Dylan Code</strong>. If input needed beyond KB, consult relevant expert directly. Coach involvement is opportunistic (e.g., specific AMAs), not required for daily flow.</li>
-                                    <li>Reasoning: Simplifies workflow, acknowledging primary responsibility rests with marketing leadership (Dylan Code).</li>
+                                    <li>Task: Primary review rests with <span class="text-highlight-neutral">Dylan Code</span>. If input needed beyond KB, consult relevant expert directly. Coach involvement is opportunistic (e.g., specific AMAs), not required for daily flow.</li>
+                                    <li>Reasoning: Simplifies workflow, acknowledging primary responsibility rests with marketing leadership (<span class="text-highlight-neutral">Dylan Code</span>).</li>
                                 </ul>
                             </li>
                         </ul>
-                         <hr class="visual-hr"> <!-- Replaced divider -->
-                     </div>
+                    </div>
+                 </div> <!-- End Pillar 4 Panel -->
 
-                     <!-- Pillar 5 Details -->
-                     <div class="pillar-detail animate-item">
-                         <!-- "Pillar: " prefix removed -->
+                  <!-- Pillar 5 Panel -->
+                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                          <h4>Synergistic Multi-Platform Content Strategy (Maximize ROI)</h4>
-                         <!-- Updated list style -->
                          <ul class="styled-list">
                             <li class="interactive-element"><strong>Core Principle:</strong> Content created once is repurposed strategically. The KB and YouTube video(s) are central assets.</li>
                             <li class="interactive-element"><strong>Content Flow & Synergy:</strong>
@@ -388,22 +321,20 @@
                             </li>
                             <li class="interactive-element"><strong>Reasoning:</strong> Integrated approach maximizes ROI on content creation efforts, builds a cohesive brand story, reaches diverse audiences, and creates a virtuous cycle where engagement on one platform informs content for others.</li>
                          </ul>
-                          <hr class="visual-hr"> <!-- Replaced divider -->
-                     </div>
+                    </div>
+                 </div> <!-- End Pillar 5 Panel -->
 
-                     <!-- Pillar 6 Details -->
-                     <div class="pillar-detail animate-item">
-                         <!-- "Pillar: " prefix removed -->
+                  <!-- Pillar 6 Panel -->
+                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
+                    <div class="pillar-detail">
                          <h4>Dedicated Community Hub (Discord)</h4>
-                         <!-- Updated list style -->
                          <ul class="styled-list">
-                            <!-- " 9.1" removed from Action -->
+                            <!-- " 9.1" removed -->
                             <li class="interactive-element"><strong>Action: Launch Official CSS Discord Server.</strong>
                                 <ul class="nested-list">
                                     <li>Tool: <strong><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a></strong> - Free for core functionality.</li>
                                     <li>Task: Create server, phase out old forum (archive/redirect).</li>
                                     <li>Channel Structure (example):
-                                        <!-- Updated list style -->
                                         <ul class="nested-list channel-list">
                                             <li>#welcome-rules</li>
                                             <li>#announcements</li>
@@ -420,14 +351,13 @@
                                             <li>#partner-spotlight</li>
                                         </ul>
                                     </li>
-                                    <li>Management: Requires dedicated community management (<strong>Dylan Code</strong> or designee) for moderation, engagement, role assignment.</li>
+                                    <li>Management: Requires dedicated community management (<span class="text-highlight-neutral">Dylan Code</span> or designee) for moderation, engagement, role assignment.</li>
                                     <li>Reasoning & Benefits: Modern, engaging hub replaces inactive forum; builds community/loyalty; direct feedback loop; controlled environment; value-add for graduates; hub for contests, AMAs, partner content.</li>
                                 </ul>
                              </li>
                          </ul>
-                         <!-- No divider needed after the last pillar -->
                      </div>
-                 </div> <!-- End .panel -->
+                 </div> <!-- End Pillar 6 Panel -->
             </div>
         </section>
 
@@ -438,7 +368,6 @@
         <section id="technology-stack" class="section animate-on-scroll">
              <div class="content">
                  <h2 class="animate-item">Technology Stack Summary</h2>
-                 <!-- Replaced .secondary-bg-container with .panel -->
                  <div class="panel animate-item interactive-element">
                      <div class="table-container">
                         <table class="tech-stack-table">
@@ -463,6 +392,7 @@
                                 <tr><td data-label="Tool">Discord</td><td data-label="Role">Community Hub</td><td data-label="Link"><a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a></td><td data-label="Est. Monthly Cost">$0 (Core Features)</td></tr>
                                 <tr><td data-label="Tool">Dedicated Mobile Device</td><td data-label="Role">Secure Posting Interface</td><td data-label="Link">(Hardware Purchase)</td><td data-label="Est. Monthly Cost">(One-time Hardware Purchase)</td></tr>
                                 <tr><td data-label="Tool">Basic Cellular Plan</td><td data-label="Role">Device Connectivity</td><td data-label="Link">(Various Carriers)</td><td data-label="Est. Monthly Cost">~$10-20 / Month</td></tr>
+                                <!-- Updated color via CSS -->
                                 <tr class="total-row"><td data-label="Total" colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td><td data-label="Total Cost"><strong>~$38 - $48 / Month</strong></td></tr>
                             </tbody>
                         </table>
@@ -478,16 +408,14 @@
         <section id="implementation-roadmap" class="section animate-on-scroll">
             <div class="content">
                 <h2 class="animate-item">Implementation Roadmap:</h2>
-                 <!-- Replaced .secondary-bg-container with .panel -->
                  <div class="panel animate-item interactive-element">
                     <div class="timeline">
-                        <!-- Phase 1 (Was Phase 0) -->
+                        <!-- Phase 1 -->
                         <div class="timeline-item animate-item">
-                            <div class="timeline-dot"></div> <!-- Added dot element -->
+                            <div class="timeline-dot"></div>
                             <div class="timeline-content">
-                                <!-- Updated Phase Number -->
                                 <h3>Phase 1: Foundation</h3>
-                                <!-- Changed <ol> to <ul> -->
+                                <!-- Changed to ul, bullet style via CSS -->
                                 <ul class="roadmap-details">
                                     <li>YouTube DMCA, Reddit Appeal (Ongoing)</li>
                                     <li>Refresh social profiles</li>
@@ -500,13 +428,11 @@
                                 </ul>
                             </div>
                         </div>
-                         <!-- Phase 2 (Was Phase 1) -->
+                         <!-- Phase 2 -->
                         <div class="timeline-item animate-item">
-                            <div class="timeline-dot"></div> <!-- Added dot element -->
+                            <div class="timeline-dot"></div>
                             <div class="timeline-content">
-                                 <!-- Updated Phase Number -->
                                  <h3>Phase 2: Build & Test</h3>
-                                 <!-- Changed <ol> to <ul> -->
                                  <ul class="roadmap-details">
                                     <li>Set up Make/OpenAI accounts</li>
                                     <li>Build/Test Make scenario thoroughly</li>
@@ -516,16 +442,14 @@
                                  </ul>
                             </div>
                         </div>
-                         <!-- Phase 3 (Was Phase 2) -->
+                         <!-- Phase 3 -->
                         <div class="timeline-item animate-item">
-                             <div class="timeline-dot"></div> <!-- Added dot element -->
+                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
-                                <!-- Updated Phase Number -->
                                 <h3>Phase 3: Launch & Engage</h3>
-                                 <!-- Changed <ol> to <ul> -->
                                  <ul class="roadmap-details">
                                      <li>Activate Make scenario</li>
-                                     <li>Implement sustainable Review/Edit/Post workflow (Dylan Code lead)</li>
+                                     <li>Implement sustainable Review/Edit/Post workflow (<span class="text-highlight-neutral">Dylan Code</span> lead)</li>
                                      <li>Begin consistent Reddit engagement</li>
                                      <li>Launch & promote Discord</li>
                                      <li>Ramp up multi-platform content posting</li>
@@ -533,13 +457,11 @@
                                  </ul>
                             </div>
                         </div>
-                         <!-- Phase 4 (Was Phase 3) -->
+                         <!-- Phase 4 -->
                         <div class="timeline-item animate-item">
-                             <div class="timeline-dot"></div> <!-- Added dot element -->
+                             <div class="timeline-dot"></div>
                              <div class="timeline-content">
-                                 <!-- Updated Phase Number -->
                                  <h3>Phase 4: Optimize & Expand</h3>
-                                 <!-- Changed <ol> to <ul> -->
                                  <ul class="roadmap-details">
                                      <li>Analyze metrics</li>
                                      <li>Refine content strategy</li>
@@ -562,16 +484,14 @@
         <section id="costs-benefits" class="section animate-on-scroll">
             <div class="content">
                 <h2 class="animate-item">Cost Breakdown & Projected Revenue Benefits:</h2>
-                 <!-- Replaced .secondary-bg-container with .panel -->
                  <div class="panel cost-benefit-container animate-item interactive-element">
-                    <!-- Updated list style -->
                     <ul class="styled-list">
                         <li class="interactive-element"><strong>Direct Monthly Costs:</strong> Estimated <strong>~$38 - $48</strong> (Software/Services). Minimal relative to potential return.</li>
                         <li class="interactive-element"><strong>One-Time Costs:</strong> Dedicated device purchase (unless a device is readily available)</li>
                         <li class="interactive-element"><strong>Indirect Costs (Time Investment):</strong>
                             <ul class="nested-list">
                                 <li>Upfront: Significant but <i>finite</i> time for KB & automation setup (Est. 20-40 hours). <strong>Builds the sustainable asset.</strong></li>
-                                <li>Ongoing: Efficient, scheduled time for Review Queue (Est. <1 hour daily avg for Dylan Code), Discord moderation, planned content posting. <strong>Far less than purely manual.</strong></li>
+                                <li>Ongoing: Efficient, scheduled time for Review Queue (Est. <1 hour daily avg for <span class="text-highlight-neutral">Dylan Code</span>), Discord moderation, planned content posting. <strong>Far less than purely manual.</strong></li>
                             </ul>
                         </li>
                         <li class="interactive-element"><strong>Projected Revenue Benefits & ROI Justification:</strong>
@@ -580,12 +500,13 @@
                                 <li>Product Sales: Strategic content promotes books/video.</li>
                                 <li>Brand Equity: Solidifies premium positioning, justifies pricing. Attracts partnerships.</li>
                                 <li>Customer Lifetime Value: Discord community fosters loyalty/repeat business.</li>
-                                <li>Operational Efficiency: Frees up <strong>Dylan Code's</strong> time for higher-level strategy. System sustainability ensures continued value delivery.</li>
+                                <li>Operational Efficiency: Frees up <span class="text-highlight-neutral">Dylan Code</span>'s time for higher-level strategy. System sustainability ensures continued value delivery.</li>
                                 <li>SEO Benefits: Increased brand signals, traffic, potential backlinks improve organic visibility.</li>
                                 <li>Partnerships: Strong digital presence attracts sponsors/collaborators.</li>
                             </ul>
                         </li>
-                         <li class="interactive-element"><i>ROI is driven by increased conversions, enhanced brand value, operational efficiency, and new opportunities, justifying the modest costs and upfront time.</i></li>
+                         <!-- Removed italics via HTML edit -->
+                         <li class="interactive-element">ROI is driven by increased conversions, enhanced brand value, operational efficiency, and new opportunities, justifying the modest costs and upfront time.</li>
                     </ul>
                 </div>
             </div>
@@ -598,12 +519,12 @@
         <section id="risks-mitigation" class="section animate-on-scroll">
             <div class="content">
                 <h2 class="animate-item">Risks & Mitigation:</h2>
-                 <!-- Replaced .secondary-bg-container with .panel -->
                  <div class="panel animate-item interactive-element">
+                      <!-- Structure will be revised later (e.g., cards) -->
+                      <!-- Current dt/dd structure kept for now -->
                      <dl class="risk-list">
-                        <!-- Removed outer div wrappers for direct dt/dd pairs -->
                         <dt class="animate-item interactive-element">Draft Quality:</dt>
-                        <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Mandatory human review (Dylan Code); prompt refinement.</dd>
+                        <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Mandatory human review (<span class="text-highlight-neutral">Dylan Code</span>); prompt refinement.</dd>
 
                          <dt class="animate-item interactive-element">KB Gaps:</dt>
                          <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Ongoing KB updates; easy reporting mechanism for gaps.</dd>
@@ -612,7 +533,7 @@
                         <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Make monitoring/error handling.</dd>
 
                         <dt class="animate-item interactive-element">Review Bottleneck:</dt>
-                        <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Efficient workflow; realistic scheduling for Dylan Code; potential future delegation if needed.</dd>
+                        <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Efficient workflow; realistic scheduling for <span class="text-highlight-neutral">Dylan Code</span>; potential future delegation if needed.</dd>
 
                         <dt class="animate-item interactive-element">Platform Rules:</dt>
                         <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Stay informed; prioritize value; manual posting + dedicated device reduces risk.</dd>
@@ -631,10 +552,8 @@
         <section id="conclusion" class="section animate-on-scroll">
             <div class="content">
                 <h2 class="animate-item">Conclusion:</h2>
-                <!-- Replaced conclusion-box with panel -->
-                <!-- Added emphasis class for specific blue styling -->
                 <div class="panel panel-conclusion animate-item interactive-element">
-                    <p>This comprehensive strategy provides California Superbike School with a powerful, integrated, and <strong>sustainable</strong> system for digital leadership. By centralizing knowledge, leveraging automation for efficiency, maintaining human oversight (led by <strong>Dylan Code</strong>) for authenticity, maximizing content synergy, and fostering a dedicated community hub, CSS can effectively address current challenges and solidify its position as the world's leading resource for motorcycle riding expertise.</p>
+                    <p>This comprehensive strategy provides California Superbike School with a powerful, integrated, and <strong>sustainable</strong> system for digital leadership. By centralizing knowledge, leveraging automation for efficiency, maintaining human oversight (led by <span class="text-highlight-neutral">Dylan Code</span>) for authenticity, maximizing content synergy, and fostering a dedicated community hub, CSS can effectively address current challenges and solidify its position as the world's leading resource for motorcycle riding expertise.</p>
                     <p>The upfront investment creates a long-term operational asset, driving brand authority, community loyalty, and tangible business growth with manageable ongoing effort and cost, strategically leveraging the marketing leadership within the ownership structure.</p>
                 </div>
             </div>
