@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileHeaderHeight = parseInt(rootStyle.getPropertyValue('--header-height-mobile').replace('px', '')) || 60;
         const desktopHeaderHeight = parseInt(rootStyle.getPropertyValue('--header-height').replace('px', '')) || 70;
 
-        // Return offsetHeight if available and on desktop, otherwise use CSS variable values
         return header ? (isMobile ? mobileHeaderHeight : header.offsetHeight) : (isMobile ? mobileHeaderHeight : desktopHeaderHeight);
     };
 
@@ -31,125 +30,108 @@ document.addEventListener('DOMContentLoaded', () => {
     const setupHamburgerMenu = () => {
         const hamburgerButton = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button'); // Get close button
         const body = document.body;
 
-        // Ensure elements exist
-        if (!hamburgerButton || !mobileMenu || !body) {
-             console.error("Hamburger menu critical elements not found. Menu cannot function.");
-             // Optionally disable the button if elements are missing
+        if (!hamburgerButton || !mobileMenu || !mobileMenuCloseButton || !body) {
+             console.error("Hamburger menu critical elements not found.");
              if(hamburgerButton) hamburgerButton.disabled = true;
              return;
         }
 
+        const closeMobileMenu = () => {
+            // Only run if menu is actually open
+             if (mobileMenu.classList.contains('open')) {
+                hamburgerButton.setAttribute('aria-expanded', 'false');
+                hamburgerButton.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                body.classList.remove('mobile-menu-open');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                // console.log("Mobile menu closed."); // Debugging
+            }
+        };
+
+        const openMobileMenu = () => {
+             if (!mobileMenu.classList.contains('open')) {
+                hamburgerButton.setAttribute('aria-expanded', 'true');
+                hamburgerButton.classList.add('active');
+                mobileMenu.classList.add('open');
+                body.classList.add('mobile-menu-open');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                // console.log("Mobile menu opened."); // Debugging
+            }
+        };
+
         hamburgerButton.addEventListener('click', () => {
-            // Check current state BEFORE toggling
-            const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
-
-            // Toggle ARIA attribute
-            hamburgerButton.setAttribute('aria-expanded', String(!isExpanded));
-            // Toggle button visual state
-            hamburgerButton.classList.toggle('active');
-            // Toggle menu overlay visibility class
-            mobileMenu.classList.toggle('open');
-            // Toggle body class to prevent scrolling when menu is open
-            body.classList.toggle('mobile-menu-open');
-            // Toggle ARIA hidden state on menu
-            mobileMenu.setAttribute('aria-hidden', String(isExpanded)); // Should be hidden if it *was* expanded
-
-             // Debugging logs (Remove in production)
-             // console.log(`Menu toggled. Is open: ${mobileMenu.classList.contains('open')}`);
+            // Toggle based on current state
+            if (mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
-        // Close menu on link click and scroll
+        // Add event listener for the explicit close button
+        mobileMenuCloseButton.addEventListener('click', closeMobileMenu);
+
+        // Close menu on nav link click
         mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                // Check if targetId exists and is an internal link
                 const targetElement = targetId && targetId.startsWith('#') && targetId.length > 1 ? document.querySelector(targetId) : null;
 
-                // --- Close menu FIRST regardless of link type ---
-                // Only proceed if the menu is actually open
-                 if (mobileMenu.classList.contains('open')) {
-                    hamburgerButton.setAttribute('aria-expanded', 'false');
-                    hamburgerButton.classList.remove('active');
-                    mobileMenu.classList.remove('open');
-                    body.classList.remove('mobile-menu-open');
-                    mobileMenu.setAttribute('aria-hidden', 'true');
-                } else {
-                     // If the menu wasn't open, still allow default link behavior or scrolling if applicable
-                     // This prevents breaking normal link clicks if somehow triggered externally
-                     // We might still prevent default later if it's a scroll target
-                }
-                // --- End Menu Closing ---
+                // Close menu first
+                closeMobileMenu();
 
-                // Scroll after menu close animation has time to start
+                // Scroll after menu close animation
                  if (targetElement) {
-                    e.preventDefault(); // Prevent default jump
+                    e.preventDefault();
                     setTimeout(() => {
                         const headerOffset = getHeaderOffset();
-                        // Ensure targetElement is still valid (though it should be)
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Use pageYOffset for absolute position
-                        const offsetPosition = elementPosition - headerOffset - 20; // Buffer
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20;
 
                         window.scrollTo({
                             top: Math.max(0, offsetPosition),
                             behavior: 'smooth'
                         });
-                    }, 150); // Slightly longer delay to ensure menu close animation completes
+                    }, 150); // Allow time for menu close
                  } else if (targetId === '#top' || targetId === '#') {
-                     // Handle scroll to top link specifically
-                     e.preventDefault(); // Prevent adding '#' to URL
+                     e.preventDefault();
                       setTimeout(() => {
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                       }, 150);
                  }
-                 // Let external links or non-hash links behave normally (no preventDefault if targetElement is null and not #top/#)
-                 else {
-                     // console.warn(`Mobile menu scroll target not found or is external link: ${targetId}`);
-                 }
+                 // Allow default behavior for external links
             });
         });
     };
 
     // --- Smooth Scrolling (Desktop Nav & Logo Link) ---
     const setupSmoothScrolling = () => {
-        // Select desktop nav links and the logo link specifically
         document.querySelectorAll('.desktop-nav a.nav-link[href^="#"], .header-content a[href="#top"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                  const targetId = this.getAttribute('href');
 
-                 // Handle #top link separately
                  if (targetId === '#top') {
                      e.preventDefault();
                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                     // Clear hash without jump - optional but clean
-                     if (history.pushState) {
-                         history.pushState("", document.title, window.location.pathname + window.location.search);
-                     }
+                     if (history.pushState) { history.pushState("", document.title, window.location.pathname + window.location.search); }
                      return;
                  }
 
-                 // Handle other internal links
                  if (targetId && targetId.startsWith('#') && targetId.length > 1) {
                     try {
                         const targetElement = document.querySelector(targetId);
                         if (targetElement) {
                             e.preventDefault();
                             const headerOffset = getHeaderOffset();
-                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Absolute position
-                            const offsetPosition = elementPosition - headerOffset - 20; // Buffer
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - headerOffset - 20;
 
-                            window.scrollTo({
-                                top: Math.max(0, offsetPosition),
-                                behavior: 'smooth'
-                            });
-                            // Optional: Update hash in URL without jump after scrolling
-                            // setTimeout(() => {
-                            //     if (history.pushState) {
-                            //         history.pushState(null, null, targetId);
-                            //     }
-                            // }, 800);
-
+                            window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
+                            // Optional hash update
+                            // setTimeout(() => { if (history.pushState) { history.pushState(null, null, targetId); } }, 800);
                         } else { console.warn(`Smooth scroll target not found: ${targetId}`); }
                     } catch (error) { console.error(`Error finding smooth scroll target: ${targetId}`, error); }
                  }
@@ -166,82 +148,65 @@ document.addEventListener('DOMContentLoaded', () => {
          const handleScroll = () => {
              const currentScroll = window.pageYOffset;
              const isDesktop = window.innerWidth > mobileBreakpoint;
-             // Get current height dynamically in case of resize/other changes
-             const headerHeight = header.offsetHeight;
 
-             // Only apply hide/show on desktop when menu is closed
              if (!document.body.classList.contains('mobile-menu-open') && isDesktop) {
-                 const scrollThreshold = 50; // Start hiding slightly after scrolling down
+                 const scrollThreshold = 50;
 
-                 if (currentScroll <= scrollThreshold) { // Show header when near top
+                 if (currentScroll <= scrollThreshold) {
                      header.classList.remove('scroll-up', 'scroll-down');
-                 } else if (currentScroll > lastScroll + 5 && !header.classList.contains('scroll-down')) { // Scrolling Down (added buffer)
+                 } else if (currentScroll > lastScroll + 5 && !header.classList.contains('scroll-down')) {
                      header.classList.remove('scroll-up');
                      header.classList.add('scroll-down');
-                 } else if (currentScroll < lastScroll - 5 && header.classList.contains('scroll-down')) { // Scrolling Up (added buffer)
+                 } else if (currentScroll < lastScroll - 5 && header.classList.contains('scroll-down')) {
                      header.classList.remove('scroll-down');
                      header.classList.add('scroll-up');
                  }
-             } else { // Ensure header is visible on mobile or when mobile menu is open
+             } else {
                  header.classList.remove('scroll-up', 'scroll-down');
              }
-             // Update lastScroll, ensuring it's not negative
              lastScroll = Math.max(0, currentScroll);
          };
 
-         const handleResize = () => {
-            // Re-evaluate header state immediately on resize based on new width
-            handleScroll();
-         };
+         const handleResize = () => { handleScroll(); };
 
          window.addEventListener('scroll', utility.throttle(handleScroll, performanceConfig.throttleDelay));
          window.addEventListener('resize', utility.debounce(handleResize, performanceConfig.debounceDelay));
-         handleScroll(); // Initial call to set state
+         handleScroll(); // Initial call
     };
 
     // --- Progress Bar & Active Nav Link (Desktop Nav) ---
     const setupScrollProgress = () => {
         const progressBar = document.querySelector('.progress-bar');
-        const sections = Array.from(document.querySelectorAll('main > section[id]')); // Use Array.from for easier methods
+        const sections = Array.from(document.querySelectorAll('main > section[id]'));
         const navLinks = document.querySelectorAll('.desktop-nav ul li a.nav-link');
         if (!progressBar || sections.length === 0 || navLinks.length === 0) return;
 
         const updateProgressAndNav = () => {
-            requestAnimationFrame(() => { // Ensure updates happen in sync with rendering
+            requestAnimationFrame(() => {
                 const headerOffset = getHeaderOffset();
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight;
-                 // Consider document height relative to viewport height
                 const totalScrollable = documentHeight - windowHeight;
                 const scrolled = window.scrollY;
-                // Ensure progress doesn't exceed 100% if documentHeight is small
                 const progress = totalScrollable > 0 ? (scrolled / totalScrollable) * 100 : 0;
-                progressBar.style.width = `${Math.min(Math.max(0, progress), 100)}%`; // Clamp progress 0-100
+                progressBar.style.width = `${Math.min(Math.max(0, progress), 100)}%`;
 
                 let currentSectionId = '';
-                // Adjust detection point: a bit higher up the screen (e.g., 30% from top)
-                const detectionPoint = scrolled + windowHeight * 0.3; // Adjust fraction as needed
+                const detectionPoint = scrolled + windowHeight * 0.3; // 30% from top detection
 
-                // Find the current section based on detection point
                 for (let i = sections.length - 1; i >= 0; i--) {
                     const section = sections[i];
-                     // Section top needs to be above the detection point
-                    // Use offsetTop which is relative to the offsetParent, usually the body
                     if (section.offsetTop <= detectionPoint) {
                         currentSectionId = section.getAttribute('id');
-                        break; // Found the topmost section that fits criteria
+                        break;
                     }
                 }
 
-                // If near the very bottom, force highlight last section
-                 if (scrolled + windowHeight >= documentHeight - 50) {
+                if (scrolled + windowHeight >= documentHeight - 50) { // Near bottom
                      currentSectionId = sections[sections.length - 1].getAttribute('id');
-                 }
-                 // If scrolled right to the top, potentially highlight the first section
-                 else if (scrolled < sections[0].offsetTop / 2) { // Check if less than half way to the first section
+                 } else if (!currentSectionId && scrolled < 50) { // Near top
                       currentSectionId = sections[0].getAttribute('id');
                  }
-
 
                 navLinks.forEach(link => {
                     const isActive = link.getAttribute('href') === `#${currentSectionId}`;
@@ -252,24 +217,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('scroll', utility.throttle(updateProgressAndNav, performanceConfig.throttleDelay));
         window.addEventListener('resize', utility.debounce(updateProgressAndNav, performanceConfig.debounceDelay));
-        // Initial call with slight delay to ensure layout is stable
-        setTimeout(updateProgressAndNav, 50);
+        setTimeout(updateProgressAndNav, 50); // Initial call slightly delayed
      };
 
     // --- Section & Item Fade-in Animation (with Stagger) ---
     const setupSectionAnimations = () => {
-        const sections = document.querySelectorAll('.animate-on-scroll'); if (sections.length === 0) return;
+        // Animate sections (like pillar panels) and items within non-panel sections
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll, .animate-item');
+        if (elementsToAnimate.length === 0) return;
+
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const section = entry.target;
-                    section.classList.add('visible'); // Trigger section visibility
-                    const itemsToAnimate = section.querySelectorAll('.animate-item');
-                    itemsToAnimate.forEach((item, index) => {
-                        item.style.setProperty('--animation-delay', `${index * performanceConfig.staggerDelay}ms`);
-                        // The animation itself is handled by CSS: .section.visible .animate-item
-                    });
-                    observer.unobserve(section); // Stop observing once visible
+                    const element = entry.target;
+                    element.classList.add('visible');
+
+                    // Apply stagger only if it's an item within a visible container
+                    // (Assume panels themselves don't have internal stagger based on this logic)
+                    if (element.classList.contains('animate-item') && !element.classList.contains('animate-on-scroll')) {
+                        // Calculate index relative to siblings if needed, or use a fixed delay approach
+                        // For now, rely on CSS transition delay if set
+                        // Example: find index among sibling .animate-item elements
+                        const parent = element.parentElement;
+                        if(parent){
+                             const siblings = Array.from(parent.querySelectorAll('.animate-item'));
+                             const index = siblings.indexOf(element);
+                             if(index !== -1){
+                                element.style.setProperty('--animation-delay', `${index * performanceConfig.staggerDelay}ms`);
+                             }
+                        }
+                    }
+                    observer.unobserve(element); // Stop observing once visible
                 }
             });
         };
@@ -277,30 +255,23 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: performanceConfig.observerThreshold,
             rootMargin: performanceConfig.observerMargin
         });
-        sections.forEach(section => { observer.observe(section); });
+        elementsToAnimate.forEach(el => { observer.observe(el); });
      };
 
      // --- Show Tooltip ---
-     let tooltipTimeoutId = null; // Store timeout ID globally within this scope
+     let tooltipTimeoutId = null;
      const showTooltip = (button, message) => {
         const tooltip = button.querySelector('.tooltip-message');
         if (!tooltip) return;
 
-        // Clear any existing timeout to prevent multiple tooltips or premature hiding
-        if (tooltipTimeoutId) {
-            clearTimeout(tooltipTimeoutId);
-            tooltipTimeoutId = null; // Reset ID
-        }
+        if (tooltipTimeoutId) { clearTimeout(tooltipTimeoutId); tooltipTimeoutId = null; }
 
         tooltip.textContent = message;
-        tooltip.classList.add('visible'); // Make it visible
+        tooltip.classList.add('visible');
 
-        // Set new timeout to hide the tooltip
         tooltipTimeoutId = setTimeout(() => {
             tooltip.classList.remove('visible');
-             tooltipTimeoutId = null; // Reset ID after timeout runs
-            // Optional: Clear text after hiding animation (if needed, match CSS transition duration)
-            // setTimeout(() => { if (tooltip) tooltip.textContent = ''; }, 300);
+            tooltipTimeoutId = null;
         }, performanceConfig.tooltipTimeout);
     };
 
@@ -320,114 +291,98 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // --- Refined Text Generation for Copy ---
+                // --- Text Generation for Copy (Adjusted for new structure) ---
                 let textToCopy = '';
-                const sections = mainContent.querySelectorAll('.section');
+                const sections = mainContent.querySelectorAll('main > section[id]'); // Target direct section children
 
                 sections.forEach((section, sectionIndex) => {
-                    const titleElement = section.querySelector('h1, h2'); // Main section titles
-                    const sectionIdentifier = section.querySelector('h3.section-identifier'); // Exec Summary specific
+                    const titleElement = section.querySelector('h1, h2');
+                    const sectionIdentifier = section.querySelector('h3.section-identifier');
 
-                    if (titleElement) {
-                        textToCopy += `${titleElement.textContent.trim()}\n`;
-                        textToCopy += '='.repeat(titleElement.textContent.trim().length) + '\n\n'; // Use '=' for main titles
-                    }
-                    if (sectionIdentifier) {
-                        textToCopy += `${sectionIdentifier.textContent.trim()}\n`;
-                         textToCopy += '-'.repeat(sectionIdentifier.textContent.trim().length) + '\n\n'; // Use '-' for sub-section titles
-                    }
+                    if (titleElement) { textToCopy += `${titleElement.textContent.trim()}\n=${'='.repeat(titleElement.textContent.trim().length)}\n\n`; }
+                    if (sectionIdentifier) { textToCopy += `${sectionIdentifier.textContent.trim()}\n-${'-'.repeat(sectionIdentifier.textContent.trim().length)}\n\n`; }
 
                     const metaInfoPanel = section.querySelector('.panel-meta');
                     if (metaInfoPanel) {
                          metaInfoPanel.querySelectorAll('p').forEach(p => {
-                            let text = p.innerHTML.replace(/<strong>(.*?)<\/strong>/g, '$1').replace(/:\s+/g, ': ');
+                            let text = p.innerHTML.replace(/<strong>(.*?)<\/strong>/g, '$1').replace(/<\/?span[^>]*>/g, '').replace(/:\s+/g, ': '); // Strip spans too
                             textToCopy += text.trim() + '\n';
                          });
                          textToCopy += '\n';
                     }
 
-                     // Generic content extraction (paragraphs, lists, definitions)
-                    const contentElements = section.querySelectorAll(
-                        '.content > p, .panel > ul > li, .panel > ol > li, .panel dl dt, .panel dl dd, .panel .styled-list > li, .panel .pillar-list > li, .panel .roadmap-details > li'
-                        // Including dt and dd directly for risks section
-                    );
+                    // Select content within .content div OR within .panel divs directly under the section
+                    const contentBlocks = section.querySelectorAll(':scope > .content, :scope > .panel');
 
-                     contentElements.forEach(el => {
-                         if (el.closest('.placeholder-flowchart')) return; // Skip flowchart placeholder content
+                     contentBlocks.forEach(block => {
+                         const elements = block.querySelectorAll('p, ul > li, ol > li, dl dt, dl dd');
 
-                         let text = el.textContent?.trim();
-                         if (!text) return;
+                         elements.forEach(el => {
+                             // Skip placeholder content
+                             if (el.closest('.placeholder-flowchart')) return;
+                             // Skip panel titles if they are processed separately (e.g., Pillar titles)
+                              if (el.tagName === 'H4' && el.parentElement.classList.contains('pillar-detail')) return;
 
-                         let prefix = '';
-                         let suffix = '\n\n'; // Default paragraph spacing
+                             let text = el.textContent?.trim();
+                             if (!text) return;
 
-                         // List item indentation and markers
-                         if (el.tagName === 'LI') {
-                             const listDepth = el.closest('ul, ol')?.closest('ul, ol') ? (el.closest('ul, ol')?.closest('ul, ol')?.closest('ul, ol') ? 3 : 2) : 1; // Basic depth check up to 3 levels
-                             const parentList = el.parentElement;
+                             let prefix = '';
+                             let suffix = '\n\n'; // Default paragraph spacing
 
-                             prefix = '  '.repeat(listDepth); // Base indentation
+                             // --- Determine Prefix/Suffix based on element type and context ---
 
-                             if (parentList?.classList.contains('styled-list') || parentList?.classList.contains('roadmap-details') || parentList?.classList.contains('pillar-list')) {
-                                 prefix += '* '; // Use '*' for custom bullet lists
-                                 suffix = '\n';
-                             } else if (parentList?.classList.contains('nested-list') || listDepth > 1) {
-                                 prefix += '  - '; // Indented bullet for nested lists
-                                 suffix = '\n';
+                             // List items
+                             if (el.tagName === 'LI') {
+                                 const listDepth = Array.from(el.ancestors).filter(a => a.matches('ul, ol')).length;
+                                 prefix = '  '.repeat(listDepth); // Indentation based on depth
+                                 const parentList = el.parentElement;
+
+                                 if (parentList?.classList.contains('nested-list') || listDepth > 1) {
+                                     prefix += '  - '; // Nested bullet
+                                 } else {
+                                     prefix += '* '; // Top-level bullet (covers styled, roadmap, pillar now)
+                                 }
+                                 suffix = '\n'; // Single newline for list items
+
+                                 // Clean up Action: text if needed (should be handled by span now)
+                                 text = text.replace('Action:', 'Action:').trim();
                              }
-                             else { // Default list item if directly under .panel or .content
-                                 prefix = '* ';
-                                 suffix = '\n';
+                             // Definition list (Risks)
+                             else if (el.tagName === 'DT' && el.closest('.risk-list')) {
+                                prefix = ''; text = text.trim(); suffix = '\n';
+                             } else if (el.tagName === 'DD' && el.closest('.risk-list')) {
+                                prefix = '    '; text = text.replace('Mitigation:', 'Mitigation:').trim(); suffix = '\n\n';
+                             }
+                             // Standard paragraph
+                             else if (el.tagName === 'P') {
+                                 prefix = ''; suffix = '\n\n';
                              }
 
-                             // Handle 'Action:' prefixing if present
-                             const strongAction = el.querySelector('strong');
-                             if(strongAction && strongAction.textContent.includes('Action:')){
-                                 text = text.replace('Action:', 'Action:').trim(); // Normalize spacing
-                             }
-                         }
-                         // Definition list formatting
-                         else if (el.tagName === 'DT' && el.closest('.risk-list')) {
-                            prefix = '';
-                            text = text.trim(); // Ensure dt text is clean
-                            suffix = '\n'; // Newline after dt
-                         }
-                          else if (el.tagName === 'DD' && el.closest('.risk-list')) {
-                            prefix = '    '; // Indent dd
-                            text = text.replace('Mitigation:', 'Mitigation:').trim(); // Normalize spacing
-                            suffix = '\n\n'; // Space after dd
-                         }
-                         // Standard paragraph
-                         else if (el.tagName === 'P') {
-                             prefix = '';
-                             suffix = '\n\n';
-                         }
-                          // Special case for italicized ROI note (ensure it's only the italic text)
-                          if(el.tagName === 'I' || (el.tagName === 'LI' && el.children.length === 1 && el.children[0].tagName === 'I')){
-                              // Get only the italic text if it's the sole content
-                              if (el.textContent === el.innerText) {
-                                 text = `_${text}_`; // Markdown style italic
-                                 suffix = '\n\n';
-                              }
-                          }
+                            // Strip neutral highlight span tags for copy
+                            text = text.replace(/<span class="text-highlight-neutral">([\s\S]*?)<\/span>/g, '$1');
 
-                         if (text) { textToCopy += prefix + text + suffix; }
+                            // Handle italic ROI line (removed tag, check if parent indicates it)
+                            if (el.matches('.cost-benefit-container > ul > li:last-child') && !el.querySelector('ul')) {
+                                 text = `_${text}_`; suffix = '\n\n';
+                            }
+
+                            if (text) { textToCopy += prefix + text + suffix; }
+                         });
                      });
+
 
                       // Table Data
                      const table = section.querySelector('.tech-stack-table');
                      if (table) {
-                         textToCopy += "--- Technology Stack ---\n";
+                         textToCopy += "\n--- Technology Stack ---\n"; // Add separator before table
                          table.querySelectorAll('tbody tr').forEach(row => {
                              const cells = row.querySelectorAll('td');
                              if (row.classList.contains('total-row')) {
-                                 // Find the correct cells for total (might change based on structure)
-                                 const labelCell = cells[0]; // Assuming first cell holds label text
-                                 const valueCell = cells[cells.length - 1]; // Assuming last cell holds value
+                                 const labelCell = cells[0];
+                                 const valueCell = cells[cells.length - 1];
                                  if (labelCell && valueCell) {
                                     textToCopy += `${labelCell.textContent.replace(/[:\s]+$/,'').trim()}: ${valueCell.textContent.trim()}\n`;
                                  }
-
                              } else if (cells.length >= 4) {
                                  const tool = cells[0].textContent.trim();
                                  const role = cells[1].textContent.trim();
@@ -440,18 +395,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Add section separator unless it's the last section
                     if (sectionIndex < sections.length - 1) {
-                       textToCopy += '\n----------------------------------------\n\n';
+                       textToCopy += '----------------------------------------\n\n'; // Ensure spacing before separator
                     }
                 });
 
 
                 try {
-                    // Final cleanup of excessive newlines
                     const cleanedText = textToCopy.replace(/\n{3,}/g, '\n\n').trim();
                     await navigator.clipboard.writeText(cleanedText);
                     showTooltip(copyButton, 'Copied!');
                     copyButton.classList.add('success');
-                    // Use tooltip timeout duration for removing class
                     setTimeout(() => copyButton.classList.remove('success'), performanceConfig.tooltipTimeout + 100);
                 } catch (err) {
                     console.error('Failed to copy text: ', err);
@@ -469,16 +422,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
      };
 
-    // --- Performance Hints (will-change) - Re-evaluated ---
+    // --- Performance Hints (will-change) ---
     const setupWillChange = () => {
-         // Apply strategically to elements undergoing frequent transform/opacity changes
-         document.querySelectorAll('.animate-item').forEach(el => { el.style.willChange = 'opacity, transform'; });
+         document.querySelectorAll('.animate-item, .pillar-panel.animate-on-scroll').forEach(el => { el.style.willChange = 'opacity, transform'; });
          document.querySelectorAll('.action-button, .panel.interactive-element, .pillar-list li.interactive-element').forEach(el => { el.style.willChange = 'transform, box-shadow'; });
          const header = document.querySelector('.header'); if (header) { header.style.willChange = 'transform, background-color'; }
          const progressBar = document.querySelector('.progress-bar'); if(progressBar) { progressBar.style.willChange = 'width'; }
          document.querySelectorAll('.timeline-dot').forEach(el => { el.style.willChange = 'transform, box-shadow'; });
-         const logo = document.querySelector('.logo'); if(logo) { logo.style.willChange = 'transform'; } // Removed filter from will-change
+         const logo = document.querySelector('.logo'); if(logo) { logo.style.willChange = 'transform'; }
+         const mobileMenu = document.getElementById('mobile-menu'); if(mobileMenu) { mobileMenu.style.willChange = 'opacity'; }
+         document.querySelectorAll('.hamburger-button span').forEach(el => { el.style.willChange = 'transform, opacity'; });
+         document.querySelectorAll('.nav.desktop-nav ul li a::after').forEach(el => { el.style.willChange = 'width, background-color'; });
      };
+
+     // Helper function for ancestor check (polyfill for older browsers if needed)
+     if (!Element.prototype.matches) { Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector; }
+     if (!Element.prototype.closest) {
+         Element.prototype.closest = function(s) {
+             var el = this;
+             do { if (el.matches(s)) return el; el = el.parentElement || el.parentNode; } while (el !== null && el.nodeType === 1);
+             return null;
+         };
+     }
+     // Simple ancestor iteration helper for list depth
+     if (!Element.prototype.ancestors) {
+        Object.defineProperty(Element.prototype, 'ancestors', {
+            get: function() {
+                var ancestors = []; var parent = this.parentElement;
+                while (parent) { ancestors.push(parent); parent = parent.parentElement; }
+                return ancestors;
+            }
+        });
+     }
+
 
     // --- Initialize Everything ---
     setupHamburgerMenu();
@@ -487,6 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollProgress();
     setupSectionAnimations();
     setupActionButtons();
-    setupWillChange(); // Apply performance hints
+    setupWillChange();
 
 }); // End DOMContentLoaded
