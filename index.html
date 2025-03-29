@@ -81,10 +81,10 @@
                 <p>California Superbike School stands as a global leader in motorcycle rider training, possessing unparalleled expertise, decades of data, and valuable educational content (books, videos). However, current digital challenges—including copyright infringement on YouTube, Reddit platform difficulties (shadowban, competitor presence), and limited team bandwidth—restrict CSS's ability to fully leverage its authority online. This proposal presents a robust, integrated strategy to solidify CSS's position as the premier <strong>and most helpful</strong> resource for performance motorcycle riding, with a primary focus on effectively engaging the crucial Reddit community while maximizing content synergy across all digital platforms.</p>
                 <p>The core strategy, <strong>"Automate Preparation, Humanize Engagement,"</strong> focuses on building sustainable systems:</p>
                 <ul class="styled-list">
-                    <!-- Links removed from list items below -->
                     <li class="interactive-element">Resolving foundational issues (YouTube copyright, Reddit access).</li>
                     <li class="interactive-element">Systematically organizing CSS's vast knowledge into a central, easily maintainable <strong>Knowledge Base (KB)</strong> using Google Sheets, potentially aided by AI for initial processing.</li>
-                    <li class="interactive-element">Implementing an automated workflow using Make.com and OpenAI (GPT) to monitor online discussions (primarily Reddit via Feedly), identify relevant questions, retrieve corresponding information and media links from the KB, and generate <i>draft</i> responses aligned with CSS's voice.</li>
+                     <!-- Removed <i> tag around draft -->
+                    <li class="interactive-element">Implementing an automated workflow using Make.com and OpenAI (GPT) to monitor online discussions (primarily Reddit via Feedly), identify relevant questions, retrieve corresponding information and media links from the KB, and generate draft responses aligned with CSS's voice.</li>
                     <li class="interactive-element">Establishing a strict <strong>Human Review & Posting Protocol</strong> where all AI-drafted responses are efficiently reviewed and edited for accuracy, tone, and authenticity by designated CSS team members, primarily <span class="text-highlight-neutral">Dylan Code</span>, before being manually posted.</li>
                     <li class="interactive-element">Integrating this core system with a synergistic, multi-platform social media strategy (YouTube, Instagram, Facebook, TikTok, Discord) where content creation efforts (especially video) are strategically repurposed across channels, enhancing reach and ROI.</li>
                 </ul>
@@ -126,7 +126,7 @@
                  <h3 class="animate-item">"Automate Preparation, Humanize Engagement" - Building a Sustainable System</h3>
                 <p class="animate-item">This strategy balances the power of automation for efficiency with the necessity of human oversight for authenticity, quality, and strategic communication. <strong>Crucially, the significant upfront effort in building the Knowledge Base and setting up the automation creates a highly sustainable, scalable, and low-maintenance process.</strong> This system becomes a core operational asset, capable of consistently delivering value with minimal ongoing effort compared to purely manual approaches, and resilient to personnel changes. It ensures CSS's online interactions are timely, expert-driven, brand-aligned, and genuinely helpful.</p>
                 <h3 class="animate-item">Strategic Pillars:</h3>
-                 <!-- Changed bullet color via CSS -->
+                 <!-- Bullet color set to red via CSS -->
                  <ul class="pillar-list animate-item interactive-list-container">
                      <li class="interactive-element">Foundational Readiness & Asset Centralization</li>
                      <li class="interactive-element">Intelligent & Efficient Monitoring</li>
@@ -141,18 +141,17 @@
         <!-- Section Divider -->
         <div class="section-divider visual-divider"></div>
 
-        <!-- Pillar Details Section (Combined & Grouped) -->
-        <section id="pillar-details" class="section"> <!-- Removed animate-on-scroll from section, apply to panels -->
+        <!-- Pillar Details Section -->
+        <section id="pillar-details" class="section">
             <div class="content">
                 <h2 class="animate-item">Strategic Pillar Details</h2>
 
                 <!-- Pillar 1 Panel -->
-                <!-- Added .pillar-panel class, moved animate-item here -->
                 <div class="panel pillar-panel animate-on-scroll animate-item interactive-element">
                     <div class="pillar-detail">
                         <h4>Foundational Readiness & Asset Centralization</h4>
                         <ul class="styled-list">
-                            <li class="interactive-element"><strong>Action: Reclaim & Strategize YouTube Intellectual Property</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Reclaim & Strategize YouTube Intellectual Property
                                 <ul class="nested-list">
                                     <li>Task: Immediately file a <strong>DMCA Takedown Notice</strong> with YouTube for the stolen full video content.
                                         <ul>
@@ -163,13 +162,13 @@
                                         <ul class="nested-list">
                                             <li>Protect commercial value.</li>
                                             <li>Control brand presentation.</li>
-                                            <li>Strategically use the full video: Upload it and meticulously <strong>timestamp</strong> key sections. These timestamps become direct links (MediaLink in KB) for Reddit/social comments, guiding users to the <i>exact</i> relevant moment.</li>
+                                            <li>Strategically use the full video: Upload it and meticulously <strong>timestamp</strong> key sections. These timestamps become direct links (MediaLink in KB) for Reddit/social comments, guiding users to the exact relevant moment.</li>
                                             <li>Repurpose into micro-content: Systematically edit the full video into numerous <strong>YouTube Shorts</strong>, <strong>Instagram Reels</strong>, <strong>TikTok videos</strong>, and short clips for <strong>Reddit/Facebook posts</strong>, maximizing asset reach. This leverages the primary video asset across multiple platforms efficiently.</li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="interactive-element"><strong>Action: Resolve Reddit Account Access & Define Persona</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Resolve Reddit Account Access & Define Persona
                                  <ul class="nested-list">
                                     <li>Task: Prioritize resolving the shadowban via the official <strong>Reddit Appeals page</strong> (<a href="https://www.reddit.com/appeal" target="_blank" rel="noopener noreferrer">reddit.com/appeal</a>). Be persistent, polite, identify CSS official representation (<span class="text-highlight-neutral">Dylan Code</span>), state positive intent, seek resolution.</li>
                                     <li>Explanation: Shadowbans render activity invisible; appeals are the only legitimate route.</li>
@@ -182,29 +181,28 @@
                                     <li>Reasoning: Named accounts foster better connection. Clear account ownership streamlines responsibility under <span class="text-highlight-neutral">Dylan Code</span>'s oversight. Legitimacy is key.</li>
                                 </ul>
                             </li>
-                            <li class="interactive-element"><strong>Action: Construct the Central Knowledge Base (KB) with AI Assistance</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Construct the Central Knowledge Base (KB) with AI Assistance
                                 <ul class="nested-list">
                                     <li>Tool: <strong><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Google Sheets</a></strong> - Create CSS_Knowledge_Base.</li>
                                     <li>Columns: TopicID, PrimaryKeywords, SecondaryKeywords, ExplanationSnippet (Approved CSS explanation), MediaLink (Timestamped YouTube link, Short link, image URL, etc.).</li>
                                     <li>Ingestion Process (Manual Core, AI Assist):
                                         <ul class="nested-list">
                                             <li>Gather Sources: Digital books, video transcripts, notes, data summaries.</li>
-                                            <li>AI-Assisted Processing: Use LLMs like <strong><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a></strong>, <strong><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Google Gemini</a></strong>, or <strong><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a></strong> to <i>accelerate</i> initial processing. Prompt LLMs to summarize concepts, extract definitions/advice, suggest keywords, and rephrase technical explanations into concise snippets based on provided CSS source text.</li>
-                                            <li>Human Review & Structuring: <span class="text-highlight-neutral">Dylan Code</span> (or designated expert) <i>must review all</i> AI outputs for accuracy, nuance, and CSS methodology alignment. Edit rigorously. Organize validated information into the Google Sheet, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding correct MediaLinks.</li>
+                                            <li>AI-Assisted Processing: Use LLMs like <strong><a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a></strong>, <strong><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Google Gemini</a></strong>, or <strong><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a></strong> to accelerate initial processing. Prompt LLMs to summarize concepts, extract definitions/advice, suggest keywords, and rephrase technical explanations into concise snippets based on provided CSS source text.</li>
+                                            <li>Human Review & Structuring: <span class="text-highlight-neutral">Dylan Code</span> (or designated expert) must review all AI outputs for accuracy, nuance, and CSS methodology alignment. Edit rigorously. Organize validated information into the Google Sheet, assigning TopicIDs, confirming Keywords, finalizing ExplanationSnippets, and adding correct MediaLinks.</li>
                                         </ul>
                                     </li>
-                                    <li>Explanation: The KB is the structured "single source of truth." High "KB Quality" (comprehensive, accurate, searchable) is critical for automation success. LLMs assist, but human expertise validates.</li>
+                                    <li>Explanation: The KB is the structured "single source of truth." High <strong>KB Quality</strong> (comprehensive, accurate, searchable) is critical for automation success. LLMs assist, but human expertise validates.</li>
                                     <li>Reasoning: Centralizes knowledge, ensures consistency, provides structured data for automation, easily accessible/updatable. AI assist reduces initial burden.</li>
                                 </ul>
                             </li>
-                            <li class="interactive-element"><strong>Action: Refresh Existing Digital Assets</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Refresh Existing Digital Assets
                                 <ul class="nested-list">
                                     <li>Task: Update <a href="https://www.youtube.com/@superbikeschool" target="_blank" rel="noopener noreferrer">YouTube</a>, <a href="https://www.instagram.com/superbikeschool/" target="_blank" rel="noopener noreferrer">Instagram</a>, and <a href="https://www.facebook.com/californiasuperbikeschool" target="_blank" rel="noopener noreferrer">Facebook Page</a> with current brand language, logos, banners, descriptions.</li>
                                     <li>Reasoning: Ensures brand consistency before ramping up activity.</li>
                                 </ul>
                             </li>
                         </ul>
-                         <!-- Removed hr divider, spacing handled by panel margin -->
                     </div>
                  </div> <!-- End Pillar 1 Panel -->
 
@@ -213,9 +211,9 @@
                     <div class="pillar-detail">
                         <h4>Intelligent & Efficient Monitoring</h4>
                         <ul class="styled-list">
-                            <li class="interactive-element"><strong>Action: Implement Automated Monitoring</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Implement Automated Monitoring
                                 <ul class="nested-list">
-                                    <li>Tool Recommendation: <strong><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly Pro</a></strong> (~$12/mo)</li>
+                                    <li>Tool Recommendation: <strong><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">Feedly Pro</a></strong> (<strong>~$12 / Month</strong>)</li> <!-- Ensure money isn't red -->
                                     <li>Task: Configure Feedly to track relevant subreddits (e.g., r/trackdays, r/motorcycles, r/NewRiders) and keywords (throttle, braking, vision, track day, cornering, lean angle, CSS, etc.). Obtain the Feedly RSS feed URL.</li>
                                     <li>Explanation: Feedly aggregates mentions via RSS (a standard content feed format) for automation.</li>
                                     <li>Reasoning & Benefit: <strong>Eliminates manual Reddit monitoring time drain.</strong> Captures opportunities efficiently, freeing up <span class="text-highlight-neutral">Dylan Code</span> for review, strategy, and community management.</li>
@@ -230,14 +228,14 @@
                     <div class="pillar-detail">
                          <h4>Automated Response Preparation Engine</h4>
                          <ul class="styled-list">
-                            <li class="interactive-element"><strong>Tool Recommendation:</strong> <strong><a href="https://make.com" target="_blank" rel="noopener noreferrer">Make (Core Plan)</a></strong> (~$11/mo)</li>
+                            <li class="interactive-element"><strong>Tool Recommendation:</strong> <strong><a href="https://make.com" target="_blank" rel="noopener noreferrer">Make (Core Plan)</a></strong> (<strong>~$11 / Month</strong>)</li> <!-- Ensure money isn't red -->
                             <li class="interactive-element"><strong>Task:</strong> Build automation Scenario in Make (Trigger via Feedly RSS -> Filter -> Parse Text -> Search Google Sheet KB -> Retrieve Snippet/Link -> Call OpenAI API -> Send Draft to Review Queue).</li>
                             <li class="interactive-element"><strong>OpenAI API Prompt Refinement:</strong> Continuously refine the OpenAI prompt with CSS-specific language/phrasing examples to improve draft quality and tone alignment over time.</li>
-                            <li class="interactive-element"><strong>Reasoning:</strong> Automates repetitive retrieval/drafting based <i>only</i> on approved KB content. Make offers best cost-effectiveness and workflow power.</li>
+                            <li class="interactive-element"><strong>Reasoning:</strong> Automates repetitive retrieval/drafting based only on approved KB content. Make offers best cost-effectiveness and workflow power.</li>
                          </ul>
                          <h5 class="animate-item">Conceptual Workflow:</h5>
                          <div class="flowchart-container animate-item interactive-element placeholder-flowchart">
-                            <p><i>[Current flowchart visualization placeholder - To be replaced with improved design in Phase 4]</i></p>
+                            <p>[Current flowchart visualization placeholder - To be replaced with improved design in Phase 4]</p>
                             <div class="flowchart">
                                 <!-- Content kept for text integrity but visually hidden by CSS -->
                                 <div class="flowchart-step step-start"><span>Feedly RSS Feed (New Reddit Mention)</span></div>
@@ -273,21 +271,21 @@
                     <div class="pillar-detail">
                          <h4>Authentic Human Engagement & Quality Control</h4>
                          <ul class="styled-list">
-                            <li class="interactive-element"><strong>Action: Efficient Review Protocol</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Efficient Review Protocol
                                 <ul class="nested-list">
                                     <li>Task: <span class="text-highlight-neutral">Dylan Code</span> (or a designated direct report if applicable) monitors the Review Queue (Slack/Email) at consistent, sustainable intervals (e.g., 2-3 scheduled blocks per day). <strong>Prioritize quality and sustainability over immediate response.</strong></li>
-                                    <li>Task: <strong>Streamlined Review & Edit:</strong> Review <i>every</i> draft efficiently. Goal: Minimal edits (quick checks for accuracy, tone, relevance, compliance, minor personalization). If heavy rewriting is needed, refine the KB snippet or OpenAI prompt.</li>
+                                    <li>Task: <strong>Streamlined Review & Edit:</strong> Review every draft efficiently. Goal: Minimal edits (quick checks for accuracy, tone, relevance, compliance, minor personalization). If heavy rewriting is needed, refine the KB snippet or OpenAI prompt.</li>
                                     <li>Reasoning: Balances responsiveness with realistic workload for <span class="text-highlight-neutral">Dylan Code</span>. Focuses on efficient quality control.</li>
                                 </ul>
                             </li>
-                            <li class="interactive-element"><strong>Action: Manual Posting & Dedicated Device Strategy</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Manual Posting & Dedicated Device Strategy
                                 <ul class="nested-list">
                                     <li>Task: Post finalized text manually to Reddit using Dylan_CSS or Rico_CSS account from the <strong>Dedicated Posting Device</strong>.</li>
-                                    <li>Task: Implement <strong>Dedicated Posting Device:</strong> Procure a basic iOS/Android device + low-cost cellular plan, used <i>exclusively</i> for official CSS social media logins/posting (Reddit, IG, FB, TikTok, Discord).</li>
+                                    <li>Task: Implement <strong>Dedicated Posting Device:</strong> Procure a basic iOS/Android device + low-cost cellular plan, used exclusively for official CSS social media logins/posting (Reddit, IG, FB, TikTok, Discord).</li>
                                     <li>Reasoning: Isolates activity, enhances security, prevents personal/official account mix-ups, creates focused workspace. Centralizes access while allowing secure remote use if needed.</li>
                                 </ul>
                             </li>
-                            <li class="interactive-element"><strong>Action: Streamlined Collaboration</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Streamlined Collaboration
                                 <ul class="nested-list">
                                     <li>Task: Primary review rests with <span class="text-highlight-neutral">Dylan Code</span>. If input needed beyond KB, consult relevant expert directly. Coach involvement is opportunistic (e.g., specific AMAs), not required for daily flow.</li>
                                     <li>Reasoning: Simplifies workflow, acknowledging primary responsibility rests with marketing leadership (<span class="text-highlight-neutral">Dylan Code</span>).</li>
@@ -329,8 +327,7 @@
                     <div class="pillar-detail">
                          <h4>Dedicated Community Hub (Discord)</h4>
                          <ul class="styled-list">
-                            <!-- " 9.1" removed -->
-                            <li class="interactive-element"><strong>Action: Launch Official CSS Discord Server.</strong>
+                            <li class="interactive-element"><strong>Action:</strong> Launch Official CSS Discord Server.
                                 <ul class="nested-list">
                                     <li>Tool: <strong><a href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord</a></strong> - Free for core functionality.</li>
                                     <li>Task: Create server, phase out old forum (archive/redirect).</li>
@@ -347,7 +344,8 @@
                                             <li>#level-2-lounge (Role-gated)</li>
                                             <li>#level-3-lounge (Role-gated)</li>
                                             <li>#level-4-lounge (Role-gated)</li>
-                                            <li><i>(Future Level channels as needed)</i></li>
+                                             <!-- Removed <i> tag -->
+                                            <li>(Future Level channels as needed)</li>
                                             <li>#partner-spotlight</li>
                                         </ul>
                                     </li>
@@ -380,19 +378,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td data-label="Tool">Google Sheets</td><td data-label="Role">Knowledge Base</td><td data-label="Link"><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                                <tr><td data-label="Tool">Feedly Pro</td><td data-label="Role">Monitoring Trigger</td><td data-label="Link"><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a></td><td data-label="Est. Monthly Cost">~$12 / Month</td></tr>
-                                <tr><td data-label="Tool">Make (Core Plan)</td><td data-label="Role">Automation Engine</td><td data-label="Link"><a href="https://make.com" target="_blank" rel="noopener noreferrer">make.com</a></td><td data-label="Est. Monthly Cost">~$11 / Month</td></tr>
-                                <tr><td data-label="Tool">OpenAI API</td><td data-label="Role">AI Draft Generation</td><td data-label="Link"><a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer">platform.openai.com</a></td><td data-label="Est. Monthly Cost">~$5 / Month (Usage Based)</td></tr>
-                                <tr><td data-label="Tool">Slack / Gmail / Google Docs</td><td data-label="Role">Review Queue</td><td data-label="Link"><a href="https://slack.com" target="_blank" rel="noopener noreferrer">slack.com</a> / etc.</td><td data-label="Est. Monthly Cost">$0 (Free Tiers)</td></tr>
-                                <tr><td data-label="Tool">YouTube</td><td data-label="Role">Video Hosting/Clips</td><td data-label="Link"><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">youtube.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                                <tr><td data-label="Tool">Reddit</td><td data-label="Role">Engagement Platform</td><td data-label="Link"><a href="https://reddit.com" target="_blank" rel="noopener noreferrer">reddit.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                                <tr><td data-label="Tool">Instagram</td><td data-label="Role">Visual Platform</td><td data-label="Link"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                                <tr><td data-label="Tool">Facebook</td><td data-label="Role">Info/Community Platform</td><td data-label="Link"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook.com</a></td><td data-label="Est. Monthly Cost">$0</td></tr>
-                                <tr><td data-label="Tool">Discord</td><td data-label="Role">Community Hub</td><td data-label="Link"><a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a></td><td data-label="Est. Monthly Cost">$0 (Core Features)</td></tr>
+                                <tr><td data-label="Tool">Google Sheets</td><td data-label="Role">Knowledge Base</td><td data-label="Link"><a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">sheets.google.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong></td></tr>
+                                <tr><td data-label="Tool">Feedly Pro</td><td data-label="Role">Monitoring Trigger</td><td data-label="Link"><a href="https://feedly.com" target="_blank" rel="noopener noreferrer">feedly.com</a></td><td data-label="Est. Monthly Cost"><strong>~$12 / Month</strong></td></tr>
+                                <tr><td data-label="Tool">Make (Core Plan)</td><td data-label="Role">Automation Engine</td><td data-label="Link"><a href="https://make.com" target="_blank" rel="noopener noreferrer">make.com</a></td><td data-label="Est. Monthly Cost"><strong>~$11 / Month</strong></td></tr>
+                                <tr><td data-label="Tool">OpenAI API</td><td data-label="Role">AI Draft Generation</td><td data-label="Link"><a href="https://platform.openai.com/usage" target="_blank" rel="noopener noreferrer">platform.openai.com</a></td><td data-label="Est. Monthly Cost"><strong>~$5 / Month</strong> (Usage Based)</td></tr>
+                                <tr><td data-label="Tool">Slack / Gmail / Google Docs</td><td data-label="Role">Review Queue</td><td data-label="Link"><a href="https://slack.com" target="_blank" rel="noopener noreferrer">slack.com</a> / etc.</td><td data-label="Est. Monthly Cost"><strong>$0</strong> (Free Tiers)</td></tr>
+                                <tr><td data-label="Tool">YouTube</td><td data-label="Role">Video Hosting/Clips</td><td data-label="Link"><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">youtube.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong></td></tr>
+                                <tr><td data-label="Tool">Reddit</td><td data-label="Role">Engagement Platform</td><td data-label="Link"><a href="https://reddit.com" target="_blank" rel="noopener noreferrer">reddit.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong></td></tr>
+                                <tr><td data-label="Tool">Instagram</td><td data-label="Role">Visual Platform</td><td data-label="Link"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong></td></tr>
+                                <tr><td data-label="Tool">Facebook</td><td data-label="Role">Info/Community Platform</td><td data-label="Link"><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong></td></tr>
+                                <tr><td data-label="Tool">Discord</td><td data-label="Role">Community Hub</td><td data-label="Link"><a href="https://discord.com" target="_blank" rel="noopener noreferrer">discord.com</a></td><td data-label="Est. Monthly Cost"><strong>$0</strong> (Core Features)</td></tr>
                                 <tr><td data-label="Tool">Dedicated Mobile Device</td><td data-label="Role">Secure Posting Interface</td><td data-label="Link">(Hardware Purchase)</td><td data-label="Est. Monthly Cost">(One-time Hardware Purchase)</td></tr>
-                                <tr><td data-label="Tool">Basic Cellular Plan</td><td data-label="Role">Device Connectivity</td><td data-label="Link">(Various Carriers)</td><td data-label="Est. Monthly Cost">~$10-20 / Month</td></tr>
-                                <!-- Updated color via CSS -->
+                                <tr><td data-label="Tool">Basic Cellular Plan</td><td data-label="Role">Device Connectivity</td><td data-label="Link">(Various Carriers)</td><td data-label="Est. Monthly Cost"><strong>~$10-20 / Month</strong></td></tr>
+                                <!-- Total cost color set to blue via CSS -->
                                 <tr class="total-row"><td data-label="Total" colspan="3"><strong>Estimated Total Recurring Software/Service Cost:</strong></td><td data-label="Total Cost"><strong>~$38 - $48 / Month</strong></td></tr>
                             </tbody>
                         </table>
@@ -415,7 +413,7 @@
                             <div class="timeline-dot"></div>
                             <div class="timeline-content">
                                 <h3>Phase 1: Foundation</h3>
-                                <!-- Changed to ul, bullet style via CSS -->
+                                <!-- Bullet style changed via CSS -->
                                 <ul class="roadmap-details">
                                     <li>YouTube DMCA, Reddit Appeal (Ongoing)</li>
                                     <li>Refresh social profiles</li>
@@ -486,11 +484,12 @@
                 <h2 class="animate-item">Cost Breakdown & Projected Revenue Benefits:</h2>
                  <div class="panel cost-benefit-container animate-item interactive-element">
                     <ul class="styled-list">
+                        <!-- Ensure money figures aren't red -->
                         <li class="interactive-element"><strong>Direct Monthly Costs:</strong> Estimated <strong>~$38 - $48</strong> (Software/Services). Minimal relative to potential return.</li>
                         <li class="interactive-element"><strong>One-Time Costs:</strong> Dedicated device purchase (unless a device is readily available)</li>
                         <li class="interactive-element"><strong>Indirect Costs (Time Investment):</strong>
                             <ul class="nested-list">
-                                <li>Upfront: Significant but <i>finite</i> time for KB & automation setup (Est. 20-40 hours). <strong>Builds the sustainable asset.</strong></li>
+                                <li>Upfront: Significant but finite time for KB & automation setup (Est. 20-40 hours). <strong>Builds the sustainable asset.</strong></li>
                                 <li>Ongoing: Efficient, scheduled time for Review Queue (Est. <1 hour daily avg for <span class="text-highlight-neutral">Dylan Code</span>), Discord moderation, planned content posting. <strong>Far less than purely manual.</strong></li>
                             </ul>
                         </li>
@@ -505,7 +504,7 @@
                                 <li>Partnerships: Strong digital presence attracts sponsors/collaborators.</li>
                             </ul>
                         </li>
-                         <!-- Removed italics via HTML edit -->
+                         <!-- Italics removed -->
                          <li class="interactive-element">ROI is driven by increased conversions, enhanced brand value, operational efficiency, and new opportunities, justifying the modest costs and upfront time.</li>
                     </ul>
                 </div>
@@ -521,7 +520,6 @@
                 <h2 class="animate-item">Risks & Mitigation:</h2>
                  <div class="panel animate-item interactive-element">
                       <!-- Structure will be revised later (e.g., cards) -->
-                      <!-- Current dt/dd structure kept for now -->
                      <dl class="risk-list">
                         <dt class="animate-item interactive-element">Draft Quality:</dt>
                         <dd class="animate-item interactive-element"><strong>Mitigation:</strong> Mandatory human review (<span class="text-highlight-neutral">Dylan Code</span>); prompt refinement.</dd>
